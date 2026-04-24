@@ -565,6 +565,9 @@
     white-space: nowrap;
   }
 
+  /* ── Country tag (inline in details cell) ── */
+  .country-tag { display:block; font-size:11px; color:var(--muted2); margin-top:5px; }
+
   /* ── Status ── */
   .status {
     display: inline-flex;
@@ -663,6 +666,7 @@
   }
 
   tr.highlight-row { animation: rowPulse 2s ease forwards; }
+
 
   /* ── Side panel ── */
   .facts-trigger {
@@ -998,6 +1002,157 @@
     .content-wrap { padding-left: 20px; padding-right: 20px; }
     .tab-wrap { padding-left: 20px; padding-right: 20px; }
   }
+
+  /* ── Heatmap layout ── */
+  /* ── Heatmap layout ── */
+  .heatmap-layout {
+    display: flex;
+    position: relative;
+    min-height: 600px;
+    gap: 0;
+  }
+
+  .heatmap-map-wrap {
+    flex: 1;
+    padding: 12px 0 16px 0;
+    min-width: 0;
+  }
+
+  .heatmap-hint {
+    font-size: 11px; color: var(--muted);
+    margin-bottom: 8px; padding-left: 4px;
+  }
+
+  #europeMap {
+    width: 100%;
+    background: #dce8f0;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    max-height: calc(100vh - 160px);
+  }
+
+  #europeMap svg {
+    width: 100%;
+    max-height: calc(100vh - 160px);
+    display: block;
+  }
+
+  #europeMap path {
+    stroke: rgba(255,255,255,0.7);
+    stroke-width: 0.5;
+    cursor: pointer;
+    transition: opacity 0.12s, stroke 0.12s;
+    vector-effect: non-scaling-stroke;
+  }
+
+  #europeMap path.act-live        { fill: #059669; }
+  #europeMap path.act-pilot       { fill: #d97706; }
+  #europeMap path.act-development { fill: #6366f1; }
+  #europeMap path.act-none        { fill: #b8cad8; }
+  #europeMap path.act-unknown     { fill: #cdd8e0; }
+
+  #europeMap path:hover { opacity: 0.75; }
+
+  #europeMap path.selected {
+    stroke: #1a1d23 !important;
+    stroke-width: 2px !important;
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.3));
+  }
+
+  .map-country-label {
+    font-size: 8px;
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    fill: rgba(255,255,255,0.9);
+    pointer-events: none;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  }
+
+  .heatmap-legend {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-top: 10px; padding: 8px 12px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; width: fit-content;
+  }
+  .hl-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ink2); }
+  .hl-dot  { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .hl-live  { background: #059669; }
+  .hl-pilot { background: #d97706; }
+  .hl-dev   { background: #6366f1; }
+  .hl-none  { background: #b8cad8; }
+
+  /* Country panel — fixed width right column */
+  .country-panel { display: none; }
+  .heatmap-layout { display: block; }
+
+  .cp-toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    flex-shrink: 0;
+  }
+
+  .cp-toolbar-label { font-size: 11px; font-weight: 600; color: var(--muted2); }
+
+  .cp-clear-btn {
+    font-size: 10px; font-weight: 600; color: var(--muted);
+    background: none; border: 1px solid var(--border2); border-radius: 4px;
+    padding: 3px 8px; cursor: pointer; transition: all 0.12s;
+  }
+  .cp-clear-btn:hover { color: #dc2626; border-color: #fca5a5; background: #fee2e2; }
+
+  .cp-empty-state {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    flex: 1; padding: 40px 24px; text-align: center; gap: 12px; color: var(--muted);
+  }
+  .cp-empty-state-icon { font-size: 40px; opacity: 0.25; }
+  .cp-empty-state-text { font-size: 12px; line-height: 1.7; max-width: 220px; }
+
+  .cp-cards {
+    flex: 1; overflow-y: auto;
+    display: flex; flex-direction: column;
+  }
+
+  .cp-cards .c-card {
+    position: relative;
+    border-radius: 0;
+    border-left: none; border-right: none; border-top: none;
+    flex-shrink: 0;
+  }
+  .cp-cards .c-card:first-child { border-top: 1px solid var(--border); }
+  .cp-cards .c-card .c-header { padding-right: 32px; }
+
+  .cp-dismiss {
+    position: absolute; top: 10px; right: 10px;
+    background: var(--surface2); border: 1px solid var(--border2);
+    cursor: pointer; color: var(--muted);
+    width: 22px; height: 22px; border-radius: 4px;
+    font-size: 14px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.12s;
+  }
+  .cp-dismiss:hover { background: #fee2e2; border-color: #fca5a5; color: #dc2626; }
+
+  /* Map tooltip */
+  .map-tooltip {
+    position: fixed; pointer-events: none; z-index: 200;
+    background: var(--ink); color: #fff;
+    padding: 7px 12px; border-radius: 5px;
+    font-size: 11px; font-family: Inter, sans-serif;
+    white-space: nowrap; display: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    line-height: 1.5;
+  }
+  .map-tooltip::after {
+    content: ''; position: absolute; top: 100%; left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent; border-top-color: var(--ink);
+  }
+
 </style>
 </head>
 <body>
@@ -1162,14 +1317,14 @@
 <!-- ═══ Waymo ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Waymo</span><span class="company-desc">World's most commercially mature robotaxi operator (Alphabet/Google) — 1M+ rides/week in the US, now entering Europe</span><span class="company-count">1 project</span></div></td></tr>
 
-<tr class="data-row" id="proj-waymo" data-status="planned" data-segment="robotaxi"><td><span class="project-name">Waymo Commercial Service — London</span><span class="project-desc">Waymo's first true international expansion outside the US — bringing its fully commercial robotaxi service to London and establishing a European foothold.</span>
+<tr class="data-row" id="proj-waymo" data-status="pilot" data-segment="robotaxi"><td><span class="project-name">Waymo Commercial Service — London</span><span class="project-desc">Waymo's first true international expansion outside the US — bringing its fully commercial robotaxi service to London and establishing a European foothold.</span>
           <button class="facts-trigger" data-row="proj-waymo" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Benchmark</span><span class="learn-tag">Regulatory Test</span><span class="learn-body">Waymo's London entry is the most important external benchmark for European AV ambitions. How quickly it gets approved — and at what operating conditions — will set expectations for every other player trying to go driverless in Europe.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-us">US</span> <span class="seg-tag">Robotaxi</span></div><div class="dc-row dc-status"><span class="status status-planned"><span class="dot dot-planned"></span>Launching 2026</span></div><div class="dc-row dc-countries">🇬🇧 London</div></td><td class="col-div vehicle-cell"><span class="v-model">Waymo-fitted Jaguar I-PACE</span><span class="v-detail">LiDAR, cameras, radar. Purpose-outfitted EV. Est. ~€100k/vehicle.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2009 (Google SDC)</span></div><div class="tl-row"><span class="tl-label">US commercial</span><span class="tl-value">2020–present</span></div><div class="tl-row"><span class="tl-label">London launch</span><span class="tl-value pending">2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">UK DfT permitting framework confirmed on track for 2026 launch.</div><button class="news-view-more" data-row="proj-waymo" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ Verne ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Verne</span><span class="company-desc">Croatian robotaxi startup (Rimac-founded) — Europe's only purpose-built robotaxi company, targeting full driverless from commercial launch. Zagreb service launched April 2026.</span><span class="company-count">1 project</span></div></td></tr>
 
 <tr class="data-row" id="proj-verne" data-status="live" data-segment="robotaxi"><td><span class="project-name">Verne Robotaxi Service — Zagreb</span><span class="project-desc">Europe's only robotaxi designed from scratch for driverless operation — no retrofitting, no steering wheel, with a dedicated city depot and app per market. Commercial service launched in Zagreb, April 2026.</span>
-          <button class="facts-trigger" data-row="proj-verne" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">European Champion</span><span class="learn-tag">Purpose-Built</span><span class="learn-body">The only European-born, privately-funded, purpose-built robotaxi — and now Europe's first commercially operating L4 robotaxi service (Zagreb, April 2026). Zagreb as a launch city was deliberate: smaller, manageable urban environment where regulatory approval is more achievable than London or Berlin.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-eu">EU</span> <span class="seg-tag">Robotaxi</span></div><div class="dc-row dc-status"><span class="status status-live"><span class="dot dot-live"></span>Live</span></div><div class="dc-row dc-countries">🇭🇷 Zagreb (launched)<br>🇬🇧 UK · 🇩🇪 Germany next<br><small style="opacity:.6">+11 city agreements signed</small></div></td><td class="col-div vehicle-cell"><span class="v-model">Verne Purpose-Built EV</span><span class="v-detail">2-seat, designed for driverless ride-hailing. No steering wheel. Sensor suite undisclosed.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2023</span></div><div class="tl-row"><span class="tl-label">Prototypes</span><span class="tl-value">60 units (2025)</span></div><div class="tl-row"><span class="tl-label">Zagreb launch</span><span class="tl-value onroad">April 2026</span></div><div class="tl-row"><span class="tl-label">UK &amp; DE next</span><span class="tl-value pending">Post-Zagreb</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Apr 8, 2026</div><div class="news-teaser-text">Commercial launch in Zagreb — Europe's first L4 robotaxi service.</div><button class="news-view-more" data-row="proj-verne" data-tab="news">View more ↗</button></div></div></td></tr>
+          <button class="facts-trigger" data-row="proj-verne" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">European Champion</span><span class="learn-tag">Purpose-Built</span><span class="learn-body">The only European-born, privately-funded, purpose-built robotaxi — and now Europe's first commercially operating L4 robotaxi service (Zagreb, April 2026). Zagreb as a launch city was deliberate: smaller, manageable urban environment where regulatory approval is more achievable than London or Berlin.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-eu">EU</span> <span class="seg-tag">Robotaxi</span></div><div class="dc-row dc-status"><span class="status status-live"><span class="dot dot-live"></span>Live</span></div><div class="dc-row dc-countries">🇭🇷 Zagreb (launched)<br>🇬🇧 UK · 🇩🇪 Germany next<br><small style="opacity:.6">+11 city agreements signed</small></div></td><td class="col-div vehicle-cell"><span class="v-model">Verne Purpose-Built EV</span><span class="v-detail">2-seat, designed for driverless ride-hailing. No steering wheel. Sensor suite undisclosed.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2023</span></div><div class="tl-row"><span class="tl-label">Prototypes</span><span class="tl-value">60 units (2025)</span></div><div class="tl-row"><span class="tl-label">Zagreb launch</span><span class="tl-value onroad">April 2026</span></div><div class="tl-row"><span class="tl-label">UK &amp; DE next</span><span class="tl-value pending">Post-Zagreb</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Apr 8, 2026</div><div class="news-teaser-text">Apr 8 2026: Europe's first commercial robotaxi service launched. €1.99/ride, 7am–9pm. Uber integration live. Permit discussions in 11 EU/UK/Middle East cities. </div><div class="news-teaser-text" style="display:none">Commercial launch in Zagreb — Europe's first L4 robotaxi service.</div><button class="news-view-more" data-row="proj-verne" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ Chinese AV Platforms ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Momenta</span><span class="company-desc">Chinese AV software company — partnering with Uber for first Continental European robotaxi deployment in Munich. Founded 2016, specialises in scalable AI driving systems.</span><span class="company-count">1 project</span></div></td></tr>
@@ -1228,14 +1383,101 @@
 
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">ADASTEC × Karsan</span><span class="company-desc">Full-size autonomous electric bus programme — flowride.ai platform on the Karsan e-ATAK, operating across four European countries since 2021</span><span class="company-count">1 programme (multi-country)</span></div></td></tr>
 
-<tr class="data-row" id="proj-karsan" data-status="pilot" data-segment="shuttle"><td><span class="project-name">Karsan e-ATAK Autonomous Bus Programme</span><span class="project-desc">Europe's first full-speed, full-size autonomous electric bus — 52 passengers at up to 50 km/h, operating in urban streets and airport campuses across four countries since 2021.</span>
-          <button class="facts-trigger" data-row="proj-karsan" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Full-Size Transit</span><span class="learn-tag">Non-EU OEM</span><span class="learn-body">5 years of multi-country operation makes this the most seasoned full-size AV bus programme in Europe. Its longevity is itself the insight — it shows what it takes to sustain a pilot without yet commercialising. Also notable as a Turkish OEM + US software firm penetrating European public transit, a supply chain model very different from the VW/Mobileye approach.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">US / TR</span> <span class="seg-tag">Full-Size Autonomous Bus</span></div><div class="dc-row dc-status"><span class="status status-pilot"><span class="dot dot-pilot"></span>Active Pilot</span></div><div class="dc-row dc-countries">🇫🇮 Finland<br>🇩🇪 Germany<br>🇳🇱 Netherlands<br>🇳🇴 Norway</div></td><td class="col-div vehicle-cell"><span class="v-model">Karsan e-ATAK Electric Bus</span><span class="v-detail">52 pax, 50 km/h max. 5 Ouster LiDARs: 1× 360° rooftop, 4× 270° side. ADASTEC flowride.ai.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">First EU deploy</span><span class="tl-value">2021</span></div><div class="tl-row"><span class="tl-label">Multi-country</span><span class="tl-value onroad">Ongoing</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">2025</div><div class="news-teaser-text">Programme extends to Romania (Cluj) — fifth European country.</div><button class="news-view-more" data-row="proj-karsan" data-tab="news">View more ↗</button></div></div></td></tr>
+<tr class="data-row" id="proj-karsan" data-status="live" data-segment="shuttle"><td><span class="project-name">Karsan e-ATAK Autonomous Bus Programme</span><span class="project-desc">Europe's first full-speed, full-size autonomous electric bus — 52 passengers at up to 50 km/h, operating in urban streets and airport campuses across four countries since 2021.</span>
+          <button class="facts-trigger" data-row="proj-karsan" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Full-Size Transit</span><span class="learn-tag">Non-EU OEM</span><span class="learn-body">5 years of multi-country operation makes this the most seasoned full-size AV bus programme in Europe. Its longevity is itself the insight — it shows what it takes to sustain a pilot without yet commercialising. Also notable as a Turkish OEM + US software firm penetrating European public transit, a supply chain model very different from the VW/Mobileye approach.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">US / TR</span> <span class="seg-tag">Full-Size Autonomous Bus</span></div><div class="dc-row dc-status"><span class="status status-pilot"><span class="dot dot-live"></span>Live / Operational</span></div><div class="dc-row dc-countries">🇫🇮 Finland<br>🇩🇪 Germany<br>🇳🇱 Netherlands<br>🇳🇴 Norway</div></td><td class="col-div vehicle-cell"><span class="v-model">Karsan e-ATAK Electric Bus</span><span class="v-detail">52 pax, 50 km/h max. 5 Ouster LiDARs: 1× 360° rooftop, 4× 270° side. ADASTEC flowride.ai.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">First EU deploy</span><span class="tl-value">2021</span></div><div class="tl-row"><span class="tl-label">Multi-country</span><span class="tl-value onroad">Ongoing</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">2025</div><div class="news-teaser-text">Programme extends to Romania (Cluj) — fifth European country.</div><button class="news-view-more" data-row="proj-karsan" data-tab="news">View more ↗</button></div></div></td></tr>
+
+
+<!-- Karsan e-ATAK — Sälen, Sweden (SIKTA) -->
+<tr class="data-row" id="proj-karsan-salen" data-status="live" data-segment="shuttle">
+  <td><span class="project-name">Karsan e-ATAK — Sälen SIKTA (Sweden)</span><span class="project-desc">One of Europe's first L4 autonomous bus deployments in a mountain tourism setting — commercial passenger service completed in ski resort of Sälen during peak season 2026. Part of the Sälen–Idre Autonomous Public Transportation Project (SIKTA).</span>
+          <button class="facts-trigger" data-row="proj-karsan-salen" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Winter Conditions Proven</span><span class="learn-tag">Tourism Model</span>
+    <span class="learn-body">First L4 AV service in a ski resort — heavy snowfall, pedestrian-skier shared roads. Proves the ADASTEC stack works in conditions most AV deployments avoid. SIKTA is a replicable public-private model: municipality + university + private operator. Phase 2 to Idre signals it's being treated as infrastructure, not a one-off pilot.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-eu">EU</span>
+    <span class="seg-tag">Shuttle</span><span class="seg-tag">Winter Tourism</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇸🇪 Sälen, Sweden</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Karsan Autonomous e-ATAK</span>
+    <span class="v-detail">Full-size electric bus. ADASTEC flowride.ai L4 platform. 4.8km route between ski resort areas and accommodation. Operating in heavy snowfall, shared road with pedestrians and skiers.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Winter testing begins</span><span class="tl-value">Jan 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Transportstyrelsen approval</span><span class="tl-value onroad">9 Mar 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Commercial service</span><span class="tl-value onroad">Mar–Apr 2026 (~1 month)</span></div>
+    <div class="tl-row"><span class="tl-label">Phase 2 — Idre</span><span class="tl-value pending">TBC 2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Apr 2026</div><div class="news-teaser-text">Commercial service completed in Sälen. Phase 2 expansion to Idre announced. SIKTA conference held Apr 8 with international media.</div><button class="news-view-more" data-row="proj-karsan-salen" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- Karsan e-ATAK — Paris, RATP Group -->
+<tr class="data-row" id="proj-karsan-paris" data-status="pilot" data-segment="shuttle">
+  <td><span class="project-name">Karsan e-ATAK — Paris RATP Group</span><span class="project-desc">6-month autonomous driving validation project with RATP Group — one of Europe's largest public transit operators. ~3,000km covered in open Paris traffic, validated at UTAC automotive test centre.</span>
+          <button class="facts-trigger" data-row="proj-karsan-paris" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">RATP Validation</span><span class="learn-tag">Urban Stress Test</span>
+    <span class="learn-body">RATP is Europe's second-largest transit operator — a validation project with them is a serious commercial signal, not a research exercise. 3,000km in open Paris traffic (not a closed campus) with pedestrians is a meaningful real-world proof point. The UTAC certification process is the same one used for production vehicle approvals. A positive RATP commercial decision could mean fleet-scale deployment in one of Europe's most complex urban networks.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-eu">EU</span>
+    <span class="seg-tag">Shuttle</span><span class="seg-tag">Urban</span>
+    <span class="status"><span class="dot dot-pilot"></span>Pilot Completed</span>
+    <span class="country-tag">🇫🇷 Paris, France</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Karsan Autonomous e-ATAK</span>
+    <span class="v-detail">~3,000km in open urban Paris traffic. Average 5 hours/day operation. Shared road with pedestrians. Passed UTAC technical validation and certification process.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Project duration</span><span class="tl-value onroad">6 months (completed Apr 2026)</span></div>
+    <div class="tl-row"><span class="tl-label">Announced</span><span class="tl-value">Apr 8, 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Next steps</span><span class="tl-value pending">TBC — RATP commercial decision</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">Apr 2026</div><div class="news-teaser-text">Karsan and RATP announce successful completion of 6-month Paris autonomous driving validation project at UTAC.</div><button class="news-view-more" data-row="proj-karsan-paris" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- WeRide — Slovakia (ELEVATE) -->
+<tr class="data-row" id="proj-weride-slovakia" data-status="pilot" data-segment="robotaxi">
+  <td><span class="project-name">WeRide — Slovakia National AV Programme</span><span class="project-desc">Slovakia's first national autonomous driving programme — WeRide's fourth European market. Multi-product deployment covering robotaxis, robobuses, robovans and robosweepers in partnership with government-backed ELEVATE Slovakia.</span>
+          <button class="facts-trigger" data-row="proj-weride-slovakia" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Government-Led Rollout</span><span class="learn-tag">Multi-Product</span>
+    <span class="learn-body">WeRide's Slovakia entry is structurally different from its Belgium/France/Switzerland deployments — it's a national programme with Ministry of Transport as primary partner, covering passenger, logistics and municipal sanitation in one framework. This is the emerging Chinese AV playbook in Europe: partner at government level, cover multiple use cases simultaneously, and establish regulatory precedent for driverless operations. Slovakia's smaller regulatory environment makes it easier to move fast than Germany or France.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">CN</span>
+    <span class="seg-tag">Robotaxi</span><span class="seg-tag">Shuttle</span><span class="seg-tag">Logistics</span>
+    <span class="status"><span class="dot dot-pilot"></span>Active Pilot</span>
+    <span class="country-tag">🇸🇰 Bratislava, Slovakia</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">WeRide One platform (multi-product)</span>
+    <span class="v-detail">Robotaxi, Robobus, Robovan, Robosweeper. First vehicles expected spring 2026. All testing under Ministry of Transport supervision. Path to fully driverless once safety benchmarks met.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Partnership announced</span><span class="tl-value">Mar 19, 2026</span></div>
+    <div class="tl-row"><span class="tl-label">First vehicles arrive</span><span class="tl-value pending">Spring 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Bratislava testing</span><span class="tl-value pending">H1 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Košice + High Tatras</span><span class="tl-value pending">H2 2026+</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">WeRide enters Slovakia — nation's first AV programme, 4th European market. Partners: Ministry of Transport, Slovak Post, City of Bratislava.</div><button class="news-view-more" data-row="proj-weride-slovakia" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
 
 <!-- ═══ Einride ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Einride</span><span class="company-desc">Swedish autonomous electric freight company — world's first commercial autonomous EV on a public road (2019). Operationally deployed in Sweden, Norway, Belgium. SPAC IPO announced Nov 2025 at $1.8B valuation.</span><span class="company-count">1 programme (multi-country)</span></div></td></tr>
 
 <tr class="data-row" id="proj-einride" data-status="live" data-segment="truck"><td><span class="project-name">Einride Autonomous Freight — European Operations</span><span class="project-desc">The most commercially mature autonomous heavy-duty freight operation in Europe — cabless electric trucks operating real logistics routes for major shippers including Apotea, PostNord, Heineken, and at the Port of Antwerp-Bruges.</span>
-          <button class="facts-trigger" data-row="proj-einride" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Only EU Commercial AV Freight</span><span class="learn-tag">Regulatory Model</span><span class="learn-body">Einride is the only European company running actual commercial autonomous freight operations on public roads — not a pilot. Its approach of adapting to existing regulatory frameworks rather than waiting for new laws is the defining strategic lesson. The world-first autonomous border crossing (Sweden→Norway) demonstrates that multi-jurisdiction AV freight is already technically and legally achievable today.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-eu">EU</span> <span class="seg-tag">Autonomous Truck</span><span class="seg-tag">Freight</span></div><div class="dc-row dc-status"><span class="status status-live"><span class="dot dot-live"></span>Commercially Operational</span></div><div class="dc-row dc-countries">🇸🇪 Sweden (primary ops)<br>🇧🇪 Belgium (Port of Antwerp-Bruges)<br>🇳🇴 Norway (PostNord)<br>🇦🇹 Austria (expanded 2024)<br>🇩🇪 Germany (Heineken, expansion)</div></td><td class="col-div vehicle-cell"><span class="v-model">Einride Pod (cabless)</span><span class="v-detail">Purpose-built cabless electric autonomous truck. 5.2M data points/sec processed. Remotely supervised via Saga AI OS. Vehicle-agnostic platform also available for OEM trucks.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2016</span></div><div class="tl-row"><span class="tl-label">First public road</span><span class="tl-value">2019 (Sweden)</span></div><div class="tl-row"><span class="tl-label">EU commercial ops</span><span class="tl-value onroad">Ongoing</span></div><div class="tl-row"><span class="tl-label">Antwerp ops</span><span class="tl-value onroad">Sept 2025</span></div><div class="tl-row"><span class="tl-label">SE→NO border cross</span><span class="tl-value onroad">Sept 2025 (world first)</span></div><div class="tl-row"><span class="tl-label">SPAC IPO</span><span class="tl-value pending">Announced Nov 2025</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Nov 2025</div><div class="news-teaser-text">SPAC IPO announced at $1.8B valuation.</div><button class="news-view-more" data-row="proj-einride" data-tab="news">View more ↗</button></div></div></td></tr>
+          <button class="facts-trigger" data-row="proj-einride" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Only EU Commercial AV Freight</span><span class="learn-tag">Regulatory Model</span><span class="learn-body">Einride is the only European company running actual commercial autonomous freight operations on public roads — not a pilot. Its approach of adapting to existing regulatory frameworks rather than waiting for new laws is the defining strategic lesson. The world-first autonomous border crossing (Sweden→Norway) demonstrates that multi-jurisdiction AV freight is already technically and legally achievable today.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-eu">EU</span> <span class="seg-tag">Autonomous Truck</span><span class="seg-tag">Freight</span></div><div class="dc-row dc-status"><span class="status status-live"><span class="dot dot-live"></span>Commercially Operational</span></div><div class="dc-row dc-countries">🇸🇪 Sweden (primary ops)<br>🇧🇪 Belgium (Port of Antwerp-Bruges)<br>🇳🇴 Norway (PostNord)<br>🇦🇹 Austria (expanded 2024)<br>🇩🇪 Germany (Heineken, expansion)</div></td><td class="col-div vehicle-cell"><span class="v-model">Einride Pod (cabless)</span><span class="v-detail">Purpose-built cabless electric autonomous truck. 5.2M data points/sec processed. Remotely supervised via Saga AI OS. Vehicle-agnostic platform also available for OEM trucks.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2016</span></div><div class="tl-row"><span class="tl-label">First public road</span><span class="tl-value">2019 (Sweden)</span></div><div class="tl-row"><span class="tl-label">EU commercial ops</span><span class="tl-value onroad">Ongoing</span></div><div class="tl-row"><span class="tl-label">Antwerp ops</span><span class="tl-value onroad">Sept 2025</span></div><div class="tl-row"><span class="tl-label">SE→NO border cross</span><span class="tl-value onroad">Sept 2025 (world first)</span></div><div class="tl-row"><span class="tl-label">SPAC IPO</span><span class="tl-value pending">Announced Nov 2025</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Nov 2025</div><div class="news-teaser-text">Feb 2026: Joined ECAVA as only autonomous freight operator advising EU institutions. Raised $113M PIPE ahead of NYSE listing (H1 2026, valuation $1.35B).</div><button class="news-view-more" data-row="proj-einride" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ PlusAI / IVECO ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">PlusAI × IVECO</span><span class="company-desc">First autonomous heavy-duty freight truck programme in Southern Europe — IVECO S-Way with PlusAI SuperDrive™, starting 2026</span><span class="company-count">1 project</span></div></td></tr>
@@ -1452,333 +1694,40 @@
 <!-- ─── COUNTRIES TAB ─── -->
 <div id="tab-countries" class="tab-panel" style="display:none">
 
-<div class="country-intro">
-  Each card shows the national regulatory posture, active AV projects, and strategic context. Highlighted project tags are clickable — they take you directly to the project row.
-</div>
-
-<div class="country-grid" id="country-grid">
 
 
-<!-- AUSTRIA -->
-<div class="c-card" data-activity="development">
-  <div class="c-header"><span class="c-flag">🇦🇹</span><span class="c-name">Austria</span><span class="c-badge cb-dev">Development</span></div>
-  <div class="c-projects"><span class="c-proj-tag">ALP.Lab (test track)</span><span class="c-proj-tag">TU Graz (research)</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> ALP.Lab in Graz is Austria's national AV test environment. No public deployment legislation in place yet.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Strong R&amp;D base via TU Graz and ALP.Lab but no commercial deployments. Austria's proximity to Germany positions it as a likely early adopter once German frameworks mature.</div></div>
-</div>
 
-<!-- BELGIUM -->
-<div class="c-card" data-activity="live">
-  <div class="c-header"><span class="c-flag">🇧🇪</span><span class="c-name">Belgium</span><span class="c-badge cb-live">Live</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-leuven')" title="View project →">WeRide — Leuven ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-2getthere')" title="View project →">2getthere — Brussels Airport ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Belgium granted its first federal L4 test permit to WeRide (Leuven, 2025). No permanent AV road law yet.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Home to two of Europe's most mature AV deployments operating simultaneously — WeRide's urban shuttle (publicly boarding since Jan 2026) and 2getthere's long-running airport pod system. Cross-regional collaboration between Flemish, Brussels, and Walloon authorities in the Leuven project is a notable governance achievement.</div></div>
-</div>
+<!-- ── HEATMAP TAB LAYOUT ── -->
+<div class="heatmap-layout" id="heatmapLayout">
 
-<!-- CROATIA -->
-<div class="c-card" data-activity="live">
-  <div class="c-header"><span class="c-flag">🇭🇷</span><span class="c-name">Croatia</span><span class="c-badge cb-live">Live</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-verne')" title="View project →">Verne — Zagreb Robotaxi (Pony.ai tech) ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Croatia fast-tracked AV permitting for Verne's commercial launch in Zagreb, April 2026.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">An unlikely AV leader — home to Europe's first commercially operating L4 robotaxi (Verne, April 2026). Rimac's industrial presence and government willingness to streamline permitting made Zagreb the launch city by design. Demonstrates that smaller EU nations can move faster than regulatory heavyweights.</div></div>
-</div>
+  <!-- Map — dominant left side -->
+  <div class="heatmap-map-wrap">
+    <div class="heatmap-hint">Click any project dot to explore it · Pulsing dots are live deployments</div>
+    <div id="europeMap"></div>
+    <div class="heatmap-legend">
+      <div class="hl-item"><span class="hl-dot" style="background:#059669"></span>Live</div>
+      <div class="hl-item"><span class="hl-dot" style="background:#d97706"></span>Active Pilot</div>
+      <div class="hl-item"><span class="hl-dot" style="background:#2563eb"></span>Planned</div>
+      <div class="hl-item"><span class="hl-dot" style="background:#7c3aed"></span>Announced</div>
+      <div class="hl-item"><span class="hl-dot" style="background:#6366f1"></span>In Development</div>
+      <div class="hl-item" style="margin-left:8px;padding-left:8px;border-left:1px solid var(--border)"><span class="hl-dot" style="background:#059669;animation:pulse 2s ease-in-out infinite;box-shadow:0 0 0 4px rgba(5,150,105,0.3)"></span>Pulse = Live</div>
+    </div>
+  </div>
 
-<!-- CZECHIA -->
-<div class="c-card" data-activity="development">
-  <div class="c-header"><span class="c-flag">🇨🇿</span><span class="c-name">Czechia</span><span class="c-badge cb-dev">Development</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-skoda')" title="View project →">Škoda Group — Autonomous LRV (Didymos) ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> L3 vehicles permitted from 1 January 2026 under signed amendment. L4 framework in development.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Škoda Group is developing an autonomous light rail vehicle (tram) under the Didymos R&amp;D project with Czech Technical University. First test track demo planned in Pilsen. Škoda itself says full autonomous public transit is ~2040. The L3 law from Jan 2026 is a regulatory step forward but no road AV deployments are active.</div></div>
-</div>
-
-<!-- DENMARK -->
-<div class="c-card" data-activity="pilot">
-  <div class="c-header"><span class="c-flag">🇩🇰</span><span class="c-name">Denmark</span><span class="c-badge cb-pilot">Active Pilot</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-oslo')" title="View project →">Holo — Nordic transit ops ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Danish Road Directorate permits AV testing. No permanent AV framework law enacted.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Holo (Norwegian AV operator, Semler Group partnership) has been active in Nordic transit deployments and is the operator partner for the Oslo/Ruter MOIA deployment. Denmark's position in the Holo ecosystem suggests near-term expansion from Norway into Danish transit.</div></div>
-</div>
-
-<!-- ESTONIA -->
-<div class="c-card" data-activity="pilot">
-  <div class="c-header"><span class="c-flag">🇪🇪</span><span class="c-name">Estonia</span><span class="c-badge cb-pilot">Active Pilot</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-auvetech')" title="View project →">Auve Tech — Tallinn shuttles ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-ponyai-bolt')" title="View project →">Bolt HQ (AV platform partnerships) ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Estonia has one of Europe's most progressive AV testing frameworks — AV testing permitted on public roads since 2017 without a special permit.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Auve Tech (MiCa shuttle) has run multiple Tallinn pilots including the Mustamäe district public transit integration and Ülemiste City–Airport connector. The hydrogen-powered MiCa is world-first in combining hydrogen propulsion with AV. Estonia's open testing framework and digital-first governance make it a disproportionately active AV nation for its size. Also home to Bolt, which is deploying robotaxis via Pony.ai and Stellantis partnerships.</div></div>
-</div>
-
-<!-- FINLAND -->
-<div class="c-card" data-activity="pilot">
-  <div class="c-header"><span class="c-flag">🇫🇮</span><span class="c-name">Finland</span><span class="c-badge cb-pilot">Active Pilot</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-sensible4')" title="View project →">Sensible 4 — DAWN platform testing ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-karsan')" title="View project →">ADASTEC/Karsan — e-ATAK bus ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-auvetech')" title="View project →">Auve Tech — Helsinki pilots ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Finland permits AV testing on public roads. FABULOS project (EU-funded) established multi-city AV bus testing framework.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Finland punches above its weight in AV software development. Sensible 4's DAWN platform — the only commercially available all-weather L4 AV software — was developed specifically for Nordic conditions (snow, ice, low visibility, no lane markings). The Karsan e-ATAK bus has been in pilot operation here since 2021. Finland's harsh climate is an asset: AV systems validated here are credibly deployable anywhere in Europe.</div></div>
-</div>
-
-<!-- FRANCE -->
-<div class="c-card" data-activity="live">
-  <div class="c-header"><span class="c-flag">🇫🇷</span><span class="c-name">France</span><span class="c-badge cb-live">Live</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-valence')" title="View project →">WeRide — Valence (live) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-easymile')" title="View project →">EasyMile — Toulouse L4 auth. ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-navya')" title="View project →">Navya Mobility (HQ + deployments) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-valence')" title="View project →">Renault / WeRide (Roland Garros demos) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-karsan')" title="View project →">ADASTEC/Karsan — pilot ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> LOM law (2019) enables AV experimentation. EasyMile received France's first L4 public-road authorization (2021). New AV ordinance expanding testing scope in progress.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">France has the densest concentration of AV shuttle companies in Europe — Navya Mobility, EasyMile, and Gama all have French roots. The country was first in Europe to grant L4 public-road authorization (EasyMile, Toulouse 2021). Renault Group's stake in WeRide has made France a key WeRide deployment market. Multiple active programmes but no robotaxi deployment yet.</div></div>
-</div>
-
-<!-- GERMANY -->
-<div class="c-card" data-activity="live">
-  <div class="c-header"><span class="c-flag">🇩🇪</span><span class="c-name">Germany</span><span class="c-badge cb-live">Live</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-alike')" title="View project →">MOIA/ALIKE — Hamburg ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-nowel4')" title="View project →">NoWeL4 — Berlin ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-holon')" title="View project →">HOLON Urban — Hamburg ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-momenta')" title="View project →">Momenta/Uber — Munich (2026) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-apollo')" title="View project →">Apollo Go/Lyft — Germany (2026) ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> §1e StVG (2021) — Europe's most advanced national AV law. Allows fully driverless L4 operation in defined areas without a safety driver, subject to KBA approval. Already used by MOIA.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Germany's §1e StVG is the gold standard for European AV regulation — the only national law that permits commercial L4 driverless operation on public roads. This has made Germany the primary target for every major global AV player entering Europe. Hamburg and Berlin are the two most active AV cities in continental Europe. Momenta/Uber and Apollo Go/Lyft launching in Munich in 2026 will make Germany the most competitive AV market in the EU.</div></div>
-</div>
-
-<!-- GREECE -->
-<div class="c-card" data-activity="pilot">
-  <div class="c-header"><span class="c-flag">🇬🇷</span><span class="c-name">Greece</span><span class="c-badge cb-pilot">Active Pilot</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-trikala')" title="View project →">AVINT — Trikala integrated bus pilot ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-auvetech')" title="View project →">Auve Tech — Lamia pilot (completed) ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Greece passed AV testing legislation (Law 4663/2020). Trikala designated as a national smart city AV testbed.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Greece has been more active in AV pilots than its profile suggests — Trikala has been a national testbed for integrated autonomous buses since 2019 (AVINT project: e-Trikala, Space Hellas, NTUA). The Lamia Auve Tech pilot demonstrated real-world AV operation in a Greek urban environment. No commercial deployments active, but the regulatory and pilot infrastructure exists.</div></div>
-</div>
-
-<!-- HUNGARY -->
-<div class="c-card" data-activity="pilot">
-  <div class="c-header"><span class="c-flag">🇭🇺</span><span class="c-name">Hungary</span><span class="c-badge cb-pilot">Active Pilot</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-zalazone')" title="View project →">ZalaZONE — Budapest L4 taxi trial (Mobileye, Főtaxi/Uber) ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Hungary has an AV testing framework with ZalaZONE (Zalaegerszeg) as the designated national test track. Road testing permitted with prior authorisation.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">ZalaZONE is primarily a test track operator, but in January 2026 Hungary's AI commissioner announced plans to deploy 2 Mobileye-powered L4 vehicles into the Főtaxi/Uber fleet for real Budapest traffic trials. One of the few cases in the EU where a national government is directly sponsoring L4 taxi trials in a capital city.</div></div>
-</div>
-
-<!-- ITALY -->
-<div class="c-card" data-activity="development">
-  <div class="c-header"><span class="c-flag">🇮🇹</span><span class="c-name">Italy</span><span class="c-badge cb-dev">Development</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-stellantis')" title="View project →">Stellantis — Robotaxi R&amp;D (Pony.ai partnership) ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Italy passed Decree 77/2022 enabling AV testing on public roads. L4 commercial framework pending.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Stellantis (strong Italian industrial heritage via Fiat/Alfa) is developing its AV-Ready Platform for European robotaxi use in partnership with Pony.ai. Initial testing is in Luxembourg, not Italy. Italy's regulatory framework lags its industrial ambition — deployment will likely start elsewhere.</div></div>
-</div>
-
-<!-- LUXEMBOURG -->
-<div class="c-card" data-activity="pilot">
-  <div class="c-header"><span class="c-flag">🇱🇺</span><span class="c-name">Luxembourg</span><span class="c-badge cb-pilot">Active Pilot</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-stellantis')" title="View project →">Pony.ai — EU HQ + Stellantis testing ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-ponyai-eu')" title="View project →">Pony.ai EU expansion ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-verne')" title="View project →">Verne — city agreement signed ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Luxembourg has a proactive AV testing framework. Pony.ai chose Luxembourg as its European HQ, suggesting strong regulatory cooperation.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Disproportionately active for its size. Pony.ai's European HQ is here, and the Stellantis × Pony.ai robotaxi testing started in Luxembourg in late 2025. Verne has also signed a city agreement. Luxembourg's central location, multilingual environment, and flexible regulatory posture make it a preferred EU entry point for Chinese AV companies.</div></div>
-</div>
-
-<!-- MONACO -->
-<div class="c-card" data-activity="pilot">
-  <div class="c-header"><span class="c-flag">🇲🇨</span><span class="c-name">Monaco</span><span class="c-badge cb-pilot">Active Pilot</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-navya')" title="View project →">Navya Mobility — tourism shuttle loops ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Monaco government directly partners with Navya Mobility for seasonal AV shuttle operations. Bespoke permitting per project.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Monaco operates seasonal Navya shuttle loops for tourism — a luxury/prestige use case distinct from urban transit or logistics. The government-as-partner model means regulatory approval moves faster than in larger nations.</div></div>
-</div>
-
-<!-- NETHERLANDS -->
-<div class="c-card" data-activity="live">
-  <div class="c-header"><span class="c-flag">🇳🇱</span><span class="c-name">Netherlands</span><span class="c-badge cb-live">Live</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-2getthere')" title="View project →">2getthere — Rivium (operational) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-karsan')" title="View project →">ADASTEC/Karsan — e-ATAK pilot ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Netherlands was an early AV testing adopter. WVW (Road Traffic Act) amendments permit AV testing on public roads. Rivium pod system operates under long-standing framework.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Home to 2getthere (ZF Group), the oldest automated transit operator in Europe — Rivium has been running driverless electric pods since the early 2000s with 14M+ passengers. Strong AV technology ecosystem (NXP, TomTom) and among the first countries to permit AV road testing in Europe.</div></div>
-</div>
-
-<!-- NORWAY -->
-<div class="c-card" data-activity="pilot">
-  <div class="c-header"><span class="c-flag">🇳🇴</span><span class="c-name">Norway</span><span class="c-badge cb-pilot">Active Pilot</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-oslo')" title="View project →">MOIA/Ruter/Holo — Oslo (Spring 2026) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-einride')" title="View project →">Einride — PostNord border crossing (Sept 2025) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-karsan')" title="View project →">ADASTEC/Karsan — e-ATAK pilot ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Norway permits AV testing on public roads. No permanent commercial AV law; project-by-project permitting. The world-first Einride autonomous Sweden→Norway border crossing was permitted under existing frameworks.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Norway is becoming a meaningful AV deployment market despite lacking a dedicated national law. The Ruter/Holo/MOIA deployment is one of Europe's most structured public transit AV programmes. Einride's world-first autonomous cross-border freight (Sweden→Norway, Sept 2025) demonstrates that Norway's pragmatic regulatory approach can enable meaningful firsts.</div></div>
-</div>
-
-<!-- POLAND -->
-<div class="c-card" data-activity="pilot">
-  <div class="c-header"><span class="c-flag">🇵🇱</span><span class="c-name">Poland</span><span class="c-badge cb-pilot">Active Pilot</span></div>
-  <div class="c-projects"><span class="c-proj-tag">Autonomous Systems (SmartDEPOT) — MZA Warsaw, PKM Gliwice, PKM Poznan</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-blees')" title="View project →">Blees — autonomous electric minibus (Gdańsk pilot) ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> AV legislation submitted to Council of Ministers Q1 2025, to take effect 6 months post-adoption. Currently no commercial AV road law.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Poland has two distinct AV threads: Autonomous Systems (SmartDEPOT) is solving depot-only bus autonomy — saving 35 min/bus/day for MZA Warsaw (commercially validated), with TMB Barcelona also interested. This is depot-only, not road AV. Blees is developing a road-going autonomous minibus but remains early-stage. Poland's AV law is pending — once enacted it could accelerate both.</div></div>
-</div>
-
-<!-- ROMANIA -->
-<div class="c-card" data-activity="pilot">
-  <div class="c-header"><span class="c-flag">🇷🇴</span><span class="c-name">Romania</span><span class="c-badge cb-pilot">Active Pilot</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-karsan')" title="View project →">ADASTEC/Karsan e-ATAK — Cluj pilot ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Romania passed AV testing legislation in 2020. Cluj-Napoca designated as smart city testbed.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Cluj-Napoca is running the Karsan e-ATAK autonomous bus as part of its smart city initiative — extending the ADASTEC/Karsan programme into Eastern Europe. One of the more proactive Eastern European cities for AV pilot activity.</div></div>
-</div>
-
-<!-- SPAIN -->
-<div class="c-card" data-activity="pilot">
-  <div class="c-header"><span class="c-flag">🇪🇸</span><span class="c-name">Spain</span><span class="c-badge cb-pilot">Active Pilot / Testing</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-iveco')" title="View project →">IVECO × PlusAI — Aragon freight trial (2026) ↗</span><span class="c-proj-tag">Málaga — Irizar/EMT/Avanza AV bus (2021 trial, historical)</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-leuven')" title="View project →">WeRide — Barcelona demos ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Spain passed AV testing regulation (RDL 2/2021). Drivers required on board for all AV operations — no driverless permission yet. AV strategy under development.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Spain requires a driver on board all AV vehicles, which limits deployment depth. The IVECO × PlusAI freight trial in Aragon (2026) is the most significant active programme. Málaga ran Europe's first full-size autonomous electric bus trial in 2021 (Irizar + EMT + Avanza) but it was a historical pilot, not ongoing. The Government of Aragon's co-investor role in the PlusAI trial is the most strategically interesting development.</div></div>
-</div>
-
-<!-- SWEDEN -->
-<div class="c-card" data-activity="live">
-  <div class="c-header"><span class="c-flag">🇸🇪</span><span class="c-name">Sweden</span><span class="c-badge cb-live">Live / Commercial</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-einride')" title="View project →">Einride — commercial autonomous freight (primary ops) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-zenseact')" title="View project →">Zenseact / Volvo — OnePilot L2+/L4 dev (EX90) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-iveco')" title="View project →">PlusAI — public road testing ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Sweden permits AV testing and commercial operation on public roads under existing frameworks. Einride deployed Europe's first autonomous EV truck on public roads here in 2019 without new legislation.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Sweden is the most commercially advanced AV freight nation in Europe — Einride's primary operations run here for Apotea, PostNord, Heineken, Kaufland, and Carlsberg. Zenseact (fully owned by Volvo) is developing OnePilot for the Volvo EX90 — hardware-ready for unsupervised L4 highway driving, currently in data capture phase. Sweden's pragmatic "use existing frameworks" regulatory approach is a direct enabler of Einride's early-mover advantage.</div></div>
-</div>
-
-<!-- SWITZERLAND -->
-<div class="c-card" data-activity="live">
-  <div class="c-header"><span class="c-flag">🇨🇭</span><span class="c-name">Switzerland</span><span class="c-badge cb-live">Live</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-zurich')" title="View project →">WeRide — Zurich Airport (pilot) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-amigo')" title="View project →">Apollo Go AmiGo — PostBus (2026) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-sensible4')" title="View project →">Sensible 4 — tested in Switzerland ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-apollo')" title="View project →">Baidu Apollo — expansion planned ↗</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Switzerland (non-EU) has its own AV framework. ASTRA (Federal Roads Office) oversees AV testing permits. Several AV pilots have operated under ASTRA permits.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">Switzerland's regulatory independence from the EU allows faster bespoke AV permitting, making it attractive for airport and controlled-environment deployments. WeRide has been running at Zurich Airport since 2024. Baidu Apollo has announced Swiss expansion plans. Switzerland's pragmatic ASTRA framework positions it well for continued growth as a European AV testbed.</div></div>
-</div>
-
-<!-- UK -->
-<div class="c-card" data-activity="live">
-  <div class="c-header"><span class="c-flag">🇬🇧</span><span class="c-name">United Kingdom</span><span class="c-badge cb-live">Live / Scaling</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-wayve')" title="View project →">Wayve × Uber — London robotaxi (Spring 2026) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-waymo')" title="View project →">Waymo — London commercial (2026) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-apollo')" title="View project →">Apollo Go / Lyft — UK (2026) ↗</span><span class="c-proj-tag">Fusion Processing — L4 programme</span></div>
-  <div class="c-reg"><span class="c-reg-label">Regulation</span> Automated Vehicles Act 2024 — the most comprehensive AV legislation in Europe. UK Secretary of State's accelerated self-driving pilot framework (June 2025) fast-tracked Wayve/Uber and Waymo permitting. DVSA oversight.</div>
-  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
-  <div class="c-note-body expanded"><div class="c-note">The UK is the most competitive AV market in Europe in 2026 — three separate robotaxi deployments launching simultaneously (Wayve, Waymo, Apollo Go). The Automated Vehicles Act 2024 is the most complete AV legal framework in Europe, explicitly defining liability and creating a commercial pathway. Post-Brexit, the UK can move faster than EU member states on AV regulation. London is set to become Europe's first city with multiple competing commercial robotaxi services.</div></div>
-</div>
-
-<!-- INACTIVE / NO PROJECT COUNTRIES — collapsed group -->
-<div class="c-section-divider">Countries with no current AV projects or research-only activity</div>
-
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇦🇱</span><span class="c-name">Albania</span><span class="c-badge cb-none">No Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">No active AV projects or regulatory framework.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇦🇩</span><span class="c-name">Andorra</span><span class="c-badge cb-none">No Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">No active AV projects.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇧🇾</span><span class="c-name">Belarus</span><span class="c-badge cb-none">No Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">No active AV projects.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇧🇦</span><span class="c-name">Bosnia &amp; Herz.</span><span class="c-badge cb-none">No Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">No active AV projects.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇧🇬</span><span class="c-name">Bulgaria</span><span class="c-badge cb-none">No Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">No active AV projects.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇨🇾</span><span class="c-name">Cyprus</span><span class="c-badge cb-none">No AV Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">Aviation infrastructure focus (Hermes Airports). No road AV projects.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="development">
-  <div class="c-header"><span class="c-flag">🇮🇸</span><span class="c-name">Iceland</span><span class="c-badge cb-dev">Infrastructure Stage</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">Betri Samgöngur exploring BRT / future AV transit. Green urban transport focus. No active AV deployment.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="development">
-  <div class="c-header"><span class="c-flag">🇮🇪</span><span class="c-name">Ireland</span><span class="c-badge cb-dev">R&amp;D Hub</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">Future Mobility Campus (Shannon) — V2X and sensor testing with JLR. Component testing only, no road AV deployments.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="development">
-  <div class="c-header"><span class="c-flag">🇱🇻</span><span class="c-name">Latvia</span><span class="c-badge cb-dev">Testing</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">Baltic smart mobility focus. Autonomous bus trials reported but limited public data. MDPI research publications active.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇱🇮</span><span class="c-name">Liechtenstein</span><span class="c-badge cb-none">No Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">No active AV projects.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇱🇹</span><span class="c-name">Lithuania</span><span class="c-badge cb-none">No AV Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">Vilnius Airport procuring 12 Cobus e.Cobus 2700 electric buses (2026) — electric only, not autonomous. No active road AV deployments.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇲🇹</span><span class="c-name">Malta</span><span class="c-badge cb-none">Feasibility Only</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">Traffic congestion studies underway. No active AV deployments.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇲🇩</span><span class="c-name">Moldova</span><span class="c-badge cb-none">No Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">No active AV projects.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇲🇪</span><span class="c-name">Montenegro</span><span class="c-badge cb-none">No Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">No active AV projects.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇲🇰</span><span class="c-name">North Macedonia</span><span class="c-badge cb-none">No Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">No active AV projects.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="development">
-  <div class="c-header"><span class="c-flag">🇵🇹</span><span class="c-name">Portugal</span><span class="c-badge cb-dev">Concept</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">Tourism AV trial concepts discussed. No confirmed deployments.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇸🇲</span><span class="c-name">San Marino</span><span class="c-badge cb-none">No Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">No active AV projects.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇷🇸</span><span class="c-name">Serbia</span><span class="c-badge cb-none">No Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">No active AV projects.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="development">
-  <div class="c-header"><span class="c-flag">🇸🇰</span><span class="c-name">Slovakia</span><span class="c-badge cb-dev">Research</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">Academic and industry research underway. No deployments.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="development">
-  <div class="c-header"><span class="c-flag">🇸🇮</span><span class="c-name">Slovenia</span><span class="c-badge cb-dev">Research</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">Academic research active. No deployments.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇺🇦</span><span class="c-name">Ukraine</span><span class="c-badge cb-none">Reconstruction Focus</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">Rail infrastructure and PSO model reconstruction is the priority. AV development paused.</div></div>
-</div>
-<div class="c-card c-inactive" data-activity="none">
-  <div class="c-header"><span class="c-flag">🇻🇦</span><span class="c-name">Vatican City</span><span class="c-badge cb-none">No Projects</span></div>
-  <div class="c-toggle" onclick="toggleNote(this)"><span class="c-toggle-label">Note</span><span class="c-chevron">▾</span></div>
-  <div class="c-note-body"><div class="c-note-small">No active AV projects.</div></div>
-</div>
+  <!-- Country panel — right column -->
+  <div class="country-panel" id="countryPanel">
+    <div class="cp-toolbar">
+      <span class="cp-toolbar-label" id="cpToolbarLabel">0 countries selected</span>
+      <button class="cp-clear-btn" id="cpClearBtn" onclick="clearAllCountries()">Clear all ×</button>
+    </div>
+    <div class="cp-cards" id="cpCards"></div>
+  </div>
 
 </div>
-<div class="no-results" id="countriesNoResults">
-  <div class="no-results-icon">🔍</div>
-  <div class="no-results-text">No matching countries found</div>
-  <div class="no-results-sub">Try a different search term or clear the search</div>
-</div>
+
 
 </div><!-- /tab-countries -->
+
 
 </div><!-- /content-wrap -->
 
@@ -1841,48 +1790,28 @@ searchInput.addEventListener('input', function() {
     header.classList.toggle('hidden', !hasVisible);
   });
 
-  // Country cards
+  // Always highlight map dots regardless of which tab is active
   let countryMatches = 0;
-  document.querySelectorAll('.c-card').forEach(card => {
-    const text = card.textContent.toLowerCase();
-    const match = text.includes(q);
-    card.classList.toggle('hidden', !match);
-    if (match) countryMatches++;
-  });
-
-  // Update section divider
-  const divider = document.querySelector('.c-section-divider');
-  if (divider) {
-    const inactiveVisible = [...document.querySelectorAll('.c-card.c-inactive')].some(c => !c.classList.contains('hidden'));
-    divider.style.display = inactiveVisible ? '' : 'none';
+  if (typeof highlightDotsForSearch === 'function') {
+    countryMatches = highlightDotsForSearch(q);
   }
 
-  // Route to right tab
-  if (projectMatches > 0 && countryMatches === 0) {
-    // Projects only — switch to projects tab
-    document.getElementById('tab-projects').style.display = 'block';
-    document.getElementById('tab-countries').style.display = 'none';
-    document.getElementById('tabProjects').classList.add('active');
-    document.getElementById('tabCountries').classList.remove('active');
+  // Badge: stay on current tab, show counts for both
+  const onCountriesTab = document.getElementById('tab-countries').style.display !== 'none';
+  if (projectMatches > 0 && countryMatches > 0) {
+    searchBadge.textContent = `${projectMatches} project${projectMatches !== 1 ? 's' : ''} · ${countryMatches} on map`;
+  } else if (projectMatches > 0) {
     searchBadge.textContent = `${projectMatches} project${projectMatches !== 1 ? 's' : ''}`;
-  } else if (countryMatches > 0 && projectMatches === 0) {
-    // Countries only — switch to countries tab
-    document.getElementById('tab-projects').style.display = 'none';
-    document.getElementById('tab-countries').style.display = 'block';
-    document.getElementById('tabProjects').classList.remove('active');
-    document.getElementById('tabCountries').classList.add('active');
-    searchBadge.textContent = `${countryMatches} countr${countryMatches !== 1 ? 'ies' : 'y'}`;
-  } else if (projectMatches > 0 && countryMatches > 0) {
-    // Both match — show current tab, indicate both
-    searchBadge.textContent = `${projectMatches} projects, ${countryMatches} countries`;
+  } else if (countryMatches > 0) {
+    searchBadge.textContent = `${countryMatches} project${countryMatches !== 1 ? 's' : ''} on map`;
   } else {
     searchBadge.textContent = 'No results';
   }
   searchBadge.style.display = 'block';
 
-  // Show/hide no-results
-  document.getElementById('projectsNoResults').classList.toggle('visible', projectMatches === 0);
-  document.getElementById('countriesNoResults').classList.toggle('visible', countryMatches === 0);
+  document.getElementById('projectsNoResults').classList.toggle('visible', projectMatches === 0 && !onCountriesTab);
+  const cnr = document.getElementById('countriesNoResults');
+  if (cnr) cnr.classList.toggle('visible', countryMatches === 0 && onCountriesTab);
 });
 
 function showAllProjects() {
@@ -1891,10 +1820,32 @@ function showAllProjects() {
 }
 
 function showAllCountries() {
-  document.querySelectorAll('.c-card').forEach(c => c.classList.remove('hidden'));
-  const d = document.querySelector('.c-section-divider');
-  if (d) d.style.display = '';
-  document.getElementById('countriesNoResults').classList.remove('visible');
+  // Restore all dots to full opacity
+  document.querySelectorAll('.project-dot').forEach(d => {
+    d.style.opacity = '1';
+    d.style.pointerEvents = 'all';
+  });
+  const nr = document.getElementById('countriesNoResults');
+  if (nr) nr.classList.remove('visible');
+}
+
+function highlightDotsForSearch(q) {
+  const dots = document.querySelectorAll('.project-dot');
+  let matches = 0;
+  dots.forEach(dot => {
+    const id = dot.getAttribute('data-id');
+    // Find matching project data
+    const proj = typeof PROJECT_DOTS !== 'undefined'
+      ? PROJECT_DOTS.find(p => p.id === id)
+      : null;
+    if (!proj) return;
+    const text = (proj.name + ' ' + proj.city + ' ' + proj.country + ' ' + proj.status + ' ' + proj.seg).toLowerCase();
+    const match = text.includes(q);
+    dot.style.opacity = match ? '1' : '0.12';
+    dot.style.pointerEvents = match ? 'all' : 'none';
+    if (match) matches++;
+  });
+  return matches;
 }
 
 // ── Navigation ───────────────────────────────────────────────────
@@ -1902,8 +1853,10 @@ function goToProject(projectId) {
   clearSearch();
   switchTab(document.getElementById('tabProjects'), 'projects');
   // Reset filter
-  document.querySelector('.filter-btn.active').classList.remove('active');
-  document.querySelector('.filter-btn').classList.add('active');
+  const activeFilter = document.querySelector('.filter-btn.active');
+  if (activeFilter) activeFilter.classList.remove('active');
+  const firstFilter = document.querySelector('.filter-btn');
+  if (firstFilter) firstFilter.classList.add('active');
   showAllProjects();
   setTimeout(() => {
     const row = document.getElementById(projectId);
@@ -1917,6 +1870,42 @@ function goToProject(projectId) {
 }
 
 // ── Tab switching ─────────────────────────────────────────────────
+const PROJECT_DOTS = [
+  {id:"proj-alike",      name:"ALIKE Project",           city:"Hamburg",    country:"Germany",     lon:9.993,  lat:53.551, status:"pilot",       seg:"shuttle"},
+  {id:"proj-nowel4",     name:"NoWeL4 Berlin",           city:"Berlin",     country:"Germany",     lon:13.385, lat:52.530, status:"pilot",       seg:"shuttle"},
+  {id:"proj-oslo",       name:"Ruter/Holo Oslo",         city:"Oslo",       country:"Norway",      lon:10.757, lat:59.913, status:"pilot",       seg:"shuttle"},
+  {id:"proj-holon",      name:"HOLON Urban",             city:"Hamburg",    country:"Germany",     lon:10.020, lat:53.560, status:"pilot",       seg:"shuttle"},
+  {id:"proj-easymile",   name:"EasyMile",                city:"Toulouse",   country:"France",      lon:1.444,  lat:43.605, status:"pilot",       seg:"shuttle"},
+  {id:"proj-navya",      name:"Navya Mobility",          city:"Paris",      country:"France",      lon:2.352,  lat:48.857, status:"pilot",       seg:"shuttle"},
+  {id:"proj-2getthere",  name:"2getthere Brussels",      city:"Brussels",   country:"Belgium",     lon:4.484,  lat:50.901, status:"live",        seg:"shuttle"},
+  {id:"proj-leuven",     name:"WeRide Leuven",           city:"Leuven",     country:"Belgium",     lon:4.700,  lat:50.879, status:"live",        seg:"shuttle"},
+  {id:"proj-valence",    name:"WeRide Valence",          city:"Valence",    country:"France",      lon:4.891,  lat:44.933, status:"live",        seg:"shuttle"},
+  {id:"proj-zurich",     name:"WeRide Zurich",           city:"Zurich",     country:"Switzerland", lon:8.541,  lat:47.377, status:"pilot",       seg:"shuttle"},
+  {id:"proj-wayve",      name:"Wayve London",            city:"London",     country:"UK",          lon:-0.135, lat:51.520, status:"live",       seg:"robotaxi"},
+  {id:"proj-waymo",      name:"Waymo London",            city:"London",     country:"UK",          lon:-0.100, lat:51.500, status:"pilot",     seg:"robotaxi"},
+  {id:"proj-verne",      name:"Verne Zagreb",            city:"Zagreb",     country:"Croatia",     lon:15.982, lat:45.815, status:"live",        seg:"robotaxi"},
+  {id:"proj-momenta",    name:"Momenta Munich",          city:"Munich",     country:"Germany",     lon:11.582, lat:48.135, status:"planned",     seg:"robotaxi"},
+  {id:"proj-apollo",     name:"Apollo Go DE/UK",         city:"Berlin",     country:"Germany",     lon:13.425, lat:52.510, status:"planned",     seg:"robotaxi"},
+  {id:"proj-amigo",      name:"AmiGo Switzerland",       city:"St. Gallen", country:"Switzerland", lon:9.370,  lat:47.422, status:"pilot",       seg:"robotaxi"},
+  {id:"proj-ponyai-bolt",name:"Pony.ai on Bolt",         city:"Luxembourg", country:"Luxembourg",  lon:6.110,  lat:49.620, status:"planned",     seg:"robotaxi"},
+  {id:"proj-stellantis", name:"Stellantis × Pony.ai",    city:"Luxembourg", country:"Luxembourg",  lon:6.150,  lat:49.600, status:"pilot",       seg:"robotaxi"},
+  {id:"proj-ponyai-eu",  name:"Pony.ai EU Expansion",    city:"Luxembourg", country:"Luxembourg",  lon:6.090,  lat:49.640, status:"planned",     seg:"robotaxi"},
+  {id:"proj-karsan",     name:"Karsan e-ATAK (Helsinki)", city:"Helsinki",   country:"Finland",     lon:24.941, lat:60.170, status:"live",        seg:"shuttle"},
+  {id:"proj-karsan-salen",name:"Karsan SIKTA Sälen",       city:"Sälen",      country:"Sweden",      lon:13.267, lat:61.158, status:"live",        seg:"shuttle"},
+  {id:"proj-karsan-paris",name:"Karsan × RATP Paris",      city:"Paris",      country:"France",      lon:2.380,  lat:48.880, status:"pilot",       seg:"shuttle"},
+  {id:"proj-weride-slovakia",name:"WeRide Slovakia",        city:"Bratislava", country:"Slovakia",    lon:17.107, lat:48.148, status:"pilot",       seg:"robotaxi"},
+  {id:"proj-einride",    name:"Einride Freight",         city:"Stockholm",  country:"Sweden",      lon:18.068, lat:59.329, status:"live",        seg:"truck"},
+  {id:"proj-iveco",      name:"IVECO PlusAI",            city:"Zaragoza",   country:"Spain",       lon:-0.877, lat:41.650, status:"pilot",       seg:"truck"},
+  {id:"proj-auvetech",   name:"Auve Tech Tallinn",       city:"Tallinn",    country:"Estonia",     lon:24.745, lat:59.437, status:"pilot",       seg:"shuttle"},
+  {id:"proj-zenseact",   name:"Zenseact/Volvo",          city:"Gothenburg", country:"Sweden",      lon:11.965, lat:57.707, status:"development", seg:"consumer"},
+  {id:"proj-trikala",    name:"AVINT Trikala",           city:"Trikala",    country:"Greece",      lon:21.768, lat:39.556, status:"pilot",       seg:"shuttle"},
+  {id:"proj-zalazone",   name:"ZalaZONE Budapest",       city:"Budapest",   country:"Hungary",     lon:19.040, lat:47.498, status:"announced",   seg:"robotaxi"},
+  {id:"proj-sensible4",  name:"Sensible 4",              city:"Espoo",      country:"Finland",     lon:24.657, lat:60.205, status:"development", seg:"shuttle"},
+  {id:"proj-skoda",      name:"Škoda Didymos",           city:"Pilsen",     country:"Czechia",     lon:13.378, lat:49.747, status:"development", seg:"shuttle"},
+  {id:"proj-blees",      name:"Blees BB-1",              city:"Gliwice",    country:"Poland",      lon:18.678, lat:50.294, status:"pilot",       seg:"shuttle"},
+];
+
+let mapBuilt = false;
 function switchTab(btn, tab) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -1925,6 +1914,7 @@ function switchTab(btn, tab) {
   document.getElementById('filterBarWrap').style.display = tab === 'projects' ? '' : 'none';
   document.getElementById('countryFilterBarWrap').style.display = tab === 'countries' ? '' : 'none';
   setTimeout(updateStickyOffset, 30);
+  if (tab === 'countries' && !mapBuilt) { mapBuilt = true; setTimeout(buildMap, 50); }
 }
 
 // ── Project filter ────────────────────────────────────────────────
@@ -2619,7 +2609,67 @@ const SP_DATA = {
       {label:'Silesian University — BB-1 testing', url:'https://www.polsl.pl/en/ps_aktualnosci/at-the-silesian-university-of-technology-we-are-testing-the-vehicle-of-the-future/'},
       {label:'Blees official site', url:'https://blees.co/en/'}
     ]
-  }
+  },
+  'proj-karsan-salen': {
+    title: 'Karsan e-ATAK — Sälen SIKTA (Sweden)',
+    org: [
+      {k:'AV tech',      v:'ADASTEC flowride.ai L4 platform'},
+      {k:'Fleet mgmt',   v:'Applied Autonomy (xFlow system)'},
+      {k:'Operator',     v:'Karsan + Sälen Buss'},
+      {k:'Lead partner', v:'Municipality of Malung-Sälen'},
+      {k:'Academic',     v:'Dalarna University'},
+      {k:'Route',        v:'4.8km — ski resort areas ↔ accommodation, Sälen'},
+    ],
+    facts: 'One of the first L4 AV deployments in a mountain ski tourism setting. Operated in heavy snowfall and shared road conditions with pedestrians and skiers — among the most challenging environments documented for a public L4 AV. Received Swedish Transport Agency (Transportstyrelsen) passenger approval March 9, 2026. ~1 month of commercial service during peak ski season. Phase 2 expansion to Idre planned.',
+    news: [
+      {date:'Apr 2026', text:'SIKTA Autonomous Transport Conference held April 8 in Sälen — project outcomes evaluated with international media and regional stakeholders.', src:'Karsan', url:'https://www.karsan.com/en-us/press/current-news/karsan-autonomous-e-atak-carried-tourists-to-ski-resorts-in-sweden'},
+      {date:'Mar 2026', text:'Transportstyrelsen grants passenger transport approval on March 9. Commercial service begins — first L4 autonomous bus approved for ski resort operation in Sweden.', src:'Automotive World', url:'https://www.automotiveworld.com/news/karsan-runs-autonomous-e-bus-in-swedish-salen/'},
+      {date:'Jan 2026', text:'Winter testing begins in Sälen — shared road with skiers and pedestrians, heavy snowfall conditions.', src:'PR Newswire', url:'https://www.prnewswire.com/news-releases/karsan-autonomous-e-atak-became-one-of-the-first-autonomous-public-transportation-applications-in-ski-tourism-302747191.html'}
+    ],
+    sources: [
+      {label:'Karsan press release', url:'https://www.karsan.com/en-us/press/current-news/karsan-autonomous-e-atak-carried-tourists-to-ski-resorts-in-sweden'},
+      {label:'Automotive World — Sälen service', url:'https://www.automotiveworld.com/news/karsan-runs-autonomous-e-bus-in-swedish-salen/'},
+      {label:'Self Drive News', url:'https://selfdrivenews.com/karsan-autonomous-e-atak-enters-commercial-ski-service-in-sweden/'}
+    ]
+  },
+  'proj-karsan-paris': {
+    title: 'Karsan e-ATAK — Paris RATP Group',
+    org: [
+      {k:'Operator',    v:'RATP Group (Europe\'s 2nd-largest transit operator)'},
+      {k:'Vehicle',     v:'Karsan Autonomous e-ATAK'},
+      {k:'Validation',  v:'UTAC (France\'s leading automotive test & certification body)'},
+      {k:'Distance',    v:'~3,000km autonomous in open Paris urban traffic'},
+      {k:'Operation',   v:'~5 hours/day average, shared road with pedestrians'},
+    ],
+    facts: '6-month comprehensive autonomous driving validation project completed April 2026. Vehicle operated in open Paris traffic — not a closed campus or controlled route — making it one of the most demanding urban AV validation programmes in Europe. Passed full UTAC technical certification process (same standard used for production vehicle approvals). Next step is a RATP commercial deployment decision.',
+    news: [
+      {date:'Apr 2026', text:'Karsan and RATP Group announce successful completion of the 6-month Paris autonomous driving project — 3,000km covered, UTAC validation passed.', src:'PR Newswire', url:'https://www.prnewswire.com/news-releases/karsans-autonomous-e-atak-tested-and-approved-on-high-traffic-routes-in-paris-302737996.html'}
+    ],
+    sources: [
+      {label:'Karsan × RATP press release', url:'https://www.prnewswire.com/news-releases/karsans-autonomous-e-atak-tested-and-approved-on-high-traffic-routes-in-paris-302737996.html'}
+    ]
+  },
+  'proj-weride-slovakia': {
+    title: 'WeRide — Slovakia National AV Programme (ELEVATE)',
+    org: [
+      {k:'Operator',      v:'WeRide (NASDAQ: WRD)'},
+      {k:'Gov partner',   v:'Ministry of Transport of the Slovak Republic'},
+      {k:'Logistics',     v:'Slovak Post (parcel delivery automation)'},
+      {k:'Municipal',     v:'City of Bratislava (sanitation operations)'},
+      {k:'Tech integrator', v:'DiusAi (Slovak AI company)'},
+      {k:'Platform',      v:'ELEVATE Slovakia — national AV coordination body'},
+    ],
+    facts: 'Slovakia\'s first national autonomous driving programme, launched March 2026. WeRide\'s 4th European market after Belgium, France and Switzerland. Multi-product deployment: Robotaxi, Robobus, Robovan, and Robosweeper across passenger transport, postal logistics, and municipal sanitation. First vehicles expected spring 2026. Testing starting in Bratislava, expanding to Košice and High Tatras resort area. All operations under Ministry of Transport supervision with a phased path to fully driverless service.',
+    news: [
+      {date:'Mar 2026', text:'WeRide and ELEVATE Slovakia announce partnership — Slovakia\'s first national AV programme. First of its kind in Central Europe: single framework covering passenger, logistics and municipal use cases.', src:'WeRide', url:'https://www.weride.ai/posts/w4syd5h88d71xq7zfdj116ov'},
+      {date:'Mar 2026', text:'WeRide reports record 2025 revenue of RMB 684.6M (+90% YoY). Global robotaxi fleet projected to reach 2,600 vehicles by end of 2026.', src:'Globe Newswire', url:'https://www.globenewswire.com/news-release/2026/03/23/3260264/0/en/WeRide-Reports-Record-Full-Year-2025-Revenue-of-RMB684-6-Million-Up-90-Year-over-Year.html'}
+    ],
+    sources: [
+      {label:'WeRide × ELEVATE Slovakia announcement', url:'https://www.weride.ai/posts/w4syd5h88d71xq7zfdj116ov'},
+      {label:'TechCrunch — WeRide Slovakia', url:'https://techcrunch.com/2026/03/19/weride-enters-slovakia/'},
+      {label:'WeRide 2025 results + expansion', url:'https://www.globenewswire.com/news-release/2026/03/23/3260264/0/en/WeRide-Reports-Record-Full-Year-2025-Revenue-of-RMB684-6-Million-Up-90-Year-over-Year.html'}
+    ]
+  },
 };
 
 // News teasers injected directly in HTML
@@ -2720,6 +2770,405 @@ if (document.readyState === 'loading') {
 
 document.getElementById('spClose').addEventListener('click', spClose);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') spClose(); });
+</script>
+
+
+<script>
+const CARD_DATA = {
+  'Austria': `<div class="c-card" data-activity="development">
+  <div class="c-header"><span class="c-flag">🇦🇹</span><span class="c-name">Austria</span><span class="c-badge cb-dev">Development</span></div>
+  <div class="c-projects"><span class="c-proj-tag">ALP.Lab (test track)</span><span class="c-proj-tag">TU Graz (research)</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> ALP.Lab in Graz is Austria's national AV test environment. No public deployment legislation in place yet.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Strong R&amp;D base via TU Graz and ALP.Lab but no commercial deployments. Austria's proximity to Germany positions it as a likely early adopter once German frameworks mature.</div></div>
+</div>`,
+  'Belgium': `<div class="c-card" data-activity="live">
+  <div class="c-header"><span class="c-flag">🇧🇪</span><span class="c-name">Belgium</span><span class="c-badge cb-live">Live</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-leuven')" title="View project →">WeRide — Leuven ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-2getthere')" title="View project →">2getthere — Brussels Airport ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Belgium granted its first federal L4 test permit to WeRide (Leuven, 2025). No permanent AV road law yet.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Home to two of Europe's most mature AV deployments operating simultaneously — WeRide's urban shuttle (publicly boarding since Jan 2026) and 2getthere's long-running airport pod system. Cross-regional collaboration between Flemish, Brussels, and Walloon authorities in the Leuven project is a notable governance achievement.</div></div>
+</div>`,
+  'Croatia': `<div class="c-card" data-activity="live">
+  <div class="c-header"><span class="c-flag">🇭🇷</span><span class="c-name">Croatia</span><span class="c-badge cb-live">Live</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-verne')" title="View project →">Verne — Zagreb Robotaxi (Pony.ai tech) ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Croatia fast-tracked AV permitting for Verne's commercial launch in Zagreb, April 2026.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">An unlikely AV leader — home to Europe's first commercially operating L4 robotaxi (Verne, April 2026). Rimac's industrial presence and government willingness to streamline permitting made Zagreb the launch city by design. Demonstrates that smaller EU nations can move faster than regulatory heavyweights.</div></div>
+</div>`,
+  'Czechia': `<div class="c-card" data-activity="development">
+  <div class="c-header"><span class="c-flag">🇨🇿</span><span class="c-name">Czechia</span><span class="c-badge cb-dev">Development</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-skoda')" title="View project →">Škoda Group — Autonomous LRV (Didymos) ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> L3 vehicles permitted from 1 January 2026 under signed amendment. L4 framework in development.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Škoda Group is developing an autonomous light rail vehicle (tram) under the Didymos R&amp;D project with Czech Technical University. First test track demo planned in Pilsen. Škoda itself says full autonomous public transit is ~2040. The L3 law from Jan 2026 is a regulatory step forward but no road AV deployments are active.</div></div>
+</div>`,
+  'Denmark': `<div class="c-card" data-activity="pilot">
+  <div class="c-header"><span class="c-flag">🇩🇰</span><span class="c-name">Denmark</span><span class="c-badge cb-pilot">Active Pilot</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-oslo')" title="View project →">Holo — Nordic transit ops ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Danish Road Directorate permits AV testing. No permanent AV framework law enacted.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Holo (Norwegian AV operator, Semler Group partnership) has been active in Nordic transit deployments and is the operator partner for the Oslo/Ruter MOIA deployment. Denmark's position in the Holo ecosystem suggests near-term expansion from Norway into Danish transit.</div></div>
+</div>`,
+  'Estonia': `<div class="c-card" data-activity="pilot">
+  <div class="c-header"><span class="c-flag">🇪🇪</span><span class="c-name">Estonia</span><span class="c-badge cb-pilot">Active Pilot</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-auvetech')" title="View project →">Auve Tech — Tallinn shuttles ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-ponyai-bolt')" title="View project →">Bolt HQ (AV platform partnerships) ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Estonia has one of Europe's most progressive AV testing frameworks — AV testing permitted on public roads since 2017 without a special permit.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Auve Tech (MiCa shuttle) has run multiple Tallinn pilots including the Mustamäe district public transit integration and Ülemiste City–Airport connector. The hydrogen-powered MiCa is world-first in combining hydrogen propulsion with AV. Estonia's open testing framework and digital-first governance make it a disproportionately active AV nation for its size. Also home to Bolt, which is deploying robotaxis via Pony.ai and Stellantis partnerships.</div></div>
+</div>`,
+  'Finland': `<div class="c-card" data-activity="pilot">
+  <div class="c-header"><span class="c-flag">🇫🇮</span><span class="c-name">Finland</span><span class="c-badge cb-pilot">Active Pilot</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-sensible4')" title="View project →">Sensible 4 — DAWN platform testing ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-karsan')" title="View project →">ADASTEC/Karsan — e-ATAK bus ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-auvetech')" title="View project →">Auve Tech — Helsinki pilots ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Finland permits AV testing on public roads. FABULOS project (EU-funded) established multi-city AV bus testing framework.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Finland punches above its weight in AV software development. Sensible 4's DAWN platform — the only commercially available all-weather L4 AV software — was developed specifically for Nordic conditions (snow, ice, low visibility, no lane markings). The Karsan e-ATAK bus has been in pilot operation here since 2021. Finland's harsh climate is an asset: AV systems validated here are credibly deployable anywhere in Europe.</div></div>
+</div>`,
+  'France': `<div class="c-card" data-activity="live">
+  <div class="c-header"><span class="c-flag">🇫🇷</span><span class="c-name">France</span><span class="c-badge cb-live">Live</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-valence')" title="View project →">WeRide — Valence (live) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-easymile')" title="View project →">EasyMile — Toulouse L4 auth. ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-navya')" title="View project →">Navya Mobility (HQ + deployments) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-valence')" title="View project →">Renault / WeRide (Roland Garros demos) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-karsan')" title="View project →">ADASTEC/Karsan — pilot ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> LOM law (2019) enables AV experimentation. EasyMile received France's first L4 public-road authorization (2021). New AV ordinance expanding testing scope in progress.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">France has the densest concentration of AV shuttle companies in Europe — Navya Mobility, EasyMile, and Gama all have French roots. The country was first in Europe to grant L4 public-road authorization (EasyMile, Toulouse 2021). Renault Group's stake in WeRide has made France a key WeRide deployment market. Multiple active programmes but no robotaxi deployment yet.</div></div>
+</div>`,
+  'Germany': `<div class="c-card" data-activity="live">
+  <div class="c-header"><span class="c-flag">🇩🇪</span><span class="c-name">Germany</span><span class="c-badge cb-live">Live</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-alike')" title="View project →">MOIA/ALIKE — Hamburg ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-nowel4')" title="View project →">NoWeL4 — Berlin ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-holon')" title="View project →">HOLON Urban — Hamburg ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-momenta')" title="View project →">Momenta/Uber — Munich (2026) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-apollo')" title="View project →">Apollo Go/Lyft — Germany (2026) ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> §1e StVG (2021) — Europe's most advanced national AV law. Allows fully driverless L4 operation in defined areas without a safety driver, subject to KBA approval. Already used by MOIA.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Germany's §1e StVG is the gold standard for European AV regulation — the only national law that permits commercial L4 driverless operation on public roads. This has made Germany the primary target for every major global AV player entering Europe. Hamburg and Berlin are the two most active AV cities in continental Europe. Momenta/Uber and Apollo Go/Lyft launching in Munich in 2026 will make Germany the most competitive AV market in the EU.</div></div>
+</div>`,
+  'Greece': `<div class="c-card" data-activity="pilot">
+  <div class="c-header"><span class="c-flag">🇬🇷</span><span class="c-name">Greece</span><span class="c-badge cb-pilot">Active Pilot</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-trikala')" title="View project →">AVINT — Trikala integrated bus pilot ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-auvetech')" title="View project →">Auve Tech — Lamia pilot (completed) ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Greece passed AV testing legislation (Law 4663/2020). Trikala designated as a national smart city AV testbed.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Greece has been more active in AV pilots than its profile suggests — Trikala has been a national testbed for integrated autonomous buses since 2019 (AVINT project: e-Trikala, Space Hellas, NTUA). The Lamia Auve Tech pilot demonstrated real-world AV operation in a Greek urban environment. No commercial deployments active, but the regulatory and pilot infrastructure exists.</div></div>
+</div>`,
+  'Hungary': `<div class="c-card" data-activity="pilot">
+  <div class="c-header"><span class="c-flag">🇭🇺</span><span class="c-name">Hungary</span><span class="c-badge cb-pilot">Active Pilot</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-zalazone')" title="View project →">ZalaZONE — Budapest L4 taxi trial (Mobileye, Főtaxi/Uber) ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Hungary has an AV testing framework with ZalaZONE (Zalaegerszeg) as the designated national test track. Road testing permitted with prior authorisation.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">ZalaZONE is primarily a test track operator, but in January 2026 Hungary's AI commissioner announced plans to deploy 2 Mobileye-powered L4 vehicles into the Főtaxi/Uber fleet for real Budapest traffic trials. One of the few cases in the EU where a national government is directly sponsoring L4 taxi trials in a capital city.</div></div>
+</div>`,
+  'Italy': `<div class="c-card" data-activity="development">
+  <div class="c-header"><span class="c-flag">🇮🇹</span><span class="c-name">Italy</span><span class="c-badge cb-dev">Development</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-stellantis')" title="View project →">Stellantis — Robotaxi R&amp;D (Pony.ai partnership) ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Italy passed Decree 77/2022 enabling AV testing on public roads. L4 commercial framework pending.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Stellantis (strong Italian industrial heritage via Fiat/Alfa) is developing its AV-Ready Platform for European robotaxi use in partnership with Pony.ai. Initial testing is in Luxembourg, not Italy. Italy's regulatory framework lags its industrial ambition — deployment will likely start elsewhere.</div></div>
+</div>`,
+  'Luxembourg': `<div class="c-card" data-activity="pilot">
+  <div class="c-header"><span class="c-flag">🇱🇺</span><span class="c-name">Luxembourg</span><span class="c-badge cb-pilot">Active Pilot</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-stellantis')" title="View project →">Pony.ai — EU HQ + Stellantis testing ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-ponyai-eu')" title="View project →">Pony.ai EU expansion ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-verne')" title="View project →">Verne — city agreement signed ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Luxembourg has a proactive AV testing framework. Pony.ai chose Luxembourg as its European HQ, suggesting strong regulatory cooperation.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Disproportionately active for its size. Pony.ai's European HQ is here, and the Stellantis × Pony.ai robotaxi testing started in Luxembourg in late 2025. Verne has also signed a city agreement. Luxembourg's central location, multilingual environment, and flexible regulatory posture make it a preferred EU entry point for Chinese AV companies.</div></div>
+</div>`,
+  'Monaco': `<div class="c-card" data-activity="pilot">
+  <div class="c-header"><span class="c-flag">🇲🇨</span><span class="c-name">Monaco</span><span class="c-badge cb-pilot">Active Pilot</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-navya')" title="View project →">Navya Mobility — tourism shuttle loops ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Monaco government directly partners with Navya Mobility for seasonal AV shuttle operations. Bespoke permitting per project.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Monaco operates seasonal Navya shuttle loops for tourism — a luxury/prestige use case distinct from urban transit or logistics. The government-as-partner model means regulatory approval moves faster than in larger nations.</div></div>
+</div>`,
+  'Netherlands': `<div class="c-card" data-activity="live">
+  <div class="c-header"><span class="c-flag">🇳🇱</span><span class="c-name">Netherlands</span><span class="c-badge cb-live">Live</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-2getthere')" title="View project →">2getthere — Rivium (operational) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-karsan')" title="View project →">ADASTEC/Karsan — e-ATAK pilot ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Netherlands was an early AV testing adopter. WVW (Road Traffic Act) amendments permit AV testing on public roads. Rivium pod system operates under long-standing framework.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Home to 2getthere (ZF Group), the oldest automated transit operator in Europe — Rivium has been running driverless electric pods since the early 2000s with 14M+ passengers. Strong AV technology ecosystem (NXP, TomTom) and among the first countries to permit AV road testing in Europe.</div></div>
+</div>`,
+  'Norway': `<div class="c-card" data-activity="pilot">
+  <div class="c-header"><span class="c-flag">🇳🇴</span><span class="c-name">Norway</span><span class="c-badge cb-pilot">Active Pilot</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-oslo')" title="View project →">MOIA/Ruter/Holo — Oslo (Spring 2026) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-einride')" title="View project →">Einride — PostNord border crossing (Sept 2025) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-karsan')" title="View project →">ADASTEC/Karsan — e-ATAK pilot ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Norway permits AV testing on public roads. No permanent commercial AV law; project-by-project permitting. The world-first Einride autonomous Sweden→Norway border crossing was permitted under existing frameworks.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Norway is becoming a meaningful AV deployment market despite lacking a dedicated national law. The Ruter/Holo/MOIA deployment is one of Europe's most structured public transit AV programmes. Einride's world-first autonomous cross-border freight (Sweden→Norway, Sept 2025) demonstrates that Norway's pragmatic regulatory approach can enable meaningful firsts.</div></div>
+</div>`,
+  'Poland': `<div class="c-card" data-activity="pilot">
+  <div class="c-header"><span class="c-flag">🇵🇱</span><span class="c-name">Poland</span><span class="c-badge cb-pilot">Active Pilot</span></div>
+  <div class="c-projects"><span class="c-proj-tag">Autonomous Systems (SmartDEPOT) — MZA Warsaw, PKM Gliwice, PKM Poznan</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-blees')" title="View project →">Blees — autonomous electric minibus (Gdańsk pilot) ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> AV legislation submitted to Council of Ministers Q1 2025, to take effect 6 months post-adoption. Currently no commercial AV road law.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Poland has two distinct AV threads: Autonomous Systems (SmartDEPOT) is solving depot-only bus autonomy — saving 35 min/bus/day for MZA Warsaw (commercially validated), with TMB Barcelona also interested. This is depot-only, not road AV. Blees is developing a road-going autonomous minibus but remains early-stage. Poland's AV law is pending — once enacted it could accelerate both.</div></div>
+</div>`,
+  'Romania': `<div class="c-card" data-activity="pilot">
+  <div class="c-header"><span class="c-flag">🇷🇴</span><span class="c-name">Romania</span><span class="c-badge cb-pilot">Active Pilot</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-karsan')" title="View project →">ADASTEC/Karsan e-ATAK — Cluj pilot ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Romania passed AV testing legislation in 2020. Cluj-Napoca designated as smart city testbed.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Cluj-Napoca is running the Karsan e-ATAK autonomous bus as part of its smart city initiative — extending the ADASTEC/Karsan programme into Eastern Europe. One of the more proactive Eastern European cities for AV pilot activity.</div></div>
+</div>`,
+  'Spain': `<div class="c-card" data-activity="pilot">
+  <div class="c-header"><span class="c-flag">🇪🇸</span><span class="c-name">Spain</span><span class="c-badge cb-pilot">Active Pilot / Testing</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-iveco')" title="View project →">IVECO × PlusAI — Aragon freight trial (2026) ↗</span><span class="c-proj-tag">Málaga — Irizar/EMT/Avanza AV bus (2021 trial, historical)</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-leuven')" title="View project →">WeRide — Barcelona demos ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Spain passed AV testing regulation (RDL 2/2021). Drivers required on board for all AV operations — no driverless permission yet. AV strategy under development.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Spain requires a driver on board all AV vehicles, which limits deployment depth. The IVECO × PlusAI freight trial in Aragon (2026) is the most significant active programme. Málaga ran Europe's first full-size autonomous electric bus trial in 2021 (Irizar + EMT + Avanza) but it was a historical pilot, not ongoing. The Government of Aragon's co-investor role in the PlusAI trial is the most strategically interesting development.</div></div>
+</div>`,
+  'Sweden': `<div class="c-card" data-activity="live">
+  <div class="c-header"><span class="c-flag">🇸🇪</span><span class="c-name">Sweden</span><span class="c-badge cb-live">Live / Commercial</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-einride')" title="View project →">Einride — commercial autonomous freight (primary ops) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-zenseact')" title="View project →">Zenseact / Volvo — OnePilot L2+/L4 dev (EX90) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-iveco')" title="View project →">PlusAI — public road testing ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Sweden permits AV testing and commercial operation on public roads under existing frameworks. Einride deployed Europe's first autonomous EV truck on public roads here in 2019 without new legislation.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Sweden is the most commercially advanced AV freight nation in Europe — Einride's primary operations run here for Apotea, PostNord, Heineken, Kaufland, and Carlsberg. Zenseact (fully owned by Volvo) is developing OnePilot for the Volvo EX90 — hardware-ready for unsupervised L4 highway driving, currently in data capture phase. Sweden's pragmatic "use existing frameworks" regulatory approach is a direct enabler of Einride's early-mover advantage.</div></div>
+</div>`,
+  'Switzerland': `<div class="c-card" data-activity="live">
+  <div class="c-header"><span class="c-flag">🇨🇭</span><span class="c-name">Switzerland</span><span class="c-badge cb-live">Live</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-zurich')" title="View project →">WeRide — Zurich Airport (pilot) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-amigo')" title="View project →">Apollo Go AmiGo — PostBus (2026) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-sensible4')" title="View project →">Sensible 4 — tested in Switzerland ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-apollo')" title="View project →">Baidu Apollo — expansion planned ↗</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Switzerland (non-EU) has its own AV framework. ASTRA (Federal Roads Office) oversees AV testing permits. Several AV pilots have operated under ASTRA permits.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">Switzerland's regulatory independence from the EU allows faster bespoke AV permitting, making it attractive for airport and controlled-environment deployments. WeRide has been running at Zurich Airport since 2024. Baidu Apollo has announced Swiss expansion plans. Switzerland's pragmatic ASTRA framework positions it well for continued growth as a European AV testbed.</div></div>
+</div>`,
+  'UK': `<div class="c-card" data-activity="live">
+  <div class="c-header"><span class="c-flag">🇬🇧</span><span class="c-name">United Kingdom</span><span class="c-badge cb-live">Live / Scaling</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-wayve')" title="View project →">Wayve × Uber — London robotaxi (Spring 2026) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-waymo')" title="View project →">Waymo — London commercial (2026) ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-apollo')" title="View project →">Apollo Go / Lyft — UK (2026) ↗</span><span class="c-proj-tag">Fusion Processing — L4 programme</span></div>
+  <div class="c-reg"><span class="c-reg-label">Regulation</span> Automated Vehicles Act 2024 — the most comprehensive AV legislation in Europe. UK Secretary of State's accelerated self-driving pilot framework (June 2025) fast-tracked Wayve/Uber and Waymo permitting. DVSA oversight.</div>
+  <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
+  <div class="c-note-body expanded"><div class="c-note">The UK is the most competitive AV market in Europe in 2026 — three separate robotaxi deployments launching simultaneously (Wayve, Waymo, Apollo Go). The Automated Vehicles Act 2024 is the most complete AV legal framework in Europe, explicitly defining liability and creating a commercial pathway. Post-Brexit, the UK can move faster than EU member states on AV regulation. London is set to become Europe's first city with multiple competing commercial robotaxi services.</div></div>
+</div>`
+};
+
+const ACTIVITY = {
+  'UK':'live','Belgium':'live','Croatia':'live','France':'live','Germany':'live',
+  'Netherlands':'live','Sweden':'live','Switzerland':'live',
+  'Denmark':'pilot','Estonia':'pilot','Finland':'pilot','Greece':'pilot',
+  'Hungary':'pilot','Luxembourg':'pilot','Monaco':'pilot','Norway':'pilot',
+  'Poland':'pilot','Romania':'pilot','Spain':'pilot',
+  'Austria':'development','Czechia':'development','Iceland':'development',
+  'Ireland':'development','Italy':'development','Latvia':'development',
+  'Portugal':'development','Slovakia':'development','Slovenia':'development',
+  'Kosovo':'development',
+  'Albania':'none','Andorra':'none','Belarus':'none','Bosnia & Herz.':'none',
+  'Bulgaria':'none','Cyprus':'none','Liechtenstein':'none','Lithuania':'none',
+  'Malta':'none','Moldova':'none','Montenegro':'none','North Macedonia':'none',
+  'San Marino':'none','Serbia':'none','Ukraine':'none','Vatican City':'none'
+};
+
+let selectedCountries = [];
+
+// ── D3 Map ──────────────────────────────────────────────────────────
+function buildMap() {
+  const container = document.getElementById('europeMap');
+  if (!container || container.querySelector('svg')) return;
+
+  // Prevent page scroll when wheeling over the map — set immediately, not after async load
+  container.addEventListener('wheel', e => e.preventDefault(), { passive: false });
+
+  const DOT_COLORS = {
+    live:'#059669', pilot:'#d97706', planned:'#2563eb',
+    announced:'#7c3aed', development:'#6366f1'
+  };
+
+  const tooltip = document.createElement('div');
+  tooltip.className = 'map-tooltip';
+  document.body.appendChild(tooltip);
+
+  if (!document.getElementById('dot-pulse-style')) {
+    const s = document.createElement('style');
+    s.id = 'dot-pulse-style';
+    s.textContent = `@keyframes dotPulse{0%,100%{r:9;opacity:0.3}50%{r:14;opacity:0.08}}.dot-pulse-ring{animation:dotPulse 2s ease-in-out infinite}`;
+    document.head.appendChild(s);
+  }
+
+  function loadScript(src, cb) {
+    const s = document.createElement('script');
+    s.src = src; s.onload = cb;
+    s.onerror = () => { container.innerHTML = '<div style="padding:40px;text-align:center;color:#999;font-size:13px">Map requires internet connection.</div>'; };
+    document.head.appendChild(s);
+  }
+
+  function renderMap() {
+    const W = 960, H = 540;
+
+    container.style.position = 'relative';
+    const zc = document.createElement('div');
+    zc.style.cssText = 'position:absolute;bottom:16px;right:16px;display:flex;flex-direction:column;gap:4px;z-index:10';
+    zc.innerHTML = `
+      <button onclick="window._mz(1.4)"  style="width:30px;height:30px;border:1px solid #ccc;border-radius:4px;background:#fff;cursor:pointer;font-size:16px;color:#444">+</button>
+      <button onclick="window._mz(0.71)" style="width:30px;height:30px;border:1px solid #ccc;border-radius:4px;background:#fff;cursor:pointer;font-size:16px;color:#444">−</button>
+      <button onclick="window._mr()"     style="width:30px;height:30px;border:1px solid #ccc;border-radius:4px;background:#fff;cursor:pointer;font-size:11px;color:#444" title="Reset">⊙</button>
+    `;
+    container.appendChild(zc);
+
+    const svg = d3.select('#europeMap').append('svg')
+      .attr('viewBox', `0 0 ${W} ${H}`)
+      .style('width','100%').style('height','auto').style('display','block');
+
+    const proj = d3.geoMercator().center([13,54]).scale(480).translate([W*0.46,H*0.56]);
+    const pathGen = d3.geoPath().projection(proj);
+
+    const zoom = d3.zoom().scaleExtent([0.5,12])
+      .on('zoom', e => mapG.attr('transform', e.transform));
+    svg.call(zoom).on('dblclick.zoom', null);
+    window._mz = f => svg.transition().duration(300).call(zoom.scaleBy, f);
+    window._mr = () => svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
+
+    const mapG = svg.append('g');
+    const europeIds = new Set([8,20,40,112,56,70,100,191,196,203,208,233,246,250,
+      276,300,348,352,372,380,383,428,438,440,442,470,498,492,499,528,807,578,616,
+      620,642,674,688,703,705,724,752,756,804,826,336]);
+
+    d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(world => {
+      const countries = topojson.feature(world, world.objects.countries);
+
+      mapG.append('g').selectAll('path')
+        .data(countries.features)
+        .enter().append('path').attr('d', pathGen)
+        .style('fill', d => europeIds.has(+d.id) ? '#cdd8e4' : '#dde6ee')
+        .style('stroke','#fff')
+        .style('stroke-width', d => europeIds.has(+d.id) ? '0.7' : '0.3');
+
+      // Force-separate overlapping dots
+      const dots = PROJECT_DOTS.map(p => { const [x,y]=proj([p.lon,p.lat]); return {...p,x,y,ox:x,oy:y}; });
+      for (let iter=0;iter<80;iter++) {
+        for (let i=0;i<dots.length;i++) for (let j=i+1;j<dots.length;j++) {
+          const dx=dots[j].x-dots[i].x, dy=dots[j].y-dots[i].y, dist=Math.sqrt(dx*dx+dy*dy)||0.01;
+          if (dist<18) { const p=(18-dist)/2,nx=dx/dist,ny=dy/dist; dots[i].x-=nx*p; dots[i].y-=ny*p; dots[j].x+=nx*p; dots[j].y+=ny*p; }
+        }
+      }
+
+      dots.forEach(p => {
+        if (Math.hypot(p.x-p.ox,p.y-p.oy)>3)
+          mapG.append('line').attr('x1',p.ox).attr('y1',p.oy).attr('x2',p.x).attr('y2',p.y)
+            .style('stroke','#94a3b8').style('stroke-width','0.8').style('stroke-dasharray','2,2').style('pointer-events','none');
+      });
+
+      dots.forEach(proj => {
+        const color = DOT_COLORS[proj.status]||'#94a3b8';
+        const g = mapG.append('g').attr('class','project-dot').attr('data-id',proj.id)
+          .attr('transform',`translate(${proj.x},${proj.y})`).style('cursor','pointer');
+        g.append('circle').attr('r',14).style('fill','transparent');
+        if (proj.status==='live') g.append('circle').attr('class','dot-pulse-ring').attr('r',9).style('fill',color).style('opacity',0.3);
+        g.append('circle').attr('class','dot-main').attr('r',6).style('fill',color).style('stroke','#fff').style('stroke-width','1.5');
+        g.on('mouseover', () => {
+          const lbl={live:'Live',pilot:'Active Pilot',planned:'Planned',announced:'Announced',development:'In Development'}[proj.status]||proj.status;
+          tooltip.innerHTML=`<strong>${proj.name}</strong><br><span style="opacity:0.7;font-size:10px">${proj.city} · ${lbl}</span>`;
+          tooltip.style.display='block'; g.select('.dot-main').attr('r',10); g.raise();
+        })
+        .on('mousemove', e => { tooltip.style.left=(e.clientX-tooltip.offsetWidth/2)+'px'; tooltip.style.top=(e.clientY-54)+'px'; })
+        .on('mouseleave', () => { tooltip.style.display='none'; g.select('.dot-main').attr('r',6); })
+        .on('click', () => { document.querySelectorAll('.project-dot.selected').forEach(el=>{ if(el) el.classList.remove('selected'); }); g.node().classList.add('selected'); spOpen(proj.id,'details'); });
+      });
+    });
+  }
+
+  if (typeof d3!=='undefined' && typeof topojson!=='undefined') {
+    renderMap();
+  } else if (typeof d3!=='undefined') {
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js', renderMap);
+  } else {
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js', () =>
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js', renderMap));
+  }
+}
+
+
+
+
+
+function getEuropeGeoJSON() {
+  return {
+    type: "FeatureCollection",
+    features: Object.entries(COUNTRY_COORDS).map(([name, coords]) => ({
+      type: "Feature",
+      properties: { name },
+      geometry: { type: "Polygon", coordinates: [coords] }
+    }))
+  };
+}
+
+
+// ── Interaction ─────────────────────────────────────────────────────
+function toggleCountry(name, el) {
+  const idx = selectedCountries.indexOf(name);
+  if (idx === -1) {
+    selectedCountries.push(name);
+    if (el) el.classList.add('selected');
+  } else {
+    selectedCountries.splice(idx, 1);
+    if (el) el.classList.remove('selected');
+  }
+  renderPanel();
+}
+
+function dismissCountry(name) {
+  selectedCountries = selectedCountries.filter(c => c !== name);
+  const el = document.querySelector(`#europeMap path[data-country="${name}"]`);
+  if (el) el.classList.remove('selected');
+  renderPanel();
+}
+
+function clearAllCountries() {
+  selectedCountries = [];
+  document.querySelectorAll('#europeMap path.selected').forEach(el => el.classList.remove('selected'));
+  renderPanel();
+}
+
+function renderPanel() {
+  const toolbar = document.getElementById('cpToolbarLabel');
+  const cards = document.getElementById('cpCards');
+  if (!cards) return;
+
+  const count = selectedCountries.length;
+  if (toolbar) toolbar.textContent = count === 0
+    ? '0 countries selected'
+    : count === 1 ? '1 country selected' : `${count} countries selected`;
+
+  if (count === 0) {
+    cards.innerHTML = `<div class="cp-empty-state">
+      <div class="cp-empty-state-icon">🗺</div>
+      <div class="cp-empty-state-text">Click any country on the map to explore its AV profile.<br><br>Click multiple countries to compare them side by side.</div>
+    </div>`;
+    return;
+  }
+
+  cards.innerHTML = selectedCountries.map(name => {
+    const cardHtml = CARD_DATA[name];
+    if (!cardHtml) {
+      const act = ACTIVITY[name] || 'none';
+      const label = {live:'Live',pilot:'Active Pilot',development:'In Development',none:'No Activity'}[act] || act;
+      return `<div class="c-card" data-activity="${act}">
+        <div class="c-header">
+          <span class="c-name" style="font-size:14px;font-weight:700">${name}</span>
+          <span class="c-badge">${label}</span>
+          <button class="cp-dismiss" data-name="${name}" title="Remove">×</button>
+        </div>
+        <div style="padding:14px 16px;font-size:12px;color:var(--muted)">No detailed profile available for this country yet.</div>
+      </div>`;
+    }
+    return cardHtml.replace('</div>',
+      `<button class="cp-dismiss" data-name="${name}" title="Remove">×</button></div>`);
+  }).join('');
+
+  cards.querySelectorAll('.cp-dismiss').forEach(btn => {
+    btn.onclick = function() { dismissCountry(this.dataset.name); };
+  });
+  cards.querySelectorAll('.c-toggle').forEach(el => {
+    el.onclick = function() { toggleNote(this); };
+  });
+}
+
+
+// Init
+function initMap() {
+  const bar = document.querySelector('.sticky-bar');
+  if (bar) {
+    const h = bar.offsetHeight;
+    const panel = document.querySelector('.country-panel');
+    if (panel) panel.style.top = (h + 8) + 'px';
+  }
+  renderPanel();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMap);
+} else {
+  initMap();
+}
+
 </script>
 
 </body>
