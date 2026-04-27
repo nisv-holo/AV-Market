@@ -1247,7 +1247,7 @@
         <button class="region-tab-btn active" id="regionAll" onclick="switchRegion(this,'all')">🌍 All Markets</button>
         <button class="region-tab-btn" id="regionEU"  onclick="switchRegion(this,'eu')">🇪🇺 Europe</button>
         <button class="region-tab-btn" id="regionNA"  onclick="switchRegion(this,'na')">🌎 North America</button>
-        <button class="region-tab-btn region-tab-soon" disabled>🌏 Asia <span class="coming-soon-badge">Soon</span></button>
+        <button class="region-tab-btn" id="regionAsia" onclick="switchRegion(this,'asia')">🌏 Asia</button>
       </div>
             </div>
     </div>
@@ -2260,6 +2260,568 @@
     <div class="news-teaser"><div class="news-teaser-dot" style="background:#7c3aed"></div><div><div class="news-teaser-date">Dec 2025</div><div class="news-teaser-text">Tensor and Autoliv unveil world&apos;s first foldable steering wheel for autonomous driving. Lyft partnership announced — Robocar to be first personally-owned AV deployable on Lyft rideshare network.</div><button class="news-view-more" data-row="proj-tensor" data-tab="news">View more ↗</button></div></div>
   </td>
 </tr>
+
+<!-- ═══ Vay ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Vay</span>
+  <span class="company-desc">Berlin-based teledriving company — the world&apos;s first commercial remotely driven mobility service. Not autonomous: a human teledriver operates the vehicle from a remote station. A fundamentally different path to driverless mobility.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-vay" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">Vay Teledriving — Las Vegas Commercial Service</span>
+  <span class="project-desc">The world&apos;s first commercially operating remotely driven mobility service — not autonomous, but genuinely driverless from the rider&apos;s perspective. A human teledriver remotely delivers the car to the user, who then drives themselves to their destination. 100-vehicle Las Vegas fleet scaling through 2025–26.</span>
+  <button class="facts-trigger" data-row="proj-vay" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Not AV — But Driverless</span><span class="learn-tag">Human-in-the-Loop</span>
+    <span class="learn-body">Vay&apos;s approach deserves inclusion precisely because it challenges the assumption that driverless = autonomous. A human teledriver operates the vehicle remotely (from a simulator with 3 screens and full controls) — the car arrives at your location with no one inside, you drive yourself, then hand it back. From the rider&apos;s perspective it&apos;s indistinguishable from a robotaxi pickup. The business case is the same: eliminate driver cost for the repositioning leg. At ~half the price of Uber, it&apos;s already cost-competitive. The Grab investment ($410M potential) and Kodiak partnership signal it&apos;s being taken seriously as infrastructure. Vay&apos;s data collection from tens of thousands of real-world trips is also a direct path to adding autonomous capabilities — the teledriving dataset is exactly what L4 models need.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Teledriving</span>
+    <span class="seg-tag">Car Rental</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇺🇸 Las Vegas, NV (Strip, UNLV, Arts District) · 🇩🇪 Hamburg + Berlin (EU)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Kia e-Niro EV fleet (teledriving-equipped)</span>
+    <span class="v-detail">Cameras + sensors for remote operation. Human teledriver operates from simulator (3 screens, full controls) at teledrive centre. Low-latency connectivity. Automotive-grade certified (German TÜV). 8,500 sq ft Las Vegas production facility (16 vehicles/week). Also: B2B truck teledriving, Kodiak AV partnership, Nexar predictive AI safety.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Las Vegas launch</span><span class="tl-value onroad">Jan 2024</span></div>
+    <div class="tl-row"><span class="tl-label">Tens of thousands of trips</span><span class="tl-value onroad">2024–25</span></div>
+    <div class="tl-row"><span class="tl-label">100-vehicle fleet target</span><span class="tl-value pending">End 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Grab investment ($410M)</span><span class="tl-value pending">Nov 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Germany launch (new RD law)</span><span class="tl-value pending">Dec 2025+</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">Vay partners with Nexar for predictive AI safety on world&apos;s first commercial remotely driven fleet. Grab strategic investment ($410M potential). Kodiak AV partnership for truck teledriving. Germany RD law enables Hamburg + Berlin expansion.</div><button class="news-view-more" data-row="proj-vay" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ════════════════════════════════════════════════════════════════
+     ASIA
+════════════════════════════════════════════════════════════════ -->
+
+<!-- ═══ Baidu Apollo Go ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Baidu — Apollo Go</span>
+  <span class="company-desc">China&apos;s largest robotaxi platform — 22 cities, 20M+ cumulative trips, 300K weekly rides peak. Now expanding globally via Uber and Lyft partnerships to UAE, South Korea, London and beyond.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-apollo-cn" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">Apollo Go — China Commercial Robotaxi Network</span>
+  <span class="project-desc">China&apos;s largest and most commercially scaled fully driverless robotaxi service — 22 cities, 20 million cumulative trips by Feb 2026, 300,000 weekly rides at peak. Operating 100% driverless across Wuhan, Beijing, Shanghai and beyond since 2022.</span>
+  <button class="facts-trigger" data-row="proj-apollo-cn" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">China&apos;s Scale Leader</span><span class="learn-tag">Global Platform Play</span>
+    <span class="learn-body">Apollo Go is the closest global competitor to Waymo by ride volume — 20 million trips vs Waymo&apos;s 20 million (both crossed this milestone around the same time). The 200%+ YoY growth in Q4 2025 is the fastest scaling in robotaxi history. Baidu&apos;s strategy is to leverage Uber and Lyft as global distribution channels — the same model Waymo uses in the US — to enter markets without building a local app. The 6th-gen RT6 at $27,500 per unit is the lowest-cost purpose-built robotaxi ever deployed commercially. China&apos;s regulatory environment (city-level permits, no federal framework) has paradoxically accelerated deployment by allowing city-by-city experimentation.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">CN</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇨🇳 22 cities incl. Wuhan · Beijing · Shanghai · Guangzhou · Shenzhen · Chongqing</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Apollo RT6 (6th-gen, $27,500/unit)</span>
+    <span class="v-detail">100% driverless across all commercial ops since Feb 2025. 240M+ autonomous km, 190M+ fully driverless km. RT6: detachable steering wheel, BEV, purpose-built. Also: world&apos;s first autonomous car rental (with CAR Inc, Jul 2025). Global: South Korea (Feb 2026), Dubai via Uber (Mar 2026), Abu Dhabi via AutoGo (Jan 2026), London via Uber + Lyft (H1 2026).</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">First driverless (Beijing)</span><span class="tl-value onroad">Apr 2022</span></div>
+    <div class="tl-row"><span class="tl-label">100% driverless ops</span><span class="tl-value onroad">Feb 2025</span></div>
+    <div class="tl-row"><span class="tl-label">20M trips milestone</span><span class="tl-value onroad">Feb 2026</span></div>
+    <div class="tl-row"><span class="tl-label">300K weekly rides peak</span><span class="tl-value onroad">Q4 2025</span></div>
+    <div class="tl-row"><span class="tl-label">South Korea launch</span><span class="tl-value onroad">Feb 2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Feb 2026</div><div class="news-teaser-text">Apollo Go reaches 20M cumulative trips, 300K weekly rides peak (+200% YoY). Launches in South Korea — first Asian market beyond China + HK. Dubai via Uber (Mar 2026), Abu Dhabi live (Jan 2026), London H1 2026.</div><button class="news-view-more" data-row="proj-apollo-cn" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Pony.ai China ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Pony.ai</span>
+  <span class="company-desc">Only company with fully driverless commercial robotaxi in all four Chinese tier-1 cities. Gen-7 achieved city-wide unit economics breakeven in Shenzhen. 3,000+ vehicle target by end 2026. Dual-listed NASDAQ + HKEX.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-ponyai-cn" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">Pony.ai — China Commercial Robotaxi (Gen-7)</span>
+  <span class="project-desc">The only company operating fully driverless commercial robotaxi services across all four Chinese tier-1 cities — Beijing, Shanghai, Guangzhou and Shenzhen. Gen-7 robotaxi achieved city-wide unit economics breakeven. 3,000+ vehicle fleet targeted by end 2026.</span>
+  <button class="facts-trigger" data-row="proj-ponyai-cn" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Unit Economics Proven</span><span class="learn-tag">Toyota + GAC Manufacturing</span>
+    <span class="learn-body">Pony.ai has achieved what most in the industry consider the hardest milestone: positive unit economics at city-wide scale. The Gen-7 in Shenzhen earns 338 RMB/day average (23 orders/day) and reached monthly operating profit per vehicle — the first Chinese robotaxi company to hit this. The 70% reduction in BOM costs over successive generations (Gen-5→7) is the cost curve that makes scale viable. The Toyota and GAC Toyota manufacturing partnerships mean Pony.ai is not building vehicles itself — it&apos;s becoming a technology licensor, which is the most capital-efficient robotaxi model. The dual NASDAQ + HKEX listing ($993M raised at HK IPO) provides capital for 3,000-vehicle scale-up.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">CN</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇨🇳 Beijing · Shanghai · Guangzhou · Shenzhen (all 4 tier-1 cities) · 24/7 operations</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Pony.ai Gen-7 (BAIC + GAC Toyota platform)</span>
+    <span class="v-detail">600,000km service life design. 70% BOM cost reduction vs Gen-5. 100% automotive-grade ADK. 961 fleet vehicles (667 Gen-7) as of Nov 2025. 24/7 driverless operations in Guangzhou + Shenzhen. Also: Gen-4 Robotruck (SANY + Dongfeng, 1,000-unit mass production 2026). Toyota strategic shareholder.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">First driverless permit (Beijing)</span><span class="tl-value onroad">Apr 2022</span></div>
+    <div class="tl-row"><span class="tl-label">Gen-7 launched (4 cities)</span><span class="tl-value onroad">Nov 2025</span></div>
+    <div class="tl-row"><span class="tl-label">City-wide UE breakeven (SZ)</span><span class="tl-value onroad">Nov 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Toyota mass production (1,000)</span><span class="tl-value pending">2026</span></div>
+    <div class="tl-row"><span class="tl-label">3,000+ vehicle fleet</span><span class="tl-value pending">End 2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Feb 2026</div><div class="news-teaser-text">Pony.ai + Toyota roll out mass-produced Gen-7 robotaxis — 1,000 units in 2026. Only company with fully driverless service in all 4 Chinese tier-1 cities. City-wide unit economics breakeven achieved in Shenzhen. 3,000+ vehicle target end 2026.</div><button class="news-view-more" data-row="proj-ponyai-cn" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ WeRide China ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">WeRide — China Domestic</span>
+  <span class="company-desc">Multi-vertical AV platform (robotaxi, robobus, robosweeper, robovan). Operating in Shanghai and expanding. 761% revenue growth YoY in Q3 2025. Middle East subsidiary already operationally profitable.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-weride-cn" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">WeRide — China Multi-Vertical AV Operations</span>
+  <span class="project-desc">China&apos;s most globally diversified AV operator — robotaxi, robobus, robovan and robosweeper across China, UAE, Singapore, Saudi Arabia, Slovakia and France. Q3 2025: 761% YoY robotaxi revenue growth. Middle East subsidiary operationally profitable.</span>
+  <button class="facts-trigger" data-row="proj-weride-cn" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Multi-Vertical Breadth</span><span class="learn-tag">Middle East Profitable</span>
+    <span class="learn-body">WeRide is the only AV company with commercial permits in 6 countries simultaneously — China, UAE, Singapore, Saudi Arabia, France, and USA. This multi-jurisdiction regulatory achievement is its strongest differentiator. The Middle East subsidiary reaching operating profitability is particularly significant: it proves the WeRide model works where per-ride pricing is higher and regulations are more permissive. The 761% revenue growth in Q3 2025 is the highest of any AV company globally. The Geely + Chery OEM partnerships mean WeRide is becoming a technology platform rather than a fleet operator — the most scalable robotaxi business model. 2,000 GXR units planned for 2026.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">CN</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="seg-tag">Shuttle</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇨🇳 Shanghai (Chery + Jinjiang Taxi) · 6 countries total · 1,600+ global fleet (750 robotaxis)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">WeRide GXR (robotaxi) + Robobus + Robovan + Robosweeper</span>
+    <span class="v-detail">GXR: Farizon SuperVan platform, 5-seat, operating in China/UAE/Saudi/Singapore. Robobus: 8-seat, Resorts World Sentosa SG, Roland-Garros Paris, Riyadh. OEM partners: Geely, Chery. 2,000 GXR target 2026. Global fleet target: 2,600+ by end 2026 (doubling 2025). Tencent Mobility integration in China.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Shanghai commercial ops</span><span class="tl-value onroad">2024</span></div>
+    <div class="tl-row"><span class="tl-label">Q3 2025: 761% revenue growth</span><span class="tl-value onroad">2025</span></div>
+    <div class="tl-row"><span class="tl-label">ME subsidiary profitable</span><span class="tl-value onroad">2025</span></div>
+    <div class="tl-row"><span class="tl-label">2,000 GXR units</span><span class="tl-value pending">2026</span></div>
+    <div class="tl-row"><span class="tl-label">Global fleet: 2,600+</span><span class="tl-value pending">End 2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Apr 2026</div><div class="news-teaser-text">WeRide Singapore Ai.R public launch (Apr 1). Slovakia national AV programme (Mar). Tencent Mobility integration. 2,000 GXR units planned 2026. ME subsidiary operationally profitable. 761% Q3 2025 revenue growth.</div><button class="news-view-more" data-row="proj-weride-cn" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Xpeng ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Xpeng</span>
+  <span class="company-desc">Chinese EV maker launching China&apos;s first factory-integrated mass-produced L4 robotaxi — GX with VLA 2.0, no LiDAR, no HD maps. Dedicated Robotaxi Business Unit formed Mar 2026. VW is first external VLA 2.0 customer.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-xpeng-robotaxi" data-status="announced" data-segment="robotaxi">
+  <td><span class="project-name">Xpeng Robotaxi — GX (VLA 2.0, China + Global)</span>
+  <span class="project-desc">China&apos;s first fully in-house developed, factory-integrated L4 robotaxi prototype for mass production. Passenger-carrying demonstration operations targeting H2 2026. No LiDAR, no HD maps — pure VLA 2.0 AI. Amap (873M MAU) as first booking partner.</span>
+  <button class="facts-trigger" data-row="proj-xpeng-robotaxi" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">OEM-Native L4</span><span class="learn-tag">VW Validates VLA 2.0</span>
+    <span class="learn-body">Xpeng&apos;s robotaxi approach is structurally different from pure-play AV companies — it shares the VLA 2.0 architecture across its entire consumer vehicle lineup and the robotaxi fleet simultaneously. This means every consumer Xpeng sold helps train the robotaxi model. The Volkswagen VLA 2.0 licensing deal (first Western OEM to adopt Chinese AI for autonomous driving) validates the technology in a way no Chinese government permit can. No LiDAR and no HD maps is a bold cost bet — if VLA 2.0 generalises, Xpeng&apos;s robotaxi COGS will be far lower than LiDAR-based competitors. The Amap distribution (873 million MAU) gives instant demand without building an app. Annual production capacity of 10,000 units targeted.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">CN</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-announced"></span>Announced</span>
+    <span class="country-tag">🇨🇳 Guangzhou (demo H2 2026) · Global via partners 2027</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Xpeng GX (L4 purpose-built, 6-seat SUV)</span>
+    <span class="v-detail">4x Turing AI chips, 3,000 TOPS. VLA 2.0 end-to-end AI. No LiDAR, no HD maps. Dual-redundancy across 6 systems. 3 models (5/6/7-seat, all under 200K CNY / ~$28K). Factory-integrated — same production line as consumer vehicles. Amap booking (873M MAU). VW: first external VLA 2.0 customer. 10,000 unit/year capacity target.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">AI Day — 3 models revealed</span><span class="tl-value onroad">Nov 2025</span></div>
+    <div class="tl-row"><span class="tl-label">GX L4 road tests (Guangzhou)</span><span class="tl-value onroad">Feb 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Robotaxi Business Unit formed</span><span class="tl-value onroad">Mar 2026</span></div>
+    <div class="tl-row"><span class="tl-label">VW VLA 2.0 deal confirmed</span><span class="tl-value onroad">Feb 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Demo passenger ops (Guangzhou)</span><span class="tl-value pending">H2 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Fully driverless (no safety op)</span><span class="tl-value pending">2027</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#7c3aed"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">Xpeng establishes Robotaxi Business Unit (tier-1 org). GX L4 road tests underway in Guangzhou. VW confirmed as first VLA 2.0 external customer. Demo passenger ops H2 2026. Driverless without safety operator: 2027.</div><button class="news-view-more" data-row="proj-xpeng-robotaxi" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Caocao / Geely ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Caocao (Geely Group)</span>
+  <span class="company-desc">Geely&apos;s ride-hailing arm — China&apos;s second-largest ride-hailing platform after DiDi. First cleared for driverless tests in Hangzhou (Apr 2026). 100,000 purpose-built robotaxi target by 2030. Already profitable.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-caocao" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">Caocao Robotaxi — Hangzhou Commercial Fleet</span>
+  <span class="project-desc">Geely&apos;s ride-hailing platform operating a 100-vehicle robotaxi fleet in Hangzhou — first company cleared for driverless road tests without safety drivers in the city (April 2026). China&apos;s second-largest ride-hailing network provides an instant distribution advantage.</span>
+  <button class="facts-trigger" data-row="proj-caocao" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Ride-Hailing Native</span><span class="learn-tag">Already Profitable</span>
+    <span class="learn-body">Caocao&apos;s structural advantage over every other robotaxi company: it already operates China&apos;s second-largest ride-hailing platform. It doesn&apos;t need to build a robotaxi app — it just needs to replace human drivers with autonomous ones in an existing network of millions of riders. This is the same distribution moat Uber has in the US, but Caocao built it organically within China&apos;s regulatory constraints. Reaching quarterly net profit in Q4 2025 as a ride-hailing platform (before robotaxi revenue scales) means the underlying business is financially sound — robotaxi deployment is additive, not a lifeline. The 100,000-vehicle 2030 target is the most ambitious fleet commitment made by any Chinese AV company.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">CN</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇨🇳 Hangzhou (100-vehicle fleet, driverless-cleared Apr 2026)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Purpose-built Caocao robotaxi (Geely ecosystem)</span>
+    <span class="v-detail">100-vehicle fleet in Hangzhou. First driverless clearance (no safety driver) in Hangzhou, Apr 2026. Geely supply chain advantage — shares components with Zeekr, Volvo, Lynk &amp; Co. Listed Hong Kong Stock Exchange (Jun 2025). First quarterly net profit Q4 2025. Global target: thousands from 2027, 100,000 by 2030.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Robotaxi ops begin</span><span class="tl-value onroad">Feb 2025</span></div>
+    <div class="tl-row"><span class="tl-label">HK IPO</span><span class="tl-value onroad">Jun 2025</span></div>
+    <div class="tl-row"><span class="tl-label">First quarterly net profit</span><span class="tl-value onroad">Q4 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Driverless clearance (Hangzhou)</span><span class="tl-value onroad">Apr 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Global deployment from</span><span class="tl-value pending">2027</span></div>
+    <div class="tl-row"><span class="tl-label">100,000 robotaxi target</span><span class="tl-value pending">2030</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Apr 2026</div><div class="news-teaser-text">Caocao becomes first company cleared for driverless tests without safety drivers in Hangzhou. 100-vehicle fleet operating. Q4 2025: first quarterly net profit. Plans thousands globally from 2027, 100,000 by 2030.</div><button class="news-view-more" data-row="proj-caocao" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ WeRide × Grab Singapore ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">WeRide × Grab — Ai.R Singapore</span>
+  <span class="company-desc">Singapore&apos;s first autonomous public ride service — launched in Punggol residential estate April 1, 2026. WeRide GXR + Robobus on Grab&apos;s app. Part of Singapore&apos;s national AV roadmap targeting 100–150 autonomous vehicles by end 2026.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-weride-sg" data-status="live" data-segment="shuttle">
+  <td><span class="project-name">Ai.R — Singapore&apos;s First Public Autonomous Ride Service</span>
+  <span class="project-desc">Singapore&apos;s first autonomous passenger service deployed inside a residential estate — Grab and WeRide&apos;s Ai.R (Autonomously Intelligent Ride) launched publicly in Punggol on April 1, 2026. 1,000+ early riders, 30,000km autonomous mileage. Free rides until commercial launch mid-2026.</span>
+  <button class="facts-trigger" data-row="proj-weride-sg" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Singapore&apos;s First Residential AV</span><span class="learn-tag">Grab Distribution</span>
+    <span class="learn-body">Singapore is building the most rigorous AV regulatory framework in Southeast Asia — the Milestone 1 safety assessment (which both WeRide GXR and Robobus passed) is among the toughest AV certification processes globally. Moving from M1 assessment to full public operations in 7 months is remarkable speed for Singapore&apos;s regulatory environment. Grab&apos;s distribution (the dominant superapp in SE Asia with 35M+ monthly users) solves the customer acquisition problem immediately. The Punggol residential pilot is strategically important: proving AV works in a dense, mixed-use residential environment is harder than airports or business districts. Singapore&apos;s government targets 100–150 AVs by end 2026 — Ai.R is the centrepiece.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">SG</span>
+    <span class="seg-tag">Shuttle</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇸🇬 Punggol, Singapore (residential estate — two loop routes + mini route)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">WeRide GXR (5-seat) + Robobus (8-seat)</span>
+    <span class="v-detail">Both passed Singapore Milestone 1 (M1) safety assessment — most rigorous AV certification in SE Asia. Operating weekdays 9:30AM–5:30PM. 2 full loop routes + 20-min mini route. 14 certified Grab Safety Operators onboard. Remote Operator training underway. Free until commercial launch mid-2026. Insurance: Grab Personal Accident Policy covers all riders.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Grab × WeRide strategic deal</span><span class="tl-value onroad">Aug 2025</span></div>
+    <div class="tl-row"><span class="tl-label">M1 assessment passed</span><span class="tl-value onroad">Sep 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Community trial (1,000+ riders)</span><span class="tl-value onroad">Jan 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Public launch (free rides)</span><span class="tl-value onroad">1 Apr 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Commercial launch (paid)</span><span class="tl-value pending">Mid-2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Apr 2026</div><div class="news-teaser-text">Ai.R opens to public in Punggol — Singapore&apos;s first AV service in a residential estate. 1,000+ trial riders, 30,000km autonomous mileage. Free until mid-2026 commercial launch. Grab safety operators onboard. Part of Singapore 100–150 AV roadmap.</div><button class="news-view-more" data-row="proj-weride-sg" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Pony.ai × ComfortDelGro ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Pony.ai × ComfortDelGro — Singapore</span>
+  <span class="company-desc">Singapore&apos;s second autonomous shuttle programme — Pony.ai partnering with ComfortDelGro (Singapore&apos;s largest land transport operator) for a separate Punggol route. Pony.ai also partnering with ComfortDelGro in Luxembourg.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-ponyai-sg" data-status="pilot" data-segment="shuttle">
+  <td><span class="project-name">Pony.ai × ComfortDelGro — Singapore AV Shuttle</span>
+  <span class="project-desc">Singapore&apos;s second autonomous shuttle programme — Pony.ai partnering with ComfortDelGro, Singapore&apos;s largest land transport operator, for an autonomous route in Punggol alongside the Grab/WeRide Ai.R service. Singapore as Pony.ai&apos;s SE Asia commercialisation testbed.</span>
+  <button class="facts-trigger" data-row="proj-ponyai-sg" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Public Transit Integration</span><span class="learn-tag">ComfortDelGro Scale</span>
+    <span class="learn-body">ComfortDelGro is Singapore&apos;s largest land transport operator — buses, taxis, rail. A partnership with them is not a startup experiment; it&apos;s integration into the backbone of Singapore&apos;s public transport system. If Pony.ai&apos;s autonomous vehicles can be certified and operated within ComfortDelGro&apos;s framework, it opens a path to fleet-scale deployment across Singapore&apos;s entire bus and taxi network. Punggol being chosen as the testbed for both Ai.R (WeRide/Grab) and this service simultaneously makes it the most AV-dense residential district outside China — a genuine real-world competitive proving ground.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">SG</span>
+    <span class="seg-tag">Shuttle</span>
+    <span class="status"><span class="dot dot-pilot"></span>Active Pilot</span>
+    <span class="country-tag">🇸🇬 Punggol, Singapore (separate route from Ai.R)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Pony.ai autonomous vehicle (model TBC)</span>
+    <span class="v-detail">ComfortDelGro: Singapore&apos;s largest land transport operator (buses, taxis, rail). Punggol route alongside WeRide/Grab Ai.R — Singapore&apos;s first multi-operator AV district. Pony.ai also partnering with ComfortDelGro in Luxembourg (European Centre) for EU expansion.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Partnership announced</span><span class="tl-value onroad">2025</span></div>
+    <div class="tl-row"><span class="tl-label">Punggol route planning</span><span class="tl-value pending">2026</span></div>
+    <div class="tl-row"><span class="tl-label">Commercial service</span><span class="tl-value pending">TBC 2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">2025–26</div><div class="news-teaser-text">Pony.ai and ComfortDelGro planning autonomous Punggol route — second AV service in Singapore&apos;s first residential AV district. Pony.ai also partnering with ComfortDelGro in Luxembourg for EU expansion.</div><button class="news-view-more" data-row="proj-ponyai-sg" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ DiDi ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">DiDi Autonomous Driving</span>
+  <span class="company-desc">China&apos;s largest ride-hailing platform (500M+ users, 400+ cities) going autonomous — 24/7 fully driverless trial in Guangzhou (Dec 2025). R2 robotaxi with GAC Aion. 2B RMB Series D. UAE testing planned 2026.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-didi" data-status="pilot" data-segment="robotaxi">
+  <td><span class="project-name">DiDi Autonomous — Guangzhou Driverless Trial + R2 Rollout</span>
+  <span class="project-desc">China&apos;s largest ride-hailing platform launching fully driverless robotaxi via its own app — 24/7 trial in Guangzhou (Dec 2025). R2 (GAC Aion co-developed, 33 sensors, 2,000 TOPS) secured Beijing road test licence Mar 2026. UAE testing planned for 2026.</span>
+  <button class="facts-trigger" data-row="proj-didi" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">500M User Distribution Moat</span><span class="learn-tag">Mixed Fleet Model</span>
+    <span class="learn-body">DiDi&apos;s distribution advantage dwarfs every other robotaxi company — 500 million registered users across 400+ cities already use the DiDi app. It doesn&apos;t need to build customer acquisition; it just replaces human drivers with autonomous ones in an existing network. The mixed fleet dispatch model (system decides whether to send a human or autonomous vehicle based on location, time, and conditions) is the most commercially pragmatic approach to robotaxi rollout — no separate app, no new habits required. DiDi was also the first to commercially operate a hybrid human/robotaxi service. The R2 is the first robotaxi jointly developed by a ride-hailing operator and a manufacturer (GAC Aion) — aligning incentives across the value chain. UAE expansion signals DiDi is following the same global playbook as Baidu, WeRide and Pony.ai.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">CN</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-pilot"></span>Active Pilot</span>
+    <span class="country-tag">🇨🇳 Guangzhou (24/7 driverless trial) · Beijing (R2 road test) · 🇦🇪 UAE (planned 2026)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">R1 (Volvo XC90 modified) + R2 (GAC Aion V, 33 sensors, 2,000 TOPS GPU)</span>
+    <span class="v-detail">R1: Volvo XC90-based, modified, Guangzhou + Beijing testing. R2: GAC Aion V platform, 33 sensors (LiDAR + 4D mmWave radar + cameras + infrared + audio), 2,000 TOPS compute, triple-domain fusion. Delivered Jan 2026, Beijing road test licence Mar 2026. Series D: 2B RMB (Oct 2025), GAC Group + Beijing AI funds.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Autonomous driving division founded</span><span class="tl-value onroad">2016</span></div>
+    <div class="tl-row"><span class="tl-label">24/7 driverless trial (Guangzhou)</span><span class="tl-value onroad">Dec 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Series D (2B RMB)</span><span class="tl-value onroad">Oct 2025</span></div>
+    <div class="tl-row"><span class="tl-label">R2 delivered + Beijing licence</span><span class="tl-value onroad">Jan–Mar 2026</span></div>
+    <div class="tl-row"><span class="tl-label">UAE testing</span><span class="tl-value pending">2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">R2 (GAC Aion co-developed) secures Beijing road test licence. 24/7 fully driverless trial live in Guangzhou via DiDi app. UAE overseas testing announced for 2026. Series D: 2B RMB raised Oct 2025.</div><button class="news-view-more" data-row="proj-didi" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Hello Robotaxi ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Hello Robotaxi (Hellobike × CATL)</span>
+  <span class="company-desc">Ant-backed bike-sharing giant turned robotaxi operator — HR1 purpose-built robotaxi, CATL JV for battery integration. Commercial ops in Zhuzhou + Liyang. Mass production June 2026. ComfortDelGro partnership for China + overseas.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-hello" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">Hello Robotaxi HR1 — China Commercial Rollout</span>
+  <span class="project-desc">Hellobike&apos;s purpose-built HR1 robotaxi in commercial operation in Zhuzhou and Liyang, with testing in Shanghai, Guangzhou, Changzhou and Changsha. CATL joint venture for battery integration. Mass production June 2026. 10,000-unit fleet target. ComfortDelGro partnership for overseas expansion.</span>
+  <button class="facts-trigger" data-row="proj-hello" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">CATL Battery Integration</span><span class="learn-tag">Ride-Hailing Native</span>
+    <span class="learn-body">Hello&apos;s strategic position is unique: it runs China&apos;s largest bike-sharing and two-wheeler platform (500M+ registered users, dominant in lower-tier cities where Didi is weaker). This gives it a distribution advantage in exactly the cities where other robotaxi companies don&apos;t operate. The CATL joint venture for battery integration is the most important OEM relationship in Chinese AV — CATL supplies batteries to virtually every EV manufacturer, meaning Hello gets preferential access to the best cells and tightest cost control. The Horizon Robotics chip partnership for the HR1 and ComfortDelGro partnership for overseas markets adds credibility beyond China. The December 2025 pedestrian collision incident in one city led to a temporary suspension — notable for regulatory response speed and the fact that Hello continued expanding elsewhere.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">CN</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇨🇳 Zhuzhou · Liyang (commercial) · Shanghai · Guangzhou · Changsha (testing)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Hello HR1 (purpose-built robotaxi)</span>
+    <span class="v-detail">Purpose-built L4 robotaxi. CATL JV for battery integration. Horizon Robotics chips. SOP mass production: June 2026. Target: 10,000 units. 10+ cities by end 2026. ComfortDelGro partnership for international pilot. Backed by Ant Group (Alibaba affiliate). Note: Dec 2025 pedestrian collision in Zhuzhou led to temporary local suspension — service continued in other cities.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">HR1 unveiled</span><span class="tl-value onroad">Sep 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Commercial ops (Zhuzhou + Liyang)</span><span class="tl-value onroad">2025</span></div>
+    <div class="tl-row"><span class="tl-label">ComfortDelGro partnership</span><span class="tl-value onroad">Nov 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Mass production (SOP)</span><span class="tl-value pending">Jun 2026</span></div>
+    <div class="tl-row"><span class="tl-label">10+ cities + overseas pilot</span><span class="tl-value pending">End 2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Dec 2025</div><div class="news-teaser-text">CATL/Hello JV targets mass production June 2026. Commercial ops in Zhuzhou + Liyang. Testing in Shanghai, Guangzhou, Changsha. ComfortDelGro partnership for China + overseas. 10,000-unit fleet target.</div><button class="news-view-more" data-row="proj-hello" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ ONTIME / Ruqi Mobility ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">ONTIME (Ruqi Mobility)</span>
+  <span class="company-desc">GAC Group + Tencent-backed ride-hailing platform — world&apos;s first mixed human/robotaxi commercial platform (2022). First ride-hailing app in China to launch fully unmanned commercial demo (Nansha, Guangzhou). HKSE listed. Pony.ai tech stack.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-ontime" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">ONTIME Robotaxi — China&apos;s First Mixed Autonomous Ride-Hailing Platform</span>
+  <span class="project-desc">GAC Group and Tencent&apos;s ride-hailing platform — the world&apos;s first to commercially operate a mixed human-driver + robotaxi fleet simultaneously from a single app. Fully unmanned commercial demo launched in Nansha, Guangzhou (Dec 2022). Charged fares in Shenzhen Baoan. Pony.ai Gen-6 tech stack.</span>
+  <button class="facts-trigger" data-row="proj-ontime" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">World&apos;s First Mixed Fleet Platform</span><span class="learn-tag">GAC + Tencent + Pony.ai</span>
+    <span class="learn-body">ONTIME achieved a global first in 2022: a single ride-hailing app that dispatches either a human driver or a robotaxi based on real-time conditions — the passenger doesn&apos;t choose, the system optimises. This is the commercially smartest model for robotaxi rollout because it removes the adoption barrier entirely. The GAC Group ownership means ONTIME has first access to every GAC vehicle platform and autonomous driving tech developed through GAC&apos;s JVs with Toyota, Pony.ai and DiDi. Tencent as second-largest shareholder adds WeChat mini-program distribution (1.3B MAU). The strategic overlap with Pony.ai (WeRide and Pony.ai both invested in Ruqi&apos;s Series A) makes ONTIME the operator layer above multiple AV technology providers — a platform play rather than a single-tech bet.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">CN</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇨🇳 Nansha Guangzhou (unmanned demo) · Shenzhen Baoan (paid service) · Greater Bay Area focus</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">GAC Toyota Sienna Autono-MaaS (S-AM) + Pony.ai Gen-6 stack</span>
+    <span class="v-detail">Pony.ai 6th-gen autonomous driving hardware + software. GAC Toyota Sienna S-AM platform. WeChat mini-program ordering. Single app dispatches human OR autonomous vehicle. Paid commercial service in Shenzhen Baoan (Jan 2024). Unmanned demo: all open roads in Nansha (excluding expressways). Listed HKSE: 9680.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">World first mixed fleet (Guangzhou)</span><span class="tl-value onroad">2022</span></div>
+    <div class="tl-row"><span class="tl-label">Fully unmanned demo (Nansha)</span><span class="tl-value onroad">Dec 2022</span></div>
+    <div class="tl-row"><span class="tl-label">Paid service (Shenzhen Baoan)</span><span class="tl-value onroad">Jan 2024</span></div>
+    <div class="tl-row"><span class="tl-label">HKSE IPO</span><span class="tl-value onroad">2024</span></div>
+    <div class="tl-row"><span class="tl-label">Robotaxi+ strategy launch</span><span class="tl-value onroad">Jul 2025</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Jul 2025</div><div class="news-teaser-text">ONTIME launches Robotaxi+ strategy. World&apos;s first mixed human/robotaxi ride-hailing platform. Fully unmanned commercial demo in Nansha. Paid service live in Shenzhen Baoan. Pony.ai + GAC Toyota Sienna S-AM platform.</div><button class="news-view-more" data-row="proj-ontime" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ DeepRoute.ai ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">DeepRoute.ai</span>
+  <span class="company-desc">Shenzhen-based AV company — sub-$10,000 BOM robotaxi using consumer-grade production vehicles. 200,000+ vehicles with DeepRoute platform. Alibaba + Great Wall Motor backed. Robotaxi launch end of 2025 using same platform as ADAS fleet.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-deeproute" data-status="pilot" data-segment="robotaxi">
+  <td><span class="project-name">DeepRoute.ai — Consumer-Vehicle Robotaxi Platform</span>
+  <span class="project-desc">The lowest-cost robotaxi approach in the world — deploying L4 robotaxis using the exact same consumer-grade production vehicles and software platform that already powers 200,000+ ADAS vehicles in China. Sub-$10,000 BOM target rewrites robotaxi unit economics. Backed by Alibaba and Great Wall Motor.</span>
+  <button class="facts-trigger" data-row="proj-deeproute" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Sub-$10K BOM</span><span class="learn-tag">Consumer Vehicle Platform</span>
+    <span class="learn-body">DeepRoute&apos;s thesis is the most radical cost disruption in robotaxi: by using exactly the same hardware and software as consumer vehicles already in production (200,000+ units), they eliminate the purpose-built vehicle premium entirely. Their reported sub-$10,000 bill of materials for the autonomous kit is the lowest in the industry — Tesla FSD claims ~$0.20/mile, DeepRoute claims hardware costs that could undercut even that. The Alibaba investment gives cloud computing infrastructure at scale. The Great Wall Motor partnership means vehicle supply and manufacturing are not constraints. Three business lines (consumer ADAS, robotaxi, RoadAGI) on a unified tech stack means every consumer vehicle sold improves the robotaxi model — the same flywheel Xpeng is pursuing but at further scale (200,000 vs thousands of vehicles).</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">CN</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-pilot"></span>Active Pilot</span>
+    <span class="country-tag">🇨🇳 Shenzhen (primary) · China multi-city rollout</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Consumer-grade production vehicles (Great Wall Motor platform)</span>
+    <span class="v-detail">Sub-$10,000 autonomous kit BOM — lowest in industry. Same platform as 200,000+ ADAS consumer vehicles (1M target 2026). Three unified business lines: consumer ADAS + robotaxi + RoadAGI. Investors: Alibaba, Great Wall Motor, Fosun RZ Capital ($500M+ total raised). Mapless approach. Shenzhen HQ, 108 employees.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2019</span></div>
+    <div class="tl-row"><span class="tl-label">200,000 vehicles deployed</span><span class="tl-value onroad">End 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Robotaxi launch</span><span class="tl-value onroad">End 2025</span></div>
+    <div class="tl-row"><span class="tl-label">1M vehicle platform target</span><span class="tl-value pending">2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">Nov 2025</div><div class="news-teaser-text">DeepRoute launches robotaxi ops using consumer-grade vehicles — same platform as 200,000+ ADAS fleet. Sub-$10K BOM — lowest in industry. 1M vehicle target 2026. Alibaba + Great Wall Motor backed. $500M+ raised.</div><button class="news-view-more" data-row="proj-deeproute" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Nissan Japan ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Nissan Japan</span>
+  <span class="company-desc">Japan&apos;s most methodical AV programme — parallel pilots in Yokohama (Nov 2025) and Kobe (Jan 2026). Wayve + Uber Tokyo MOU for robotaxi by late 2026. Commercial services targeted FY2027. In-house autonomous drive tech since EasyRide (2018).</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-nissan-jp" data-status="pilot" data-segment="shuttle">
+  <td><span class="project-name">Nissan Autonomous Mobility — Japan Pilots + Tokyo Robotaxi (Wayve × Uber)</span>
+  <span class="project-desc">Nissan&apos;s layered autonomous mobility programme: Yokohama pilot (Serena-based, 5 vehicles, 300 public participants, Nov 2025), Kobe Nada Gogo tourism pilot (LEAF-based, Jan 2026), and a Tokyo robotaxi MOU with Wayve and Uber targeting late 2026. Commercial services targeted FY2027.</span>
+  <button class="facts-trigger" data-row="proj-nissan-jp" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Japan&apos;s Methodical Model</span><span class="learn-tag">Wayve + Uber Tokyo</span>
+    <span class="learn-body">Nissan&apos;s AV approach is the most deliberate in Japan — each pilot is designed to solve a specific mobility problem (tourism in Kobe, urban gaps in Yokohama, ride-hailing in Tokyo) rather than demonstrate technology. The PLOT48 remote monitoring centre in Yokohama is being built as permanent infrastructure, not a trial prop. The Wayve partnership brings embodied AI to Nissan&apos;s ProPILOT ADAS stack — combining Wayve&apos;s generalised AI with Nissan&apos;s 1M+ ProPILOT vehicle fleet creates a data flywheel comparable to Tesla FSD. Uber provides the distribution layer. The FY2027 commercial target is conservative but credible — Nissan has been building toward this since EasyRide in 2018 and has never missed a stated milestone. Japan&apos;s acute driver shortage (projected 36% deficit by 2030) is the demand pull.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">JP</span>
+    <span class="seg-tag">Shuttle</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-pilot"></span>Active Pilot</span>
+    <span class="country-tag">🇯🇵 Yokohama · Kobe (Nada Gogo) · Tokyo (Wayve + Uber MOU, late 2026)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Nissan Serena (Yokohama, L2) + Nissan LEAF (Kobe, L2) + LEAF/Wayve AI (Tokyo, L4 target)</span>
+    <span class="v-detail">Yokohama: 5 Serena-based AVs, BOLDLY remote monitoring, PLOT48 control centre, Nov 2025–Jan 2026, 300 public participants. Kobe: LEAF-based, 20-min tourism loop, Jan 2026, sake district. Tokyo: Wayve AI Driver + Uber distribution, late 2026 pilot target. FY2027: paid commercial services. FY2030: full commercial in Kobe.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Yokohama pilot (300 participants)</span><span class="tl-value onroad">Nov 2025–Jan 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Kobe Nada Gogo pilot</span><span class="tl-value onroad">Jan 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Wayve + Uber Tokyo MOU</span><span class="tl-value onroad">2026</span></div>
+    <div class="tl-row"><span class="tl-label">Tokyo robotaxi pilot</span><span class="tl-value pending">Late 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Commercial services</span><span class="tl-value pending">FY2027</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">2026</div><div class="news-teaser-text">Wayve + Uber + Nissan MOU for Tokyo robotaxi by late 2026. Kobe Nada Gogo pilot Jan 2026. Yokohama pilot Nov 2025 (300 public). FY2027 commercial target. FY2030 full commercial Kobe.</div><button class="news-view-more" data-row="proj-nissan-jp" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Apollo Go UAE ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Apollo Go — UAE (Abu Dhabi + Dubai)</span>
+  <span class="company-desc">Baidu&apos;s Apollo Go fully autonomous commercial service in the UAE — Abu Dhabi (live Jan 2026) and Dubai (live Mar 2026). Only company with fully driverless testing permit in Dubai. 1,000+ vehicles planned for Dubai.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-apollo-uae" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">Apollo Go × AutoGo — UAE Fully Driverless Commercial Service</span>
+  <span class="project-desc">Baidu Apollo Go&apos;s UAE deployment — the first fully autonomous commercial robotaxi service in the Middle East. Abu Dhabi (Yas Island, live Jan 2026) and Dubai (Jumeirah, live Mar 2026 via Uber). One of Abu Dhabi&apos;s inaugural fully driverless commercial permits. 1,000+ vehicles planned for Dubai alone.</span>
+  <button class="facts-trigger" data-row="proj-apollo-uae" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Middle East First Mover</span><span class="learn-tag">1,000+ Dubai Fleet</span>
+    <span class="learn-body">The UAE has embedded autonomous vehicles into its National AI Strategy 2030, targeting 25% of all trips by AV. Abu Dhabi&apos;s inaugural fully driverless commercial permit — one of only a handful issued globally — went to Apollo Go + AutoGo, validating the technology at a regulatory level that matters internationally. Dubai&apos;s plan for 1,000+ Apollo Go vehicles makes it one of the largest single-city robotaxi deployments ever announced. The brief March suspension (regulatory coordination) and rapid resumption demonstrates that UAE authorities are treating AV deployment as infrastructure rather than experiment. The Uber distribution in Dubai removes the app barrier for international tourists who already have Uber installed — a critical difference from China where Apollo Go uses its own app.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">AE</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇦🇪 Abu Dhabi (Yas Island → Reem, Al Maryah, Saadiyat expanding) · Dubai (Jumeirah, via Uber)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Apollo RT6 6th-gen (fully driverless)</span>
+    <span class="v-detail">Abu Dhabi: AutoGo app, Yas Island launch expanding to Reem/Al Maryah/Saadiyat islands. ITC (Integrated Transport Centre) fully driverless permit. Dubai: Uber app, 50 vehicles at launch, 1,000+ planned. Only company with fully driverless testing permit in Dubai (RTA issued Jan 2026). Brief suspension Mar 1–10 (regulatory coordination), resumed Mar 10, commercial ops Mar 30.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Abu Dhabi driverless permit</span><span class="tl-value onroad">Nov 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Abu Dhabi commercial launch (Yas)</span><span class="tl-value onroad">Jan 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Dubai driverless permit (RTA)</span><span class="tl-value onroad">Jan 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Dubai commercial launch (Uber)</span><span class="tl-value onroad">Mar 30, 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Dubai fleet target</span><span class="tl-value pending">1,000+ vehicles</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">Apollo Go Dubai launches via Uber (Mar 30) — 50 vehicles, 1,000+ planned. Abu Dhabi Yas Island live since Jan 2026. Only company with Dubai fully driverless permit. Brief regulatory pause Mar 1–10 then resumed.</div><button class="news-view-more" data-row="proj-apollo-uae" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ WeRide UAE ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">WeRide — UAE (Abu Dhabi + Dubai)</span>
+  <span class="company-desc">WeRide&apos;s UAE deployment — the world&apos;s first urban L4 commercial licence outside the US and China (Abu Dhabi). Dubai Jumeirah fully driverless paid service via Uber. Abu Dhabi fleet covers highways, islands and airport. Middle East subsidiary already operationally profitable.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="asia" id="proj-weride-uae" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">WeRide — UAE Fully Driverless Commercial Robotaxi</span>
+  <span class="project-desc">WeRide&apos;s UAE operations — world&apos;s first urban L4 commercial licence outside the US and China (Abu Dhabi). Fully driverless paid rides via Uber in Dubai Jumeirah district. Abu Dhabi fleet: highways, islands and airport. Middle East subsidiary reached operational profitability in 2025.</span>
+  <button class="facts-trigger" data-row="proj-weride-uae" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">World&apos;s First Urban L4 Licence (ex-US/CN)</span><span class="learn-tag">ME Already Profitable</span>
+    <span class="learn-body">WeRide&apos;s Abu Dhabi licence is a landmark: the world&apos;s first urban L4 commercial licence granted outside the US and China, in a jurisdiction with genuinely complex driving conditions (high speeds, mixed pedestrian environments, extreme heat). This matters because it&apos;s the proof point that Chinese AV technology can be certified by a non-Chinese regulator for commercial L4 operations. The UAE per-ride pricing (significantly higher than China) is why the Middle East subsidiary reached operational profitability — proving the WeRide model works where economics are more favourable. Dubai fully driverless paid rides via Uber (Dec 2024 launch, scaling 2025–26) combine WeRide&apos;s technology with the world&apos;s largest ride-hailing distribution network.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-cn">AE</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇦🇪 Abu Dhabi (highways, islands, airport) · Dubai Jumeirah + Umm Suqeim (via Uber)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">WeRide GXR (fully driverless, L4 certified)</span>
+    <span class="v-detail">Abu Dhabi: world&apos;s first urban L4 commercial licence (outside US + China). Tawasul local transport partner. Highways, islands, airport coverage. 500–1,000 vehicles planned 2026. Dubai: Uber app, Jumeirah + Umm Suqeim, fully driverless paid rides. Saudi Arabia: first robotaxi permits. Middle East subsidiary: operationally profitable 2025.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Abu Dhabi world first L4 licence</span><span class="tl-value onroad">2024</span></div>
+    <div class="tl-row"><span class="tl-label">Dubai via Uber (driverless paid)</span><span class="tl-value onroad">Dec 2024</span></div>
+    <div class="tl-row"><span class="tl-label">ME subsidiary profitable</span><span class="tl-value onroad">2025</span></div>
+    <div class="tl-row"><span class="tl-label">Saudi Arabia permits</span><span class="tl-value onroad">2025</span></div>
+    <div class="tl-row"><span class="tl-label">500–1,000 ME vehicles</span><span class="tl-value pending">2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Apr 2026</div><div class="news-teaser-text">WeRide Dubai: fully driverless paid rides via Uber in Jumeirah + Umm Suqeim. Abu Dhabi: world&apos;s first urban L4 licence outside US/China. ME subsidiary operationally profitable. Saudi Arabia permits secured. 500–1,000 vehicles planned 2026.</div><button class="news-view-more" data-row="proj-weride-uae" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
 </tbody>
 </table>
 </div><!-- /table-wrap -->
@@ -2319,7 +2881,7 @@
       <div class="map-region-switcher">
         <button class="map-region-btn active" onclick="switchMapRegion(this,'eu')">🇪🇺 Europe</button>
         <button class="map-region-btn" onclick="switchMapRegion(this,'na')">🌎 North America</button>
-        <button class="map-region-btn map-region-soon" disabled>🌏 Asia <span class="coming-soon-badge">Soon</span></button>
+        <button class="map-region-btn" onclick="switchMapRegion(this,'asia')">🌏 Asia</button>
       </div>
     </div>
     <div id="europeMap"></div>
@@ -2543,14 +3105,30 @@ const PROJECT_DOTS = [
   {id:"proj-aurora-us",     name:"Aurora Freight Network",    city:"Dallas",         country:"United States", lon:-96.797,  lat:32.776, status:"live",    seg:"truck"},
   {id:"proj-kodiak-us",     name:"Kodiak Driver US",          city:"Midland TX",     country:"United States", lon:-102.077, lat:31.997, status:"live",    seg:"truck"},
   {id:"proj-einride-us",    name:"Einride US Operations",     city:"Nashville",      country:"United States", lon:-86.782,  lat:36.163, status:"live",    seg:"truck"},
-  {id:"proj-uber-av",       name:"Uber AV Platform",          city:"San Francisco",  country:"United States", lon:-122.410, lat:37.760, status:"live",    seg:"robotaxi"},
+  {id:"proj-uber-av",       name:"Uber AV Platform",          city:"San Jose",       country:"United States", lon:-121.886, lat:37.338, status:"live",    seg:"robotaxi"},
   {id:"proj-gatik-canada",  name:"Gatik × Loblaw Canada",    city:"Toronto",        country:"Canada",        lon:-79.347,  lat:43.651, status:"live",    seg:"truck"},
-  {id:"proj-motional",  name:"Motional Las Vegas",        city:"Las Vegas",      country:"United States", lon:-115.140, lat:36.168, status:"pilot",   seg:"robotaxi"},
-  {id:"proj-avride",    name:"Avride Dallas",              city:"Dallas",         country:"United States", lon:-96.810,  lat:32.790, status:"pilot",   seg:"robotaxi"},
-  {id:"proj-nuro-lucid",name:"Nuro × Lucid × Uber",       city:"San Francisco",  country:"United States", lon:-122.450, lat:37.790, status:"planned", seg:"robotaxi"},
-  {id:"proj-lyft-av",   name:"Lyft AV Platform",          city:"Nashville",      country:"United States", lon:-86.792,  lat:36.162, status:"live",      seg:"robotaxi"},
-  {id:"proj-perrone",   name:"Perrone CONNECT Detroit",    city:"Detroit",        country:"United States", lon:-83.048,  lat:42.331, status:"live",      seg:"shuttle"},
-  {id:"proj-tensor",    name:"Tensor Robocar",             city:"San Francisco",  country:"United States", lon:-122.431, lat:37.774, status:"announced", seg:"robotaxi"},
+  {id:"proj-motional",      name:"Motional Las Vegas",        city:"Las Vegas",      country:"United States", lon:-115.050, lat:35.900, status:"pilot",   seg:"robotaxi"},
+  {id:"proj-avride",        name:"Avride Dallas",             city:"Dallas",         country:"United States", lon:-96.820,  lat:32.810, status:"pilot",   seg:"robotaxi"},
+  {id:"proj-nuro-lucid",    name:"Nuro × Lucid × Uber",      city:"Palo Alto",      country:"United States", lon:-122.143, lat:37.442, status:"planned", seg:"robotaxi"},
+  {id:"proj-lyft-av",       name:"Lyft AV Platform",         city:"Nashville",      country:"United States", lon:-86.760,  lat:36.180, status:"live",    seg:"robotaxi"},
+  {id:"proj-perrone",       name:"Perrone CONNECT Detroit",  city:"Detroit",        country:"United States", lon:-83.048,  lat:42.331, status:"live",    seg:"shuttle"},
+  {id:"proj-tensor",        name:"Tensor Robocar",           city:"Oakland",        country:"United States", lon:-122.271, lat:37.804, status:"announced",seg:"robotaxi"},
+  {id:"proj-vay", name:"Vay Teledriving LV", city:"Las Vegas", country:"United States", lon:-115.172, lat:36.115, status:"live", seg:"robotaxi"},
+  // Asia
+  {id:"proj-apollo-cn",       name:"Apollo Go China",          city:"Wuhan",        country:"China",       lon:114.341, lat:30.546, status:"live",      seg:"robotaxi"},
+  {id:"proj-ponyai-cn",       name:"Pony.ai China",            city:"Guangzhou",    country:"China",       lon:113.264, lat:23.129, status:"live",      seg:"robotaxi"},
+  {id:"proj-weride-cn",       name:"WeRide China",             city:"Shanghai",     country:"China",       lon:121.473, lat:31.230, status:"live",      seg:"robotaxi"},
+  {id:"proj-xpeng-robotaxi",  name:"Xpeng Robotaxi",           city:"Guangzhou",    country:"China",       lon:113.330, lat:23.200, status:"announced", seg:"robotaxi"},
+  {id:"proj-caocao",          name:"Caocao Hangzhou",          city:"Hangzhou",     country:"China",       lon:120.153, lat:30.287, status:"live",      seg:"robotaxi"},
+  {id:"proj-weride-sg",       name:"Ai.R Punggol Singapore",   city:"Singapore",    country:"Singapore",   lon:103.906, lat:1.401,  status:"live",      seg:"shuttle"},
+  {id:"proj-ponyai-sg",       name:"Pony.ai ComfortDelGro SG", city:"Singapore",    country:"Singapore",   lon:103.916, lat:1.411,  status:"pilot",     seg:"shuttle"},
+  {id:"proj-didi",        name:"DiDi Autonomous Guangzhou",  city:"Guangzhou",   country:"China",       lon:113.310, lat:23.190, status:"pilot", seg:"robotaxi"},
+  {id:"proj-hello",       name:"Hello Robotaxi HR1",         city:"Zhuzhou",     country:"China",       lon:113.133, lat:27.833, status:"live",  seg:"robotaxi"},
+  {id:"proj-ontime",      name:"ONTIME Ruqi Guangzhou",      city:"Guangzhou",   country:"China",       lon:113.270, lat:22.900, status:"live",  seg:"robotaxi"},
+  {id:"proj-deeproute",   name:"DeepRoute.ai Shenzhen",      city:"Shenzhen",    country:"China",       lon:114.057, lat:22.543, status:"pilot", seg:"robotaxi"},
+  {id:"proj-nissan-jp",   name:"Nissan Japan AV Pilots",     city:"Yokohama",    country:"Japan",       lon:139.638, lat:35.444, status:"pilot", seg:"shuttle"},
+  {id:"proj-apollo-uae",  name:"Apollo Go UAE",              city:"Abu Dhabi",   country:"UAE",         lon:54.366,  lat:24.453, status:"live",  seg:"robotaxi"},
+  {id:"proj-weride-uae",  name:"WeRide UAE",                 city:"Dubai",       country:"UAE",         lon:55.270,  lat:25.197, status:"live",  seg:"robotaxi"},
 ];
 
 
@@ -2558,7 +3136,7 @@ const PROJECT_DOTS = [
 let activeRegion = 'all';
 
 function updateStats() {
-  const counts = {all:{p:50,c:33,co:'20+'}, eu:{p:32,c:18,co:'15+'}, na:{p:18,c:15,co:'2+'}, asia:{p:0,c:0,co:'0'}};
+  const counts = {all:{p:65,c:46,co:'25+'}, eu:{p:32,c:18,co:'15+'}, na:{p:19,c:16,co:'2+'}, asia:{p:14,c:12,co:'5'}};
   const c = counts[activeRegion] || counts.all;
   const sp = document.getElementById('statProjects');
   const sc = document.getElementById('statCompanies');
@@ -3694,6 +4272,337 @@ const SP_DATA = {
       {label:'Google News — Tensor Robocar', url:'https://news.google.com/search?q=Tensor+Robocar+autonomous+2026'},
     ]
   },
+  'proj-vay': {
+    title: 'Vay Teledriving — Las Vegas Commercial Service',
+    org: [
+      {k:'HQ',           v:'Berlin, Germany (US ops: Las Vegas, NV)'},
+      {k:'CEO',          v:'Thomas von der Ohe (co-founder)'},
+      {k:'Total raised', v:'$221.9M total · Grab strategic investment ($410M potential, Nov 2025)'},
+      {k:'Fleet',        v:'Kia e-Niro EV · 100-vehicle Las Vegas target (end 2025)'},
+      {k:'Service area', v:'Las Vegas Strip, UNLV, Arts District, surrounding hotels'},
+      {k:'Trips',        v:'Tens of thousands completed (Las Vegas, 2024–25)'},
+      {k:'Pricing',      v:'~50% cheaper than Uber · per-minute rental model'},
+      {k:'Partners',     v:'Grab (investor), Kodiak Robotics (truck teledriving), Nexar (predictive AI safety)'},
+    ],
+    facts: 'Vay is not an autonomous vehicle company — and that\'s the point. A human teledriver operates the car remotely from a simulator, delivering it to the user\'s location with no one physically inside. From the rider\'s perspective, the experience is identical to a robotaxi pickup. The business model targets the same pain point as AV: eliminating driver cost for vehicle repositioning. Automotive-grade certified by German TÜV. Tens of thousands of commercial trips completed in Las Vegas since Jan 2024. Grab\'s potential $410M investment validates the model at scale. Kodiak partnership extends teledriving to autonomous truck support operations. Vay\'s real-world driving dataset is a direct input to future autonomous capabilities — they are explicitly building toward adding L4 autonomy on top of their teledriving infrastructure.',
+    news: [
+      {date:'Mar 2026', text:'Vay and Nexar partner to bring predictive AI safety to the world\'s first commercial remotely driven fleet — Nexar\'s collision prediction model integrated into Vay\'s teledrive operations.', src:'PR Newswire', url:'https://news.google.com/search?q=Vay+Nexar+teledriving+2026'},
+      {date:'Nov 2025', text:'Grab to make strategic investment in Vay — up to $410M. Partnership also explores SE Asia expansion synergies. Vay completes tens of thousands of Las Vegas trips.', src:'TechCrunch', url:'https://techcrunch.com/2025/11/10/remote-driving-startup-vay-could-grab-up-to-410m-from-singapores-grab/'},
+      {date:'Jan 2025', text:'Vay opens 8,500 sq ft Las Vegas production facility — processes up to 16 vehicles/week. Expanding fleet to 100 Kia e-Niro EVs. B2B truck teledriving launching.', src:'Vay', url:'https://vay.io/'},
+      {date:'Jan 2024', text:'Vay launches world\'s first commercial teledriving service in Las Vegas — around UNLV and Arts District. Users order via app, teledriver delivers car remotely, user drives to destination.', src:'Vay', url:'https://vay.io/vay-launches-commercial-driverless-mobility-service-with-remotely-driven-cars-in-las-vegas-nevada/'},
+    ],
+    sources: [
+      {label:'Vay.io', url:'https://vay.io/'},
+      {label:'TechCrunch — Grab investment', url:'https://techcrunch.com/2025/11/10/remote-driving-startup-vay-could-grab-up-to-410m-from-singapores-grab/'},
+      {label:'Google News — Vay teledriving', url:'https://news.google.com/search?q=Vay+teledriving+Las+Vegas+2026'},
+    ]
+  },
+  'proj-apollo-cn': {
+    title: 'Apollo Go — China Commercial Robotaxi Network',
+    org: [
+      {k:'Parent',         v:'Baidu Inc. (NASDAQ: BIDU, HKEX: 9888)'},
+      {k:'Cities',         v:'22 cities across China — Wuhan largest (70%+ of ops)'},
+      {k:'Weekly rides',   v:'300,000 peak (Q4 2025)'},
+      {k:'Cumulative trips', v:'20M+ (by Feb 2026)'},
+      {k:'Autonomous km',  v:'240M+ total, 190M+ fully driverless'},
+      {k:'Vehicle',        v:'Apollo RT6 6th-gen ($27,500/unit, detachable steering wheel)'},
+      {k:'International',  v:'South Korea (Feb 2026) · Dubai via Uber (Mar 2026) · Abu Dhabi via AutoGo (Jan 2026) · London H1 2026'},
+    ],
+    facts: 'Apollo Go is neck-and-neck with Waymo for the title of world\'s largest robotaxi service by trip volume — both crossed 20 million cumulative trips around the same time in early 2026. Operating 100% driverless across all commercial operations since February 2025. The 300,000 weekly rides peak in Q4 2025 represents 200%+ YoY growth — the fastest scaling in robotaxi history. The RT6 at $27,500 per unit is the lowest-cost purpose-built robotaxi ever deployed commercially. Baidu\'s global strategy: use Uber and Lyft as distribution channels to enter new markets (Dubai, London, South Korea) without building a local app — the same model as Waymo in the US.',
+    news: [
+      {date:'Mar 2026', text:'Apollo Go launches in Dubai via Uber — fully unmanned commercial operations begin Mar 30 after brief regulatory pause. Only company with fully driverless testing permit in Dubai.', src:'Apollo Go', url:'https://www.apollogo.com/'},
+      {date:'Feb 2026', text:'Apollo Go reaches 20M cumulative trips, 300K weekly rides peak (+200% YoY in Q4 2025). Launches in South Korea — first Asian market beyond China + HK.', src:'CnEVPost', url:'https://cnevpost.com/2026/02/27/baidu-apollo-go-robotaxi-300000-weekly-rides-expands-to-south-korea/'},
+      {date:'Jan 2026', text:'Apollo Go + AutoGo commence fully autonomous commercial ride-hailing on Yas Island, Abu Dhabi — first public fully driverless robotaxi service in the Middle East.', src:'PR Newswire', url:'https://www.prnewswire.com/news-releases/baidus-apollo-go-and-k2s-autogo-commence-fully-autonomous-ride-hailing-service-on-yas-island-announce-phased-expansion-across-abu-dhabi-302663468.html'},
+      {date:'Jul 2025', text:'Baidu and Uber announce multi-year global partnership to deploy thousands of Apollo Go vehicles across Asia and Middle East. Lyft partnership for Germany + UK announced Aug 2025.', src:'Baidu', url:'https://www.apollogo.com/'},
+    ],
+    sources: [
+      {label:'Apollo Go', url:'https://www.apollogo.com/'},
+      {label:'Google News — Apollo Go', url:'https://news.google.com/search?q=Apollo+Go+Baidu+robotaxi+2026'},
+    ]
+  },
+  'proj-ponyai-cn': {
+    title: 'Pony.ai — China Commercial Robotaxi (Gen-7)',
+    org: [
+      {k:'Listed',         v:'NASDAQ: PONY + HKEX: 2026 (HK IPO raised ~$993M)'},
+      {k:'CEO',            v:'Dr. James Peng (co-founder)'},
+      {k:'Fleet',          v:'961 vehicles (667 Gen-7) as of Nov 2025 · 3,000+ target end 2026'},
+      {k:'Cities',         v:'Beijing · Shanghai · Guangzhou · Shenzhen (all 4 tier-1 cities) — 24/7'},
+      {k:'OEM partners',   v:'Toyota (shareholder) · GAC Toyota · BAIC'},
+      {k:'Unit economics', v:'City-wide breakeven achieved in Shenzhen (338 RMB/day, 23 orders/vehicle)'},
+      {k:'BOM reduction',  v:'70% reduction Gen-5→7 ADK · 20% additional reduction for 2026 production'},
+    ],
+    facts: 'Pony.ai is the only company to operate fully driverless commercial robotaxi services in all four Chinese tier-1 cities simultaneously (Beijing, Shanghai, Guangzhou, Shenzhen). The Gen-7 achieved city-wide unit economics breakeven in Shenzhen in Q3 2025 — the first Chinese robotaxi company to reach this milestone. The Toyota partnership means Pony.ai is transitioning from fleet operator to technology licensor, the most capital-efficient robotaxi model. Dual listing on NASDAQ and HKEX raised ~$993M for fleet scale-up. Gen-4 Robotruck (SANY + Dongfeng) entering mass production in 2026 adds a second vertical. International: Singapore via ComfortDelGro, Middle East via Uber/RTA Dubai, Luxembourg European Centre.',
+    news: [
+      {date:'Feb 2026', text:'Pony.ai + Toyota roll out 1,000 mass-produced Gen-7 robotaxis in 2026. Only company with fully driverless service in all 4 Chinese tier-1 cities. 3,000+ fleet target end 2026.', src:'SCMP', url:'https://www.scmp.com/business/china-business/article/3342953/pony-ai-and-toyota-roll-out-mass-produced-robotaxis-chinas-autonomous-drive-push'},
+      {date:'Nov 2025', text:'Gen-7 launched in Guangzhou, Shenzhen and Beijing with fully driverless commercial ops. City-wide UE breakeven in Shenzhen: 338 RMB/day, 23 orders/vehicle. 70% BOM cost reduction.', src:'Pony.ai IR', url:'https://ir.pony.ai/'},
+      {date:'Nov 2025', text:'Gen-4 Robotruck announced with SANY + Dongfeng Liuzhou Motor — mass production scale 1,000 units, deployment 2026. Extends Pony.ai into autonomous trucking vertical.', src:'Pony.ai IR', url:'https://ir.pony.ai/news-releases/news-release-details/pony-ai-inc-announces-gen-4-autonomous-trucks-set-mass'},
+    ],
+    sources: [
+      {label:'Pony.ai IR', url:'https://ir.pony.ai/'},
+      {label:'Google News — Pony.ai', url:'https://news.google.com/search?q=Pony.ai+robotaxi+China+2026'},
+    ]
+  },
+  'proj-weride-cn': {
+    title: 'WeRide — China Multi-Vertical AV Operations',
+    org: [
+      {k:'Listed',         v:'NASDAQ: WRD + HKEX: 0800'},
+      {k:'Global permits', v:'6 countries: China · UAE · Singapore · Saudi Arabia · France · USA'},
+      {k:'Global fleet',   v:'1,600+ vehicles (750 robotaxis) as of Q3 2025 — target 2,600+ end 2026'},
+      {k:'Revenue growth', v:'761% YoY robotaxi revenue in Q3 2025'},
+      {k:'ME subsidiary',  v:'Operationally profitable (2025)'},
+      {k:'Products',       v:'GXR robotaxi · Robobus · Robovan · Robosweeper'},
+      {k:'OEM partners',   v:'Geely · Chery Group · Farizon (SuperVan platform)'},
+    ],
+    facts: 'WeRide holds permits in 6 countries simultaneously — the most of any AV company globally. The Middle East subsidiary reaching operating profitability in 2025 is the clearest proof point that the Chinese robotaxi model works in international markets where per-ride prices are higher. The 761% YoY robotaxi revenue growth in Q3 2025 is the highest of any AV company globally. WeRide\'s multi-vertical strategy (robotaxi + robobus + robovan + robosweeper) diversifies revenue pathways. The Geely and Chery OEM partnerships position WeRide as a technology platform rather than a fleet operator. Grab invested in WeRide in Aug 2025 for SE Asia expansion.',
+    news: [
+      {date:'Apr 2026', text:'WeRide Singapore Ai.R service opens to public (Apr 1) — Singapore\'s first AV in a residential estate. Slovakia national AV programme. Tencent Mobility integration in China.', src:'WeRide IR', url:'https://ir.weride.ai/'},
+      {date:'Q3 2025', text:'WeRide reports 761% YoY robotaxi revenue growth. Global fleet exceeds 1,600 vehicles. Middle East subsidiary reaches operating profitability.', src:'WeRide', url:'https://ir.weride.ai/'},
+      {date:'Aug 2025', text:'Grab makes strategic investment in WeRide to accelerate SE Asia robotaxi + shuttle deployment. Partnership targets Singapore, then broader SE Asia expansion.', src:'Nasdaq', url:'https://www.nasdaq.com/'},
+    ],
+    sources: [
+      {label:'WeRide IR', url:'https://ir.weride.ai/'},
+      {label:'Google News — WeRide', url:'https://news.google.com/search?q=WeRide+autonomous+2026'},
+    ]
+  },
+  'proj-xpeng-robotaxi': {
+    title: 'Xpeng Robotaxi — GX (VLA 2.0, China + Global)',
+    org: [
+      {k:'Listed',         v:'NYSE: XPEV + HKEX: 9868'},
+      {k:'CEO',            v:'He Xiaopeng (founder)'},
+      {k:'Robotaxi BU',   v:'Tier-1 org formed Mar 23, 2026'},
+      {k:'Vehicle',        v:'GX (6-seat SUV) + 5-seat + 7-seat variants, all under 200K CNY (~$28K)'},
+      {k:'AI stack',       v:'VLA 2.0 (end-to-end AI, no LiDAR, no HD maps)'},
+      {k:'Compute',        v:'4x Turing AI chips, 3,000 TOPS'},
+      {k:'External customer', v:'Volkswagen — first Western OEM to license Chinese AD AI'},
+      {k:'Distribution',   v:'Amap (873M MAU) as first booking partner'},
+    ],
+    facts: 'Xpeng\'s GX is China\'s first factory-integrated mass-produced L4 robotaxi prototype — built on the same production line as consumer vehicles, no modifications required. VLA 2.0 (camera-only, no LiDAR, no HD maps) is the boldest cost bet in Chinese robotaxi: if it generalises, Xpeng\'s COGS will be far lower than LiDAR-based competitors. Volkswagen licensing VLA 2.0 (first Western OEM to adopt Chinese AI for autonomous driving) is the strongest external validation of the technology. L4 road tests began in Guangzhou in February 2026. Passenger-carrying demo operations targeting H2 2026. Fully driverless (no safety operator) targeted 2027. Annual production capacity: 10,000 units.',
+    news: [
+      {date:'Mar 2026', text:'Xpeng establishes dedicated Robotaxi Business Unit as tier-1 org. GX L4 road tests underway in Guangzhou. VW confirmed as first VLA 2.0 external customer. H2 2026 demo ops targeted.', src:'CnEVPost', url:'https://cnevpost.com/2026/03/23/xpeng-sets-up-robotaxi-unit-accelerate-commercial-rollout/'},
+      {date:'Feb 2026', text:'Volkswagen named as first external customer for Turing chip and VLA 2.0 — first Western OEM to license Chinese autonomous driving AI. GX receives L4 intelligent connected vehicle test approval in Guangzhou.', src:'Electrive', url:'https://eletric-vehicles.com/xpeng/volkswagen-to-adopt-xpengs-autonomous-driving-solution-vla-2-0/'},
+      {date:'Nov 2025', text:'Xpeng reveals 3 robotaxi models at AI Day — 5, 6 and 7-seat variants all under 200K CNY. China\'s first mass-produced robotaxis. Amap (873M MAU) as first booking partner.', src:'Self Driving Cars 360', url:'https://www.selfdrivingcars360.com/xpengs-new-robotaxi-business-unit-targets-driverless-l4-operations-in-2027/'},
+    ],
+    sources: [
+      {label:'Xpeng IR', url:'https://ir.xpeng.com/'},
+      {label:'Google News — Xpeng robotaxi', url:'https://news.google.com/search?q=Xpeng+robotaxi+VLA+2026'},
+    ]
+  },
+  'proj-caocao': {
+    title: 'Caocao Robotaxi — Hangzhou Commercial Fleet',
+    org: [
+      {k:'Parent',         v:'Geely Group (Caocao Mobility)'},
+      {k:'Listed',         v:'Hong Kong Stock Exchange (Jun 2025)'},
+      {k:'Platform',       v:'China\'s 2nd-largest ride-hailing (after DiDi)'},
+      {k:'Fleet',          v:'100-vehicle robotaxi fleet in Hangzhou'},
+      {k:'Profitability',  v:'First quarterly net profit Q4 2025'},
+      {k:'Driverless',     v:'First company cleared for driverless tests (no safety driver) in Hangzhou, Apr 2026'},
+      {k:'2030 target',    v:'100,000 purpose-built robotaxis globally'},
+    ],
+    facts: 'Caocao\'s structural advantage: it already operates China\'s second-largest ride-hailing platform, meaning it doesn\'t need to build a robotaxi app or acquire customers — it replaces human drivers with autonomous ones in an existing network. Reached quarterly net profit in Q4 2025 as a ride-hailing platform (before robotaxi revenue scales) — the underlying business is financially sound. First cleared for driverless tests without safety drivers in Hangzhou in April 2026. The Geely supply chain (shared components with Zeekr, Volvo, Lynk & Co) gives cost advantages no pure-play AV company has. CEO forecast only 3-4 robotaxi operators will survive in China by 2030; Caocao intends to be one of them.',
+    news: [
+      {date:'Apr 2026', text:'Caocao becomes first company cleared for driverless road tests without safety drivers in Hangzhou. 100-vehicle robotaxi fleet operating commercially.', src:'Automotive World', url:'https://www.automotiveworld.com/news/geelys-caocao-plans-100000-purpose-built-robotaxis-by-2030/'},
+      {date:'Q4 2025', text:'Caocao records first quarterly adjusted net profit. HK IPO completed Jun 2025. CEO announces 100,000 robotaxi target by 2030, thousands globally from 2027.', src:'Automotive World', url:'https://www.automotiveworld.com/news/geelys-caocao-plans-100000-purpose-built-robotaxis-by-2030/'},
+      {date:'Feb 2025', text:'Caocao begins robotaxi operations in Hangzhou — leveraging Geely ecosystem and existing ride-hailing network as distribution base.', src:'China Daily', url:'https://global.chinadaily.com.cn/'},
+    ],
+    sources: [
+      {label:'Automotive World — Caocao', url:'https://www.automotiveworld.com/news/geelys-caocao-plans-100000-purpose-built-robotaxis-by-2030/'},
+      {label:'Google News — Caocao robotaxi', url:'https://news.google.com/search?q=Caocao+Geely+robotaxi+2026'},
+    ]
+  },
+  'proj-weride-sg': {
+    title: 'Ai.R — Singapore\'s First Public Autonomous Ride Service',
+    org: [
+      {k:'Operators',      v:'Grab (distribution + ops) × WeRide (technology)'},
+      {k:'District',       v:'Punggol residential estate, Singapore (first residential AV in Singapore)'},
+      {k:'Vehicles',       v:'WeRide GXR (5-seat) + Robobus (8-seat) — both M1 certified'},
+      {k:'Routes',         v:'2 full loop routes + 20-min mini route. Weekdays 9:30AM–5:30PM'},
+      {k:'Safety ops',     v:'14 certified Grab Safety Operators (Grab driver-partners retrained)'},
+      {k:'Mileage',        v:'30,000km autonomous mileage as of launch'},
+      {k:'Regulation',     v:'Singapore Milestone 1 (M1) — most rigorous AV cert in SE Asia'},
+      {k:'Fares',          v:'Free until commercial launch mid-2026'},
+    ],
+    facts: 'Singapore\'s first autonomous passenger service in a residential estate, launched publicly April 1, 2026. WeRide GXR and Robobus passed Singapore\'s stringent Milestone 1 safety assessment — among the toughest AV certification processes globally — in just 7 months from assessment to public launch. Free rides until mid-2026 commercial launch. Part of Singapore\'s national AV roadmap targeting 100-150 autonomous vehicles by end 2026. Grab\'s superapp distribution (35M+ monthly users across SE Asia) provides immediate scale. 14 Grab driver-partners retrained as AV Safety Operators — model for workforce transition. Pony.ai + ComfortDelGro planning a separate Punggol route alongside Ai.R.',
+    news: [
+      {date:'Apr 2026', text:'Ai.R opens to public — Singapore\'s first AV in a residential estate. 1,000+ trial riders, 30,000km autonomous mileage. Free until mid-2026 commercial launch. Two routes + mini route in Punggol.', src:'Grab', url:'https://www.grab.com/sg/press/others/grab-in-partnership-with-weride-officially-launch-singapores-first-autonomous-public-ride-service-in-punggol/'},
+      {date:'Jan 2026', text:'Community trial phase begins — 1,000+ Punggol residents and community leaders trial Ai.R. 14 Grab driver-partners complete Safety Operator training with WeRide + GrabAcademy.', src:'WeRide IR', url:'https://ir.weride.ai/news-releases/news-release-details/weride-and-grab-officially-launch-singapores-first-autonomous'},
+      {date:'Aug 2025', text:'Grab and WeRide announce strategic partnership + Grab equity investment in WeRide. Ai.R service planned for Punggol. Singapore LTA designates Grab as sole operator for the pilot.', src:'WeRide', url:'https://www.weride.ai/'},
+    ],
+    sources: [
+      {label:'Grab × WeRide Ai.R launch', url:'https://www.grab.com/sg/press/others/grab-in-partnership-with-weride-officially-launch-singapores-first-autonomous-public-ride-service-in-punggol/'},
+      {label:'WeRide IR', url:'https://ir.weride.ai/news-releases/news-release-details/weride-and-grab-officially-launch-singapores-first-autonomous'},
+      {label:'Google News — Ai.R Singapore', url:'https://news.google.com/search?q=WeRide+Grab+Ai.R+Singapore+2026'},
+    ]
+  },
+  'proj-ponyai-sg': {
+    title: 'Pony.ai × ComfortDelGro — Singapore AV Shuttle',
+    org: [
+      {k:'AV technology',  v:'Pony.ai (NASDAQ: PONY)'},
+      {k:'Operator',       v:'ComfortDelGro — Singapore\'s largest land transport operator (buses, taxis, rail)'},
+      {k:'District',       v:'Punggol, Singapore — alongside WeRide/Grab Ai.R on separate route'},
+      {k:'Relationship',   v:'Pony.ai also partnering with ComfortDelGro in Luxembourg for EU expansion'},
+    ],
+    facts: 'ComfortDelGro is Singapore\'s largest land transport operator — buses, taxis, MRT feeder services. A partnership at this level is not a startup experiment; it\'s integration into the backbone of Singapore\'s public transport system. Punggol is being developed into Singapore\'s first residential AV district with both Ai.R (WeRide/Grab) and this Pony.ai/ComfortDelGro route operating simultaneously — the most AV-dense residential area outside China. The ComfortDelGro relationship also extends to Luxembourg, where Pony.ai established its European Centre.',
+    news: [
+      {date:'2025–26', text:'Pony.ai and ComfortDelGro planning autonomous Punggol route alongside Ai.R — Singapore\'s first multi-operator AV residential district. Pony.ai also partnering with ComfortDelGro in Luxembourg.', src:'ZAG Daily', url:'https://zagdaily.com/connected/grab-and-weride-launch-autonomous-passenger-trials-in-singapore/'},
+    ],
+    sources: [
+      {label:'Google News — Pony.ai Singapore', url:'https://news.google.com/search?q=Pony.ai+ComfortDelGro+Singapore+autonomous'},
+    ]
+  },
+  'proj-didi': {
+    title: 'DiDi Autonomous — Guangzhou Driverless Trial + R2 Rollout',
+    org: [
+      {k:'Parent',         v:'DiDi Global Inc. — China\'s largest ride-hailing (500M+ users, 400+ cities)'},
+      {k:'AD division',    v:'DiDi Autonomous Driving (subsidiary, founded 2016)'},
+      {k:'Series D',       v:'2B RMB (Oct 2025) — Beijing AI funds + GAC Group'},
+      {k:'R1 vehicle',     v:'Modified Volvo XC90 — Guangzhou + Beijing driverless testing'},
+      {k:'R2 vehicle',     v:'GAC Aion V platform, 33 sensors, 2,000 TOPS GPU, triple-domain fusion'},
+      {k:'Distribution',   v:'DiDi app (500M+ users) — mixed dispatch human/autonomous'},
+      {k:'UAE',            v:'Overseas testing planned 2026 (announced Apr 2026)'},
+    ],
+    facts: 'DiDi launched 24/7 fully driverless robotaxi trial in Guangzhou via its own app in December 2025. The R2 — co-developed with GAC Aion, 33 sensors, 2,000 TOPS compute — was delivered January 2026 and secured Beijing road test licence in March 2026. Series D of 2 billion RMB raised October 2025. DiDi\'s core advantage: 500 million registered users already using the DiDi app — the mixed dispatch model (system decides human or AV based on conditions) removes adoption friction entirely. DiDi announced UAE overseas testing plans in April 2026, following Baidu, WeRide and Pony.ai into the Middle East. Zhang Bo (DiDi AD CEO) advocates for mixed human/robotaxi networks as the commercial viability model.',
+    news: [
+      {date:'Apr 2026', text:'DiDi announces UAE overseas robotaxi testing plans for 2026 — following Baidu, WeRide and Pony.ai into Middle East market.', src:'CNBC', url:'https://www.cnbc.com/2026/04/15/china-robotaxi-didi-weride-baidu-dubai-uae-expansion.html'},
+      {date:'Mar 2026', text:'R2 (GAC Aion V, 33 sensors, 2,000 TOPS) secures Beijing road test licence — second approval after Guangzhou. Delivered January 2026. First robotaxi developed by ride-hailing operator + manufacturer JV.', src:'Gasgoo', url:'https://autonews.gasgoo.com/'},
+      {date:'Dec 2025', text:'DiDi launches 24/7 fully driverless robotaxi trial in Guangzhou via DiDi app. Covers subway stations, schools, shopping centres. Users can hail autonomous rides directly through existing app.', src:'TechNode', url:'https://technode.com/2025/12/02/didi-launches-all-day-fully-driverless-robotaxi-service-in-guangzhou/'},
+      {date:'Oct 2025', text:'DiDi Autonomous Driving completes 2B RMB Series D — investors include Beijing AI funds, Zhongguancun fund, GAC Group. Capital for AI R&D and commercial deployment.', src:'Gasgoo', url:'https://autonews.gasgoo.com/'},
+    ],
+    sources: [
+      {label:'DiDi', url:'https://www.didiglobal.com/'},
+      {label:'Google News — DiDi robotaxi', url:'https://news.google.com/search?q=DiDi+autonomous+robotaxi+2026'},
+    ]
+  },
+  'proj-hello': {
+    title: 'Hello Robotaxi HR1 — China Commercial Rollout',
+    org: [
+      {k:'Parent',         v:'Hellobike (Hello Group) — backed by Ant Group (Alibaba affiliate)'},
+      {k:'Battery JV',     v:'CATL (world\'s largest battery manufacturer)'},
+      {k:'Chip partner',   v:'Horizon Robotics'},
+      {k:'Overseas partner', v:'ComfortDelGro (Singapore\'s largest land transport operator)'},
+      {k:'Commercial ops', v:'Zhuzhou (Hunan) + Liyang (Jiangsu)'},
+      {k:'Testing',        v:'Shanghai · Guangzhou · Changzhou · Changsha'},
+      {k:'Fleet target',   v:'10,000 units · 10+ cities by end 2026'},
+    ],
+    facts: 'Hello (Hellobike) is China\'s largest bike-sharing and two-wheeler platform — its HR1 is the first purpose-built robotaxi from a shared mobility operator rather than a pure AV or OEM company. Commercial operations are live in Zhuzhou and Liyang. The CATL joint venture gives Hello preferential access to the world\'s best battery technology at lowest cost — a structural cost advantage over every other robotaxi company. Mass production (SOP) targeted June 2026 with 10,000-unit initial fleet. ComfortDelGro partnership opens overseas markets. Note: December 2025 pedestrian collision in one city caused temporary local suspension — flagged for transparency.',
+    news: [
+      {date:'Dec 2025', text:'CATL/Hello JV targets mass production June 2026. Commercial ops live in Zhuzhou + Liyang. Testing in Shanghai, Guangzhou, Changsha. ComfortDelGro partnership for China + overseas markets.', src:'Automotive World', url:'https://www.automotiveworld.com/news/catl-hello-robotaxi-jv-targets-mass-production-in-june-2026/'},
+      {date:'Nov 2025', text:'Hello and ComfortDelGro announce collaboration on robotaxi deployment in China and overseas markets — Hello\'s first international partner agreement.', src:'TNGlobal', url:'https://technode.global/2025/11/26/comfortdelgro-hello-collaborate-on-robotaxi-deployment-in-china-and-overseas-markets/'},
+      {date:'Sep 2025', text:'Hello unveils HR1 — first mass-produced purpose-built robotaxi from a shared mobility operator. Pilot ops in Zhuzhou. 10,000-unit target, 10+ cities + overseas pilot. Horizon Robotics chip partnership.', src:'Gasgoo', url:'https://autonews.gasgoo.com/articles/news/hello-unveils-first-purpose-built-robotaxi-hr1-70038993'},
+    ],
+    sources: [
+      {label:'Automotive World — Hello CATL', url:'https://www.automotiveworld.com/news/catl-hello-robotaxi-jv-targets-mass-production-in-june-2026/'},
+      {label:'Google News — Hello Robotaxi', url:'https://news.google.com/search?q=Hello+Robotaxi+HR1+2026'},
+    ]
+  },
+  'proj-ontime': {
+    title: 'ONTIME Robotaxi — China\'s First Mixed Autonomous Ride-Hailing Platform',
+    org: [
+      {k:'Also known as',  v:'Ruqi Mobility / Chenqi Technology'},
+      {k:'Listed',         v:'HKSE: 9680'},
+      {k:'Shareholders',   v:'GAC Group (majority) · Tencent (2nd largest) · WeRide · Pony.ai (Series A investors)'},
+      {k:'Tech stack',     v:'Pony.ai Gen-6 autonomous driving hardware + software'},
+      {k:'Vehicle',        v:'GAC Toyota Sienna Autono-MaaS (S-AM)'},
+      {k:'Commercial ops', v:'Nansha Guangzhou (unmanned demo, Dec 2022) · Shenzhen Baoan (paid, Jan 2024)'},
+      {k:'Distribution',   v:'ONTIME app + WeChat mini-program (Tencent)'},
+    ],
+    facts: 'ONTIME (Ruqi Mobility) achieved a global first in 2022: the world\'s first ride-hailing platform to commercially operate a mixed fleet of human drivers and robotaxis simultaneously, dispatched from a single app. The system — not the passenger — decides whether to send a human or autonomous vehicle, based on location, road conditions, and wait times. This is the most commercially pragmatic rollout model because it requires no behavior change from riders. Fully unmanned commercial demo ops in Nansha Guangzhou launched December 2022. Paid charged services in Shenzhen Baoan began January 2024. Backed by both WeRide and Pony.ai as Series A investors — unusual position as a neutral operator above competing AV tech stacks.',
+    news: [
+      {date:'Jul 2025', text:'ONTIME launches Robotaxi+ strategy — expanding mixed fleet operations and deepening integration with Pony.ai Gen-7 vehicles.', src:'Gasgoo', url:'https://autonews.gasgoo.com/'},
+      {date:'Jan 2024', text:'ONTIME launches paid charged robotaxi service in Shenzhen Baoan — multiple zones including Qianhai, Yuehai Nanshan, airport area. First paid AV service in Shenzhen from a ride-hailing platform.', src:'GDToday', url:'https://www.newsgd.com/'},
+      {date:'Dec 2022', text:'ONTIME launches world\'s first fully unmanned commercial robotaxi demo in Nansha Guangzhou — first ride-hailing platform to offer fully driverless commercial service in China.', src:'BitAuto', url:'https://www.bitauto.com/'},
+    ],
+    sources: [
+      {label:'ONTIME/Ruqi Mobility', url:'https://www.ruqimobi.com/'},
+      {label:'Google News — ONTIME robotaxi', url:'https://news.google.com/search?q=ONTIME+Ruqi+Mobility+robotaxi+2026'},
+    ]
+  },
+  'proj-deeproute': {
+    title: 'DeepRoute.ai — Consumer-Vehicle Robotaxi Platform',
+    org: [
+      {k:'HQ',             v:'Shenzhen, China (founded 2019)'},
+      {k:'CEO',            v:'Maxwell Zhou'},
+      {k:'Raised',         v:'$500M+ — Alibaba, Great Wall Motor, Fosun RZ Capital'},
+      {k:'Consumer fleet', v:'200,000+ vehicles with DeepRoute platform (end 2025) → 1M target 2026'},
+      {k:'BOM target',     v:'Sub-$10,000 autonomous kit — lowest in industry'},
+      {k:'Approach',       v:'Mapless, consumer-grade production vehicles — same platform for ADAS + robotaxi'},
+      {k:'Business lines', v:'Consumer ADAS · Robotaxi · RoadAGI (unified tech stack)'},
+    ],
+    facts: 'DeepRoute.ai\'s thesis is the most radical cost disruption in robotaxi: robotaxis using the exact same hardware and software as 200,000+ consumer vehicles already in production — no purpose-built vehicle premium, no parallel development cost. The reported sub-$10,000 bill of materials for the autonomous kit is the lowest in the industry globally. Launched robotaxi operations end of 2025. Three unified business lines (consumer ADAS, robotaxi, RoadAGI) mean every consumer vehicle sold improves the robotaxi model through shared data. Alibaba cloud infrastructure + Great Wall Motor vehicle supply = no bottlenecks on either compute or hardware. Mapless approach targets markets where HD maps are unavailable or too expensive.',
+    news: [
+      {date:'Nov 2025', text:'DeepRoute on track to deliver 200,000 vehicles by year-end, capturing 40% of third-party NOA market in October. Robotaxi launch confirmed for end of 2025 using consumer-grade production vehicles.', src:'PR Newswire', url:'https://www.prnewswire.com/news-releases/deeprouteai-on-track-to-deliver-200-000-vehicles-by-year-end-capturing-40-of-third-party-noa-market-in-october-302622612.html'},
+      {date:'Oct 2025', text:'DeepRoute announces robotaxi launch by end of 2025 using consumer-grade production vehicles — same platform as 150,000+ ADAS fleet. Sub-$10K BOM target. Backed by $500M+ from Alibaba + Great Wall Motor.', src:'PR Newswire', url:'https://www.prnewswire.com/news-releases/deeprouteai-to-launch-robotaxi-operations-using-consumer-grade-production-vehicles-by-end-of-2025-302601166.html'},
+    ],
+    sources: [
+      {label:'DeepRoute.ai', url:'https://www.deeproute.ai/'},
+      {label:'Google News — DeepRoute', url:'https://news.google.com/search?q=DeepRoute.ai+robotaxi+2026'},
+    ]
+  },
+  'proj-nissan-jp': {
+    title: 'Nissan Autonomous Mobility — Japan Pilots + Tokyo Robotaxi (Wayve × Uber)',
+    org: [
+      {k:'OEM',            v:'Nissan Motor Co., Ltd.'},
+      {k:'Yokohama partners', v:'BOLDLY (remote monitoring) · Premier Aid · Keikyu Corporation'},
+      {k:'Yokohama',       v:'5 Serena-based AVs, PLOT48 control centre, Nov 2025–Jan 2026, 300 public participants'},
+      {k:'Kobe partners',  v:'Kobe City (national demo programme approved Jul 2025)'},
+      {k:'Kobe',           v:'LEAF-based, Nada Gogo sake district, 20-min tourism loop, Jan 2026'},
+      {k:'Tokyo MOU',      v:'Wayve AI Driver + Uber distribution, pilot target late 2026'},
+      {k:'Timeline',       v:'Commercial services FY2027 · Full commercial Kobe FY2030'},
+    ],
+    facts: 'Nissan has been building toward commercial autonomous mobility since the EasyRide project in 2018 — the most consistent AV programme from a Japanese OEM. The Yokohama pilot (5 Serena-based vehicles, 300 public participants, dedicated PLOT48 remote monitoring centre) is designed to validate the commercial service model, not just the technology. The Kobe tourism pilot applies AV to Japan\'s most practical immediate use case: replacing scarce rural drivers in tourist areas. The Wayve + Uber Tokyo MOU is the most commercially significant: Wayve\'s embodied AI + Nissan\'s 1M+ ProPILOT vehicle data flywheel + Uber\'s distribution = the most complete robotaxi stack in Japan. FY2027 commercial services target is conservative and credible.',
+    news: [
+      {date:'2026', text:'Wayve + Uber + Nissan MOU signed for Tokyo robotaxi pilot by late 2026 — Nissan LEAF powered by Wayve AI Driver, available on Uber. Preparations for pilot deployment underway.', src:'Nissan', url:'https://global.nissannews.com/'},
+      {date:'Jan 2026', text:'Kobe Nada Gogo autonomous mobility pilot launches — LEAF-based, 20-min loop through sake breweries, tourism focus. National demo programme approved Jul 2025. Commercial target FY2030.', src:'Nissan', url:'https://global.nissannews.com/en/releases/251128-01-e'},
+      {date:'Nov 2025', text:'Yokohama pilot launches — 5 Serena AVs, PLOT48 remote monitoring, 300 public participants, Minato Mirai/Sakuragi-cho/Chinatown. Goal: validate commercial service model for FY2027 launch.', src:'Nissan', url:'https://global.nissannews.com/en/releases/251003-01-e'},
+    ],
+    sources: [
+      {label:'Nissan Newsroom', url:'https://global.nissannews.com/'},
+      {label:'Google News — Nissan autonomous Japan', url:'https://news.google.com/search?q=Nissan+autonomous+mobility+Japan+2026'},
+    ]
+  },
+  'proj-apollo-uae': {
+    title: 'Apollo Go × AutoGo — UAE Fully Driverless Commercial Service',
+    org: [
+      {k:'AV technology',  v:'Baidu Apollo Go'},
+      {k:'UAE partner',    v:'AutoGo (K2, UAE-based autonomous mobility company)'},
+      {k:'Abu Dhabi',      v:'ITC (Integrated Transport Centre) fully driverless permit — one of UAE\'s first'},
+      {k:'Dubai',          v:'RTA fully driverless testing permit (only company with this) · Uber distribution'},
+      {k:'Abu Dhabi zones', v:'Yas Island (live) → Reem · Al Maryah · Saadiyat Islands (expanding)'},
+      {k:'Dubai fleet',    v:'50 vehicles at launch → 1,000+ planned'},
+      {k:'Vehicle',        v:'Apollo RT6 6th-gen (fully driverless, detachable steering wheel)'},
+    ],
+    facts: 'Apollo Go\'s UAE deployment is one of the most commercially significant international expansions in AV history. Abu Dhabi launched January 2026 on Yas Island — one of the UAE\'s inaugural fully driverless commercial permits. Dubai launched March 30 via Uber (50 vehicles, 1,000+ planned) — only company with RTA fully driverless testing permit in Dubai. Brief suspension March 1–10 (regulatory coordination) followed by immediate resumption demonstrates regulatory maturity. The 1,000+ vehicle Dubai target would make it one of the largest single-city robotaxi deployments globally. Uber distribution in Dubai removes the China-app barrier for international users.',
+    news: [
+      {date:'Mar 2026', text:'Apollo Go Dubai fully unmanned commercial ops begin Mar 30 via Uber — 50 vehicles at launch, 1,000+ planned. Brief regulatory suspension Mar 1–10 then resumed. Only company with RTA fully driverless permit in Dubai.', src:'Apollo Go', url:'https://www.apollogo.com/'},
+      {date:'Jan 2026', text:'Apollo Go + AutoGo commence fully autonomous commercial ride-hailing on Yas Island Abu Dhabi — one of UAE\'s inaugural fully driverless commercial permits. Expanding to Reem, Al Maryah, Saadiyat Islands.', src:'PR Newswire', url:'https://www.prnewswire.com/news-releases/baidus-apollo-go-and-k2s-autogo-commence-fully-autonomous-ride-hailing-service-on-yas-island-announce-phased-expansion-across-abu-dhabi-302663468.html'},
+      {date:'Nov 2025', text:'Apollo Go + AutoGo secure Abu Dhabi inaugural fully driverless commercial permit. Sign next-phase agreement to scale to hundreds of vehicles by 2026.', src:'StockTitan', url:'https://www.stocktitan.net/news/BIDU/baidu-s-apollo-go-and-k2-s-auto-go-announce-fleet-expansion-plan-in-picufkxgr8zt.html'},
+    ],
+    sources: [
+      {label:'Apollo Go', url:'https://www.apollogo.com/'},
+      {label:'Google News — Apollo Go UAE', url:'https://news.google.com/search?q=Apollo+Go+UAE+Dubai+Abu+Dhabi+2026'},
+    ]
+  },
+  'proj-weride-uae': {
+    title: 'WeRide — UAE Fully Driverless Commercial Robotaxi',
+    org: [
+      {k:'Listed',         v:'NASDAQ: WRD + HKEX: 0800'},
+      {k:'UAE partner',    v:'Tawasul (local transport company, Abu Dhabi)'},
+      {k:'Uber partner',   v:'Dubai ride-hailing distribution via Uber app'},
+      {k:'Abu Dhabi',      v:'World\'s first urban L4 commercial licence outside US + China'},
+      {k:'Dubai service',  v:'Jumeirah + Umm Suqeim — fully driverless paid rides via Uber (Dec 2024)'},
+      {k:'Fleet plan',     v:'500–1,000 ME vehicles 2026, tens of thousands globally by 2030'},
+      {k:'Profitability',  v:'Middle East subsidiary operationally profitable (2025)'},
+    ],
+    facts: 'WeRide\'s Abu Dhabi licence is a landmark: the world\'s first urban L4 commercial licence issued outside the US and China, in a jurisdiction with genuinely complex driving conditions. The Middle East subsidiary reaching operational profitability in 2025 is the strongest proof point that Chinese robotaxi economics work in international markets where per-ride pricing is higher. Dubai fully driverless paid rides via Uber launched December 2024 — Jumeirah and Umm Suqeim districts. Saudi Arabia: first robotaxi permits secured. WeRide holds permits in 6 countries simultaneously including UAE — the most international regulatory footprint of any AV company. The 500–1,000 ME vehicle plan for 2026 would make WeRide\'s UAE fleet among the largest international robotaxi deployments.',
+    news: [
+      {date:'Apr 2026', text:'WeRide Dubai fully driverless paid rides via Uber active in Jumeirah + Umm Suqeim. Abu Dhabi fleet covers highways, islands and airport. 500–1,000 ME vehicles planned 2026. ME subsidiary operationally profitable.', src:'WeRide IR', url:'https://ir.weride.ai/'},
+      {date:'Dec 2024', text:'WeRide launches fully driverless paid robotaxi via Uber in Dubai Jumeirah district — first fully driverless paid AV service in Dubai. Partnership with Dubai Roads and Transport Authority.', src:'China Daily', url:'https://global.chinadaily.com.cn/'},
+      {date:'2024',     text:'WeRide secures world\'s first urban L4 commercial licence outside US and China in Abu Dhabi — allows fully driverless commercial operations without safety driver in urban environment.', src:'WeRide', url:'https://ir.weride.ai/'},
+    ],
+    sources: [
+      {label:'WeRide IR', url:'https://ir.weride.ai/'},
+      {label:'Google News — WeRide UAE', url:'https://news.google.com/search?q=WeRide+UAE+Dubai+Abu+Dhabi+2026'},
+    ]
+  },
 };
 
 // News teasers injected directly in HTML
@@ -3983,18 +4892,29 @@ const REGION_IDS = {
     276,300,348,352,372,380,383,428,438,440,442,470,498,492,499,528,807,578,616,
     620,642,674,688,703,705,724,752,756,804,826,336]),
   na:   new Set([840,124,484]),
-  asia: new Set([156,392,410,356,764,360,458,702,704,116,418,050,524,598,144])
+  asia: new Set([156,392,410,356,764,360,458,702,704,116,418,524,598,144,050,496,104,784,392])
 };
 
 const NA_IDS = new Set(['proj-waymo-us','proj-tesla-robotaxi','proj-zoox-us',
   'proj-may-mobility','proj-aurora-us','proj-kodiak-us','proj-einride-us','proj-uber-av','proj-gatik-canada',
   'proj-motional','proj-avride','proj-nuro-lucid',
-  'proj-lyft-av','proj-perrone','proj-tensor']);
+  'proj-lyft-av','proj-perrone','proj-tensor','proj-vay']);
+
+const ASIA_IDS = new Set(['proj-apollo-cn','proj-ponyai-cn','proj-weride-cn',
+  'proj-xpeng-robotaxi','proj-caocao','proj-weride-sg','proj-ponyai-sg',
+  'proj-didi','proj-hello','proj-ontime','proj-deeproute','proj-nissan-jp',
+  'proj-apollo-uae','proj-weride-uae']);
+
+function getDotRegion(id) {
+  if (NA_IDS.has(id)) return 'na';
+  if (ASIA_IDS.has(id)) return 'asia';
+  return 'eu';
+}
 
 const MAP_REGIONS = {
   eu:   {center:[13,54],    scale:480, tx:0.46, ty:0.56},
-  na:   {center:[-98,45],   scale:280, tx:0.50, ty:0.50},
-  asia: {center:[105,35],   scale:280, tx:0.50, ty:0.50},
+  na:   {center:[-97, 39],  scale:280, tx:0.55, ty:0.50},
+  asia: {center:[110,25],   scale:320, tx:0.42, ty:0.48},
 };
 
 function switchMapRegion(btn, region) {
@@ -4013,8 +4933,8 @@ function switchMapRegion(btn, region) {
     .center(cfg.center).scale(cfg.scale).translate([W*cfg.tx, H*cfg.ty]);
   const newPath = d3.geoPath().projection(newProj);
 
-  // 1. Hide all dots immediately so they don't float around during country animation
-  svg.selectAll('.project-dot').style('opacity', '0');
+  // 1. Hide all dots immediately so they don't float during country animation
+  svg.selectAll('.project-dot').style('opacity', '0').style('visibility','hidden');
   svg.select('.connector-lines').style('opacity', '0');
 
   // 2. Animate countries sliding to new projection
@@ -4025,11 +4945,10 @@ function switchMapRegion(btn, region) {
     .style('fill', function() { return regionSet.has(+this.getAttribute('data-id')) ? '#cdd8e4' : '#dde6ee'; })
     .style('stroke-width', function() { return regionSet.has(+this.getAttribute('data-id')) ? '0.7' : '0.3'; });
 
-  // 3. After country animation completes, rebuild dots with correct separation and fade in
+  // 3. After animation, rebuild dots with correct separation and fade in
   setTimeout(() => {
-    // Project + separate in-view dots
     const inViewData = PROJECT_DOTS
-      .filter(p => region === 'all' || (NA_IDS.has(p.id) ? 'na' : 'eu') === region)
+      .filter(p => region === 'all' || (getDotRegion(p.id)) === region)
       .map(p => { const [x,y] = newProj([p.lon, p.lat]); return {...p, x, y, ox:x, oy:y}; });
 
     for (let iter=0; iter<120; iter++) {
@@ -4046,10 +4965,21 @@ function switchMapRegion(btn, region) {
       }
     }
 
-    // Snap dots to correct positions silently, then fade in
+    // For far west coast dots (SF proper), never push further west than original position
+    inViewData.forEach(p => {
+      if (p.ox < 410 && p.x < p.ox) p.x = p.ox;
+    });
+
+    // Clamp to SVG bounds
+    inViewData.forEach(p => {
+      p.x = Math.max(40, Math.min(W - 40, p.x));
+      p.y = Math.max(40, Math.min(H - 40, p.y));
+    });
+
+    // Snap dots to correct positions
     svg.selectAll('.project-dot').each(function() {
       const id = this.getAttribute('data-id');
-      const dotRegion = NA_IDS.has(id) ? 'na' : 'eu';
+      const dotRegion = getDotRegion(id);
       const inView = region === 'all' || dotRegion === region;
       const g = d3.select(this);
       if (inView) {
@@ -4062,7 +4992,7 @@ function switchMapRegion(btn, region) {
     svg.select('.connector-lines').selectAll('line').remove();
     if (region !== 'na') {
       inViewData
-        .filter(p => !NA_IDS.has(p.id) && Math.hypot(p.x-p.ox, p.y-p.oy) > 8)
+        .filter(p => getDotRegion(p.id) === 'eu' && Math.hypot(p.x-p.ox, p.y-p.oy) > 8)
         .forEach(p => {
           svg.select('.connector-lines').append('line')
             .attr('x1',p.ox).attr('y1',p.oy).attr('x2',p.x).attr('y2',p.y)
@@ -4071,15 +5001,16 @@ function switchMapRegion(btn, region) {
         });
     }
 
-    // Fade in the correct dots
+    // Show/hide dots — use visibility to fully hide inactive ones (stops pulse animation too)
     svg.selectAll('.project-dot').each(function() {
       const id = this.getAttribute('data-id');
-      const dotRegion = NA_IDS.has(id) ? 'na' : 'eu';
+      const dotRegion = getDotRegion(id);
       const inView = region === 'all' || dotRegion === region;
-      d3.select(this)
-        .style('pointer-events', inView ? 'all' : 'none')
-        .transition().duration(300)
-        .style('opacity', inView ? '1' : '0');
+      const g = d3.select(this);
+      g.style('pointer-events', inView ? 'all' : 'none')
+       .style('visibility', inView ? 'visible' : 'hidden')
+       .transition().duration(300)
+       .style('opacity', inView ? '1' : '0');
     });
 
     svg.select('.connector-lines')
@@ -4111,7 +5042,7 @@ function buildMap() {
   if (!document.getElementById('dot-pulse-style')) {
     const s = document.createElement('style');
     s.id = 'dot-pulse-style';
-    s.textContent = `@keyframes dotPulse{0%,100%{r:9;opacity:0.3}50%{r:14;opacity:0.08}}.dot-pulse-ring{animation:dotPulse 2s ease-in-out infinite}`;
+    s.textContent = `@keyframes dotPulse{0%,100%{opacity:0.5}50%{opacity:0.05}}.dot-pulse-ring{animation:dotPulse 2s ease-in-out infinite}`;
     document.head.appendChild(s);
   }
 
@@ -4145,7 +5076,18 @@ function buildMap() {
     const pathGen = d3.geoPath().projection(proj);
 
     const zoom = d3.zoom().scaleExtent([0.5,12])
-      .on('zoom', e => mapG.attr('transform', e.transform));
+      .on('zoom', e => {
+        mapG.attr('transform', e.transform);
+        const k = e.transform.k;
+        mapG.selectAll('.project-dot').each(function() {
+          const g = d3.select(this);
+          const isHovered = this.classList.contains('hovered');
+          const mainR = isHovered ? 10/k : 6/k;
+          g.select('circle:first-child').attr('r', 14/k);
+          g.select('.dot-pulse-ring').attr('r', 9/k);
+          g.select('.dot-main').attr('r', mainR).style('stroke-width', 1.5/k + 'px');
+        });
+      });
     svg.call(zoom).on('dblclick.zoom', null);
     window._mz = f => svg.transition().duration(300).call(zoom.scaleBy, f);
     window._mr = () => svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
@@ -4179,7 +5121,7 @@ function buildMap() {
 
       const dots = PROJECT_DOTS.map(p => {
         const [x,y] = proj([p.lon, p.lat]);
-        const dotRegion = NA_IDS.has(p.id) ? 'na' : 'eu';
+        const dotRegion = getDotRegion(p.id);
         return {...p, x, y, ox:x, oy:y, dotRegion};
       });
 
@@ -4192,14 +5134,29 @@ function buildMap() {
           for (let j=i+1; j<viewDots.length; j++) {
             const dx=viewDots[j].x-viewDots[i].x, dy=viewDots[j].y-viewDots[i].y;
             const dist=Math.sqrt(dx*dx+dy*dy)||0.01;
-            if (dist<22) {
-              const push=(22-dist)/2, nx=dx/dist, ny=dy/dist;
+            if (dist<26) {
+              const push=(26-dist)/2, nx=dx/dist, ny=dy/dist;
               viewDots[i].x-=nx*push; viewDots[i].y-=ny*push;
               viewDots[j].x+=nx*push; viewDots[j].y+=ny*push;
             }
           }
         }
       }
+
+      // For dots at the far west coast only (SF proper), never push further west than original
+      // Use ox threshold based on actual SF projected x (~404) not a percentage
+      viewDots.forEach(p => {
+        if (p.ox < 410 && p.x < p.ox) {
+          p.x = p.ox;
+        }
+      });
+
+      // Clamp dots to SVG bounds with padding
+      const pad = 40;
+      viewDots.forEach(p => {
+        p.x = Math.max(pad, Math.min(W - pad, p.x));
+        p.y = Math.max(pad, Math.min(H - pad, p.y));
+      });
 
       // Connector lines only for EU dots that moved significantly
       const linesG = mapG.append('g').attr('class','connector-lines');
@@ -4222,15 +5179,24 @@ function buildMap() {
         g.on('mouseover', () => {
           const lbl={live:'Live',pilot:'Active Pilot',planned:'Planned',announced:'Announced',development:'In Development'}[dot.status]||dot.status;
           tooltip.innerHTML=`<strong>${dot.name}</strong><br><span style="opacity:0.7;font-size:10px">${dot.city} · ${lbl}</span>`;
-          tooltip.style.display='block'; g.select('.dot-main').attr('r',10); g.raise();
+          tooltip.style.display='block';
+          g.node().classList.add('hovered');
+          const k = (d3.zoomTransform(svg.node())||d3.zoomIdentity).k;
+          g.select('.dot-main').attr('r', 10/k);
+          g.raise();
         })
         .on('mousemove', e => { tooltip.style.left=(e.clientX-tooltip.offsetWidth/2)+'px'; tooltip.style.top=(e.clientY-54)+'px'; })
-        .on('mouseleave', () => { tooltip.style.display='none'; g.select('.dot-main').attr('r',6); })
+        .on('mouseleave', () => {
+          tooltip.style.display='none';
+          g.node().classList.remove('hovered');
+          const k = (d3.zoomTransform(svg.node())||d3.zoomIdentity).k;
+          g.select('.dot-main').attr('r', 6/k);
+        })
         .on('click', () => { document.querySelectorAll('.project-dot.selected').forEach(el=>{ if(el) el.classList.remove('selected'); }); g.node().classList.add('selected'); spOpen(dot.id,'details'); });
 
         // Set initial visibility based on region
         if (activeMapRegion !== 'all' && dot.dotRegion !== activeMapRegion) {
-          g.style('opacity','0.08').style('pointer-events','none');
+          g.style('opacity','0').style('visibility','hidden').style('pointer-events','none');
         }
       });
     });
@@ -4342,6 +5308,14 @@ function initMap() {
     if (panel) panel.style.top = (h + 8) + 'px';
   }
   renderPanel();
+
+  // Initialise stats and region pill visibility on first load
+  updateStats();
+  const regionBar = document.getElementById('regionTabBar');
+  if (regionBar) regionBar.style.display = 'flex';
+  // Set "All Markets" as active by default
+  const allBtn = document.getElementById('regionAll');
+  if (allBtn) allBtn.classList.add('active');
 }
 
 if (document.readyState === 'loading') {
