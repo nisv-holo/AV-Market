@@ -668,6 +668,54 @@
   tr.highlight-row { animation: rowPulse 2s ease forwards; }
 
 
+
+  .map-top-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px; gap: 12px; flex-wrap: wrap;
+  }
+  .map-region-switcher { display: flex; gap: 5px; }
+  .map-region-btn {
+    font-size: 11px; font-weight: 700; padding: 5px 14px;
+    border: 2px solid #c8cdd8; border-radius: 20px;
+    background: #ffffff; color: #3d424f;
+    cursor: pointer; transition: all 0.15s; white-space: nowrap;
+  }
+  .map-region-btn:hover:not(:disabled) { border-color: #1d4ed8; color: #1d4ed8; background: #eff4ff; }
+  .map-region-btn.active {
+    background: #1d4ed8 !important; color: #ffffff !important;
+    border-color: #1d4ed8 !important;
+    box-shadow: 0 2px 6px rgba(29,78,216,0.35);
+  }
+  .map-region-btn:disabled { opacity: 0.4; cursor: default; }
+  .map-region-soon { font-size: 11px; }
+
+  /* ── Region sub-tabs ── */
+  .region-tab-bar {
+    display: flex; gap: 6px; padding: 8px 0 6px;
+    margin-top: 2px;
+  }
+  .region-tab-btn {
+    font-size: 11px; font-weight: 700; padding: 5px 16px;
+    border: 2px solid #c8cdd8; border-radius: 20px;
+    background: #ffffff; color: #3d424f;
+    cursor: pointer; transition: all 0.15s; white-space: nowrap;
+    line-height: 1.4;
+  }
+  .region-tab-btn:hover:not(:disabled) {
+    border-color: #1d4ed8; color: #1d4ed8; background: #eff4ff;
+  }
+  .region-tab-btn.active {
+    background: #1d4ed8 !important; color: #ffffff !important;
+    border-color: #1d4ed8 !important;
+    box-shadow: 0 2px 6px rgba(29,78,216,0.35);
+  }
+  .region-tab-btn:disabled { opacity: 0.4; cursor: default; }
+  .coming-soon-badge {
+    font-size: 9px; font-weight: 700; background: #fef3c7; color: #92400e;
+    padding: 1px 5px; border-radius: 3px; margin-left: 4px; vertical-align: middle;
+  }
+  #regionTabBar { display: none; }
+
   /* ── Side panel ── */
   .facts-trigger {
     display: inline-flex; align-items: center; gap: 5px;
@@ -1161,12 +1209,12 @@
 <div class="page-header">
   <div class="page-header-inner">
     <div class="header-eyebrow">Market Intelligence Report · April 2026</div>
-    <h1 class="header-title">Autonomous Vehicles in Europe</h1>
-    <p class="header-subtitle">Active deployments, pilots and incoming projects across robotaxis, shuttles, buses &amp; freight — 29 projects tracked across 18 companies</p>
+    <h1 class="header-title" id="pageTitle">Autonomous Vehicles</h1>
+    <p class="header-subtitle" id="pageSubtitle">Active deployments, pilots and incoming projects across robotaxis, shuttles, buses &amp; freight — tracked across EU, North America &amp; Asia</p>
     <div class="stat-row">
-      <div class="stat-pill"><span class="num">29</span><span class="label">Projects</span></div>
-      <div class="stat-pill"><span class="num">18</span><span class="label">Companies</span></div>
-      <div class="stat-pill"><span class="num">15+</span><span class="label">Countries</span></div>
+      <div class="stat-pill"><span class="num" id="statProjects">41</span><span class="label">Projects</span></div>
+      <div class="stat-pill"><span class="num" id="statCompanies">27</span><span class="label">Companies</span></div>
+      <div class="stat-pill"><span class="num" id="statCountries">20+</span><span class="label">Countries</span></div>
     </div>
   </div>
 </div>
@@ -1193,8 +1241,15 @@
     <div class="sticky-inner">
       <div class="tab-bar">
         <button class="tab-btn active" id="tabProjects" onclick="switchTab(this,'projects')">Projects</button>
-        <button class="tab-btn" id="tabCountries" onclick="switchTab(this,'countries')">Countries</button>
+        <button class="tab-btn" id="tabCountries" onclick="switchTab(this,'countries')">Map</button>
       </div>
+      <div class="region-tab-bar" id="regionTabBar">
+        <button class="region-tab-btn active" id="regionAll" onclick="switchRegion(this,'all')">🌍 All Markets</button>
+        <button class="region-tab-btn" id="regionEU"  onclick="switchRegion(this,'eu')">🇪🇺 Europe</button>
+        <button class="region-tab-btn" id="regionNA"  onclick="switchRegion(this,'na')">🌎 North America</button>
+        <button class="region-tab-btn region-tab-soon" disabled>🌏 Asia <span class="coming-soon-badge">Soon</span></button>
+      </div>
+            </div>
     </div>
   </div>
 
@@ -1263,81 +1318,81 @@
 <!-- ═══ MOIA ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">MOIA · Volkswagen Group</span><span class="company-desc">European AV ridepooling operator — VW ID. Buzz AD platform powered by Mobileye Drive</span><span class="company-count">3 projects</span></div></td></tr>
 
-<tr class="data-row" id="proj-alike" data-status="pilot" data-segment="shuttle"><td><span class="project-name">ALIKE Project</span><span class="project-desc">Hamburg's flagship public AV ridepooling trial — the first German city to deploy shared autonomous rides under the §1e StVG autonomous driving law.</span>
+<tr class="data-row" data-region="eu" id="proj-alike" data-status="pilot" data-segment="shuttle"><td><span class="project-name">ALIKE Project</span><span class="project-desc">Hamburg's flagship public AV ridepooling trial — the first German city to deploy shared autonomous rides under the §1e StVG autonomous driving law.</span>
           <button class="facts-trigger" data-row="proj-alike" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Regulation</span><span class="learn-tag">Scale</span><span class="learn-body">First project certified under Germany's §1e StVG — the EU's most advanced national AV law. Shows that a clear legal framework unlocks deployment, not just technology readiness. Also the first AV platform designed from the ground up for multi-city licensing rather than a single pilot.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">EU / IL</span> <span class="seg-tag">Ridepooling</span><span class="seg-tag">Public Transit</span></div><div class="dc-row dc-status"><span class="status status-pilot"><span class="dot dot-pilot"></span>Active Pilot</span></div><div class="dc-row dc-countries">🇩🇪 Hamburg</div></td><td class="col-div vehicle-cell"><span class="v-model">VW ID. Buzz AD</span><span class="v-detail">27 sensors: 13 cameras, 9 LiDAR, 5 radar. Mobileye Drive system. Purpose-built for mobility services.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Dev. start</span><span class="tl-value">2021</span></div><div class="tl-row"><span class="tl-label">On road</span><span class="tl-value onroad">2025</span></div><div class="tl-row"><span class="tl-label">Driverless</span><span class="tl-value pending">2026 target</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Apr 2026</div><div class="news-teaser-text">Fleet expanded to 12 vehicles ahead of driverless phase.</div><button class="news-view-more" data-row="proj-alike" data-tab="news">View more ↗</button></div></div></td></tr>
 
-<tr class="data-row" id="proj-nowel4" data-status="pilot" data-segment="shuttle"><td><span class="project-name">NoWeL4 (Northwest Level 4)</span><span class="project-desc">Berlin's AV shuttle trial covering a 15 km² residential zone — the first multi-district autonomous service in the German capital under federal law.</span>
+<tr class="data-row" data-region="eu" id="proj-nowel4" data-status="pilot" data-segment="shuttle"><td><span class="project-name">NoWeL4 (Northwest Level 4)</span><span class="project-desc">Berlin's AV shuttle trial covering a 15 km² residential zone — the first multi-district autonomous service in the German capital under federal law.</span>
           <button class="facts-trigger" data-row="proj-nowel4" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Integration</span><span class="learn-tag">Urban Coverage</span><span class="learn-body">Demonstrates how AV shuttles can be layered into an existing urban transit network as a complement rather than a replacement. The 15 km², 80-stop geo-zone is one of the largest urban AV operating areas in Europe — testing whether scale changes the economics.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">EU / IL</span> <span class="seg-tag">Autonomous Shuttle</span></div><div class="dc-row dc-status"><span class="status status-pilot"><span class="dot dot-pilot"></span>Active Pilot</span></div><div class="dc-row dc-countries">🇩🇪 Berlin<br><small style="opacity:.6">Spandau · Charlottenburg · Reinickendorf</small></div></td><td class="col-div vehicle-cell"><span class="v-model">VW ID. Buzz AD</span><span class="v-detail">Same Mobileye Drive platform as ALIKE. 5 vehicles, 80 stops.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Funded</span><span class="tl-value">2025</span></div><div class="tl-row"><span class="tl-label">On road</span><span class="tl-value onroad">Early 2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Early 2026</div><div class="news-teaser-text">Passenger trials with safety operators begin across 80-stop zone.</div><button class="news-view-more" data-row="proj-nowel4" data-tab="news">View more ↗</button></div></div></td></tr>
 
-<tr class="data-row" id="proj-oslo" data-status="planned" data-segment="shuttle"><td><span class="project-name">Ruter / Holo — Oslo AV Public Transit</span><span class="project-desc">Oslo's public transport authority deploying the ID. Buzz AD as part of regular public transit, following two years of development-vehicle testing with the same Mobileye platform.</span>
+<tr class="data-row" data-region="eu" id="proj-oslo" data-status="planned" data-segment="shuttle"><td><span class="project-name">Ruter / Holo — Oslo AV Public Transit</span><span class="project-desc">Oslo's public transport authority deploying the ID. Buzz AD as part of regular public transit, following two years of development-vehicle testing with the same Mobileye platform.</span>
           <button class="facts-trigger" data-row="proj-oslo" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Staged Deployment</span><span class="learn-tag">Public Authority</span><span class="learn-body">One of the clearest examples of a disciplined multi-year transition: 2 yrs dev-vehicle testing → production vehicle rollout. A Nordic public authority leading AV adoption — rather than a private operator — validates a model where risk is de-risked before committing to a commercial platform.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">EU / IL</span> <span class="seg-tag">Autonomous Shuttle</span><span class="seg-tag">Public Transit</span></div><div class="dc-row dc-status"><span class="status status-planned"><span class="dot dot-planned"></span>Launching 2026</span></div><div class="dc-row dc-countries">🇳🇴 Oslo<br><small style="opacity:.6">Groruddalen district</small></div></td><td class="col-div vehicle-cell"><span class="v-model">VW ID. Buzz AD</span><span class="v-detail">Mobileye Drive EyeQ™ 6H (2nd gen). Upgrade from dev vehicles after 2 yrs Oslo testing.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Prior tests</span><span class="tl-value">2023–2025</span></div><div class="tl-row"><span class="tl-label">ID. Buzz on road</span><span class="tl-value pending">Spring 2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Spring 2026</div><div class="news-teaser-text">ID. Buzz AD enters Oslo public transit network in Groruddalen.</div><button class="news-view-more" data-row="proj-oslo" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ HOLON (Benteler) ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">HOLON · Benteler Group</span><span class="company-desc">European AV shuttle OEM — purpose-built Holon Urban shuttle (Pininfarina design, Mobileye Drive), targeting public transit and airports</span><span class="company-count">1 project</span></div></td></tr>
 
-<tr class="data-row" id="proj-holon" data-status="pilot" data-segment="shuttle"><td><span class="project-name">HOLON Urban — European Deployment</span><span class="project-desc">A purpose-built autonomous electric shuttle designed specifically for public transit — not a retrofitted vehicle — receiving German federal approval in November 2025 and currently operating a fleet in Hamburg.</span>
+<tr class="data-row" data-region="eu" id="proj-holon" data-status="pilot" data-segment="shuttle"><td><span class="project-name">HOLON Urban — European Deployment</span><span class="project-desc">A purpose-built autonomous electric shuttle designed specifically for public transit — not a retrofitted vehicle — receiving German federal approval in November 2025 and currently operating a fleet in Hamburg.</span>
           <button class="facts-trigger" data-row="proj-holon" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Integrated Model</span><span class="learn-tag">OEM-First</span><span class="learn-body">Holon's "not just an OEM" pitch is distinctive: it combines vehicle, software (Mobileye), fleet financing, and operations under one roof — a model closer to Verne than to VW/MOIA. Its partnership with Lyft as a distribution channel (rather than building its own app) mirrors the Chinese-platform playbook but in reverse: European hardware, US distribution.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-eu">EU</span> <span class="seg-tag">Autonomous Shuttle</span></div><div class="dc-row dc-status"><span class="status status-pilot"><span class="dot dot-pilot"></span>Active Pilot</span></div><div class="dc-row dc-countries">🇩🇪 Hamburg (active)<br>🇺🇸 Jacksonville FL (production)<br><small style="opacity:.6">Europe, USA, Gulf markets targeted</small></div></td><td class="col-div vehicle-cell"><span class="v-model">HOLON Urban</span><span class="v-detail">15 passengers, 60 km/h, 290 km range. 11 cameras, 9 LiDAR, 6 radar. No steering wheel or pedals.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2022</span></div><div class="tl-row"><span class="tl-label">KBA approval</span><span class="tl-value onroad">Nov 2025</span></div><div class="tl-row"><span class="tl-label">Hamburg fleet</span><span class="tl-value onroad">Active 2026</span></div><div class="tl-row"><span class="tl-label">Production (US)</span><span class="tl-value pending">Jacksonville, 2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Jan 2026</div><div class="news-teaser-text">Leadership team strengthened ahead of full Hamburg fleet operations.</div><button class="news-view-more" data-row="proj-holon" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ EasyMile ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">EasyMile</span><span class="company-desc">French AV shuttle pioneer — EZ10 is the world's most deployed autonomous shuttle (300+ locations, 30+ countries). First EU public-road L4 authorization (France, 2021). Now pivoting toward heavy-duty/industrial applications.</span><span class="company-count">1 programme (multi-country)</span></div></td></tr>
 
-<tr class="data-row" id="proj-easymile" data-status="live" data-segment="shuttle"><td><span class="project-name">EasyMile EZ10 — European Network</span><span class="project-desc">The world's most operationally experienced autonomous shuttle programme — over a decade of real deployments across campuses, business parks, city streets, and airports in 30+ countries. First EU vehicle to receive public-road L4 authorization (France, 2021).</span>
+<tr class="data-row" data-region="eu" id="proj-easymile" data-status="live" data-segment="shuttle"><td><span class="project-name">EasyMile EZ10 — European Network</span><span class="project-desc">The world's most operationally experienced autonomous shuttle programme — over a decade of real deployments across campuses, business parks, city streets, and airports in 30+ countries. First EU vehicle to receive public-road L4 authorization (France, 2021).</span>
           <button class="facts-trigger" data-row="proj-easymile" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Depth of Experience</span><span class="learn-tag">Strategic Pivot</span><span class="learn-body">EasyMile is the most operationally honest proof-point in EU AV: 10+ years of actual deployments, not pilots. Its strategic pivot away from urban shuttles toward industrial/airport use cases in 2026 is a telling signal — it suggests the low-speed urban shuttle market is not commercially scaling as hoped, and that controlled-environment applications offer better unit economics today.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-eu">EU</span> <span class="seg-tag">Autonomous Shuttle</span></div><div class="dc-row dc-status"><span class="status status-live"><span class="dot dot-live"></span>Live (multi-site)</span></div><div class="dc-row dc-countries">🇫🇷 Toulouse, Monheim<br>🇩🇪 Bad Birnbach, Munich, Monheim am Rhein<br>🇸🇪 Barkarbystaden (Stockholm)<br>🇳🇴 Kongsberg<br><small style="opacity:.6">30+ countries total</small></div></td><td class="col-div vehicle-cell"><span class="v-model">EasyMile EZ10 (Gen 3)</span><span class="v-detail">Up to 15 passengers, 40 km/h. Cameras, LiDAR, GPS, radar. Updated sensor suite; solar range extension via Sono Motors partnership.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2014</span></div><div class="tl-row"><span class="tl-label">First deploy</span><span class="tl-value">2015</span></div><div class="tl-row"><span class="tl-label">EU L4 auth.</span><span class="tl-value onroad">2021 (France)</span></div><div class="tl-row"><span class="tl-label">Active sites</span><span class="tl-value onroad">300+ globally</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">2026</div><div class="news-teaser-text">Strategic pivot toward industrial/airport applications announced.</div><button class="news-view-more" data-row="proj-easymile" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ Navya Mobility ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Navya Mobility</span><span class="company-desc">French AV shuttle company — originally Navya (bankrupt 2023), acquired by Gaussin+Macnica → rebranded Gama, now operating as Navya Mobility under Macnica. 220+ vehicles deployed in 32 countries.</span><span class="company-count">1 programme (multi-country)</span></div></td></tr>
 
-<tr class="data-row" id="proj-navya" data-status="pilot" data-segment="shuttle"><td><span class="project-name">Navya Mobility — Autonom Shuttle Evo</span><span class="project-desc">Successor to the original Navya shuttle programme — managing existing fleets across 32 countries while developing the next-generation Autonom Shuttle Evo, under new ownership by Japanese semiconductor company Macnica.</span>
+<tr class="data-row" data-region="eu" id="proj-navya" data-status="pilot" data-segment="shuttle"><td><span class="project-name">Navya Mobility — Autonom Shuttle Evo</span><span class="project-desc">Successor to the original Navya shuttle programme — managing existing fleets across 32 countries while developing the next-generation Autonom Shuttle Evo, under new ownership by Japanese semiconductor company Macnica.</span>
           <button class="facts-trigger" data-row="proj-navya" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Survival Story</span><span class="learn-tag">Asia Capital</span><span class="learn-body">Navya's journey from bankruptcy to Japanese-owned revival is the starkest case study in EU AV commercialization failure — and what comes after it. That the rescue capital came from Japan (Macnica) rather than Europe signals a broader pattern: European AV pioneers struggle to find domestic exit capital, making them acquisition targets for Asian and US strategic buyers.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">EU / JP</span> <span class="seg-tag">Autonomous Shuttle</span></div><div class="dc-row dc-status"><span class="status status-pilot"><span class="dot dot-pilot"></span>Active (fleet management)</span></div><div class="dc-row dc-countries">🇫🇷 France (HQ + deployments)<br>🇯🇵 Japan (NTT West expansion)<br><small style="opacity:.6">32 countries, 220+ vehicles</small></div></td><td class="col-div vehicle-cell"><span class="v-model">Autonom Shuttle Evo</span><span class="v-detail">In-house Navya Drive sensor suite (LiDAR + cameras + radar + GPS + IMU). L4 on closed sites. New Evo platform in development.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Original Navya</span><span class="tl-value">2014–2023</span></div><div class="tl-row"><span class="tl-label">Bankruptcy</span><span class="tl-value">Feb 2023</span></div><div class="tl-row"><span class="tl-label">→ Gama → Navya</span><span class="tl-value">2023–2024</span></div><div class="tl-row"><span class="tl-label">Macnica takes over</span><span class="tl-value">June 2024</span></div><div class="tl-row"><span class="tl-label">Active fleets</span><span class="tl-value onroad">Ongoing</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Jun 2024</div><div class="news-teaser-text">Macnica takes full ownership; rebrands as Navya Mobility.</div><button class="news-view-more" data-row="proj-navya" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ 2getthere (ZF) ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">2getthere · ZF Group</span><span class="company-desc">Dutch AV transit systems veteran (founded 1984) — 100M+ km of autonomous mileage. ZF acquired majority stake 2019. Operational at Brussels Airport and Rivium business park (Netherlands).</span><span class="company-count">1 programme (multi-site)</span></div></td></tr>
 
-<tr class="data-row" id="proj-2getthere" data-status="live" data-segment="shuttle"><td><span class="project-name">2getthere Automated Transit — Brussels Airport &amp; Rivium</span><span class="project-desc">Europe's longest-running operational automated transit system — fixed-lane electric pods running continuously at Brussels Airport (staff/passenger parking) and Rivium business park in the Netherlands since the 2000s.</span>
+<tr class="data-row" data-region="eu" id="proj-2getthere" data-status="live" data-segment="shuttle"><td><span class="project-name">2getthere Automated Transit — Brussels Airport &amp; Rivium</span><span class="project-desc">Europe's longest-running operational automated transit system — fixed-lane electric pods running continuously at Brussels Airport (staff/passenger parking) and Rivium business park in the Netherlands since the 2000s.</span>
           <button class="facts-trigger" data-row="proj-2getthere" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Oldest EU AV Operator</span><span class="learn-tag">Infrastructure Model</span><span class="learn-body">2getthere proves that dedicated-lane automated transit works reliably at scale — but it also illustrates the ceiling: without moving to mixed-traffic roads, the addressable market is limited to airports, business parks, and campuses. Its ZF acquisition is a bet that the sensor/compute upgrade path can convert it into an open-road AV system. If successful, it would be the most credible EU autonomous transit scaling story.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-eu">EU</span> <span class="seg-tag">Automated Transit Pod</span></div><div class="dc-row dc-status"><span class="status status-live"><span class="dot dot-live"></span>Operational</span></div><div class="dc-row dc-countries">🇧🇪 Brussels Airport (Zaventem)<br>🇳🇱 Rivium, Capelle aan den IJssel<br>🇦🇪 Masdar City (UAE)<br><small style="opacity:.6">14M+ passengers carried at Rivium+Masdar</small></div></td><td class="col-div vehicle-cell"><span class="v-model">2getthere Electric Pod</span><span class="v-detail">Fixed-lane, dedicated infrastructure. Electric drivetrain. 99.7%+ system reliability. Automated (not open-road AV). Scaling toward mixed-traffic applications.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">1984</span></div><div class="tl-row"><span class="tl-label">Rivium ops</span><span class="tl-value onroad">Early 2000s</span></div><div class="tl-row"><span class="tl-label">Brussels Airport</span><span class="tl-value onroad">2018–present</span></div><div class="tl-row"><span class="tl-label">ZF acquisition</span><span class="tl-value">2019</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Ongoing</div><div class="news-teaser-text">Brussels Airport and Rivium operations continue uninterrupted.</div><button class="news-view-more" data-row="proj-2getthere" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ WeRide ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">WeRide</span><span class="company-desc">Chinese AV company (Renault Group shareholder) — autonomous shuttles and robobuses across Europe</span><span class="company-count">3 projects</span></div></td></tr>
 
-<tr class="data-row" id="proj-leuven" data-status="live" data-segment="shuttle"><td><span class="project-name">Leuven Autonomous Mobility</span><span class="project-desc">Belgium's first multi-regional AV public transit project — two WeRide shuttles on a fixed urban route, publicly boarding since January 2026.</span>
+<tr class="data-row" data-region="eu" id="proj-leuven" data-status="live" data-segment="shuttle"><td><span class="project-name">Leuven Autonomous Mobility</span><span class="project-desc">Belgium's first multi-regional AV public transit project — two WeRide shuttles on a fixed urban route, publicly boarding since January 2026.</span>
           <button class="facts-trigger" data-row="proj-leuven" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Multi-jurisdiction</span><span class="learn-tag">Chinese in EU Transit</span><span class="learn-body">Notable for spanning all three Belgian administrative regions in a single project — a rare cross-jurisdictional governance achievement. Also the most visible example of a Chinese AV company embedding itself in European public transit infrastructure through a Renault Group stake rather than a direct commercial play.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-cn">CN</span> <span class="seg-tag">Autonomous Shuttle</span></div><div class="dc-row dc-status"><span class="status status-live"><span class="dot dot-live"></span>Live</span></div><div class="dc-row dc-countries">🇧🇪 Leuven<br><small style="opacity:.6">Station ↔ Heverlee, 4 km<br>Weekdays 8am–6pm, every 30 min</small></div></td><td class="col-div vehicle-cell"><span class="v-model">WeRide Robobus</span><span class="v-detail">Camera + radar. 8 passengers max. Fixed route, safety driver present.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Mapping</span><span class="tl-value">Summer 2025</span></div><div class="tl-row"><span class="tl-label">Testing</span><span class="tl-value">Sept 11, 2025</span></div><div class="tl-row"><span class="tl-label">Public rides</span><span class="tl-value onroad">Jan 22, 2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Jan 22, 2026</div><div class="news-teaser-text">Public boarding begins — Belgium's first AV public transit service.</div><button class="news-view-more" data-row="proj-leuven" data-tab="news">View more ↗</button></div></div></td></tr>
 
-<tr class="data-row" id="proj-valence" data-status="live" data-segment="shuttle"><td><span class="project-name">WeRide Shuttle — Valence Business Park</span><span class="project-desc">A permanent autonomous shuttle connecting a business park to the local train station — one of the earliest continuously operating AV services in France.</span>
+<tr class="data-row" data-region="eu" id="proj-valence" data-status="live" data-segment="shuttle"><td><span class="project-name">WeRide Shuttle — Valence Business Park</span><span class="project-desc">A permanent autonomous shuttle connecting a business park to the local train station — one of the earliest continuously operating AV services in France.</span>
           <button class="facts-trigger" data-row="proj-valence" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Insurance Model</span><span class="learn-tag">Operator Partnership</span><span class="learn-body">One of the few EU AV deployments to include an insurer (Macif) as a founding partner from day one — not an afterthought. Signals a maturing approach to AV liability that may become standard for public-facing services.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-cn">CN</span> <span class="seg-tag">Autonomous Shuttle</span></div><div class="dc-row dc-status"><span class="status status-live"><span class="dot dot-live"></span>Live</span></div><div class="dc-row dc-countries">🇫🇷 Valence, France</div></td><td class="col-div vehicle-cell"><span class="v-model">WeRide Robobus</span><span class="v-detail">Fixed route. Mixed-traffic road. Safety driver present.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">On road</span><span class="tl-value onroad">Dec 2024</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Dec 2024</div><div class="news-teaser-text">Enters continuous commercial operation — one of the earliest in France.</div><button class="news-view-more" data-row="proj-valence" data-tab="news">View more ↗</button></div></div></td></tr>
 
-<tr class="data-row" id="proj-zurich" data-status="pilot" data-segment="shuttle"><td><span class="project-name">WeRide Shuttle — Zurich Airport</span><span class="project-desc">An AV pilot connecting terminals and car parks within Zurich Airport — testing autonomous operation in one of Europe's busiest and most complex transport hubs.</span>
+<tr class="data-row" data-region="eu" id="proj-zurich" data-status="pilot" data-segment="shuttle"><td><span class="project-name">WeRide Shuttle — Zurich Airport</span><span class="project-desc">An AV pilot connecting terminals and car parks within Zurich Airport — testing autonomous operation in one of Europe's busiest and most complex transport hubs.</span>
           <button class="facts-trigger" data-row="proj-zurich" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Controlled Environment</span><span class="learn-tag">Airport Beachhead</span><span class="learn-body">Airports are emerging as a strategic beachhead for AV deployment — geo-fenced, high-footfall, with a captive operator. This model sidesteps complex public-road regulation while generating real operational data. A template for other European airports if successful.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-cn">CN</span> <span class="seg-tag">Autonomous Shuttle</span></div><div class="dc-row dc-status"><span class="status status-pilot"><span class="dot dot-pilot"></span>Active Pilot</span></div><div class="dc-row dc-countries">🇨🇭 Zurich Airport</div></td><td class="col-div vehicle-cell"><span class="v-model">WeRide Robobus</span><span class="v-detail">Geo-fenced airport campus. Safety driver present.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Pilot start</span><span class="tl-value onroad">2024</span></div><div class="tl-row"><span class="tl-label">CH commercial</span><span class="tl-value pending">TBD</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">2025</div><div class="news-teaser-text">Baidu Apollo announces separate Swiss expansion (AmiGo / PostBus).</div><button class="news-view-more" data-row="proj-zurich" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ Wayve ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Wayve</span><span class="company-desc">UK-born AV software company — end-to-end Embodied AI ("AV2.0"), no HD maps. $8.6B valuation (Feb 2026)</span><span class="company-count">1 project</span></div></td></tr>
 
-<tr class="data-row" id="proj-wayve" data-status="planned" data-segment="robotaxi"><td><span class="project-name">Wayve Robotaxi — London</span><span class="project-desc">The UK's first large-scale public robotaxi trial — combining Wayve's Embodied AI with Uber's network, enabled by the UK government's accelerated self-driving permitting framework.</span>
+<tr class="data-row" data-region="eu" id="proj-wayve" data-status="planned" data-segment="robotaxi"><td><span class="project-name">Wayve Robotaxi — London</span><span class="project-desc">The UK's first large-scale public robotaxi trial — combining Wayve's Embodied AI with Uber's network, enabled by the UK government's accelerated self-driving permitting framework.</span>
           <button class="facts-trigger" data-row="proj-wayve" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Software-Only Model</span><span class="learn-tag">No HD Maps</span><span class="learn-body">Wayve is the clearest European proof-of-concept for the "software layer" model — it doesn't own vehicles or build hardware. The no-HD-maps approach is a fundamental architectural bet: if it works at scale, it collapses the cost and time to enter new cities. The zero-shot 500-city demo is its strongest evidence yet.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-eu">UK</span> <span class="seg-tag">Robotaxi</span></div><div class="dc-row dc-status"><span class="status status-planned"><span class="dot dot-planned"></span>Launching 2026</span></div><div class="dc-row dc-countries">🇬🇧 London<br><small style="opacity:.6">10+ global markets via Uber planned</small></div></td><td class="col-div vehicle-cell"><span class="v-model">OEM vehicles + Wayve AI Driver</span><span class="v-detail">No HD maps. Standard onboard compute + sensors. Vehicle make TBC for London trial.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2017</span></div><div class="tl-row"><span class="tl-label">Road tests</span><span class="tl-value">Multi-city since 2022</span></div><div class="tl-row"><span class="tl-label">Public trials</span><span class="tl-value pending">Spring 2026</span></div><div class="tl-row"><span class="tl-label">Consumer L2+</span><span class="tl-value pending">2027</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Feb 2026</div><div class="news-teaser-text">$1.5B Series D closed at $8.6B valuation. London trial confirmed Spring 2026.</div><button class="news-view-more" data-row="proj-wayve" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ Waymo ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Waymo</span><span class="company-desc">World's most commercially mature robotaxi operator (Alphabet/Google) — 1M+ rides/week in the US, now entering Europe</span><span class="company-count">1 project</span></div></td></tr>
 
-<tr class="data-row" id="proj-waymo" data-status="pilot" data-segment="robotaxi"><td><span class="project-name">Waymo Commercial Service — London</span><span class="project-desc">Waymo's first true international expansion outside the US — bringing its fully commercial robotaxi service to London and establishing a European foothold.</span>
+<tr class="data-row" data-region="eu" id="proj-waymo" data-status="pilot" data-segment="robotaxi"><td><span class="project-name">Waymo Commercial Service — London</span><span class="project-desc">Waymo's first true international expansion outside the US — bringing its fully commercial robotaxi service to London and establishing a European foothold.</span>
           <button class="facts-trigger" data-row="proj-waymo" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Benchmark</span><span class="learn-tag">Regulatory Test</span><span class="learn-body">Waymo's London entry is the most important external benchmark for European AV ambitions. How quickly it gets approved — and at what operating conditions — will set expectations for every other player trying to go driverless in Europe.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-us">US</span> <span class="seg-tag">Robotaxi</span></div><div class="dc-row dc-status"><span class="status status-planned"><span class="dot dot-planned"></span>Launching 2026</span></div><div class="dc-row dc-countries">🇬🇧 London</div></td><td class="col-div vehicle-cell"><span class="v-model">Waymo-fitted Jaguar I-PACE</span><span class="v-detail">LiDAR, cameras, radar. Purpose-outfitted EV. Est. ~€100k/vehicle.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2009 (Google SDC)</span></div><div class="tl-row"><span class="tl-label">US commercial</span><span class="tl-value">2020–present</span></div><div class="tl-row"><span class="tl-label">London launch</span><span class="tl-value pending">2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">UK DfT permitting framework confirmed on track for 2026 launch.</div><button class="news-view-more" data-row="proj-waymo" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ Verne ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Verne</span><span class="company-desc">Croatian robotaxi startup (Rimac-founded) — Europe's only purpose-built robotaxi company, targeting full driverless from commercial launch. Zagreb service launched April 2026.</span><span class="company-count">1 project</span></div></td></tr>
 
-<tr class="data-row" id="proj-verne" data-status="live" data-segment="robotaxi"><td><span class="project-name">Verne Robotaxi Service — Zagreb</span><span class="project-desc">Europe's only robotaxi designed from scratch for driverless operation — no retrofitting, no steering wheel, with a dedicated city depot and app per market. Commercial service launched in Zagreb, April 2026.</span>
+<tr class="data-row" data-region="eu" id="proj-verne" data-status="live" data-segment="robotaxi"><td><span class="project-name">Verne Robotaxi Service — Zagreb</span><span class="project-desc">Europe's only robotaxi designed from scratch for driverless operation — no retrofitting, no steering wheel, with a dedicated city depot and app per market. Commercial service launched in Zagreb, April 2026.</span>
           <button class="facts-trigger" data-row="proj-verne" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">European Champion</span><span class="learn-tag">Purpose-Built</span><span class="learn-body">The only European-born, privately-funded, purpose-built robotaxi — and now Europe's first commercially operating L4 robotaxi service (Zagreb, April 2026). Zagreb as a launch city was deliberate: smaller, manageable urban environment where regulatory approval is more achievable than London or Berlin.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-eu">EU</span> <span class="seg-tag">Robotaxi</span></div><div class="dc-row dc-status"><span class="status status-live"><span class="dot dot-live"></span>Live</span></div><div class="dc-row dc-countries">🇭🇷 Zagreb (launched)<br>🇬🇧 UK · 🇩🇪 Germany next<br><small style="opacity:.6">+11 city agreements signed</small></div></td><td class="col-div vehicle-cell"><span class="v-model">Verne Purpose-Built EV</span><span class="v-detail">2-seat, designed for driverless ride-hailing. No steering wheel. Sensor suite undisclosed.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2023</span></div><div class="tl-row"><span class="tl-label">Prototypes</span><span class="tl-value">60 units (2025)</span></div><div class="tl-row"><span class="tl-label">Zagreb launch</span><span class="tl-value onroad">April 2026</span></div><div class="tl-row"><span class="tl-label">UK &amp; DE next</span><span class="tl-value pending">Post-Zagreb</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Apr 8, 2026</div><div class="news-teaser-text">Apr 8 2026: Europe's first commercial robotaxi service launched. €1.99/ride, 7am–9pm. Uber integration live. Permit discussions in 11 EU/UK/Middle East cities. </div><div class="news-teaser-text" style="display:none">Commercial launch in Zagreb — Europe's first L4 robotaxi service.</div><button class="news-view-more" data-row="proj-verne" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ Chinese AV Platforms ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Momenta</span><span class="company-desc">Chinese AV software company — partnering with Uber for first Continental European robotaxi deployment in Munich. Founded 2016, specialises in scalable AI driving systems.</span><span class="company-count">1 project</span></div></td></tr>
 
-<tr class="data-row" id="proj-momenta" data-status="planned" data-segment="robotaxi"><td><span class="project-name">Momenta Robotaxi — Munich</span><span class="project-desc">Uber's first Continental European autonomous deployment — pairing Momenta's AI system with IM Motors vehicles in Munich, chosen for its automotive engineering heritage.</span>
+<tr class="data-row" data-region="eu" id="proj-momenta" data-status="planned" data-segment="robotaxi"><td><span class="project-name">Momenta Robotaxi — Munich</span><span class="project-desc">Uber's first Continental European autonomous deployment — pairing Momenta's AI system with IM Motors vehicles in Munich, chosen for its automotive engineering heritage.</span>
           <button class="facts-trigger" data-row="proj-momenta" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Platform Distribution</span><span class="learn-tag">Chinese Hardware in EU</span><span class="learn-body">Illustrates how ride-hailing platforms (Uber) are becoming distribution networks for Chinese AV technology in Europe — bypassing the need for Chinese companies to build local regulatory relationships directly. Munich signals that Germany is open to Chinese-technology robotaxis arriving through trusted Western platforms.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-cn">CN</span> <span class="seg-tag">Robotaxi</span></div><div class="dc-row dc-status"><span class="status status-planned"><span class="dot dot-planned"></span>Launching 2026</span></div><div class="dc-row dc-countries">🇩🇪 Munich</div></td><td class="col-div vehicle-cell"><span class="v-model">IM Motors (SAIC)</span><span class="v-detail">Chinese premium EV platform. EU sensor config undisclosed.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Partnership</span><span class="tl-value">May 2025</span></div><div class="tl-row"><span class="tl-label">Street tests</span><span class="tl-value onroad">IAA Munich, Sept 2025</span></div><div class="tl-row"><span class="tl-label">Uber launch</span><span class="tl-value pending">2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Sep 2025</div><div class="news-teaser-text">Live street testing at IAA Munich completed successfully.</div><button class="news-view-more" data-row="proj-momenta" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Baidu · Apollo Go</span><span class="company-desc">China's most commercially mature robotaxi operator (1,000+ driverless vehicles in China) — entering Europe via Lyft/FreeNow in Germany &amp; UK, and directly with PostBus in Switzerland (AmiGo service).</span><span class="company-count">2 projects</span></div></td></tr>
 
-<tr class="data-row" id="proj-apollo" data-status="planned" data-segment="robotaxi"><td><span class="project-name">Apollo Go — Germany &amp; UK</span><span class="project-desc">Lyft's entry into European autonomous mobility — deploying Baidu's cost-competitive RT6 robotaxi through its FreeNow platform against US rivals charging 3× the vehicle cost.</span>
+<tr class="data-row" data-region="eu" id="proj-apollo" data-status="planned" data-segment="robotaxi"><td><span class="project-name">Apollo Go — Germany &amp; UK</span><span class="project-desc">Lyft's entry into European autonomous mobility — deploying Baidu's cost-competitive RT6 robotaxi through its FreeNow platform against US rivals charging 3× the vehicle cost.</span>
           <button class="facts-trigger" data-row="proj-apollo" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Cost Disruption</span><span class="learn-tag">Vehicle Economics</span><span class="learn-body">The RT6's ~€30k price point is the most significant cost challenge to US-origin AV programmes in Europe. If Chinese vehicle economics translate to European operating conditions, it reframes the competitive landscape from a technology race to a unit-economics race — one where Chinese manufacturers have a structural advantage.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-cn">CN</span> <span class="seg-tag">Robotaxi</span></div><div class="dc-row dc-status"><span class="status status-planned"><span class="dot dot-planned"></span>Launching 2026</span></div><div class="dc-row dc-countries">🇩🇪 Germany · 🇬🇧 UK</div></td><td class="col-div vehicle-cell"><span class="v-model">Baidu RT6</span><span class="v-detail">Purpose-built robotaxi. Removable steering wheel. ~€30k/vehicle. LiDAR + cameras.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Partnership</span><span class="tl-value">Aug 2024</span></div><div class="tl-row"><span class="tl-label">EU launch</span><span class="tl-value pending">2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Dec 2025</div><div class="news-teaser-text">Germany and UK confirmed as first European markets via Lyft/FreeNow.</div><button class="news-view-more" data-row="proj-apollo" data-tab="news">View more ↗</button></div></div></td></tr>
 
-        <tr class="data-row" id="proj-amigo" data-status="pilot" data-segment="robotaxi"><td>
+        <tr class="data-row" data-region="eu" id="proj-amigo" data-status="pilot" data-segment="robotaxi"><td>
             <span class="project-name">Apollo Go AmiGo — Switzerland</span>
             <span class="project-desc">Baidu's first direct European deployment — a named robotaxi service (AmiGo) launching in eastern Switzerland in partnership with PostBus (Swiss Post), covering three cantons with the RT6 vehicle.</span>
           <button class="facts-trigger" data-row="proj-amigo" data-tab="details">Operational Facts ↗</button>
@@ -1357,13 +1412,13 @@
 
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Pony.ai</span><span class="company-desc">Chinese AV company (Nasdaq: PONY) — Europe's most diversified market entry strategy, operating across Bolt, Stellantis, Uber, and Verne simultaneously. Already has Europe's first commercial L4 robotaxi via Verne Zagreb (April 2026).</span><span class="company-count">3 projects</span></div></td></tr>
 
-<tr class="data-row" id="proj-ponyai-bolt" data-status="planned" data-segment="robotaxi"><td><span class="project-name">Pony.ai on Bolt</span><span class="project-desc">A partnership giving Europe's homegrown ride-hailing giant access to Pony.ai's Gen-7 robotaxi fleet — integrated directly into Bolt's app for EU deployment from 2026.</span>
+<tr class="data-row" data-region="eu" id="proj-ponyai-bolt" data-status="planned" data-segment="robotaxi"><td><span class="project-name">Pony.ai on Bolt</span><span class="project-desc">A partnership giving Europe's homegrown ride-hailing giant access to Pony.ai's Gen-7 robotaxi fleet — integrated directly into Bolt's app for EU deployment from 2026.</span>
           <button class="facts-trigger" data-row="proj-ponyai-bolt" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">European Distribution</span><span class="learn-tag">Platform Dependency</span><span class="learn-body">Bolt is the first European-owned ride-hailing platform to make a serious AV bet — and it's doing so by partnering with a Chinese provider rather than building in-house. A strategic signal: European platforms may lack the capital to develop their own AV tech, making them distribution channels for US or Chinese systems.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-cn">CN</span> <span class="seg-tag">Robotaxi</span></div><div class="dc-row dc-status"><span class="status status-planned"><span class="dot dot-planned"></span>Launching 2026</span></div><div class="dc-row dc-countries">🇪🇺 EU markets (TBD)</div></td><td class="col-div vehicle-cell"><span class="v-model">Pony.ai Gen-7 Robotaxi</span><span class="v-detail">BAIC or GAC platform. LiDAR + cameras. 960+ fleet in China. EU config TBC.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Partnership</span><span class="tl-value">Late 2025</span></div><div class="tl-row"><span class="tl-label">Bolt launch</span><span class="tl-value pending">2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Nov 2025</div><div class="news-teaser-text">Pony.ai and Bolt announce EU ride-hailing integration for 2026.</div><button class="news-view-more" data-row="proj-ponyai-bolt" data-tab="news">View more ↗</button></div></div></td></tr>
 
-<tr class="data-row" id="proj-stellantis" data-status="pilot" data-segment="robotaxi"><td><span class="project-name">Stellantis × Pony.ai — European Robotaxi</span><span class="project-desc">A major European OEM embedding Chinese AV software directly into its own vehicle platform — integrating Pony.ai's autonomous system into the Stellantis AV-Ready Peugeot e-Traveller van for EU robotaxi deployment.</span>
+<tr class="data-row" data-region="eu" id="proj-stellantis" data-status="pilot" data-segment="robotaxi"><td><span class="project-name">Stellantis × Pony.ai — European Robotaxi</span><span class="project-desc">A major European OEM embedding Chinese AV software directly into its own vehicle platform — integrating Pony.ai's autonomous system into the Stellantis AV-Ready Peugeot e-Traveller van for EU robotaxi deployment.</span>
           <button class="facts-trigger" data-row="proj-stellantis" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">OEM + Software Integration</span><span class="learn-tag">EU Manufacturing</span><span class="learn-body">The most significant European OEM AV bet: a major carmaker (Stellantis) embedding Chinese AV software into European-built vehicles rather than developing its own stack. This is a different model to MOIA/VW — it's about making the OEM's vehicle AV-Ready and finding the best software partner. If it scales, it creates a European AV vehicle supply chain that doesn't depend on US or purpose-built Chinese platforms.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">EU / CN</span> <span class="seg-tag">Robotaxi</span></div><div class="dc-row dc-status"><span class="status status-pilot"><span class="dot dot-pilot"></span>Testing</span></div><div class="dc-row dc-countries">🇱🇺 Luxembourg (initial testing)<br>🇪🇺 Broader EU cities from 2026<br><small style="opacity:.6">Bolt fleet vehicles from 2029</small></div></td><td class="col-div vehicle-cell"><span class="v-model">Peugeot e-Traveller (AV-Ready)</span><span class="v-detail">Stellantis K0 BEV medium-size van. AV-Ready Platform with integrated sensor mounts. Up to 8 passengers. Pony.ai Virtual Driver software.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">MoU signed</span><span class="tl-value">Oct 2025</span></div><div class="tl-row"><span class="tl-label">LUX testing</span><span class="tl-value onroad">Late 2025 / early 2026</span></div><div class="tl-row"><span class="tl-label">EU rollout</span><span class="tl-value pending">From 2026</span></div><div class="tl-row"><span class="tl-label">Production AVs</span><span class="tl-value pending">From 2029 (Bolt fleet)</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Oct 2025</div><div class="news-teaser-text">MoU signed; AV-Ready Peugeot e-Traveller testing begins in Luxembourg.</div><button class="news-view-more" data-row="proj-stellantis" data-tab="news">View more ↗</button></div></div></td></tr>
 
-        <tr class="data-row" id="proj-ponyai-eu" data-status="planned" data-segment="robotaxi"><td>
+        <tr class="data-row" data-region="eu" id="proj-ponyai-eu" data-status="planned" data-segment="robotaxi"><td>
             <span class="project-name">Pony.ai — European Multi-City Expansion</span>
             <span class="project-desc">Pony.ai's broad European rollout beyond its existing Luxembourg base — targeting 20+ cities globally by end of 2026, with European expansion confirmed via Uber, Bolt, and Stellantis partnerships. Already live in Zagreb (via Verne) as of April 2026.</span>
           <button class="facts-trigger" data-row="proj-ponyai-eu" data-tab="details">Operational Facts ↗</button>
@@ -1383,12 +1438,12 @@
 
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">ADASTEC × Karsan</span><span class="company-desc">Full-size autonomous electric bus programme — flowride.ai platform on the Karsan e-ATAK, operating across four European countries since 2021</span><span class="company-count">1 programme (multi-country)</span></div></td></tr>
 
-<tr class="data-row" id="proj-karsan" data-status="live" data-segment="shuttle"><td><span class="project-name">Karsan e-ATAK Autonomous Bus Programme</span><span class="project-desc">Europe's first full-speed, full-size autonomous electric bus — 52 passengers at up to 50 km/h, operating in urban streets and airport campuses across four countries since 2021.</span>
+<tr class="data-row" data-region="eu" id="proj-karsan" data-status="live" data-segment="shuttle"><td><span class="project-name">Karsan e-ATAK Autonomous Bus Programme</span><span class="project-desc">Europe's first full-speed, full-size autonomous electric bus — 52 passengers at up to 50 km/h, operating in urban streets and airport campuses across four countries since 2021.</span>
           <button class="facts-trigger" data-row="proj-karsan" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Full-Size Transit</span><span class="learn-tag">Non-EU OEM</span><span class="learn-body">5 years of multi-country operation makes this the most seasoned full-size AV bus programme in Europe. Its longevity is itself the insight — it shows what it takes to sustain a pilot without yet commercialising. Also notable as a Turkish OEM + US software firm penetrating European public transit, a supply chain model very different from the VW/Mobileye approach.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">US / TR</span> <span class="seg-tag">Full-Size Autonomous Bus</span></div><div class="dc-row dc-status"><span class="status status-pilot"><span class="dot dot-live"></span>Live / Operational</span></div><div class="dc-row dc-countries">🇫🇮 Finland<br>🇩🇪 Germany<br>🇳🇱 Netherlands<br>🇳🇴 Norway</div></td><td class="col-div vehicle-cell"><span class="v-model">Karsan e-ATAK Electric Bus</span><span class="v-detail">52 pax, 50 km/h max. 5 Ouster LiDARs: 1× 360° rooftop, 4× 270° side. ADASTEC flowride.ai.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">First EU deploy</span><span class="tl-value">2021</span></div><div class="tl-row"><span class="tl-label">Multi-country</span><span class="tl-value onroad">Ongoing</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">2025</div><div class="news-teaser-text">Programme extends to Romania (Cluj) — fifth European country.</div><button class="news-view-more" data-row="proj-karsan" data-tab="news">View more ↗</button></div></div></td></tr>
 
 
 <!-- Karsan e-ATAK — Sälen, Sweden (SIKTA) -->
-<tr class="data-row" id="proj-karsan-salen" data-status="live" data-segment="shuttle">
+<tr class="data-row" data-region="eu" id="proj-karsan-salen" data-status="live" data-segment="shuttle">
   <td><span class="project-name">Karsan e-ATAK — Sälen SIKTA (Sweden)</span><span class="project-desc">One of Europe's first L4 autonomous bus deployments in a mountain tourism setting — commercial passenger service completed in ski resort of Sälen during peak season 2026. Part of the Sälen–Idre Autonomous Public Transportation Project (SIKTA).</span>
           <button class="facts-trigger" data-row="proj-karsan-salen" data-tab="details">Operational Facts ↗</button></td>
   <td class="col-div-learn learn-cell">
@@ -1417,7 +1472,7 @@
 </tr>
 
 <!-- Karsan e-ATAK — Paris, RATP Group -->
-<tr class="data-row" id="proj-karsan-paris" data-status="pilot" data-segment="shuttle">
+<tr class="data-row" data-region="eu" id="proj-karsan-paris" data-status="pilot" data-segment="shuttle">
   <td><span class="project-name">Karsan e-ATAK — Paris RATP Group</span><span class="project-desc">6-month autonomous driving validation project with RATP Group — one of Europe's largest public transit operators. ~3,000km covered in open Paris traffic, validated at UTAC automotive test centre.</span>
           <button class="facts-trigger" data-row="proj-karsan-paris" data-tab="details">Operational Facts ↗</button></td>
   <td class="col-div-learn learn-cell">
@@ -1445,7 +1500,7 @@
 </tr>
 
 <!-- WeRide — Slovakia (ELEVATE) -->
-<tr class="data-row" id="proj-weride-slovakia" data-status="pilot" data-segment="robotaxi">
+<tr class="data-row" data-region="eu" id="proj-weride-slovakia" data-status="pilot" data-segment="robotaxi">
   <td><span class="project-name">WeRide — Slovakia National AV Programme</span><span class="project-desc">Slovakia's first national autonomous driving programme — WeRide's fourth European market. Multi-product deployment covering robotaxis, robobuses, robovans and robosweepers in partnership with government-backed ELEVATE Slovakia.</span>
           <button class="facts-trigger" data-row="proj-weride-slovakia" data-tab="details">Operational Facts ↗</button></td>
   <td class="col-div-learn learn-cell">
@@ -1476,13 +1531,13 @@
 <!-- ═══ Einride ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Einride</span><span class="company-desc">Swedish autonomous electric freight company — world's first commercial autonomous EV on a public road (2019). Operationally deployed in Sweden, Norway, Belgium. SPAC IPO announced Nov 2025 at $1.8B valuation.</span><span class="company-count">1 programme (multi-country)</span></div></td></tr>
 
-<tr class="data-row" id="proj-einride" data-status="live" data-segment="truck"><td><span class="project-name">Einride Autonomous Freight — European Operations</span><span class="project-desc">The most commercially mature autonomous heavy-duty freight operation in Europe — cabless electric trucks operating real logistics routes for major shippers including Apotea, PostNord, Heineken, and at the Port of Antwerp-Bruges.</span>
+<tr class="data-row" data-region="eu" id="proj-einride" data-status="live" data-segment="truck"><td><span class="project-name">Einride Autonomous Freight — European Operations</span><span class="project-desc">The most commercially mature autonomous heavy-duty freight operation in Europe — cabless electric trucks operating real logistics routes for major shippers including Apotea, PostNord, Heineken, and at the Port of Antwerp-Bruges.</span>
           <button class="facts-trigger" data-row="proj-einride" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Only EU Commercial AV Freight</span><span class="learn-tag">Regulatory Model</span><span class="learn-body">Einride is the only European company running actual commercial autonomous freight operations on public roads — not a pilot. Its approach of adapting to existing regulatory frameworks rather than waiting for new laws is the defining strategic lesson. The world-first autonomous border crossing (Sweden→Norway) demonstrates that multi-jurisdiction AV freight is already technically and legally achievable today.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-eu">EU</span> <span class="seg-tag">Autonomous Truck</span><span class="seg-tag">Freight</span></div><div class="dc-row dc-status"><span class="status status-live"><span class="dot dot-live"></span>Commercially Operational</span></div><div class="dc-row dc-countries">🇸🇪 Sweden (primary ops)<br>🇧🇪 Belgium (Port of Antwerp-Bruges)<br>🇳🇴 Norway (PostNord)<br>🇦🇹 Austria (expanded 2024)<br>🇩🇪 Germany (Heineken, expansion)</div></td><td class="col-div vehicle-cell"><span class="v-model">Einride Pod (cabless)</span><span class="v-detail">Purpose-built cabless electric autonomous truck. 5.2M data points/sec processed. Remotely supervised via Saga AI OS. Vehicle-agnostic platform also available for OEM trucks.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2016</span></div><div class="tl-row"><span class="tl-label">First public road</span><span class="tl-value">2019 (Sweden)</span></div><div class="tl-row"><span class="tl-label">EU commercial ops</span><span class="tl-value onroad">Ongoing</span></div><div class="tl-row"><span class="tl-label">Antwerp ops</span><span class="tl-value onroad">Sept 2025</span></div><div class="tl-row"><span class="tl-label">SE→NO border cross</span><span class="tl-value onroad">Sept 2025 (world first)</span></div><div class="tl-row"><span class="tl-label">SPAC IPO</span><span class="tl-value pending">Announced Nov 2025</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Nov 2025</div><div class="news-teaser-text">Feb 2026: Joined ECAVA as only autonomous freight operator advising EU institutions. Raised $113M PIPE ahead of NYSE listing (H1 2026, valuation $1.35B).</div><button class="news-view-more" data-row="proj-einride" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ PlusAI / IVECO ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">PlusAI × IVECO</span><span class="company-desc">First autonomous heavy-duty freight truck programme in Southern Europe — IVECO S-Way with PlusAI SuperDrive™, starting 2026</span><span class="company-count">1 project</span></div></td></tr>
 
-<tr class="data-row" id="proj-iveco" data-status="planned" data-segment="truck"><td><span class="project-name">IVECO S-Way Autonomous Truck Trial</span><span class="project-desc">The first autonomous heavy-duty truck deployment in Southern Europe — two IVECO S-Way trucks with PlusAI's virtual driver, operating on real logistics routes in Aragon with freight operator Sesé.</span>
+<tr class="data-row" data-region="eu" id="proj-iveco" data-status="planned" data-segment="truck"><td><span class="project-name">IVECO S-Way Autonomous Truck Trial</span><span class="project-desc">The first autonomous heavy-duty truck deployment in Southern Europe — two IVECO S-Way trucks with PlusAI's virtual driver, operating on real logistics routes in Aragon with freight operator Sesé.</span>
           <button class="facts-trigger" data-row="proj-iveco" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Southern EU Freight</span><span class="learn-tag">Government Co-Partner</span><span class="learn-body">The only EU project focused on long-haul autonomous freight in Southern Europe — a market with strong near-term economics (driver shortages, fixed routes, highway conditions). The Government of Aragon as an active co-partner, not just a regulator, points to a regional government using AV freight as an economic development tool.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-us">US</span> <span class="seg-tag">Autonomous Truck</span><span class="seg-tag">Freight</span></div><div class="dc-row dc-status"><span class="status status-planned"><span class="dot dot-planned"></span>Starting 2026</span></div><div class="dc-row dc-countries">🇪🇸 Aragon, Spain</div></td><td class="col-div vehicle-cell"><span class="v-model">IVECO S-Way (Heavy Duty)</span><span class="v-detail">PlusAI SuperDrive™. Long-haul highway-capable. Safety operator throughout trial. Factory AV version targeted 2027.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Partnership</span><span class="tl-value">Jan 2026</span></div><div class="tl-row"><span class="tl-label">Testing</span><span class="tl-value pending">From 2026 (multi-year)</span></div><div class="tl-row"><span class="tl-label">Factory AV truck</span><span class="tl-value pending">2027 target</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">2026</div><div class="news-teaser-text">Trial reports 99.2% autonomous miles in H2 2025.</div><button class="news-view-more" data-row="proj-iveco" data-tab="news">View more ↗</button></div></div></td></tr>
 
         <!-- ═══════════════════════════ Auve Tech ══════════════════════════ -->
@@ -1496,7 +1551,7 @@
           </td>
         </tr>
 
-        <tr class="data-row" id="proj-auvetech" data-status="pilot" data-segment="shuttle"><td>
+        <tr class="data-row" data-region="eu" id="proj-auvetech" data-status="pilot" data-segment="shuttle"><td>
             <span class="project-name">Auve Tech MiCa — Tallinn Public Transit</span>
             <span class="project-desc">Estonia's homegrown autonomous shuttle programme — the MiCa vehicle has been integrated into Tallinn's official public transport network across multiple districts, including a live Mustamäe route and the Ülemiste City–Airport connector.</span>
           <button class="facts-trigger" data-row="proj-auvetech" data-tab="details">Operational Facts ↗</button>
@@ -1525,7 +1580,7 @@
           </td>
         </tr>
 
-        <tr class="data-row" id="proj-zenseact" data-status="live" data-segment="robotaxi"><td>
+        <tr class="data-row" data-region="eu" id="proj-zenseact" data-status="live" data-segment="robotaxi"><td>
             <span class="project-name">Zenseact OnePilot — Volvo EX90 &amp; Polestar 3</span>
             <span class="project-desc">The only European OEM consumer-vehicle autonomous driving programme actively shipping — OnePilot's Drive and Cruise modes are commercially live in Volvo EX90 and Polestar 3. The "Ride" unsupervised L4 mode is hardware-ready, validated, and awaiting regulatory approval to activate.</span>
           <button class="facts-trigger" data-row="proj-zenseact" data-tab="details">Operational Facts ↗</button>
@@ -1556,7 +1611,7 @@
         </tr>
 
         <!-- AVINT Trikala — Greece -->
-        <tr class="data-row" id="proj-trikala" data-status="pilot" data-segment="shuttle"><td>
+        <tr class="data-row" data-region="eu" id="proj-trikala" data-status="pilot" data-segment="shuttle"><td>
             <span class="project-name">AVINT — Trikala Autonomous Bus Programme</span>
             <span class="project-desc">Greece's flagship AV project — Trikala has been Europe's most persistent small-city AV testbed since 2015, operating integrated autonomous bus lines on public roads with 11,000+ passengers carried in the first pilot alone.</span>
           <button class="facts-trigger" data-row="proj-trikala" data-tab="details">Operational Facts ↗</button>
@@ -1575,7 +1630,7 @@
           </td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">May 2023</div><div class="news-teaser-text">SHOW project launches 3 SAE L4 on-demand vans in Trikala.</div><button class="news-view-more" data-row="proj-trikala" data-tab="news">View more ↗</button></div></div></td></tr>
 
         <!-- ZalaZONE / Budapest — Hungary -->
-        <tr class="data-row" id="proj-zalazone" data-status="announced" data-segment="robotaxi"><td>
+        <tr class="data-row" data-region="eu" id="proj-zalazone" data-status="announced" data-segment="robotaxi"><td>
             <span class="project-name">ZalaZONE / Budapest — Government L4 Taxi Trial</span>
             <span class="project-desc">Hungary's national AV initiative — ZalaZONE (Europe's largest AV test track) announced plans in January 2026 to deploy 2 Mobileye-powered L4 vehicles into the real Budapest Főtaxi/Uber fleet, directly sponsored by Hungary's AI commissioner.</span>
           <button class="facts-trigger" data-row="proj-zalazone" data-tab="details">Operational Facts ↗</button>
@@ -1592,7 +1647,7 @@
           </td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Jan 2026</div><div class="news-teaser-text">Hungarian government announces Budapest L4 taxi trial via Főtaxi/Uber.</div><button class="news-view-more" data-row="proj-zalazone" data-tab="news">View more ↗</button></div></div></td></tr>
 
         <!-- Sensible 4 — Finland -->
-        <tr class="data-row" id="proj-sensible4" data-status="pilot" data-segment="shuttle"><td>
+        <tr class="data-row" data-region="eu" id="proj-sensible4" data-status="pilot" data-segment="shuttle"><td>
             <span class="project-name">Sensible 4 — DAWN All-Weather AV Platform</span>
             <span class="project-desc">Finland's indigenous AV software company — DAWN is the world's only commercially available all-weather L4 AV driving platform, designed specifically for Nordic conditions (snow, ice, fog, no lane markings). Developed since 2017 with multiple pilot deployments.</span>
           <button class="facts-trigger" data-row="proj-sensible4" data-tab="details">Operational Facts ↗</button>
@@ -1611,7 +1666,7 @@
           </td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">2025</div><div class="news-teaser-text">Company restructures; new founders pivot to industrial/commercial vehicles.</div><button class="news-view-more" data-row="proj-sensible4" data-tab="news">View more ↗</button></div></div></td></tr>
 
         <!-- Škoda Didymos — Czechia -->
-        <tr class="data-row" id="proj-skoda" data-status="pilot" data-segment="shuttle"><td>
+        <tr class="data-row" data-region="eu" id="proj-skoda" data-status="pilot" data-segment="shuttle"><td>
             <span class="project-name">Škoda Group — Didymos Autonomous LRV</span>
             <span class="project-desc">Czechia's primary AV initiative — Škoda Group's 3-year R&amp;D programme developing the first autonomous light rail vehicle (tram) in Central Europe, in collaboration with Czech universities. First test track demonstration planned in Pilsen.</span>
           <button class="facts-trigger" data-row="proj-skoda" data-tab="details">Operational Facts ↗</button>
@@ -1630,7 +1685,7 @@
           </td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Jan 2026</div><div class="news-teaser-text">Czech L3 AV law signed — vehicles permitted from January 1, 2026.</div><button class="news-view-more" data-row="proj-skoda" data-tab="news">View more ↗</button></div></div></td></tr>
 
         <!-- Blees BB-1 — Poland -->
-        <tr class="data-row" id="proj-blees" data-status="pilot" data-segment="shuttle"><td>
+        <tr class="data-row" data-region="eu" id="proj-blees" data-status="pilot" data-segment="shuttle"><td>
             <span class="project-name">Blees BB-1 — Poland's First Autonomous Minibus</span>
             <span class="project-desc">Poland's only domestically built autonomous vehicle — the BB-1 minibus developed by Gliwice startup Blees in collaboration with Silesian University of Technology, with pilot operations in Katowice and Gliwice in 2023.</span>
           <button class="facts-trigger" data-row="proj-blees" data-tab="details">Operational Facts ↗</button>
@@ -1648,6 +1703,563 @@
             <div class="tl-row"><span class="tl-label">AV law (PL)</span><span class="tl-value pending">Pending — Q1 2025 submission</span></div>
           </td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Jan 2025</div><div class="news-teaser-text">Polish AV legislation expected to be submitted Q1 2025.</div><button class="news-view-more" data-row="proj-blees" data-tab="news">View more ↗</button></div></div></td></tr>
 
+
+<!-- ════════════════════════════════════════════════════════════════
+     NORTH AMERICA
+════════════════════════════════════════════════════════════════ -->
+
+<!-- ═══ Waymo ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Waymo</span>
+  <span class="company-desc">Alphabet's autonomous ride-hailing subsidiary — the global leader in commercial driverless robotaxi deployment. Operates fully without safety drivers across 10 US cities.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-waymo-us" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">Waymo One — US Commercial Network</span>
+  <span class="project-desc">The world's most commercially scaled fully driverless robotaxi service — operating across 10 US cities with no safety driver, completing over 250,000 paid rides per week.</span>
+  <button class="facts-trigger" data-row="proj-waymo-us" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Commercial Scale Leader</span><span class="learn-tag">$16B War Chest</span>
+    <span class="learn-body">Waymo is the only company to have proven full driverless commercialisation at meaningful scale — not a pilot, not geofenced testing, but a paid public service across 10 cities. The $16B raise at $126B valuation signals institutional confidence that robotaxi economics work. The expansion from 5 to 10 cities in under a year is the fastest scaling in US AV history. The 1M trips/week target by end of 2026 — vs 250K now — means 4× growth. Every other company is measuring progress against Waymo's baseline.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇺🇸 10 cities: SF · LA · Phoenix · Austin · Atlanta · Dallas · Houston · San Antonio · Miami · Orlando</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Jaguar I-PACE (current) + Zeekr RT (scaling)</span>
+    <span class="v-detail">~3,000 vehicle fleet. 29 sensors: 13 cameras, 9 LiDAR, 5 radar, 4 audio. No safety driver in any commercial vehicle. Zeekr RT being added for scale at lower cost.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">First commercial service</span><span class="tl-value onroad">Phoenix 2020</span></div>
+    <div class="tl-row"><span class="tl-label">10-city milestone</span><span class="tl-value onroad">Feb 2026</span></div>
+    <div class="tl-row"><span class="tl-label">$16B raise / $126B val.</span><span class="tl-value onroad">Feb 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Target: 1M trips/week</span><span class="tl-value pending">End of 2026</span></div>
+    <div class="tl-row"><span class="tl-label">London + Tokyo</span><span class="tl-value pending">2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Feb 2026</div><div class="news-teaser-text">Waymo opens in Dallas, Houston, San Antonio, Orlando — now 10 US cities. $16B raised at $126B valuation. Targeting 20+ additional cities including London and Tokyo in 2026.</div><button class="news-view-more" data-row="proj-waymo-us" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Tesla ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Tesla</span>
+  <span class="company-desc">EV maker turned robotaxi operator — leveraging its 6M+ vehicle FSD fleet as a training corpus. Camera-only, no LiDAR. Cybercab in production April 2026.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-tesla-robotaxi" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">Tesla Robotaxi Network + Cybercab</span>
+  <span class="project-desc">Tesla's commercial robotaxi service operating modified Model Y vehicles with no safety driver in Texas, with the purpose-built Cybercab entering production April 2026. The most controversial — and potentially most scalable — AV deployment in history.</span>
+  <button class="facts-trigger" data-row="proj-tesla-robotaxi" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Camera-Only Bet</span><span class="learn-tag">Production Scale</span>
+    <span class="learn-body">Tesla's approach is fundamentally different from every other AV company — no LiDAR, no HD maps, no geofence. If FSD generalises across all conditions it becomes the lowest-cost AV stack by orders of magnitude (~$0.20/mile claimed vs ~$1.00+ for LiDAR-based systems). The Cybercab at under $30,000 and 2M unit/year target is a potential cost disruption that would make every other robotaxi programme uneconomical. The counterargument: camera-only has never been proven safe at L4 without a safety driver and the NHTSA investigations are real concerns.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇺🇸 Austin · Dallas · Houston (expanding to Phoenix, Miami, Orlando, Tampa, Las Vegas H1 2026)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Modified Tesla Model Y (current) + Cybercab (from Apr 2026)</span>
+    <span class="v-detail">Camera-only, no LiDAR. FSD v13+ software. Cybercab: 2-seat, no steering wheel/pedals, under $30,000, 2M units/year target at full capacity. Volume production started Apr 2026.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Austin pilot launch</span><span class="tl-value onroad">Jun 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Dallas + Houston (public)</span><span class="tl-value onroad">Apr 18, 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Cybercab production starts</span><span class="tl-value onroad">Apr 2026</span></div>
+    <div class="tl-row"><span class="tl-label">7 cities by June 2026</span><span class="tl-value pending">H1 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Material revenue</span><span class="tl-value pending">2027 (Musk est.)</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Apr 2026</div><div class="news-teaser-text">Cybercab enters volume production at Giga Texas. Dallas + Houston robotaxi launched publicly Apr 18 with 573 vehicles and no safety driver. 7 cities targeted by June 2026.</div><button class="news-view-more" data-row="proj-tesla-robotaxi" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Zoox ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Zoox (Amazon)</span>
+  <span class="company-desc">Amazon-owned robotaxi startup — purpose-built bidirectional vehicle with no steering wheel, no driver seat. Passengers face each other. Awaiting NHTSA commercial fare approval.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-zoox-us" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">Zoox Robotaxi — US Commercial Rollout</span>
+  <span class="project-desc">Amazon-backed purpose-built robotaxi operating driverless in Las Vegas and San Francisco, expanding to Austin and Miami in 2026. Awaiting NHTSA approval to charge fares — currently free rides only.</span>
+  <button class="facts-trigger" data-row="proj-zoox-us" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Purpose-Built Design</span><span class="learn-tag">Amazon Backing</span>
+    <span class="learn-body">Zoox is the only robotaxi with a fully symmetric bidirectional design — no front/back, passengers face each other, no steering wheel or pedals anywhere in the cabin. NHTSA granted a federal exemption to operate this vehicle, which has no equivalent in any regulatory framework. Amazon&apos;s backing means manufacturing scale and AWS cloud infrastructure are not constraints. The fare-approval bottleneck is temporary — once NHTSA approves, Zoox can charge immediately across all markets. The Uber partnership in Las Vegas de-risks customer acquisition.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-live"></span>Live (free rides)</span>
+    <span class="country-tag">🇺🇸 Las Vegas · San Francisco · Austin · Miami (expanding)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Zoox purpose-built robotaxi</span>
+    <span class="v-detail">Bidirectional, no steering wheel or pedals. 4 passengers face each other. Personal screens, wireless charging per seat. 220,000 sq ft manufacturing facility Bay Area. Target: 10,000 vehicles/year at capacity.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Las Vegas launch</span><span class="tl-value onroad">Sep 2025</span></div>
+    <div class="tl-row"><span class="tl-label">San Francisco launch</span><span class="tl-value onroad">Nov 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Austin + Miami expansion</span><span class="tl-value pending">Spring 2026</span></div>
+    <div class="tl-row"><span class="tl-label">NHTSA fare approval</span><span class="tl-value pending">Apr 2026 (expected)</span></div>
+    <div class="tl-row"><span class="tl-label">Uber partnership LV</span><span class="tl-value onroad">Summer 2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">Zoox announces Austin + Miami expansion, quadruples SF service area, partners with Uber for Las Vegas. NHTSA fare approval decision expected April 2026.</div><button class="news-view-more" data-row="proj-zoox-us" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ May Mobility ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">May Mobility</span>
+  <span class="company-desc">Ann Arbor-based AV shuttle operator — backed by Toyota and NTT. Operates on-demand driverless shuttles in US cities and Japan via Lyft and Uber platforms.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-may-mobility" data-status="live" data-segment="shuttle">
+  <td><span class="project-name">May Mobility — US Driverless Shuttle Network</span>
+  <span class="project-desc">Driverless on-demand shuttle service across multiple US cities via Lyft and Uber platforms — the most widely deployed autonomous shuttle programme in North America, with 400,000+ rides completed.</span>
+  <button class="facts-trigger" data-row="proj-may-mobility" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Platform Distribution</span><span class="learn-tag">Toyota + NTT Backing</span>
+    <span class="learn-body">May Mobility&apos;s differentiation is distribution — by integrating with Lyft and Uber rather than building its own app, it gets immediate rider access without the customer acquisition cost. The MPDM (Multi-Policy Decision Making) software is designed for mixed urban environments, not just controlled campuses. The Tecnobus partnership adds a 30-passenger variant homologated for Europe and Canada — a rare North American AV company with near-term international expansion path. Toyota&apos;s investment means vehicle supply is not a constraint.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Shuttle</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇺🇸 Atlanta (Lyft) · Arlington TX (Uber) · Ann Arbor MI · Peachtree Corners GA · Grand Rapids MN</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Toyota Sienna (retrofitted) + Tecnobus minibus (2026)</span>
+    <span class="v-detail">Toyota Sienna: 8 passengers, MPDM autonomy stack, Tele-Assist remote monitoring. Tecnobus: 30 passengers, 45 mph, swappable batteries, EU/Canada homologated. Road-ready H1 2026.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">First driverless service</span><span class="tl-value onroad">Sun City AZ, Dec 2023</span></div>
+    <div class="tl-row"><span class="tl-label">Atlanta / Lyft launch</span><span class="tl-value onroad">Sep 2025</span></div>
+    <div class="tl-row"><span class="tl-label">400,000+ rides milestone</span><span class="tl-value onroad">2025</span></div>
+    <div class="tl-row"><span class="tl-label">Tecnobus road-ready</span><span class="tl-value pending">H1 2026</span></div>
+    <div class="tl-row"><span class="tl-label">SE Asia expansion (Grab)</span><span class="tl-value pending">2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">2025–26</div><div class="news-teaser-text">May Mobility launches driverless service on Lyft in Atlanta and Uber in Arlington TX. New 30-passenger Tecnobus minibus road-ready H1 2026, homologated for Europe and Canada.</div><button class="news-view-more" data-row="proj-may-mobility" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Aurora ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Aurora Innovation</span>
+  <span class="company-desc">Pittsburgh-based autonomous trucking company — the first to achieve commercial driverless freight at highway speeds in the US. Operating on Texas highways with zero safety incidents.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-aurora-us" data-status="live" data-segment="truck">
+  <td><span class="project-name">Aurora Driver — US Commercial Freight Network</span>
+  <span class="project-desc">First commercial driverless trucking service operating at highway speeds in the US — running on Texas freight corridors with 100% on-time performance and zero driverless safety incidents. Scaling to hundreds of trucks in 2026.</span>
+  <button class="facts-trigger" data-row="proj-aurora-us" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Highway L4 First Mover</span><span class="learn-tag">OEM Integration</span>
+    <span class="learn-body">Aurora is the only company running fully driverless Class 8 trucks on public US highways at commercial speeds — not a test, not a pilot, but revenue-generating freight. The 100% on-time record and zero safety incidents across 100,000+ driverless miles is the most rigorous proof point in autonomous trucking. The Volvo and PACCAR integrations mean Aurora&apos;s hardware is now being built into trucks on the production line — not retrofitted. The 50% hardware cost reduction with next-gen kit in mid-2026 is what enables scaling from 5 trucks to hundreds.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Freight Truck</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇺🇸 Dallas→Houston · Fort Worth→El Paso · Permian Basin TX (expanding to Phoenix corridor)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Volvo VNL Autonomous + International LT Series (Class 8)</span>
+    <span class="v-detail">Aurora Driver: FirstLight proprietary LiDAR (500m range → 1,000m with next-gen). Integrates with Volvo VNL, PACCAR, International LT. Next-gen kit cuts hardware cost 50%+. Available via Bosch for production-line integration.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Dallas→Houston launch</span><span class="tl-value onroad">Apr 2025</span></div>
+    <div class="tl-row"><span class="tl-label">FW→El Paso (600 miles)</span><span class="tl-value onroad">Oct 2025</span></div>
+    <div class="tl-row"><span class="tl-label">100,000 driverless miles</span><span class="tl-value onroad">Oct 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Next-gen hardware + 50% cost cut</span><span class="tl-value pending">Mid-2026</span></div>
+    <div class="tl-row"><span class="tl-label">Hundreds of driverless trucks</span><span class="tl-value pending">Late 2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Oct 2025</div><div class="news-teaser-text">Aurora surpasses 100,000 driverless miles, launches Fort Worth→El Paso route. Plans hundreds of trucks by late 2026 with next-gen hardware at 50% lower cost. Volvo + PACCAR production-line integration confirmed.</div><button class="news-view-more" data-row="proj-aurora-us" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Kodiak ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Kodiak Robotics</span>
+  <span class="company-desc">Mountain View-based autonomous trucking company — first customer-owned driverless truck deployment in history. Operating in Permian Basin oilfields and Texas/Georgia/Oklahoma highway corridors.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-kodiak-us" data-status="live" data-segment="truck">
+  <td><span class="project-name">Kodiak Driver — US Freight + Industrial Network</span>
+  <span class="project-desc">Dual-track autonomous trucking programme: customer-owned driverless RoboTrucks operating in Permian Basin oilfields (first in history), plus highway freight routes across Texas, Georgia and Oklahoma.</span>
+  <button class="facts-trigger" data-row="proj-kodiak-us" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Customer-Owned First</span><span class="learn-tag">Industrial + Highway</span>
+    <span class="learn-body">Kodiak achieved something no AV company had done before: a customer (Atlas Energy Solutions) took ownership of driverless trucks and launched their own commercial driverless operations. This is the transition from AV-as-a-service to AV-as-a-product — the same shift that happened in industrial robotics. The Permian Basin environment is uniquely suited to autonomous operation: private roads, repetitive routes, 24/7 demand, and a severe driver shortage. The Bosch partnership for automotive-grade hardware production is the industrialisation step that separates Kodiak from software-only companies.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Freight Truck</span>
+    <span class="seg-tag">Industrial</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇺🇸 Permian Basin TX (oilfield) · Dallas→Atlanta · Dallas→Houston · Dallas→Oklahoma City</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Kodiak Driver (Class 8, vehicle-agnostic)</span>
+    <span class="v-detail">Upfit by Roush Industries. ZF steering, NVIDIA AI compute, Bosch automotive-grade hardware. Deployed in International LT Series and Peterbilt. 20,000+ miles of commercial highway network. Safety observers present on highway routes; fully driverless in Permian Basin.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Permian Basin driverless</span><span class="tl-value onroad">Jul 2024</span></div>
+    <div class="tl-row"><span class="tl-label">Customer-owned trucks (Atlas)</span><span class="tl-value onroad">Jan 2025</span></div>
+    <div class="tl-row"><span class="tl-label">100-truck Atlas order</span><span class="tl-value pending">Delivering 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Highway driverless (no observer)</span><span class="tl-value pending">H2 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Bosch hardware partnership</span><span class="tl-value onroad">Jan 2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Jan 2026</div><div class="news-teaser-text">Kodiak partners with Bosch for production-grade hardware. First customer-owned driverless truck delivered to Atlas Energy. 100-truck order fulfilling 2026. Highway driverless targeted H2 2026.</div><button class="news-view-more" data-row="proj-kodiak-us" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Einride US ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Einride (US Operations)</span>
+  <span class="company-desc">Swedish autonomous freight company operating commercially in the US — the only company with autonomous freight permits in 4+ countries simultaneously. NYSE listing H1 2026.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-einride-us" data-status="live" data-segment="truck">
+  <td><span class="project-name">Einride — US Autonomous Freight Operations</span>
+  <span class="project-desc">Einride's US commercial autonomous freight operations — moving goods for major shippers including Oatly, GE Appliances, Electrolux and others. Operating on public roads with Swedish Transport Agency-equivalent US permits.</span>
+  <button class="facts-trigger" data-row="proj-einride-us" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Multi-Country Operator</span><span class="learn-tag">Pre-IPO Momentum</span>
+    <span class="learn-body">Einride is the only autonomous freight company with permitted commercial operations across 4+ countries (Sweden, Norway, the US, and others) simultaneously — a regulatory achievement no competitor has matched. This multi-jurisdiction operation is the proof that autonomous freight is not a country-specific regulatory problem but a genuinely scalable technology. The $113M PIPE raise and NYSE listing in H1 2026 brings transparency and capital access that unlocks fleet scaling. Customers include Fortune 500 companies already committed to volume deployments.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Freight Truck</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇺🇸 Multiple US states · 🇸🇪 Sweden (see EU) · 🇳🇴 Norway (see EU)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Einride Autonomous Electric Truck (cabless Pod)</span>
+    <span class="v-detail">Saga AI OS. Processes 5.2M data points/second. Cabless design — no driver cab. Remote operator supervision via Einride Platform. Customers: Oatly, GE Appliances, Electrolux, Carlsberg, PepsiCo.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">US commercial operations</span><span class="tl-value onroad">2022–present</span></div>
+    <div class="tl-row"><span class="tl-label">$113M PIPE raise</span><span class="tl-value onroad">Feb 2026</span></div>
+    <div class="tl-row"><span class="tl-label">NYSE listing (SPAC)</span><span class="tl-value pending">H1 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Valuation</span><span class="tl-value">$1.35B</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Feb 2026</div><div class="news-teaser-text">Einride raises $113M PIPE ahead of NYSE listing (H1 2026, $1.35B valuation). Only autonomous freight operator with permits in 4+ countries. Joined EU ECAVA as only autonomous freight operator.</div><button class="news-view-more" data-row="proj-einride-us" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Uber AV Platform ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Uber — AV Platform</span>
+  <span class="company-desc">Ride-hailing giant repositioned as the world&apos;s AV distribution network — 25+ AV partnerships globally. Does not build its own AV hardware; aggregates Waymo, Zoox, Tesla, May Mobility and others into its app.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-uber-av" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">Uber Autonomous Platform — Global AV Marketplace</span>
+  <span class="project-desc">Uber as the operating system for global AV deployment — integrating 25+ AV partners across the US, Europe, Middle East and Asia into a single rider-facing app. The platform bet: own the distribution, not the technology.</span>
+  <button class="facts-trigger" data-row="proj-uber-av" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Platform Not Maker</span><span class="learn-tag">25+ AV Partners</span>
+    <span class="learn-body">Uber&apos;s pivot from AV developer to AV platform is one of the most strategically astute moves in the industry. By not building its own stack, it avoids the $10B+ R&D cost and regulatory risk while retaining the most valuable asset: 150M+ active riders. Every AV company needs a distribution channel — Uber is that channel. The Lucid/Nuro exclusive robotaxi (late 2026) shows Uber is also hedging with its own branded vehicle. The risk: if Waymo builds its own app successfully at scale, Uber&apos;s platform value erodes.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="seg-tag">Platform</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇺🇸 Austin · Atlanta (Waymo) · Las Vegas (Zoox) · Arlington TX (May Mobility) · 🇬🇧 London (Wayve) · 🇸🇦 Saudi Arabia (WeRide)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Platform (vehicle-agnostic) + Lucid Gravity / Nuro (own branded vehicle)</span>
+    <span class="v-detail">US partners: Waymo, Zoox, May Mobility, Aurora, Nuro. EU partners: Wayve, MOIA, Pony.ai. Asia/ME partners: Baidu, WeRide. Own vehicle: Lucid Gravity SUV + Nuro SDS — exclusive to Uber, late 2026 SF launch.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Waymo on Uber (Austin)</span><span class="tl-value onroad">2024</span></div>
+    <div class="tl-row"><span class="tl-label">Zoox on Uber (Las Vegas)</span><span class="tl-value pending">Summer 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Lucid/Nuro exclusive (SF)</span><span class="tl-value pending">Late 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Target: 15 AV cities</span><span class="tl-value pending">2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">Uber announces 25+ AV partnerships globally. Zoox partnership for Las Vegas summer 2026. Own Lucid/Nuro robotaxi exclusive to Uber launching late 2026 in SF. 15 AV cities targeted in 2026.</div><button class="news-view-more" data-row="proj-uber-av" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Gatik × Loblaw ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Gatik × Loblaw</span>
+  <span class="company-desc">Canada&apos;s first and largest driverless commercial fleet — autonomous middle-mile grocery delivery across the Greater Toronto Area. The most mature AV freight deployment in Canada.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-gatik-canada" data-status="live" data-segment="truck">
+  <td><span class="project-name">Gatik × Loblaw — Canada Autonomous Grocery Logistics</span>
+  <span class="project-desc">Canada&apos;s first driverless commercial fleet — Gatik autonomous trucks delivering groceries across Loblaw&apos;s Greater Toronto Area distribution network. 50-truck deployment by end of 2026 serving 300+ stores.</span>
+  <button class="facts-trigger" data-row="proj-gatik-canada" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Canada&apos;s First Driverless Fleet</span><span class="learn-tag">Grocery Logistics Model</span>
+    <span class="learn-body">Gatik and Loblaw have built the most commercially mature AV freight deployment in Canada — fixed routes, predictable loads, temperature-controlled, serving 300+ retail locations. The Ontario Automated Commercial Motor Vehicle Pilot Programme (Aug 2025) specifically enables this type of deployment. The Loblaw strategic investment in Gatik aligns incentives: the retailer wants autonomous delivery at scale, the AV company gets a committed anchor customer and Canadian regulatory momentum. This is the grocery supply chain automation playbook that every major retailer is watching.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">CA</span>
+    <span class="seg-tag">Logistics</span>
+    <span class="seg-tag">Grocery</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇨🇦 Greater Toronto Area, Ontario</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Gatik W-Series autonomous medium-duty truck</span>
+    <span class="v-detail">Cold-chain capable. Fixed B2B routes between Loblaw distribution centres and stores. Ontario ACMV Pilot Programme permitted. Safety drivers transitioning to driverless. 50-truck target by end 2026.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Canada&apos;s first driverless fleet</span><span class="tl-value onroad">2022</span></div>
+    <div class="tl-row"><span class="tl-label">5-year Loblaw agreement</span><span class="tl-value onroad">Sep 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Ontario ACMV Pilot launch</span><span class="tl-value onroad">Aug 2025</span></div>
+    <div class="tl-row"><span class="tl-label">20 trucks deployed</span><span class="tl-value pending">End 2025</span></div>
+    <div class="tl-row"><span class="tl-label">50 trucks total</span><span class="tl-value pending">End 2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Sep 2025</div><div class="news-teaser-text">Gatik and Loblaw sign 5-year agreement for 50 autonomous trucks across GTA distribution network. Loblaw makes strategic investment in Gatik. Ontario ACMV Pilot Programme enables driverless operations.</div><button class="news-view-more" data-row="proj-gatik-canada" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Motional ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Motional</span>
+  <span class="company-desc">Hyundai Motor Group + Aptiv JV — AI-first robotaxi reboot after 2024 near-collapse. IONIQ 5 commercially relaunched on Uber in Las Vegas March 2026. Fully driverless target: end of 2026.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-motional" data-status="pilot" data-segment="robotaxi">
+  <td><span class="project-name">Motional — Las Vegas Robotaxi (Uber)</span>
+  <span class="project-desc">Commercial robotaxi service relaunched on Uber in Las Vegas March 2026 after a full AI-first technology reboot. Operating with safety monitor now; fully driverless service targeted by end of 2026.</span>
+  <button class="facts-trigger" data-row="proj-motional" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Near-Death Recovery</span><span class="learn-tag">AI-First Pivot</span>
+    <span class="learn-body">Motional&apos;s story is the most dramatic in the industry — a $4B JV that nearly collapsed, cut 40% of staff, lost Aptiv as a backer, and survived only because Hyundai plugged in another $1B. The reboot is strategically significant: Motional abandoned pure-robotics for E2E AI (same pivot Waymo, Tesla and everyone else made), then relaunched commercially just 2 years later. The IONIQ 5 is the only AV to receive US Federal Motor Vehicle Safety Standards certification for fully driverless operation — a rare regulatory milestone. If Motional delivers driverless by end 2026 as promised, it becomes one of only a handful of companies to achieve commercial L4.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-pilot"></span>Active Pilot</span>
+    <span class="country-tag">🇺🇸 Las Vegas, NV</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Hyundai IONIQ 5 Robotaxi</span>
+    <span class="v-detail">FMVSS-certified for fully driverless operation. E2E AI motion planning. Co-developed by Motional + Hyundai Motor Group. Built at HMGICS Singapore. Uber platform distribution.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Reboot announced</span><span class="tl-value">Jan 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Employee pilots (LV)</span><span class="tl-value onroad">Early 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Public relaunch on Uber</span><span class="tl-value onroad">13 Mar 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Fully driverless target</span><span class="tl-value pending">End 2026</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">Uber and Motional relaunch commercial robotaxi in Las Vegas — first service since 2024 pause. Safety monitor present; fully driverless targeted end 2026. IONIQ 5 FMVSS-certified for driverless.</div><button class="news-view-more" data-row="proj-motional" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Avride ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Avride</span>
+  <span class="company-desc">Rebranded international division of Yandex Self-Driving Group — robotaxi and sidewalk delivery robots. Key Uber partner for MaaS in Dallas. Hyundai IONIQ 5 fleet.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-avride" data-status="pilot" data-segment="robotaxi">
+  <td><span class="project-name">Avride — Dallas Robotaxi (Uber)</span>
+  <span class="project-desc">Commercial robotaxi service launched in Dallas via Uber app in December 2025 — covering 9 square miles of downtown Dallas including Uptown, Deep Ellum and Turtle Creek. Safety operator onboard; fully driverless operations planned.</span>
+  <button class="facts-trigger" data-row="proj-avride" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Yandex Heritage</span><span class="learn-tag">Uber Native</span>
+    <span class="learn-body">Avride is the rebranded international arm of Yandex Self-Driving Group — which had logged millions of autonomous miles in Russia before the 2022 geopolitical separation. That operational heritage gives Avride a genuine technical foundation that most AV startups lack. The Uber-native distribution (same UberX app, no additional cost to riders) is strategically smart — it eliminates the customer acquisition problem entirely. Dallas is also notable as the first US city with three simultaneous commercial robotaxi services (Waymo, Tesla, Avride) — making it the world&apos;s most competitive AV market.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-pilot"></span>Active Pilot</span>
+    <span class="country-tag">🇺🇸 Dallas, TX (9 sq miles — Downtown, Uptown, Deep Ellum, Turtle Creek)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Hyundai IONIQ 5 (Avride AV stack)</span>
+    <span class="v-detail">All-electric. Avride self-driving system. Available via UberX, Uber Comfort, Uber Comfort Electric. No additional fare vs human driver. Onboard safety specialist at launch. Fleet scaling to hundreds in Dallas over coming years.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Dallas launch</span><span class="tl-value onroad">3 Dec 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Service area</span><span class="tl-value onroad">9 sq miles (expanding)</span></div>
+    <div class="tl-row"><span class="tl-label">Fully driverless</span><span class="tl-value pending">TBC 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Scale target</span><span class="tl-value pending">Hundreds of vehicles</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">Dec 2025</div><div class="news-teaser-text">Avride and Uber launch commercial robotaxi in Dallas — 9 square miles, UberX integration, safety specialist onboard. Dallas first US city with 3 simultaneous commercial robotaxi services.</div><button class="news-view-more" data-row="proj-avride" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Nuro / Lucid / Uber ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Nuro × Lucid × Uber</span>
+  <span class="company-desc">Three-way partnership: Nuro L4 autonomy stack, Lucid Gravity SUV platform, Uber distribution. 20,000+ vehicle commitment. SF Bay Area launch late 2026. Uber&apos;s own-brand premium robotaxi.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-nuro-lucid" data-status="planned" data-segment="robotaxi">
+  <td><span class="project-name">Nuro × Lucid × Uber — Global Premium Robotaxi</span>
+  <span class="project-desc">Uber&apos;s own-brand premium robotaxi combining Nuro&apos;s L4 autonomy, the Lucid Gravity SUV, and Uber&apos;s global distribution. Employee testing underway in SF. Public launch San Francisco Bay Area late 2026. 20,000+ vehicle global deployment over 6 years.</span>
+  <button class="facts-trigger" data-row="proj-nuro-lucid" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Uber&apos;s Own Vehicle</span><span class="learn-tag">35,000 Unit Commitment</span>
+    <span class="learn-body">This is structurally different from every other Uber AV partnership — Uber owns and operates these vehicles, rather than just distributing for a third party. The Lucid Gravity is the most premium vehicle ever deployed as a robotaxi (up to 450-mile range, 6-passenger capacity). Uber&apos;s expanded commitment to 35,000 vehicles ($500M total investment in Lucid) is the largest single robotaxi fleet purchase commitment in history. Nuro&apos;s $6B valuation at Series E signals the L4 licensing model is viable. This is the counter-move to Waymo building its own app — Uber building its own vehicle.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-planned"></span>Planned</span>
+    <span class="country-tag">🇺🇸 San Francisco Bay Area (launch) → dozens of global markets</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Lucid Gravity SUV (Nuro Driver autonomy stack)</span>
+    <span class="v-detail">Up to 6 passengers, 450-mile range, solid-state LiDAR, high-res cameras, radar. NVIDIA Drive AGX Thor. Nuro end-to-end AI foundation model. Production at Lucid Arizona factory. Uber-designed in-cabin UX. Exclusively on Uber app.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">CES 2026 unveil</span><span class="tl-value onroad">Jan 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Employee testing (SF)</span><span class="tl-value onroad">Apr 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Production starts</span><span class="tl-value pending">Late 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Public launch (SF)</span><span class="tl-value pending">Late 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Fleet commitment</span><span class="tl-value">35,000 vehicles / 6 years</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#2563eb"></div><div><div class="news-teaser-date">Apr 2026</div><div class="news-teaser-text">Uber employees begin test rides in Lucid Gravity robotaxis in SF. Fleet nearing 100 vehicles. Uber expands to 35,000 vehicle commitment ($500M in Lucid). SF public launch late 2026.</div><button class="news-view-more" data-row="proj-nuro-lucid" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Lyft AV Platform ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Lyft — AV Platform</span>
+  <span class="company-desc">Uber&apos;s closest rival repositioning as AV distribution network — Waymo (Nashville), Mobileye (Dallas), Tensor, Baidu (London) partnerships. CEO declared 2026 "the year of the AV" for Lyft.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-lyft-av" data-status="live" data-segment="robotaxi">
+  <td><span class="project-name">Lyft Autonomous Platform — US + International</span>
+  <span class="project-desc">Lyft&apos;s AV distribution strategy across multiple partners — Waymo in Nashville (Lyft manages fleet ops via Flexdrive), Mobileye-powered robotaxis targeting Dallas 2026, Tensor Robocar integration, and Baidu Apollo RT6 for London trials.</span>
+  <button class="facts-trigger" data-row="proj-lyft-av" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Fleet Operator Model</span><span class="learn-tag">Differentiated from Uber</span>
+    <span class="learn-body">Lyft&apos;s AV model is structurally different from Uber&apos;s — rather than just app distribution, Lyft takes on fleet operations via its Flexdrive subsidiary (charging, maintenance, depot). This makes Lyft a more integrated partner for AV companies that don&apos;t want to manage fleet logistics. The Waymo Nashville partnership is the clearest example — Lyft handles everything on the ground while Waymo provides the technology. The Mobileye-Dallas deal (with Marubeni owning the fleet) applies the same asset-light logic. The Tensor partnership is the most innovative: consumer-owned AVs that owners can deploy on Lyft to earn income — a model no other platform has attempted.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="seg-tag">Platform</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇺🇸 Nashville TN (Waymo) · Dallas TX (Mobileye, 2026) · 🇬🇧 London (Baidu, 2026)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Platform (vehicle-agnostic) — Waymo I-PACE / Zeekr · Mobileye-equipped (TBC) · Tensor Robocar · Baidu Apollo RT6</span>
+    <span class="v-detail">Nashville: Lyft Flexdrive manages fleet ops (charging, maintenance, depot). Dallas: Marubeni owns fleet, Mobileye provides SDS. Tensor: consumer-owned AVs deployable on Lyft. London: Baidu RT6 trial. Target: thousands of AVs across multiple cities.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Waymo Nashville (Lyft)</span><span class="tl-value onroad">Apr 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Mobileye Dallas</span><span class="tl-value pending">2026</span></div>
+    <div class="tl-row"><span class="tl-label">Baidu London trial</span><span class="tl-value pending">2026</span></div>
+    <div class="tl-row"><span class="tl-label">Tensor "Lyft-ready" market</span><span class="tl-value pending">2027</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Apr 2026</div><div class="news-teaser-text">Waymo opens in Nashville via Lyft — Lyft manages fleet ops through Flexdrive. CEO declares 2026 "the year of the AV." Mobileye Dallas, Baidu London and Tensor partnerships advancing.</div><button class="news-view-more" data-row="proj-lyft-av" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Perrone Robotics ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Perrone Robotics</span>
+  <span class="company-desc">Virginia-based AV pioneer (20+ years) — TONY retrofit kit deploys L4 autonomy on any vehicle platform. Detroit CONNECT is the longest-running public autonomous transit service in the United States.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-perrone" data-status="live" data-segment="shuttle">
+  <td><span class="project-name">Perrone Robotics CONNECT — Detroit Public Transit</span>
+  <span class="project-desc">America&apos;s longest-running public autonomous electric shuttle service — Ford E-Transit vans running a 10+ mile downtown Detroit route continuously since August 2024. Nation&apos;s first autonomous public transit fleet on the Ford E-Transit platform.</span>
+  <button class="facts-trigger" data-row="proj-perrone" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Longest US AV Transit Run</span><span class="learn-tag">Retrofit-First Model</span>
+    <span class="learn-body">While robotaxi giants spend billions on purpose-built vehicles, Perrone&apos;s TONY kit retrofits existing vehicles — Ford E-Transit, buses, campus shuttles — with L4 autonomy at a fraction of the cost. The Detroit CONNECT programme is quietly the most operationally proven autonomous public transit deployment in the US: 10+ miles of urban route, 1+ year continuous operation, zero major incidents. It&apos;s also FMVSS-compliant, ADA-compliant, and Buy America-compliant — a trifecta that makes it uniquely eligible for federal transit funding. The vehicle-agnostic approach means any transit agency can deploy autonomy without replacing its existing fleet.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Shuttle</span>
+    <span class="seg-tag">Public Transit</span>
+    <span class="status"><span class="dot dot-live"></span>Live</span>
+    <span class="country-tag">🇺🇸 Detroit, MI (Rivertown → Downtown → Corktown, 10+ mile route)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Ford E-Transit (TONY® + MAX® autonomy kit)</span>
+    <span class="v-detail">TONY AV retrofit kit — vehicle-agnostic, L4 capable. Zero-emission, FMVSS-compliant, ADA-compliant, Buy America-compliant. $1.5M city contract. Partners: City of Detroit, Bedrock, Michigan Mobility Collaborative. Also deployed at: University of Hawaii, Virginia Tech VTTI, North Fork UVA, Miami-Dade.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Detroit CONNECT launch</span><span class="tl-value onroad">Aug 2024</span></div>
+    <div class="tl-row"><span class="tl-label">1 year milestone</span><span class="tl-value onroad">Nov 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Routes expanded</span><span class="tl-value onroad">Ongoing</span></div>
+    <div class="tl-row"><span class="tl-label">Miami-Dade Sheriff AV</span><span class="tl-value onroad">2025</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Nov 2025</div><div class="news-teaser-text">Perrone CONNECT surpasses 1 year — longest-running public autonomous transit in the US. Nation&apos;s first autonomous Ford E-Transit fleet. Steady ridership growth, expanded routes.</div><button class="news-view-more" data-row="proj-perrone" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
+<!-- ═══ Tensor ═══ -->
+<tr class="company-header"><td colspan="9"><div class="company-banner">
+  <span class="company-title">Tensor (evolved from AutoX)</span>
+  <span class="company-desc">Pioneer in personally-owned autonomous vehicles — Robocar is the first AV designed for both private ownership and Lyft rideshare deployment. NVIDIA-powered, L4 capable, dual manual/autonomous mode.</span>
+  <span class="company-count">1 project</span>
+</div></td></tr>
+
+<tr class="data-row" data-region="na" id="proj-tensor" data-status="announced" data-segment="robotaxi">
+  <td><span class="project-name">Tensor Robocar — Personal AV + Lyft Network</span>
+  <span class="project-desc">The world&apos;s first personally-owned autonomous vehicle designed to operate on a rideshare network — owners can deploy their Tensor Robocar on Lyft to earn income when not in personal use. Lyft has reserved hundreds of vehicles for its own fleet.</span>
+  <button class="facts-trigger" data-row="proj-tensor" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Personal Ownership Model</span><span class="learn-tag">Lyft-Native</span>
+    <span class="learn-body">Tensor&apos;s model is the most structurally novel in the industry — instead of fleet-owned robotaxis, individual consumers buy an AV and deploy it on Lyft when they&apos;re not using it. This is the Tesla FSD monetization dream made real: your car earns money while parked. The Autoliv partnership (foldable steering wheel — world&apos;s first) signals serious automotive-grade engineering. The Lyft integration means the distribution problem is solved from day one. The business model inverts the capital structure of robotaxi deployment: instead of one company funding thousands of vehicles, thousands of consumers each fund one vehicle. The "Lyft-ready" market launch is targeted for 2027.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-us">US</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status"><span class="dot dot-announced"></span>Announced</span>
+    <span class="country-tag">🇺🇸 Major US metros + Europe + Middle East (rollout over next few years)</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">Tensor Robocar (purpose-built personal AV)</span>
+    <span class="v-detail">Dual manual/autonomous mode. NVIDIA-powered onboard supercomputer. Autoliv foldable steering wheel (world-first). California CPUC driverless permit (2020). L4 rollout across major US cities, Europe, Middle East. Lyft reserves hundreds for own fleet. First "Lyft-ready" market: 2027.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">CA driverless permit</span><span class="tl-value onroad">2020</span></div>
+    <div class="tl-row"><span class="tl-label">Autoliv foldable wheel</span><span class="tl-value onroad">Dec 2025</span></div>
+    <div class="tl-row"><span class="tl-label">Lyft partnership announced</span><span class="tl-value onroad">Oct 2025</span></div>
+    <div class="tl-row"><span class="tl-label">First Lyft-ready market</span><span class="tl-value pending">2027</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#7c3aed"></div><div><div class="news-teaser-date">Dec 2025</div><div class="news-teaser-text">Tensor and Autoliv unveil world&apos;s first foldable steering wheel for autonomous driving. Lyft partnership announced — Robocar to be first personally-owned AV deployable on Lyft rideshare network.</div><button class="news-view-more" data-row="proj-tensor" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
 </tbody>
 </table>
 </div><!-- /table-wrap -->
@@ -1702,7 +2314,14 @@
 
   <!-- Map — dominant left side -->
   <div class="heatmap-map-wrap">
-    <div class="heatmap-hint">Click any project dot to explore it · Pulsing dots are live deployments</div>
+    <div class="map-top-bar">
+      <div class="heatmap-hint">Click any project dot to explore it · Pulsing dots are live deployments</div>
+      <div class="map-region-switcher">
+        <button class="map-region-btn active" onclick="switchMapRegion(this,'eu')">🇪🇺 Europe</button>
+        <button class="map-region-btn" onclick="switchMapRegion(this,'na')">🌎 North America</button>
+        <button class="map-region-btn map-region-soon" disabled>🌏 Asia <span class="coming-soon-badge">Soon</span></button>
+      </div>
+    </div>
     <div id="europeMap"></div>
     <div class="heatmap-legend">
       <div class="hl-item"><span class="hl-dot" style="background:#059669"></span>Live</div>
@@ -1769,12 +2388,18 @@ searchInput.addEventListener('input', function() {
   // Detect if query looks like a country name
   const isCountry = countryNames.some(c => c.includes(q) || q.includes(c.split(' ')[0]));
 
-  // Also check if any project rows match
+  // Also check if any project rows match (include company header text + respect region)
   const projectRows = document.querySelectorAll('#av-table tr.data-row');
   let projectMatches = 0;
   projectRows.forEach(row => {
+    const rowRegion = row.dataset.region || 'eu';
+    const regionMatch = activeRegion === 'all' || rowRegion === activeRegion;
     const text = row.textContent.toLowerCase();
-    const match = text.includes(q);
+    // Also check company header above this row
+    let prev = row.previousElementSibling;
+    while (prev && !prev.classList.contains('company-header')) prev = prev.previousElementSibling;
+    const headerText = prev ? prev.textContent.toLowerCase() : '';
+    const match = (text.includes(q) || headerText.includes(q)) && regionMatch;
     row.classList.toggle('hidden', !match);
     if (match) projectMatches++;
   });
@@ -1852,6 +2477,13 @@ function highlightDotsForSearch(q) {
 function goToProject(projectId) {
   clearSearch();
   switchTab(document.getElementById('tabProjects'), 'projects');
+  // Switch to the right region
+  const row = document.getElementById(projectId);
+  if (row) {
+    const rowRegion = row.dataset.region || 'eu';
+    const regionBtn = document.getElementById(rowRegion === 'na' ? 'regionNA' : rowRegion === 'asia' ? 'regionAsia' : 'regionAll');
+    switchRegion(regionBtn || document.getElementById('regionAll'), rowRegion === 'eu' ? 'all' : rowRegion);
+  }
   // Reset filter
   const activeFilter = document.querySelector('.filter-btn.active');
   if (activeFilter) activeFilter.classList.remove('active');
@@ -1903,7 +2535,75 @@ const PROJECT_DOTS = [
   {id:"proj-sensible4",  name:"Sensible 4",              city:"Espoo",      country:"Finland",     lon:24.657, lat:60.205, status:"development", seg:"shuttle"},
   {id:"proj-skoda",      name:"Škoda Didymos",           city:"Pilsen",     country:"Czechia",     lon:13.378, lat:49.747, status:"development", seg:"shuttle"},
   {id:"proj-blees",      name:"Blees BB-1",              city:"Gliwice",    country:"Poland",      lon:18.678, lat:50.294, status:"pilot",       seg:"shuttle"},
+  // North America
+  {id:"proj-waymo-us",      name:"Waymo One US",              city:"San Francisco",  country:"United States", lon:-122.431, lat:37.773, status:"live",    seg:"robotaxi"},
+  {id:"proj-tesla-robotaxi",name:"Tesla Robotaxi Network",    city:"Austin",         country:"United States", lon:-97.743,  lat:30.267, status:"live",    seg:"robotaxi"},
+  {id:"proj-zoox-us",       name:"Zoox US Robotaxi",          city:"Las Vegas",      country:"United States", lon:-115.172, lat:36.175, status:"live",    seg:"robotaxi"},
+  {id:"proj-may-mobility",  name:"May Mobility US",           city:"Atlanta",        country:"United States", lon:-84.388,  lat:33.749, status:"live",    seg:"shuttle"},
+  {id:"proj-aurora-us",     name:"Aurora Freight Network",    city:"Dallas",         country:"United States", lon:-96.797,  lat:32.776, status:"live",    seg:"truck"},
+  {id:"proj-kodiak-us",     name:"Kodiak Driver US",          city:"Midland TX",     country:"United States", lon:-102.077, lat:31.997, status:"live",    seg:"truck"},
+  {id:"proj-einride-us",    name:"Einride US Operations",     city:"Nashville",      country:"United States", lon:-86.782,  lat:36.163, status:"live",    seg:"truck"},
+  {id:"proj-uber-av",       name:"Uber AV Platform",          city:"San Francisco",  country:"United States", lon:-122.410, lat:37.760, status:"live",    seg:"robotaxi"},
+  {id:"proj-gatik-canada",  name:"Gatik × Loblaw Canada",    city:"Toronto",        country:"Canada",        lon:-79.347,  lat:43.651, status:"live",    seg:"truck"},
+  {id:"proj-motional",  name:"Motional Las Vegas",        city:"Las Vegas",      country:"United States", lon:-115.140, lat:36.168, status:"pilot",   seg:"robotaxi"},
+  {id:"proj-avride",    name:"Avride Dallas",              city:"Dallas",         country:"United States", lon:-96.810,  lat:32.790, status:"pilot",   seg:"robotaxi"},
+  {id:"proj-nuro-lucid",name:"Nuro × Lucid × Uber",       city:"San Francisco",  country:"United States", lon:-122.450, lat:37.790, status:"planned", seg:"robotaxi"},
+  {id:"proj-lyft-av",   name:"Lyft AV Platform",          city:"Nashville",      country:"United States", lon:-86.792,  lat:36.162, status:"live",      seg:"robotaxi"},
+  {id:"proj-perrone",   name:"Perrone CONNECT Detroit",    city:"Detroit",        country:"United States", lon:-83.048,  lat:42.331, status:"live",      seg:"shuttle"},
+  {id:"proj-tensor",    name:"Tensor Robocar",             city:"San Francisco",  country:"United States", lon:-122.431, lat:37.774, status:"announced", seg:"robotaxi"},
 ];
+
+
+// ── Region switcher ──────────────────────────────────────────────
+let activeRegion = 'all';
+
+function updateStats() {
+  const counts = {all:{p:50,c:33,co:'20+'}, eu:{p:32,c:18,co:'15+'}, na:{p:18,c:15,co:'2+'}, asia:{p:0,c:0,co:'0'}};
+  const c = counts[activeRegion] || counts.all;
+  const sp = document.getElementById('statProjects');
+  const sc = document.getElementById('statCompanies');
+  const sco = document.getElementById('statCountries');
+  if (sp) sp.textContent = c.p;
+  if (sc) sc.textContent = c.c;
+  if (sco) sco.textContent = c.co;
+  // Update title
+  const titles = {all:'Autonomous Vehicles', eu:'Autonomous Vehicles — Europe', na:'Autonomous Vehicles — North America', asia:'Autonomous Vehicles — Asia'};
+  const t = document.getElementById('pageTitle');
+  if (t) t.textContent = titles[activeRegion] || titles.all;
+}
+
+function switchRegion(btn, region) {
+  activeRegion = region;
+  document.querySelectorAll('.region-tab-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const rows = document.querySelectorAll('#av-table tr.data-row');
+  const headers = document.querySelectorAll('#av-table tr.company-header');
+
+  rows.forEach(row => {
+    const rowRegion = row.dataset.region || 'eu';
+    const regionMatch = region === 'all' || rowRegion === region;
+    row.classList.toggle('hidden', !regionMatch);
+  });
+
+  // Hide company headers that have no visible rows after them
+  headers.forEach(header => {
+    let next = header.nextElementSibling;
+    let hasVisible = false;
+    while (next && !next.classList.contains('company-header')) {
+      if (next.classList.contains('data-row') && !next.classList.contains('hidden')) {
+        hasVisible = true; break;
+      }
+      next = next.nextElementSibling;
+    }
+    header.style.display = hasVisible ? '' : 'none';
+  });
+
+  // Re-run search if active
+  const q = document.getElementById('globalSearch')?.value?.toLowerCase().trim();
+  if (q) document.getElementById('globalSearch').dispatchEvent(new Event('input'));
+  updateStats();
+}
 
 let mapBuilt = false;
 function switchTab(btn, tab) {
@@ -1912,6 +2612,7 @@ function switchTab(btn, tab) {
   document.getElementById('tab-projects').style.display = tab === 'projects' ? 'block' : 'none';
   document.getElementById('tab-countries').style.display = tab === 'countries' ? 'block' : 'none';
   document.getElementById('filterBarWrap').style.display = tab === 'projects' ? '' : 'none';
+  document.getElementById('regionTabBar').style.display = tab === 'projects' ? 'flex' : 'none';
   document.getElementById('countryFilterBarWrap').style.display = tab === 'countries' ? '' : 'none';
   setTimeout(updateStickyOffset, 30);
   if (tab === 'countries' && !mapBuilt) { mapBuilt = true; setTimeout(buildMap, 50); }
@@ -1923,19 +2624,22 @@ function filter(btn, type) {
   btn.classList.add('active');
   const headers  = document.querySelectorAll('#av-table tr.company-header');
   const dataRows = document.querySelectorAll('#av-table tr.data-row');
-  if (type === 'all') {
-    headers.forEach(r  => r.classList.remove('hidden'));
-    dataRows.forEach(r => r.classList.remove('hidden'));
-    return;
-  }
+
   dataRows.forEach(row => {
+    const rowRegion = row.dataset.region || 'eu';
+    const regionMatch = activeRegion === 'all' || rowRegion === activeRegion;
+    if (type === 'all') {
+      row.classList.toggle('hidden', !regionMatch);
+      return;
+    }
     const status  = row.dataset.status  || '';
     const segment = row.dataset.segment || '';
-    const show = ['live','pilot','planned','announced'].includes(type)
+    const typeMatch = ['live','pilot','planned','announced'].includes(type)
       ? status.includes(type)
       : segment.includes(type);
-    row.classList.toggle('hidden', !show);
+    row.classList.toggle('hidden', !typeMatch || !regionMatch);
   });
+
   headers.forEach(header => {
     let next = header.nextElementSibling;
     let hasVisible = false;
@@ -1946,6 +2650,7 @@ function filter(btn, type) {
     header.classList.toggle('hidden', !hasVisible);
   });
 }
+
 
 // ── Country filter ────────────────────────────────────────────────
 function cFilter(btn, type) {
@@ -2670,6 +3375,325 @@ const SP_DATA = {
       {label:'WeRide 2025 results + expansion', url:'https://www.globenewswire.com/news-release/2026/03/23/3260264/0/en/WeRide-Reports-Record-Full-Year-2025-Revenue-of-RMB684-6-Million-Up-90-Year-over-Year.html'}
     ]
   },
+  'proj-waymo-us': {
+    title: 'Waymo One — US Commercial Network',
+    org: [
+      {k:'Parent',        v:'Alphabet Inc. (Google)'},
+      {k:'CEO',           v:'Tekedra Mawakana & Dmitri Dolgov (co-CEOs)'},
+      {k:'Valuation',     v:'$126B (Feb 2026)'},
+      {k:'Total raised',  v:'$16B (largest in AV history)'},
+      {k:'Fleet size',    v:'~3,000 vehicles (Jaguar I-PACE + Zeekr RT)'},
+      {k:'Active cities', v:'San Francisco · Los Angeles · Phoenix · Austin · Atlanta · Dallas · Houston · San Antonio · Miami · Orlando'},
+      {k:'Rides/week',    v:'250,000+ (targeting 1M by end 2026)'},
+      {k:'Driverless',    v:'100% — no safety driver in any commercial vehicle'},
+    ],
+    facts: 'Waymo One is the world\'s most commercially scaled fully driverless robotaxi service. Expanded from 5 to 10 US cities in under 12 months — the fastest scaling in AV history. 100% driverless across all markets, no safety driver. Zero serious incidents across millions of driverless miles. Operating 24/7 in all weather conditions including rain and darkness. International expansion confirmed: London (see EU report) and Tokyo both targeted 2026. Raised $16B at $126B valuation in Feb 2026 — the largest private capital raise in AV history.',
+    news: [
+      {date:'Apr 2026', text:'Waymo opens in Nashville (11th city) via Lyft fleet partnership. Feb 2026: Dallas, Houston, San Antonio, Orlando opened simultaneously — now 11 US cities. $16B raised at $126B valuation. Targeting 1M trips/week by end of 2026.', src:'Waymo Blog', url:'https://waymo.com/blog/'},
+      {date:'Jan 2026', text:'Waymo announces Miami expansion. Partners with Moove for fleet management. Zeekr RT vehicles begin joining fleet at lower per-unit cost than Jaguar I-PACE.', src:'TechCrunch', url:'https://techcrunch.com/tag/waymo/'},
+      {date:'2025',     text:'Waymo surpasses 4 million driverless miles. Expands to Atlanta with Uber partnership. Austin public launch with zero-safety-driver policy confirmed.', src:'Waymo', url:'https://waymo.com/'},
+    ],
+    sources: [
+      {label:'Waymo Blog', url:'https://waymo.com/blog/'},
+      {label:'Google News — Waymo', url:'https://news.google.com/search?q=Waymo+robotaxi+2026'},
+      {label:'Waymo Rider App', url:'https://waymo.com/waymo-one/'},
+    ]
+  },
+  'proj-tesla-robotaxi': {
+    title: 'Tesla Robotaxi Network + Cybercab',
+    org: [
+      {k:'CEO',           v:'Elon Musk'},
+      {k:'Current vehicle', v:'Modified Tesla Model Y (FSD v13+)'},
+      {k:'New vehicle',   v:'Tesla Cybercab (production started Apr 2026)'},
+      {k:'Price target',  v:'Cybercab under $30,000'},
+      {k:'Production target', v:'2M Cybercabs/year at full capacity'},
+      {k:'Active cities', v:'Austin · Dallas · Houston (public); expanding to Phoenix, Miami, Orlando, Tampa, Las Vegas H1 2026'},
+      {k:'Stack',         v:'Camera-only, no LiDAR, no HD maps, FSD v13+'},
+    ],
+    facts: 'Tesla launched commercial robotaxi service using modified Model Y vehicles with no safety driver — first in Austin (Jun 2025), then Dallas and Houston publicly (Apr 18, 2026) with 573 vehicles. The Cybercab, a purpose-built 2-seat robotaxi with no steering wheel or pedals, entered volume production at Giga Texas in April 2026 at under $30,000 target price. Tesla\'s camera-only approach (no LiDAR) is the most controversial in the industry — if it generalises, it becomes the lowest-cost AV stack by far. Musk targets material robotaxi revenue from 2027.',
+    news: [
+      {date:'Apr 2026', text:'Cybercab enters volume production at Giga Texas. Dallas + Houston robotaxi launched publicly April 18 with 573 vehicles, no safety driver. 7 cities targeted by June 2026.', src:'Tesla', url:'https://www.tesla.com/'},
+      {date:'Mar 2026', text:'Tesla operates 1,500 robotaxis in Austin with no safety drivers. Plans to expand to Phoenix, Miami, Orlando, Tampa, Las Vegas H1 2026.', src:'Reuters', url:'https://news.google.com/search?q=Tesla+robotaxi+2026'},
+      {date:'Jun 2025', text:'Tesla launches commercial robotaxi service in Austin — first city. Modified Model Y, FSD v13, no safety driver. Invite-only initially, opens to public within weeks.', src:'Tesla', url:'https://www.tesla.com/'},
+    ],
+    sources: [
+      {label:'Tesla', url:'https://www.tesla.com/'},
+      {label:'Google News — Tesla robotaxi', url:'https://news.google.com/search?q=Tesla+Cybercab+robotaxi+2026'},
+    ]
+  },
+  'proj-zoox-us': {
+    title: 'Zoox Robotaxi — US Commercial Rollout',
+    org: [
+      {k:'Parent',        v:'Amazon (acquired 2020, ~$1.2B)'},
+      {k:'HQ',           v:'Foster City, California'},
+      {k:'Vehicle',       v:'Purpose-built bidirectional robotaxi (NHTSA exemption granted)'},
+      {k:'Active cities', v:'Las Vegas · San Francisco · Austin · Miami (expanding)'},
+      {k:'Current status', v:'Driverless operation; free rides (awaiting NHTSA fare approval)'},
+      {k:'Platform',      v:'Uber partnership in Las Vegas (summer 2026)'},
+    ],
+    facts: 'Zoox operates a fully driverless, purpose-built robotaxi with a bidirectional design — no steering wheel, no driver seat, no front or back. Passengers face each other with personal screens and wireless charging at every seat. NHTSA granted a federal exemption to operate this vehicle type, which has no equivalent in any regulatory framework. Currently offering free rides in Las Vegas and San Francisco while awaiting NHTSA approval to charge commercial fares. Amazon backing provides manufacturing scale via 220,000 sq ft Bay Area facility targeting 10,000 vehicles/year.',
+    news: [
+      {date:'Mar 2026', text:'Zoox announces Austin + Miami expansion. Quadruples SF service area. Partners with Uber for Las Vegas rides on Uber app (summer 2026). NHTSA fare approval expected April 2026.', src:'Zoox', url:'https://zoox.com/'},
+      {date:'Nov 2025', text:'Zoox launches in San Francisco — second city. Operating driverless with no fare (free rides). Expands Las Vegas service area significantly.', src:'TechCrunch', url:'https://techcrunch.com/tag/zoox/'},
+      {date:'Sep 2025', text:'Zoox launches commercial driverless service in Las Vegas — first public city. Amazon manufacturing facility produces at 220,000 sq ft Bay Area plant.', src:'Zoox', url:'https://zoox.com/'},
+    ],
+    sources: [
+      {label:'Zoox', url:'https://zoox.com/'},
+      {label:'Google News — Zoox', url:'https://news.google.com/search?q=Zoox+Amazon+robotaxi+2026'},
+    ]
+  },
+  'proj-may-mobility': {
+    title: 'May Mobility — US Driverless Shuttle Network',
+    org: [
+      {k:'HQ',           v:'Ann Arbor, Michigan'},
+      {k:'Investors',    v:'Toyota, NTT, BMW, Mirai Creation Fund'},
+      {k:'Platform partners', v:'Lyft (Atlanta) · Uber (Arlington TX) · Grab (SE Asia, 2026)'},
+      {k:'Rides completed', v:'400,000+'},
+      {k:'Vehicles',     v:'Toyota Sienna (current) + Tecnobus 30-pax minibus (2026)'},
+      {k:'Technology',   v:'MPDM (Multi-Policy Decision Making) autonomy stack'},
+    ],
+    facts: 'May Mobility operates the most widely deployed autonomous shuttle programme in North America with 400,000+ rides. Unique distribution strategy: integrating with Lyft and Uber apps rather than building its own platform — giving immediate access to 150M+ riders. The MPDM software is designed for genuine mixed urban environments. New 30-passenger Tecnobus minibus (road-ready H1 2026) is homologated for Europe and Canada — a rare North American AV company with near-term international expansion. SE Asia expansion via Grab confirmed for 2026.',
+    news: [
+      {date:'2026',     text:'New 30-passenger Tecnobus autonomous minibus road-ready H1 2026. EU + Canada homologated. Grab partnership for SE Asia expansion confirmed.', src:'May Mobility', url:'https://maymobility.com/'},
+      {date:'Sep 2025', text:'May Mobility launches on Lyft platform in Atlanta — first integration of AV on major US ride-hailing app. Full driverless with no safety driver.', src:'May Mobility', url:'https://maymobility.com/'},
+      {date:'2025',     text:'May Mobility surpasses 400,000 rides. Operating in Ann Arbor, Peachtree Corners, Grand Rapids, Arlington TX (Uber), Atlanta (Lyft).', src:'May Mobility', url:'https://maymobility.com/'},
+    ],
+    sources: [
+      {label:'May Mobility', url:'https://maymobility.com/'},
+      {label:'Google News — May Mobility', url:'https://news.google.com/search?q=May+Mobility+autonomous+2026'},
+    ]
+  },
+  'proj-aurora-us': {
+    title: 'Aurora Driver — US Commercial Freight Network',
+    org: [
+      {k:'HQ',           v:'Pittsburgh, Pennsylvania (NASDAQ: AUR)'},
+      {k:'OEM partners', v:'Volvo VNL Autonomous · PACCAR · International LT'},
+      {k:'Hardware',     v:'FirstLight proprietary LiDAR (1,000m range with next-gen)'},
+      {k:'Routes',       v:'Dallas→Houston (240mi) · Fort Worth→El Paso (600mi) · expanding'},
+      {k:'Driverless miles', v:'100,000+ (as of Oct 2025)'},
+      {k:'Safety record', v:'Zero driverless safety incidents, 100% on-time delivery'},
+    ],
+    facts: 'Aurora is the first company to operate commercial fully driverless Class 8 trucks on public US highways at commercial speeds. Launched Dallas→Houston in April 2025, expanded to Fort Worth→El Paso (600 miles) in October 2025. 100,000+ driverless miles with zero safety incidents and 100% on-time delivery record. Volvo and PACCAR build Aurora Driver hardware into trucks on the production line. Next-gen hardware kit (mid-2026) cuts hardware cost by 50%+ and doubles LiDAR range to 1,000m — enabling scaling from 5 trucks to hundreds. Bosch partnership for automotive-grade hardware production confirmed Jan 2026.',
+    news: [
+      {date:'Jan 2026',  text:'Aurora partners with Bosch for production-grade autonomous truck hardware. Next-gen FirstLight LiDAR doubles range to 1,000m. Hardware cost cut 50%+. Scaling to hundreds of trucks targeted late 2026.', src:'Aurora', url:'https://aurora.tech/'},
+      {date:'Oct 2025',  text:'Aurora surpasses 100,000 driverless miles. Launches Fort Worth→El Paso route (600 miles — longest driverless truck route in the US). 100% on-time, zero safety incidents.', src:'Aurora', url:'https://aurora.tech/'},
+      {date:'Apr 2025',  text:'Aurora launches first commercial driverless freight service — Dallas→Houston. Volvo VNL and International LT Series operating without safety driver.', src:'Aurora', url:'https://aurora.tech/'},
+    ],
+    sources: [
+      {label:'Aurora Tech', url:'https://aurora.tech/'},
+      {label:'Google News — Aurora trucking', url:'https://news.google.com/search?q=Aurora+autonomous+trucking+2026'},
+    ]
+  },
+  'proj-kodiak-us': {
+    title: 'Kodiak Driver — US Freight + Industrial Network',
+    org: [
+      {k:'HQ',             v:'Mountain View, California'},
+      {k:'Key customer',   v:'Atlas Energy Solutions (Permian Basin oilfield, 100-truck order)'},
+      {k:'Hardware partner', v:'Bosch (production-grade sensors, Jan 2026)'},
+      {k:'Upfit partner',  v:'Roush Industries'},
+      {k:'Routes',         v:'Permian Basin TX (driverless) · Dallas→Atlanta · Dallas→Houston · Dallas→Oklahoma City (observer)'},
+      {k:'Vehicles',       v:'International LT Series + Peterbilt (Class 8)'},
+    ],
+    facts: 'Kodiak achieved a global first: a customer (Atlas Energy Solutions) took ownership of driverless trucks and launched their own commercial driverless operations — transitioning AV from a service to a product. The Permian Basin environment is uniquely suited: private roads, repetitive fixed routes, 24/7 demand, severe driver shortage. 100-truck order from Atlas being fulfilled across 2026. Highway routes (TX/GA/OK) currently operate with safety observers; fully driverless highway operations targeted H2 2026. Bosch partnership announced Jan 2026 for production-grade hardware at automotive scale.',
+    news: [
+      {date:'Jan 2026',  text:'Kodiak and Bosch announce partnership for automotive-grade autonomous truck hardware production. First customer-owned driverless trucks delivered to Atlas Energy Solutions.', src:'Kodiak', url:'https://kodiak.ai/'},
+      {date:'2025',      text:'Atlas Energy Solutions takes delivery of first customer-owned Kodiak driverless RoboTrucks — begins own commercial driverless operations in Permian Basin. First time a customer has owned and operated driverless trucks commercially.', src:'Kodiak', url:'https://kodiak.ai/'},
+      {date:'2024',      text:'Kodiak achieves fully driverless operations in Permian Basin oilfield — private roads, repetitive routes. Launches highway routes Dallas→Atlanta, Dallas→Houston, Dallas→Oklahoma City with safety observers.', src:'Kodiak', url:'https://kodiak.ai/'},
+    ],
+    sources: [
+      {label:'Kodiak Robotics', url:'https://kodiak.ai/'},
+      {label:'Google News — Kodiak trucking', url:'https://news.google.com/search?q=Kodiak+Robotics+autonomous+truck+2026'},
+    ]
+  },
+  'proj-einride-us': {
+    title: 'Einride — US Autonomous Freight Operations',
+    org: [
+      {k:'HQ',           v:'Stockholm, Sweden (NYSE listing H1 2026)'},
+      {k:'Valuation',    v:'$1.35B ($113M PIPE raised Feb 2026)'},
+      {k:'US customers', v:'Oatly · GE Appliances · Electrolux · Carlsberg · PepsiCo · DB Schenker'},
+      {k:'Technology',   v:'Saga AI OS — 5.2M data points/second'},
+      {k:'Vehicle',      v:'Einride Pod (cabless) + standard truck retrofit'},
+      {k:'Permits',      v:'Commercial autonomous freight permits in 4+ countries simultaneously'},
+    ],
+    facts: 'Einride is the only autonomous freight company with commercial permits in 4+ countries simultaneously — Sweden, Norway (see EU report), and multiple US states. US operations serve Fortune 500 customers on fixed commercial routes. The cabless Pod design (no driver cab) maximises cargo volume and is the most distinctive autonomous freight vehicle in production. Raised $113M PIPE ahead of NYSE listing in H1 2026 at $1.35B valuation. Joined EU ECAVA as the only autonomous freight operator advising EU institutions on binding AV regulation.',
+    news: [
+      {date:'Feb 2026',  text:'Einride raises $113M PIPE ahead of NYSE listing. $1.35B valuation. Joins ECAVA as only autonomous freight operator advising EU institutions. NYSE listing targeted H1 2026.', src:'Einride', url:'https://www.einride.tech/'},
+      {date:'2025',      text:'Einride expands US customer base to include PepsiCo and DB Schenker. Operates autonomous freight in 4+ countries — first company to achieve this.', src:'Einride', url:'https://www.einride.tech/'},
+    ],
+    sources: [
+      {label:'Einride Newsroom', url:'https://www.einride.tech/newsroom'},
+      {label:'Google News — Einride US', url:'https://news.google.com/search?q=Einride+autonomous+US+2026'},
+    ]
+  },
+  'proj-uber-av': {
+    title: 'Uber Autonomous Platform — Global AV Marketplace',
+    org: [
+      {k:'CEO',          v:'Dara Khosrowshahi'},
+      {k:'AV partners',  v:'25+ globally — Waymo, Zoox, May Mobility, Aurora (US); Wayve, MOIA, Pony.ai (EU); Baidu, WeRide (Asia)'},
+      {k:'Active AV cities', v:'Austin · Atlanta · Las Vegas · Arlington TX (US) · London (EU) · Riyadh (ME)'},
+      {k:'Own vehicle',  v:'Lucid Gravity + Nuro SDS — exclusive to Uber, late 2026 SF launch'},
+      {k:'Target',       v:'15 AV cities by end 2026'},
+    ],
+    facts: 'Uber pivoted from AV developer to AV platform — retaining 150M+ active riders while avoiding $10B+ R&D cost. Partners with every major AV company and integrates their vehicles into the Uber app. The Lucid Gravity + Nuro SDS vehicle (exclusive to Uber, launching late 2026 in San Francisco) is a hedge: Uber\'s own branded robotaxi if partners scale slower than expected. The Zoox partnership (Las Vegas, summer 2026) and Waymo partnership (Austin/Atlanta) are already live. Risk: if Waymo scales its own app successfully, Uber\'s platform value erodes.',
+    news: [
+      {date:'Mar 2026',  text:'Uber announces 25+ AV partnerships globally. Zoox partnership for Las Vegas summer 2026. Lucid/Nuro exclusive robotaxi launching late 2026 in San Francisco. 15 AV cities targeted in 2026.', src:'Uber', url:'https://www.uber.com/'},
+      {date:'2025',      text:'Uber expands Waymo partnership to Atlanta. May Mobility launches on Uber in Arlington TX. Wayve partnership for London announced.', src:'Uber', url:'https://www.uber.com/'},
+    ],
+    sources: [
+      {label:'Uber Newsroom', url:'https://investor.uber.com/news-releases/'},
+      {label:'Google News — Uber AV', url:'https://news.google.com/search?q=Uber+autonomous+vehicle+2026'},
+    ]
+  },
+  'proj-gatik-canada': {
+    title: 'Gatik × Loblaw — Canada Autonomous Grocery Logistics',
+    org: [
+      {k:'Operator',     v:'Gatik AI Inc. (Mountain View, CA)'},
+      {k:'Customer',     v:'Loblaw Companies Limited (Canada\'s largest grocer)'},
+      {k:'Loblaw stores served', v:'300+ stores across GTA'},
+      {k:'Fleet target', v:'50 autonomous trucks by end 2026 (20 by end 2025, 30 more 2026)'},
+      {k:'Vehicle',      v:'Gatik W-Series medium-duty autonomous truck (cold-chain capable)'},
+      {k:'Regulation',   v:'Ontario Automated Commercial Motor Vehicle Pilot Programme (Aug 2025)'},
+    ],
+    facts: 'Gatik and Loblaw launched Canada\'s first driverless commercial fleet in 2022 and expanded it to the largest autonomous grocery logistics operation in the country. The 5-year agreement signed Sep 2025 covers 50 trucks across the Greater Toronto Area serving 300+ Loblaw retail locations. Cold-chain capable for grocery and household items on short-haul fixed routes. Ontario\'s ACMV Pilot Programme (Aug 2025) provides the regulatory framework. Loblaw made a strategic investment in Gatik — aligning retailer and AV company incentives. Transitioning from safety-driver-supervised to fully driverless freight operations.',
+    news: [
+      {date:'Sep 2025',  text:'Gatik and Loblaw sign 5-year agreement for 50 autonomous trucks across GTA distribution network. Loblaw makes strategic investment in Gatik. Ontario ACMV Pilot Programme enables driverless operations.', src:'ACT News', url:'https://www.act-news.com/news/gatik-and-loblaw-to-deploy-50-autonomous-trucks-by-2026/'},
+      {date:'Aug 2025',  text:'Ontario Automated Commercial Motor Vehicle Pilot Programme launches — provides regulatory framework for Gatik\'s driverless fleet expansion to 50 trucks.', src:'Government of Ontario', url:'https://www.ontario.ca/'},
+      {date:'2022',      text:'Gatik and Loblaw launch Canada\'s first driverless commercial fleet — autonomous trucks delivering groceries on fixed GTA routes without safety driver.', src:'Gatik', url:'https://gatik.ai/'},
+    ],
+    sources: [
+      {label:'Gatik', url:'https://gatik.ai/'},
+      {label:'ACT News — Gatik Loblaw', url:'https://www.act-news.com/news/gatik-and-loblaw-to-deploy-50-autonomous-trucks-by-2026/'},
+      {label:'Google News — Gatik Canada', url:'https://news.google.com/search?q=Gatik+Loblaw+autonomous+Canada+2026'},
+    ]
+  },
+  'proj-motional': {
+    title: 'Motional — Las Vegas Robotaxi (Uber)',
+    org: [
+      {k:'JV partners',    v:'Hyundai Motor Group (majority) + Aptiv (minority)'},
+      {k:'CEO',            v:'Laura Major (since 2024 reboot)'},
+      {k:'Total invested', v:'~$3.4B (Hyundai plugged in extra $1B in 2024 to save company)'},
+      {k:'Vehicle',        v:'Hyundai IONIQ 5 Robotaxi (FMVSS-certified for driverless)'},
+      {k:'Platform',       v:'Uber (relaunch partner, Mar 2026)'},
+      {k:'Headcount',      v:'~600 (down from 1,400 peak after 40% cut in May 2024)'},
+    ],
+    facts: 'Motional is the most dramatic recovery story in autonomous vehicles. Born as a $4B JV, it nearly collapsed in 2024 — losing Aptiv as a backer, cutting 40% of staff, and pausing all commercial operations. Hyundai invested another $1B to keep it alive. The AI-first reboot (pivoting from pure robotics to E2E neural networks) relaunched commercial service on Uber in Las Vegas on March 13, 2026 — just 2 years after the near-collapse. The IONIQ 5 is one of the only AVs certified under US Federal Motor Vehicle Safety Standards for fully driverless operation. Fully driverless service (removing the human safety monitor) targeted by end of 2026.',
+    news: [
+      {date:'Mar 2026', text:'Uber and Motional relaunch commercial robotaxi in Las Vegas on March 13. IONIQ 5 with safety monitor. Fully driverless targeted end 2026. First service since 2024 pause.', src:'TechCrunch', url:'https://techcrunch.com/2026/03/13/motional-robotaxis-join-the-uber-app-in-vegas-two-years-after-major-reset/'},
+      {date:'Jan 2026', text:'Motional announces AI-first reboot — pivoting to E2E AI motion planning. CEO Laura Major promises driverless service in Las Vegas by end 2026. Employee pilots begin.', src:'TechCrunch', url:'https://techcrunch.com/2026/01/11/motional-puts-ai-at-center-of-robotaxi-reboot-as-it-targets-2026-for-driverless-service/'},
+      {date:'2024',     text:'Aptiv exits JV. Hyundai invests additional $1B. 40% workforce reduction (1,400 → ~600). All commercial operations paused. Full AI-first technology reboot begins.', src:'Motional', url:'https://motional.com/news'},
+    ],
+    sources: [
+      {label:'Motional News', url:'https://motional.com/news'},
+      {label:'TechCrunch — Motional relaunch', url:'https://techcrunch.com/2026/03/13/motional-robotaxis-join-the-uber-app-in-vegas-two-years-after-major-reset/'},
+      {label:'Google News — Motional', url:'https://news.google.com/search?q=Motional+robotaxi+Las+Vegas+2026'},
+    ]
+  },
+  'proj-avride': {
+    title: 'Avride — Dallas Robotaxi (Uber)',
+    org: [
+      {k:'Origin',       v:'International division of Yandex Self-Driving Group (rebranded 2023)'},
+      {k:'CEO',          v:'Dmitry Polishchuk'},
+      {k:'HQ',           v:'Austin, Texas'},
+      {k:'Vehicle',      v:'Hyundai IONIQ 5 (Avride AV stack)'},
+      {k:'Platform',     v:'Uber (UberX, Uber Comfort, Uber Comfort Electric)'},
+      {k:'Service area', v:'9 sq miles — Downtown Dallas, Uptown, Deep Ellum, Turtle Creek'},
+    ],
+    facts: 'Avride is the rebranded international arm of Yandex Self-Driving Group, which logged millions of autonomous miles in Russia before the 2022 geopolitical separation forced a structural split. That heritage gives Avride genuine operational experience most startups lack. Launched commercial service in Dallas on Uber on December 3, 2025 — integrated directly into UberX with no extra cost to riders. Dallas is notable as the first US city with three simultaneous commercial robotaxi services (Waymo, Tesla, Avride). Also operates autonomous sidewalk delivery robots on Uber Eats in Austin and Dallas. Fleet scales to hundreds of Dallas vehicles over coming years.',
+    news: [
+      {date:'Dec 2025', text:'Avride and Uber launch commercial robotaxi in Dallas — 9 sq miles, UberX integration, same price as human driver. Safety specialist onboard at launch. Dallas becomes first US city with 3 simultaneous robotaxi services.', src:'Uber Newsroom', url:'https://www.uber.com/newsroom/avride-on-uber/'},
+      {date:'2025',     text:'Avride also launches autonomous sidewalk delivery robots on Uber Eats in Austin and Dallas, and in Osaka via Cartken partnership.', src:'Uber 8-K', url:'https://www.sec.gov/'},
+    ],
+    sources: [
+      {label:'Avride', url:'https://avride.com/'},
+      {label:'Uber × Avride launch', url:'https://www.uber.com/newsroom/avride-on-uber/'},
+      {label:'Google News — Avride', url:'https://news.google.com/search?q=Avride+autonomous+Dallas+2026'},
+    ]
+  },
+  'proj-nuro-lucid': {
+    title: 'Nuro × Lucid × Uber — Global Premium Robotaxi',
+    org: [
+      {k:'Autonomy',      v:'Nuro (co-founders Dave Ferguson + Jiajun Zhu, ex-Waymo)'},
+      {k:'Vehicle',       v:'Lucid Gravity SUV (up to 6 passengers, 450-mile range)'},
+      {k:'Distribution',  v:'Uber (exclusively on Uber app)'},
+      {k:'Nuro valuation', v:'$6B (Series E, $203M raised)'},
+      {k:'Fleet commitment', v:'35,000+ Lucid vehicles over 6 years'},
+      {k:'Uber investment', v:'$500M total in Lucid ($300M + $200M expansion)'},
+      {k:'Compute',       v:'NVIDIA Drive AGX Thor'},
+    ],
+    facts: 'The largest single robotaxi programme by vehicle commitment — 35,000 Lucid Gravity SUVs with Nuro Driver L4 autonomy, deployed exclusively on Uber. Unveiled at CES 2026. Employee testing began April 2026 in SF with a 100-vehicle engineering fleet. Production at Lucid Arizona factory expected late 2026, followed by SF public launch. Uber owns and operates the fleet with third-party partners. Programme extends to dozens of global markets over 6 years. Lucid Gravity offers the most premium robotaxi cabin: 450-mile range, 6 passengers, Uber-designed UX. Ayar Third Investment (Saudi PIF) invested $550M in Lucid alongside Uber expansion.',
+    news: [
+      {date:'Apr 2026', text:'Uber employees begin test rides in Lucid Gravity robotaxis on Uber app in SF. 100-vehicle engineering fleet. Nuro Driver autonomy stack in autonomous mode with safety backup. Public launch targeted late 2026.', src:'TechCrunch', url:'https://techcrunch.com/2026/04/13/uber-nuro-san-francisco-testing-premium-robotaxi-service/'},
+      {date:'Apr 2026', text:'Uber expands Lucid commitment to 35,000 vehicles. Additional $200M investment in Lucid ($500M total). Ayar Third Investment commits $550M in Lucid.', src:'Lucid SEC 8-K', url:'https://ir.lucidmotors.com/'},
+      {date:'Jan 2026', text:'Lucid, Nuro and Uber unveil production-intent Gravity robotaxi at CES 2026. Autonomous on-road testing announced (began Dec 2025). SF Bay Area launch targeted later in 2026.', src:'Nuro', url:'https://www.nuro.ai/blog/lucid-nuro-uber-robotaxi-ces-2026'},
+    ],
+    sources: [
+      {label:'Nuro × Lucid × Uber', url:'https://www.nuro.ai/nuro-lucid-uber-robotaxi'},
+      {label:'TechCrunch — employee testing', url:'https://techcrunch.com/2026/04/13/uber-nuro-san-francisco-testing-premium-robotaxi-service/'},
+      {label:'Google News — Nuro Lucid Uber', url:'https://news.google.com/search?q=Nuro+Lucid+Uber+robotaxi+2026'},
+    ]
+  },
+  'proj-lyft-av': {
+    title: 'Lyft Autonomous Platform — US + International',
+    org: [
+      {k:'CEO',          v:'David Risher'},
+      {k:'Fleet ops',    v:'Lyft Flexdrive subsidiary (charging, maintenance, depot)'},
+      {k:'AV partners',  v:'Waymo (Nashville), Mobileye (Dallas 2026), Tensor, Baidu (London 2026), May Mobility (Atlanta)'},
+      {k:'Fleet owner',  v:'Marubeni (Japan) for Mobileye-Dallas vehicles'},
+      {k:'Strategy',     v:'Asset-light platform + fleet operator (Flexdrive manages ground ops)'},
+    ],
+    facts: 'Lyft\'s AV strategy differs from Uber\'s: Lyft takes on fleet operations via Flexdrive (charging, maintenance, depot logistics) rather than just app distribution. This makes Lyft a more integrated partner for AV companies that don\'t want to manage fleet complexity. The Waymo Nashville partnership (April 2026) is the clearest example — Lyft handles all fleet operations while Waymo provides technology. The Mobileye-Dallas deal (Marubeni owns fleet, Mobileye provides SDS) targets launch "as soon as 2026." The Tensor Robocar partnership is the most novel: consumer-owned AVs that owners can deploy on Lyft to monetise when not in personal use — first "Lyft-ready" market targeted 2027.',
+    news: [
+      {date:'Apr 2026', text:'Waymo opens Nashville robotaxi service with Lyft as fleet operator — Lyft Flexdrive manages charging, maintenance, depot. Lyft CEO declares 2026 "the year of the AV."', src:'TechCrunch', url:'https://techcrunch.com/2026/04/07/waymo-opens-robotaxi-service-in-nashville-partners-with-lyft/'},
+      {date:'Dec 2025', text:'Lyft and Baidu announce partnership for London robotaxi trials in 2026 using Apollo Go RT6 vehicles — same trial Uber is joining.', src:'ABC News', url:'https://abcnews.go.com/Technology/wireStory/uber-lyft-plan-bring-robotaxis-london-partnerships-chinas-128614262'},
+      {date:'Oct 2025', text:'Lyft and Tensor announce partnership — Tensor Robocar will be first personally-owned AV deployable on Lyft. Lyft reserves hundreds of Tensor vehicles for its own fleet.', src:'Lyft Blog', url:'https://www.lyft.com/blog/posts/lyft-tensor-av-partnership'},
+    ],
+    sources: [
+      {label:'Lyft Newsroom', url:'https://www.lyft.com/blog'},
+      {label:'Google News — Lyft AV', url:'https://news.google.com/search?q=Lyft+autonomous+vehicle+2026'},
+    ]
+  },
+  'proj-perrone': {
+    title: 'Perrone Robotics CONNECT — Detroit Public Transit',
+    org: [
+      {k:'Operator',     v:'Perrone Robotics Inc. (Charlottesville, VA)'},
+      {k:'Client',       v:'City of Detroit'},
+      {k:'Partners',     v:'Bedrock, Michigan Mobility Collaborative'},
+      {k:'Contract',     v:'$1.5M (complete vehicle ops, tech integration, support)'},
+      {k:'Route',        v:'10+ miles: Rivertown Warehouse District → Downtown → Corktown'},
+      {k:'Vehicle',      v:'Ford E-Transit (TONY® AV kit + MAX® software)'},
+    ],
+    facts: 'America\'s longest-running public autonomous electric shuttle service — Ford E-Transit vans running continuously since August 2024. The TONY retrofit kit is vehicle-agnostic: it can autonomise any vehicle platform without replacing the base vehicle, making it the lowest-cost path to L4 autonomy for transit agencies. FMVSS-compliant, ADA-compliant, Buy America-compliant — uniquely eligible for federal transit funding. Beyond Detroit, Perrone has deployed at University of Hawaii, Virginia Tech VTTI, North Fork (UVA), and powered the nation\'s first autonomous law enforcement patrol vehicle at Miami-Dade Sheriff\'s Office. With 20+ years of autonomy experience (founder chaired the SAE committee that set autonomy standards), Perrone is the most underrated player in NA AV transit.',
+    news: [
+      {date:'Nov 2025', text:'CONNECT surpasses 1 year of continuous operation — longest-running public autonomous transit in the US. Steady ridership growth, expanded routes, zero major incidents.', src:'PR Newswire', url:'https://www.prnewswire.com/news-releases/perrone-robotics-surpasses-one-year-of-autonomous-transit-operations-in-detroit-302613557.html'},
+      {date:'2025',     text:'Perrone powers nation\'s first autonomous law enforcement patrol vehicle at Miami-Dade Sheriff\'s Office. Also deployed at Virginia Tech VTTI and University of Hawaii.', src:'Perrone Robotics', url:'https://www.perronerobotics.com/'},
+      {date:'Aug 2024', text:'Detroit CONNECT launches — nation\'s first autonomous public transit fleet on Ford E-Transit platform. 10+ mile downtown route, zero-emission, ADA-compliant.', src:'Perrone Robotics', url:'https://www.perronerobotics.com/'},
+    ],
+    sources: [
+      {label:'Perrone Robotics', url:'https://www.perronerobotics.com/'},
+      {label:'PR Newswire — Detroit 1yr', url:'https://www.prnewswire.com/news-releases/perrone-robotics-surpasses-one-year-of-autonomous-transit-operations-in-detroit-302613557.html'},
+      {label:'Google News — Perrone Robotics', url:'https://news.google.com/search?q=Perrone+Robotics+autonomous+2026'},
+    ]
+  },
+  'proj-tensor': {
+    title: 'Tensor Robocar — Personal AV + Lyft Network',
+    org: [
+      {k:'Origin',       v:'Evolved from AutoX (Chinese AV company)'},
+      {k:'CA permits',   v:'CPUC test permit (2019, 2nd in state) + driverless permit (2020, 2nd in state)'},
+      {k:'Compute',      v:'NVIDIA (collaboration since 2018)'},
+      {k:'Partner',      v:'Autoliv (world\'s first foldable steering wheel, Dec 2025)'},
+      {k:'Distribution', v:'Lyft (partnership Oct 2025) — "Lyft-ready" from manufacturer'},
+      {k:'Business model', v:'Consumer-owned AV deployable on Lyft when not in personal use'},
+    ],
+    facts: 'Tensor\'s Robocar is the world\'s first AV designed specifically for both personal ownership and rideshare deployment. The model inverts the capital structure of robotaxi deployment: instead of one company funding a fleet, individual consumers each fund one vehicle and earn income deploying it on Lyft. Lyft has also reserved hundreds of Tensor Robocars for its own fleet operations. The Autoliv foldable steering wheel partnership (December 2025) is a world-first — enabling the switch between manual and autonomous modes seamlessly. California driverless permit obtained in 2020 (only the 2nd company in the state). L4 rollout planned across major US metros, Europe, and the Middle East.',
+    news: [
+      {date:'Dec 2025', text:'Tensor and Autoliv unveil world\'s first foldable steering wheel for autonomous driving — enables seamless manual/autonomous mode switching.', src:'Tensor', url:'https://news.google.com/search?q=Tensor+Robocar+Autoliv+foldable+steering+wheel'},
+      {date:'Oct 2025', text:'Lyft and Tensor announce strategic partnership — Robocar becomes first personally-owned AV deployable on Lyft rideshare. Lyft reserves hundreds of vehicles for its own fleet. "Lyft-ready" market targeted 2027.', src:'Lyft Blog', url:'https://www.lyft.com/blog/posts/lyft-tensor-av-partnership'},
+    ],
+    sources: [
+      {label:'Lyft × Tensor partnership', url:'https://www.lyft.com/blog/posts/lyft-tensor-av-partnership'},
+      {label:'Google News — Tensor Robocar', url:'https://news.google.com/search?q=Tensor+Robocar+autonomous+2026'},
+    ]
+  },
 };
 
 // News teasers injected directly in HTML
@@ -2950,6 +3974,123 @@ const ACTIVITY = {
 let selectedCountries = [];
 
 // ── D3 Map ──────────────────────────────────────────────────────────
+
+// ── Map region switcher ──────────────────────────────────────────
+let activeMapRegion = 'eu';
+
+const REGION_IDS = {
+  eu:   new Set([8,20,40,112,56,70,100,191,196,203,208,233,246,250,
+    276,300,348,352,372,380,383,428,438,440,442,470,498,492,499,528,807,578,616,
+    620,642,674,688,703,705,724,752,756,804,826,336]),
+  na:   new Set([840,124,484]),
+  asia: new Set([156,392,410,356,764,360,458,702,704,116,418,050,524,598,144])
+};
+
+const NA_IDS = new Set(['proj-waymo-us','proj-tesla-robotaxi','proj-zoox-us',
+  'proj-may-mobility','proj-aurora-us','proj-kodiak-us','proj-einride-us','proj-uber-av','proj-gatik-canada',
+  'proj-motional','proj-avride','proj-nuro-lucid',
+  'proj-lyft-av','proj-perrone','proj-tensor']);
+
+const MAP_REGIONS = {
+  eu:   {center:[13,54],    scale:480, tx:0.46, ty:0.56},
+  na:   {center:[-98,45],   scale:280, tx:0.50, ty:0.50},
+  asia: {center:[105,35],   scale:280, tx:0.50, ty:0.50},
+};
+
+function switchMapRegion(btn, region) {
+  activeMapRegion = region;
+  document.querySelectorAll('.map-region-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  if (!mapBuilt) { mapBuilt = true; setTimeout(buildMap, 50); return; }
+
+  const cfg = MAP_REGIONS[region];
+  const svg = d3.select('#europeMap svg');
+  if (!svg.node()) return;
+
+  const W = 960, H = 540;
+  const newProj = d3.geoMercator()
+    .center(cfg.center).scale(cfg.scale).translate([W*cfg.tx, H*cfg.ty]);
+  const newPath = d3.geoPath().projection(newProj);
+
+  // 1. Hide all dots immediately so they don't float around during country animation
+  svg.selectAll('.project-dot').style('opacity', '0');
+  svg.select('.connector-lines').style('opacity', '0');
+
+  // 2. Animate countries sliding to new projection
+  const regionSet = REGION_IDS[region] || REGION_IDS.eu;
+  svg.select('.country-fills').selectAll('path')
+    .transition().duration(700).ease(d3.easeCubicInOut)
+    .attr('d', newPath)
+    .style('fill', function() { return regionSet.has(+this.getAttribute('data-id')) ? '#cdd8e4' : '#dde6ee'; })
+    .style('stroke-width', function() { return regionSet.has(+this.getAttribute('data-id')) ? '0.7' : '0.3'; });
+
+  // 3. After country animation completes, rebuild dots with correct separation and fade in
+  setTimeout(() => {
+    // Project + separate in-view dots
+    const inViewData = PROJECT_DOTS
+      .filter(p => region === 'all' || (NA_IDS.has(p.id) ? 'na' : 'eu') === region)
+      .map(p => { const [x,y] = newProj([p.lon, p.lat]); return {...p, x, y, ox:x, oy:y}; });
+
+    for (let iter=0; iter<120; iter++) {
+      for (let i=0; i<inViewData.length; i++) {
+        for (let j=i+1; j<inViewData.length; j++) {
+          const dx=inViewData[j].x-inViewData[i].x, dy=inViewData[j].y-inViewData[i].y;
+          const dist=Math.sqrt(dx*dx+dy*dy)||0.01;
+          if (dist<22) {
+            const push=(22-dist)/2, nx=dx/dist, ny=dy/dist;
+            inViewData[i].x-=nx*push; inViewData[i].y-=ny*push;
+            inViewData[j].x+=nx*push; inViewData[j].y+=ny*push;
+          }
+        }
+      }
+    }
+
+    // Snap dots to correct positions silently, then fade in
+    svg.selectAll('.project-dot').each(function() {
+      const id = this.getAttribute('data-id');
+      const dotRegion = NA_IDS.has(id) ? 'na' : 'eu';
+      const inView = region === 'all' || dotRegion === region;
+      const g = d3.select(this);
+      if (inView) {
+        const d = inViewData.find(p => p.id === id);
+        if (d) g.attr('transform', `translate(${d.x},${d.y})`);
+      }
+    });
+
+    // Rebuild connector lines
+    svg.select('.connector-lines').selectAll('line').remove();
+    if (region !== 'na') {
+      inViewData
+        .filter(p => !NA_IDS.has(p.id) && Math.hypot(p.x-p.ox, p.y-p.oy) > 8)
+        .forEach(p => {
+          svg.select('.connector-lines').append('line')
+            .attr('x1',p.ox).attr('y1',p.oy).attr('x2',p.x).attr('y2',p.y)
+            .style('stroke','#94a3b8').style('stroke-width','0.8')
+            .style('stroke-dasharray','2,2').style('pointer-events','none');
+        });
+    }
+
+    // Fade in the correct dots
+    svg.selectAll('.project-dot').each(function() {
+      const id = this.getAttribute('data-id');
+      const dotRegion = NA_IDS.has(id) ? 'na' : 'eu';
+      const inView = region === 'all' || dotRegion === region;
+      d3.select(this)
+        .style('pointer-events', inView ? 'all' : 'none')
+        .transition().duration(300)
+        .style('opacity', inView ? '1' : '0');
+    });
+
+    svg.select('.connector-lines')
+      .transition().duration(300)
+      .style('opacity', region === 'na' ? '0' : '1');
+
+    window._mr && window._mr();
+  }, 720);
+}
+
+
 function buildMap() {
   const container = document.getElementById('europeMap');
   if (!container || container.querySelector('svg')) return;
@@ -2964,6 +4105,7 @@ function buildMap() {
 
   const tooltip = document.createElement('div');
   tooltip.className = 'map-tooltip';
+  tooltip.id = 'mapTooltipDiv';
   document.body.appendChild(tooltip);
 
   if (!document.getElementById('dot-pulse-style')) {
@@ -2997,7 +4139,9 @@ function buildMap() {
       .attr('viewBox', `0 0 ${W} ${H}`)
       .style('width','100%').style('height','auto').style('display','block');
 
-    const proj = d3.geoMercator().center([13,54]).scale(480).translate([W*0.46,H*0.56]);
+    const cfg = MAP_REGIONS[activeMapRegion] || MAP_REGIONS.eu;
+    const proj = d3.geoMercator()
+      .center(cfg.center).scale(cfg.scale).translate([W*cfg.tx, H*cfg.ty]);
     const pathGen = d3.geoPath().projection(proj);
 
     const zoom = d3.zoom().scaleExtent([0.5,12])
@@ -3007,50 +4151,87 @@ function buildMap() {
     window._mr = () => svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
 
     const mapG = svg.append('g');
-    const europeIds = new Set([8,20,40,112,56,70,100,191,196,203,208,233,246,250,
-      276,300,348,352,372,380,383,428,438,440,442,470,498,492,499,528,807,578,616,
-      620,642,674,688,703,705,724,752,756,804,826,336]);
+
+    function getCountryFill(id) {
+      const numId = +id;
+      const set = REGION_IDS[activeMapRegion] || REGION_IDS.eu;
+      return set.has(numId) ? '#cdd8e4' : '#dde6ee';
+    }
+    function getCountryStroke(id) {
+      const numId = +id;
+      const set = REGION_IDS[activeMapRegion] || REGION_IDS.eu;
+      return set.has(numId) ? '0.7' : '0.3';
+    }
 
     d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(world => {
       const countries = topojson.feature(world, world.objects.countries);
 
-      mapG.append('g').selectAll('path')
+      mapG.append('g').attr('class','country-fills').selectAll('path')
         .data(countries.features)
         .enter().append('path').attr('d', pathGen)
-        .style('fill', d => europeIds.has(+d.id) ? '#cdd8e4' : '#dde6ee')
+        .attr('data-id', d => d.id)
+        .style('fill', d => getCountryFill(d.id))
         .style('stroke','#fff')
-        .style('stroke-width', d => europeIds.has(+d.id) ? '0.7' : '0.3');
+        .style('stroke-width', d => getCountryStroke(d.id));
 
       // Force-separate overlapping dots
-      const dots = PROJECT_DOTS.map(p => { const [x,y]=proj([p.lon,p.lat]); return {...p,x,y,ox:x,oy:y}; });
-      for (let iter=0;iter<80;iter++) {
-        for (let i=0;i<dots.length;i++) for (let j=i+1;j<dots.length;j++) {
-          const dx=dots[j].x-dots[i].x, dy=dots[j].y-dots[i].y, dist=Math.sqrt(dx*dx+dy*dy)||0.01;
-          if (dist<18) { const p=(18-dist)/2,nx=dx/dist,ny=dy/dist; dots[i].x-=nx*p; dots[i].y-=ny*p; dots[j].x+=nx*p; dots[j].y+=ny*p; }
+      // Only separate dots in the active region — avoids cross-region interference
+
+      const dots = PROJECT_DOTS.map(p => {
+        const [x,y] = proj([p.lon, p.lat]);
+        const dotRegion = NA_IDS.has(p.id) ? 'na' : 'eu';
+        return {...p, x, y, ox:x, oy:y, dotRegion};
+      });
+
+      // Force-separate only in-view dots (out-of-view dots project off-screen and absorb separation energy)
+      const viewDots = dots.filter(p => activeMapRegion === 'all' || p.dotRegion === activeMapRegion);
+      const hiddenDots = dots.filter(p => activeMapRegion !== 'all' && p.dotRegion !== activeMapRegion);
+
+      for (let iter=0; iter<120; iter++) {
+        for (let i=0; i<viewDots.length; i++) {
+          for (let j=i+1; j<viewDots.length; j++) {
+            const dx=viewDots[j].x-viewDots[i].x, dy=viewDots[j].y-viewDots[i].y;
+            const dist=Math.sqrt(dx*dx+dy*dy)||0.01;
+            if (dist<22) {
+              const push=(22-dist)/2, nx=dx/dist, ny=dy/dist;
+              viewDots[i].x-=nx*push; viewDots[i].y-=ny*push;
+              viewDots[j].x+=nx*push; viewDots[j].y+=ny*push;
+            }
+          }
         }
       }
 
-      dots.forEach(p => {
-        if (Math.hypot(p.x-p.ox,p.y-p.oy)>3)
-          mapG.append('line').attr('x1',p.ox).attr('y1',p.oy).attr('x2',p.x).attr('y2',p.y)
-            .style('stroke','#94a3b8').style('stroke-width','0.8').style('stroke-dasharray','2,2').style('pointer-events','none');
+      // Connector lines only for EU dots that moved significantly
+      const linesG = mapG.append('g').attr('class','connector-lines');
+      viewDots.filter(p => p.dotRegion === 'eu' && Math.hypot(p.x-p.ox, p.y-p.oy) > 8).forEach(p => {
+        linesG.append('line')
+          .attr('x1',p.ox).attr('y1',p.oy).attr('x2',p.x).attr('y2',p.y)
+          .style('stroke','#94a3b8').style('stroke-width','0.8')
+          .style('stroke-dasharray','2,2').style('pointer-events','none');
       });
 
-      dots.forEach(proj => {
-        const color = DOT_COLORS[proj.status]||'#94a3b8';
-        const g = mapG.append('g').attr('class','project-dot').attr('data-id',proj.id)
-          .attr('transform',`translate(${proj.x},${proj.y})`).style('cursor','pointer');
+      const allDots = [...viewDots, ...hiddenDots];
+
+      allDots.forEach(dot => {
+        const color = DOT_COLORS[dot.status]||'#94a3b8';
+        const g = mapG.append('g').attr('class','project-dot').attr('data-id',dot.id)
+          .attr('transform',`translate(${dot.x},${dot.y})`).style('cursor','pointer');
         g.append('circle').attr('r',14).style('fill','transparent');
-        if (proj.status==='live') g.append('circle').attr('class','dot-pulse-ring').attr('r',9).style('fill',color).style('opacity',0.3);
+        if (dot.status==='live') g.append('circle').attr('class','dot-pulse-ring').attr('r',9).style('fill',color).style('opacity',0.3);
         g.append('circle').attr('class','dot-main').attr('r',6).style('fill',color).style('stroke','#fff').style('stroke-width','1.5');
         g.on('mouseover', () => {
-          const lbl={live:'Live',pilot:'Active Pilot',planned:'Planned',announced:'Announced',development:'In Development'}[proj.status]||proj.status;
-          tooltip.innerHTML=`<strong>${proj.name}</strong><br><span style="opacity:0.7;font-size:10px">${proj.city} · ${lbl}</span>`;
+          const lbl={live:'Live',pilot:'Active Pilot',planned:'Planned',announced:'Announced',development:'In Development'}[dot.status]||dot.status;
+          tooltip.innerHTML=`<strong>${dot.name}</strong><br><span style="opacity:0.7;font-size:10px">${dot.city} · ${lbl}</span>`;
           tooltip.style.display='block'; g.select('.dot-main').attr('r',10); g.raise();
         })
         .on('mousemove', e => { tooltip.style.left=(e.clientX-tooltip.offsetWidth/2)+'px'; tooltip.style.top=(e.clientY-54)+'px'; })
         .on('mouseleave', () => { tooltip.style.display='none'; g.select('.dot-main').attr('r',6); })
-        .on('click', () => { document.querySelectorAll('.project-dot.selected').forEach(el=>{ if(el) el.classList.remove('selected'); }); g.node().classList.add('selected'); spOpen(proj.id,'details'); });
+        .on('click', () => { document.querySelectorAll('.project-dot.selected').forEach(el=>{ if(el) el.classList.remove('selected'); }); g.node().classList.add('selected'); spOpen(dot.id,'details'); });
+
+        // Set initial visibility based on region
+        if (activeMapRegion !== 'all' && dot.dotRegion !== activeMapRegion) {
+          g.style('opacity','0.08').style('pointer-events','none');
+        }
       });
     });
   }
