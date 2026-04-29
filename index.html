@@ -3361,7 +3361,12 @@ const PROJECT_DOTS = [
 let activeRegion = 'all';
 
 function updateStats() {
+  const REPORT_DATE = 'April 2026'; // ← UPDATE THIS EACH MONTH
   const counts = {all:{p:65,c:46,co:'25+'}, eu:{p:32,c:18,co:'15+'}, na:{p:19,c:16,co:'2+'}, asia:{p:14,c:12,co:'5'}};
+  // Update header date
+  document.querySelectorAll('.header-eyebrow').forEach(el => {
+    el.textContent = `Market Intelligence Report · ${REPORT_DATE}`;
+  });
   const c = counts[activeRegion] || counts.all;
   const sp = document.getElementById('statProjects');
   const sc = document.getElementById('statCompanies');
@@ -3538,6 +3543,7 @@ const SP_DATA = {
     ],
     facts: 'Safety driver present at all times. Fleet managed in real time via MOIA AD MaaS platform. Operates on a geo-fenced zone in Hamburg. Same Mobileye Drive platform also powers Berlin NoWeL4 and Oslo. Production target of 10,000 vehicles/yr from 2026/27. Driverless certification milestone targeted Q3 2026.',
     news: [
+      {date:'Apr 2026', text:'MOIA to kick off robotaxi testing in Los Angeles (Apr 2026). MOIA America + Beep announce 5,000 autonomous ID. Buzz vehicles for US transit, validation testing in Lake Nona, Orlando begun.', src:'The Driverless Digest', url:'https://www.thedriverlessdigest.com/p/volkswagens-moia-to-kick-off-robotaxi'},
       {date:'Apr 2026', text:'Fleet expanded to 12 vehicles ahead of planned driverless phase in Q3 2026.', src:'Electrive', url:'https://www.electrive.com'},
       {date:'Jan 2026', text:'KBA safety audit completed. First driverless certification milestone passed.', src:'VW Group', url:'https://www.volkswagen-group.com'},
       {date:'Oct 2025', text:'ALIKE project formally approved under §1e StVG. Hamburg becomes first city to certify an AV ridepooling service under German federal law.', src:'MOIA', url:'https://www.moia.io'}
@@ -3560,7 +3566,7 @@ const SP_DATA = {
     ],
     facts: 'Safety driver present. MOIA provides fleet and AD platform; BVG integrates into Berlin\'s public transport network. Covers Spandau, Charlottenburg and Reinickendorf — the largest urban AV operating area in Germany. Passenger trials with safety operators start H1 2026.',
     news: [
-      {date:'Early 2026', text:'MOIA to kick off robotaxi testing in Los Angeles (Apr 2026). MOIA America + Beep announce 5,000 autonomous ID. Buzz vehicles for US transit, validation testing in Lake Nona, Orlando begun.', src:'The Driverless Digest', url:'https://www.thedriverlessdigest.com/p/volkswagens-moia-to-kick-off-robotaxi'},
+      {date:'Early 2026', text:'Passenger trials with safety operators on board begin across the 80-stop zone in northwest Berlin.', src:'Electrive', url:'https://www.electrive.com/'},
       {date:'2025', text:'NoWeL4 receives €9.5M federal funding. BVG signs as public transit integration partner.', src:'VW Group MOIA', url:'https://www.volkswagen-group.com/en/moia-16058'}
     ]
   ,
@@ -5105,13 +5111,16 @@ let selectedCountries = [];
 
 // ISO numeric → country name mapping (for map click → country card)
 window.ISO_TO_NAME = {
-  40:'Austria',56:'Belgium',191:'Croatia',208:'Denmark',233:'Estonia',
-  246:'Finland',250:'France',276:'Germany',300:'Greece',348:'Hungary',
-  372:'Ireland',380:'Italy',428:'Latvia',440:'Lithuania',442:'Luxembourg',
-  528:'Netherlands',578:'Norway',616:'Poland',620:'Portugal',703:'Slovakia',
-  724:'Spain',752:'Sweden',756:'Switzerland',826:'United Kingdom',792:'Turkey',
+  40:'Austria',56:'Belgium',100:'Bulgaria',191:'Croatia',196:'Cyprus',
+  203:'Czechia',208:'Denmark',233:'Estonia',246:'Finland',250:'France',
+  276:'Germany',300:'Greece',348:'Hungary',372:'Ireland',380:'Italy',
+  428:'Latvia',440:'Lithuania',442:'Luxembourg',470:'Malta',528:'Netherlands',
+  578:'Norway',616:'Poland',620:'Portugal',642:'Romania',703:'Slovakia',
+  705:'Slovenia',724:'Spain',752:'Sweden',756:'Switzerland',792:'Turkey',
+  826:'UK',807:'North Macedonia',688:'Serbia',620:'Portugal',
   // Asia
   156:'China',392:'Japan',410:'South Korea',702:'Singapore',784:'UAE',
+  356:'India',360:'Indonesia',458:'Malaysia',764:'Thailand',
   // NA
   840:'United States',124:'Canada',484:'Mexico',
 };
@@ -5218,6 +5227,19 @@ function switchMapRegion(btn, region) {
     .attr('d', newPath)
     .style('fill', function() { return regionSet.has(+this.getAttribute('data-id')) ? '#cdd8e4' : '#dde6ee'; })
     .style('stroke-width', function() { return regionSet.has(+this.getAttribute('data-id')) ? '0.7' : '0.3'; });
+
+  // Re-attach click handlers on country paths (lost after region switch)
+  svg.select('.country-fills').selectAll('path').on('click', function(event, d) {
+    const isoNum = +d.id;
+    const name = window.ISO_TO_NAME ? window.ISO_TO_NAME[isoNum] : null;
+    if (!name) return;
+    toggleCountry(name, this);
+    highlightCountryDots(name, !selectedCountries.includes(name));
+  }).on('mouseover', function() {
+    d3.select(this).style('opacity', 0.75);
+  }).on('mouseleave', function() {
+    d3.select(this).style('opacity', 1);
+  });
 
   // 3. After animation, rebuild dots with correct separation and fade in
   setTimeout(() => {
