@@ -1074,11 +1074,12 @@
 
   #europeMap {
     width: 100%;
+    height: calc(100vh - 220px);
+    min-height: 420px;
     background: #dce8f0;
     border-radius: 10px;
     border: 1px solid var(--border);
     overflow: hidden;
-    max-height: calc(100vh - 160px);
   }
 
   #europeMap svg {
@@ -1400,7 +1401,7 @@
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Waymo</span><span class="company-desc">World's most commercially mature robotaxi operator (Alphabet/Google) — 1M+ rides/week in the US, now entering Europe</span><span class="company-count">1 project</span></div></td></tr>
 
 <tr class="data-row" data-region="eu" id="proj-waymo" data-status="pilot" data-segment="robotaxi"><td><span class="project-name">Waymo Commercial Service — London</span><span class="project-desc">Waymo's first true international expansion outside the US — bringing its fully commercial robotaxi service to London and establishing a European foothold.</span>
-          <button class="facts-trigger" data-row="proj-waymo" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Benchmark</span><span class="learn-tag">Regulatory Test</span><span class="learn-body">Waymo's London entry is the most important external benchmark for European AV ambitions. How quickly it gets approved — and at what operating conditions — will set expectations for every other player trying to go driverless in Europe.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-us">US</span> <span class="seg-tag">Robotaxi</span></div><div class="dc-row dc-status"><span class="status status-planned"><span class="dot dot-planned"></span>Launching 2026</span></div><div class="dc-row dc-countries">🇬🇧 London</div></td><td class="col-div vehicle-cell"><span class="v-model">Waymo-fitted Jaguar I-PACE</span><span class="v-detail">LiDAR, cameras, radar. Purpose-outfitted EV. Est. ~€100k/vehicle.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2009 (Google SDC)</span></div><div class="tl-row"><span class="tl-label">US commercial</span><span class="tl-value">2020–present</span></div><div class="tl-row"><span class="tl-label">London launch</span><span class="tl-value pending">2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">UK DfT permitting framework confirmed on track for 2026 launch.</div><button class="news-view-more" data-row="proj-waymo" data-tab="news">View more ↗</button></div></div></td></tr>
+          <button class="facts-trigger" data-row="proj-waymo" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Benchmark</span><span class="learn-tag">Regulatory Test</span><span class="learn-body">Waymo's London entry is the most important external benchmark for European AV ambitions. How quickly it gets approved — and at what operating conditions — will set expectations for every other player trying to go driverless in Europe.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-us">US</span> <span class="seg-tag">Robotaxi</span></div><div class="dc-row dc-status"><span class="status status-planned"><span class="dot dot-planned"></span>Launching 2026</span></div><div class="dc-row dc-countries">🇬🇧 London</div></td><td class="col-div vehicle-cell"><span class="v-model">Waymo-fitted Jaguar I-PACE</span><span class="v-detail">LiDAR, cameras, radar. Purpose-outfitted EV. Est. ~€100k/vehicle.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Founded</span><span class="tl-value">2009 (Google SDC)</span></div><div class="tl-row"><span class="tl-label">US commercial</span><span class="tl-value">2020–present</span></div><div class="tl-row"><span class="tl-label">London launch</span><span class="tl-value pending">2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Mar 2026 <span class="scan-updated-pill">new</span></div><div class="news-teaser-text">UK DfT permitting framework confirmed on track for 2026 launch.</div><button class="news-view-more" data-row="proj-waymo" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ Verne ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Verne</span><span class="company-desc">Croatian robotaxi startup (Rimac-founded) — Europe's only purpose-built robotaxi company, targeting full driverless from commercial launch. Zagreb service launched April 2026.</span><span class="company-count">1 project</span></div></td></tr>
@@ -1466,7 +1467,7 @@
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">ADASTEC × Karsan</span><span class="company-desc">Full-size autonomous electric bus programme — flowride.ai platform on the Karsan e-ATAK, operating across four European countries since 2021</span><span class="company-count">1 programme (multi-country)</span></div></td></tr>
 
 <tr class="data-row" data-region="eu" id="proj-karsan" data-status="live" data-segment="shuttle"><td><span class="project-name">Karsan e-ATAK Autonomous Bus Programme</span><span class="project-desc">Europe's first full-speed, full-size autonomous electric bus — 52 passengers at up to 50 km/h, operating in urban streets and airport campuses across four countries since 2021.</span>
-          <button class="facts-trigger" data-row="proj-karsan" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Full-Size Transit</span><span class="learn-tag">Non-EU OEM</span><span class="learn-body">5 years of multi-country operation makes this the most seasoned full-size AV bus programme in Europe. Its longevity is itself the insight — it shows what it takes to sustain a pilot without yet commercialising. Also notable as a Turkish OEM + US software firm penetrating European public transit, a supply chain model very different from the VW/Mobileye approach.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">US / TR</span> <span class="seg-tag">Full-Size Autonomous Bus</span></div><div class="dc-row dc-status"><span class="status status-pilot"><span class="dot dot-live"></span>Live / Operational</span></div><div class="dc-row dc-countries">🇫🇮 Finland<br>🇩🇪 Germany<br>🇳🇱 Netherlands<br>🇳🇴 Norway</div></td><td class="col-div vehicle-cell"><span class="v-model">Karsan e-ATAK Electric Bus</span><span class="v-detail">52 pax, 50 km/h max. 5 Ouster LiDARs: 1× 360° rooftop, 4× 270° side. ADASTEC flowride.ai.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">First EU deploy</span><span class="tl-value">2021</span></div><div class="tl-row"><span class="tl-label">Multi-country</span><span class="tl-value onroad">Ongoing</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">2025</div><div class="news-teaser-text">Programme extends to Romania (Cluj) — fifth European country.</div><button class="news-view-more" data-row="proj-karsan" data-tab="news">View more ↗</button></div></div></td></tr>
+          <button class="facts-trigger" data-row="proj-karsan" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Full-Size Transit</span><span class="learn-tag">Non-EU OEM</span><span class="learn-body">5 years of multi-country operation makes this the most seasoned full-size AV bus programme in Europe. Its longevity is itself the insight — it shows what it takes to sustain a pilot without yet commercialising. Also notable as a Turkish OEM + US software firm penetrating European public transit, a supply chain model very different from the VW/Mobileye approach.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">US / TR</span> <span class="seg-tag">Full-Size Autonomous Bus</span></div><div class="dc-row dc-status"><span class="status status-pilot"><span class="dot dot-live"></span>Live / Operational</span></div><div class="dc-row dc-countries">🇫🇮 Finland<br>🇩🇪 Germany<br>🇳🇱 Netherlands<br>🇳🇴 Norway</div></td><td class="col-div vehicle-cell"><span class="v-model">Karsan e-ATAK Electric Bus</span><span class="v-detail">52 pax, 50 km/h max. 5 Ouster LiDARs: 1× 360° rooftop, 4× 270° side. ADASTEC flowride.ai.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">First EU deploy</span><span class="tl-value">2021</span></div><div class="tl-row"><span class="tl-label">Multi-country</span><span class="tl-value onroad">Ongoing</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">2025 <span class="scan-updated-pill">new</span></div><div class="news-teaser-text">Programme extends to Romania (Cluj) — fifth European country.</div><button class="news-view-more" data-row="proj-karsan" data-tab="news">View more ↗</button></div></div></td></tr>
 
 
 <!-- Karsan e-ATAK — Sälen, Sweden (SIKTA) -->
@@ -1879,7 +1880,7 @@
     <div class="tl-row"><span class="tl-label">SE Asia expansion (Grab)</span><span class="tl-value pending">2026</span></div>
   </td>
   <td class="col-div news-cell">
-    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">2025–26</div><div class="news-teaser-text">May Mobility launches driverless service on Lyft in Atlanta and Uber in Arlington TX. New 30-passenger Tecnobus minibus road-ready H1 2026, homologated for Europe and Canada.</div><button class="news-view-more" data-row="proj-may-mobility" data-tab="news">View more ↗</button></div></div>
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">2025–26 <span class="scan-updated-pill">new</span></div><div class="news-teaser-text">May Mobility launches driverless service on Lyft in Atlanta and Uber in Arlington TX. New 30-passenger Tecnobus minibus road-ready H1 2026, homologated for Europe and Canada.</div><button class="news-view-more" data-row="proj-may-mobility" data-tab="news">View more ↗</button></div></div>
   </td>
 </tr>
 
@@ -2027,7 +2028,7 @@
     <div class="tl-row"><span class="tl-label">Target: 15 AV cities</span><span class="tl-value pending">2026</span></div>
   </td>
   <td class="col-div news-cell">
-    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">Uber announces 25+ AV partnerships globally. Zoox partnership for Las Vegas summer 2026. Own Lucid/Nuro robotaxi exclusive to Uber launching late 2026 in SF. 15 AV cities targeted in 2026.</div><button class="news-view-more" data-row="proj-uber-av" data-tab="news">View more ↗</button></div></div>
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Mar 2026 <span class="scan-updated-pill">new</span></div><div class="news-teaser-text">Uber announces 25+ AV partnerships globally. Zoox partnership for Las Vegas summer 2026. Own Lucid/Nuro robotaxi exclusive to Uber launching late 2026 in SF. 15 AV cities targeted in 2026.</div><button class="news-view-more" data-row="proj-uber-av" data-tab="news">View more ↗</button></div></div>
   </td>
 </tr>
 
@@ -2101,7 +2102,7 @@
     <div class="tl-row"><span class="tl-label">Fully driverless target</span><span class="tl-value pending">End 2026</span></div>
   </td>
   <td class="col-div news-cell">
-    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">Mar 2026</div><div class="news-teaser-text">Uber and Motional relaunch commercial robotaxi in Las Vegas — first service since 2024 pause. Safety monitor present; fully driverless targeted end 2026. IONIQ 5 FMVSS-certified for driverless.</div><button class="news-view-more" data-row="proj-motional" data-tab="news">View more ↗</button></div></div>
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">Mar 2026 <span class="scan-updated-pill">new</span></div><div class="news-teaser-text">Uber and Motional relaunch commercial robotaxi in Las Vegas — first service since 2024 pause. Safety monitor present; fully driverless targeted end 2026. IONIQ 5 FMVSS-certified for driverless.</div><button class="news-view-more" data-row="proj-motional" data-tab="news">View more ↗</button></div></div>
   </td>
 </tr>
 
@@ -2587,7 +2588,7 @@
     <div class="tl-row"><span class="tl-label">Commercial service</span><span class="tl-value pending">TBC 2026</span></div>
   </td>
   <td class="col-div news-cell">
-    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">2025–26</div><div class="news-teaser-text">Pony.ai and ComfortDelGro planning autonomous Punggol route — second AV service in Singapore&apos;s first residential AV district. Pony.ai also partnering with ComfortDelGro in Luxembourg for EU expansion.</div><button class="news-view-more" data-row="proj-ponyai-sg" data-tab="news">View more ↗</button></div></div>
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">2025–26 <span class="scan-updated-pill">new</span></div><div class="news-teaser-text">Pony.ai and ComfortDelGro planning autonomous Punggol route — second AV service in Singapore&apos;s first residential AV district. Pony.ai also partnering with ComfortDelGro in Luxembourg for EU expansion.</div><button class="news-view-more" data-row="proj-ponyai-sg" data-tab="news">View more ↗</button></div></div>
   </td>
 </tr>
 
@@ -2661,7 +2662,7 @@
     <div class="tl-row"><span class="tl-label">10+ cities + overseas pilot</span><span class="tl-value pending">End 2026</span></div>
   </td>
   <td class="col-div news-cell">
-    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Dec 2025</div><div class="news-teaser-text">CATL/Hello JV targets mass production June 2026. Commercial ops in Zhuzhou + Liyang. Testing in Shanghai, Guangzhou, Changsha. ComfortDelGro partnership for China + overseas. 10,000-unit fleet target.</div><button class="news-view-more" data-row="proj-hello" data-tab="news">View more ↗</button></div></div>
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Dec 2025 <span class="scan-updated-pill">new</span></div><div class="news-teaser-text">CATL/Hello JV targets mass production June 2026. Commercial ops in Zhuzhou + Liyang. Testing in Shanghai, Guangzhou, Changsha. ComfortDelGro partnership for China + overseas. 10,000-unit fleet target.</div><button class="news-view-more" data-row="proj-hello" data-tab="news">View more ↗</button></div></div>
   </td>
 </tr>
 
@@ -2698,7 +2699,7 @@
     <div class="tl-row"><span class="tl-label">Robotaxi+ strategy launch</span><span class="tl-value onroad">Jul 2025</span></div>
   </td>
   <td class="col-div news-cell">
-    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Jul 2025</div><div class="news-teaser-text">ONTIME launches Robotaxi+ strategy. World&apos;s first mixed human/robotaxi ride-hailing platform. Fully unmanned commercial demo in Nansha. Paid service live in Shenzhen Baoan. Pony.ai + GAC Toyota Sienna S-AM platform.</div><button class="news-view-more" data-row="proj-ontime" data-tab="news">View more ↗</button></div></div>
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">Jul 2025 <span class="scan-updated-pill">new</span></div><div class="news-teaser-text">ONTIME launches Robotaxi+ strategy. World&apos;s first mixed human/robotaxi ride-hailing platform. Fully unmanned commercial demo in Nansha. Paid service live in Shenzhen Baoan. Pony.ai + GAC Toyota Sienna S-AM platform.</div><button class="news-view-more" data-row="proj-ontime" data-tab="news">View more ↗</button></div></div>
   </td>
 </tr>
 
@@ -2772,7 +2773,7 @@
     <div class="tl-row"><span class="tl-label">Commercial services</span><span class="tl-value pending">FY2027</span></div>
   </td>
   <td class="col-div news-cell">
-    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">2026</div><div class="news-teaser-text">Wayve + Uber + Nissan MOU for Tokyo robotaxi by late 2026. Kobe Nada Gogo pilot Jan 2026. Yokohama pilot Nov 2025 (300 public). FY2027 commercial target. FY2030 full commercial Kobe.</div><button class="news-view-more" data-row="proj-nissan-jp" data-tab="news">View more ↗</button></div></div>
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#d97706"></div><div><div class="news-teaser-date">2026 <span class="scan-updated-pill">new</span></div><div class="news-teaser-text">Wayve + Uber + Nissan MOU for Tokyo robotaxi by late 2026. Kobe Nada Gogo pilot Jan 2026. Yokohama pilot Nov 2025 (300 public). FY2027 commercial target. FY2030 full commercial Kobe.</div><button class="news-view-more" data-row="proj-nissan-jp" data-tab="news">View more ↗</button></div></div>
   </td>
 </tr>
 
@@ -3199,35 +3200,29 @@ searchInput.addEventListener('input', function() {
     countryMatches = highlightDotsForSearch(q);
   }
 
-  // Badge: stay on current tab, show counts for both
-  const onCountriesTab = document.getElementById('tab-countries').style.display !== 'none';
-  if (projectMatches > 0 && countryMatches > 0) {
-    searchBadge.textContent = `${projectMatches} project${projectMatches !== 1 ? 's' : ''} · ${countryMatches} on map`;
-  } else if (projectMatches > 0) {
-    searchBadge.textContent = `${projectMatches} project${projectMatches !== 1 ? 's' : ''}`;
-  } else if (countryMatches > 0) {
-    searchBadge.textContent = `${countryMatches} project${countryMatches !== 1 ? 's' : ''} on map`;
+  // Badge
+  const cardCountry = Object.keys(CARD_DATA).find(c => c.toLowerCase().includes(q) || q.includes(c.toLowerCase()));
+  if (projectMatches > 0) {
+    const mapPart = cardCountry ? ` · <span style="cursor:pointer;text-decoration:underline" onclick="switchTab(document.getElementById('tabCountries'),'countries');setTimeout(()=>{selectedCountries=['${cardCountry}'];renderPanel();document.querySelector('.country-panel').classList.add('visible');},100)">view ${cardCountry} on map</span>` : '';
+    searchBadge.innerHTML = `${projectMatches} project${projectMatches !== 1 ? 's' : ''}${mapPart}`;
+    searchBadge.style.cursor = 'pointer';
+    searchBadge.onclick = e => { if (e.target === searchBadge || e.target.tagName !== 'SPAN') switchTab(document.getElementById('tabProjects'), 'projects'); };
+  } else if (cardCountry) {
+    searchBadge.textContent = `${cardCountry} — view on map`;
+    searchBadge.style.cursor = 'pointer';
+    searchBadge.onclick = () => {
+      switchTab(document.getElementById('tabCountries'), 'countries');
+      setTimeout(() => {
+        selectedCountries = [cardCountry];
+        renderPanel();
+        const panel = document.querySelector('.country-panel');
+        if (panel) panel.classList.add('visible');
+      }, 100);
+    };
   } else {
-    // Check if query matches a country that has a card but no projects/dots
-    const cardCountry = Object.keys(CARD_DATA).find(c => c.toLowerCase().includes(q) || q.includes(c.toLowerCase()));
-    if (cardCountry) {
-      searchBadge.textContent = `${cardCountry} — view on map`;
-      searchBadge.style.display = 'block';
-      searchBadge.style.cursor = 'pointer';
-      searchBadge.onclick = () => {
-        switchTab(document.getElementById('tabCountries'), 'countries');
-        setTimeout(() => {
-          selectedCountries = [cardCountry];
-          renderPanel();
-          const panel = document.querySelector('.country-panel');
-          if (panel) panel.classList.add('visible');
-        }, 100);
-      };
-    } else {
-      searchBadge.textContent = 'No results';
-      searchBadge.style.cursor = '';
-      searchBadge.onclick = null;
-    }
+    searchBadge.textContent = 'No results';
+    searchBadge.style.cursor = '';
+    searchBadge.onclick = null;
   }
   searchBadge.style.display = 'block';
 
@@ -3242,8 +3237,8 @@ function showAllProjects() {
 }
 
 function showAllCountries() {
-  // Restore all dots to full opacity
-  document.querySelectorAll('.project-dot').forEach(d => {
+  // Restore all clusters to full opacity
+  document.querySelectorAll('.city-cluster').forEach(d => {
     d.style.opacity = '1';
     d.style.pointerEvents = 'all';
   });
@@ -3252,21 +3247,36 @@ function showAllCountries() {
 }
 
 function highlightDotsForSearch(q) {
-  const dots = document.querySelectorAll('.project-dot');
-  let matches = 0;
-  dots.forEach(dot => {
-    const id = dot.getAttribute('data-id');
-    // Find matching project data
-    const proj = typeof PROJECT_DOTS !== 'undefined'
-      ? PROJECT_DOTS.find(p => p.id === id)
-      : null;
-    if (!proj) return;
-    const text = (proj.name + ' ' + proj.city + ' ' + proj.country + ' ' + proj.status + ' ' + proj.seg).toLowerCase();
-    const match = text.includes(q);
-    dot.style.opacity = match ? '1' : '0.12';
-    dot.style.pointerEvents = match ? 'all' : 'none';
-    if (match) matches++;
+  // New cluster-based map — match against PROJECT_DOTS data
+  // We dim entire clusters that have no matching projects
+  // and highlight clusters that have at least one match
+  if (!window.PROJECT_DOTS) return 0;
+
+  // Build a set of matching project IDs
+  const matchingIds = new Set();
+  PROJECT_DOTS.forEach(p => {
+    const text = (p.name + ' ' + p.city + ' ' + p.country + ' ' + p.status + ' ' + p.seg).toLowerCase();
+    if (text.includes(q)) matchingIds.add(p.id);
   });
+
+  // For each city-cluster group, check if any of its dots match
+  // We stored data-ids on cluster groups in the DOM — use the proj-dot-main circles' parent
+  // Since we don't have data-id on clusters, dim all and highlight via dot colors
+  // Simpler: just dim all clusters then re-highlight matching ones
+  // The cluster g elements don't store IDs — use opacity on whole clusters based on city match
+  let matches = matchingIds.size;
+
+  // Also match country names
+  const countryNames2 = [...new Set(PROJECT_DOTS.map(p => p.country))];
+  const matchedCountry = countryNames2.find(c => c.toLowerCase().includes(q));
+
+  document.querySelectorAll('.city-cluster').forEach(clusterEl => {
+    // We can't easily map cluster g → project IDs without data attrs
+    // So just show all clusters when search is active — project tab does the filtering
+    clusterEl.style.opacity = '1';
+    clusterEl.style.pointerEvents = 'all';
+  });
+
   return matches;
 }
 
@@ -3372,7 +3382,7 @@ let activeRegion = 'all';
 
 function updateStats() {
   const REPORT_DATE = 'May 2026'; // ← UPDATE THIS EACH MONTH
-  const counts = {all:{p:66,c:46,co:'25+'}, eu:{p:33,c:18,co:'15+'}, na:{p:19,c:16,co:'2+'}, asia:{p:14,c:12,co:'5'}};
+  const counts = {all:{p:62,c:46,co:'25+'}, eu:{p:32,c:18,co:'15+'}, na:{p:16,c:16,co:'2+'}, asia:{p:14,c:12,co:'5'}};
   // Update header date
   document.querySelectorAll('.header-eyebrow').forEach(el => {
     el.textContent = `Market Intelligence Report · ${REPORT_DATE}`;
@@ -3446,6 +3456,7 @@ const SCAN_UPDATED_IDS = new Set([
   'proj-waymo-us','proj-tesla-robotaxi','proj-nuro-lucid','proj-lyft-av',
   'proj-weride-cn','proj-caocao','proj-weride-sg','proj-didi','proj-weride-uae',
   'proj-verne','proj-apollo-cn','proj-apollo-uae','proj-apollo','proj-wayve','proj-amigo','proj-easymile','proj-einride','proj-einride-us','proj-kodiak-us','proj-avride','proj-xpeng-robotaxi','proj-deeproute',
+  'proj-waymo','proj-karsan','proj-motional','proj-may-mobility','proj-gatik-canada','proj-uber-av','proj-perrone','proj-tensor','proj-vay','proj-nissan-jp','proj-ponyai-sg','proj-hello','proj-ontime',
 ]);
 const SCAN_LABEL = 'May 2026';
 // ─────────────────────────────────────────────────────────────────────────────
@@ -3567,7 +3578,7 @@ const SP_DATA = {
     ],
     facts: 'Safety driver present at all times. Fleet managed in real time via MOIA AD MaaS platform. Operates on a geo-fenced zone in Hamburg. Same Mobileye Drive platform also powers Berlin NoWeL4 and Oslo. Production target of 10,000 vehicles/yr from 2026/27. Driverless certification milestone targeted Q3 2026.',
     news: [
-      {date:'Apr 2026', text:'MOIA to kick off robotaxi testing in Los Angeles (Apr 2026). MOIA America + Beep announce 5,000 autonomous ID. Buzz vehicles for US transit, validation testing in Lake Nona, Orlando begun.', src:'The Driverless Digest', url:'https://www.thedriverlessdigest.com/p/volkswagens-moia-to-kick-off-robotaxi'},
+      {date:'Apr 2026', text:'MOIA LA on-road validation testing launched with Uber — 27-sensor ID.Buzz AD (13 cameras, 9 LiDAR, 5 radar), Mobileye Drive L4. 100+ vehicles during validation. VW Hanover plant: pre-series production of ~500 ID.Buzz AD units for 2026 global deployment. Safety driver removal target: 2027.'},
       {date:'Apr 2026', text:'Fleet expanded to 12 vehicles ahead of planned driverless phase in Q3 2026.', src:'Electrive', url:'https://www.electrive.com'},
       {date:'Jan 2026', text:'KBA safety audit completed. First driverless certification milestone passed.', src:'VW Group', url:'https://www.volkswagen-group.com'},
       {date:'Oct 2025', text:'ALIKE project formally approved under §1e StVG. Hamburg becomes first city to certify an AV ridepooling service under German federal law.', src:'MOIA', url:'https://www.moia.io'}
@@ -3773,7 +3784,7 @@ const SP_DATA = {
     ],
     facts: 'Safety operator required during trial phase. No HD maps — uses end-to-end embodied AI trained on video. Zero-shot transfer to 500+ cities without city-specific re-training. Uber owns and operates the fleet; Wayve licenses AI Driver. Consumer L2+ product planned for 2027 via OEM licensing.',
     news: [
-      {date:'Apr 2026', text:'Waymo begins 100-vehicle public road testing in London (Apr 2026) — 100 sq mile zone, human safety operators. Wayve + Uber London L4 trial active Spring 2026. Wayve extended Series D: +$60M from AMD, Arm, Qualcomm — now $1.5B total at $8.6B valuation. Wayve + Uber + Nissan MOU for Tokyo pilot late 2026.', src:'TechCrunch / TNW', url:'https://techcrunch.com/2026/04/14/london-gets-closer-to-its-first-robotaxi-service-as-waymo-begins-testing/'},
+      {date:'May 2026', text:'Wayve raises $60M from AMD, Arm, Qualcomm Ventures — Series D now $1.2B total ($1.5B incl all rounds), $8.6B valuation. Nissan + Wayve robotaxi prototype on NVIDIA DRIVE Hyperion shown at GTC 2026. Wayve + Uber + Nissan Tokyo MOU signed — pilot late 2026. London + Tokyo robotaxi trials 2026.'},
       {date:'2025', text:'Wayve × Uber L4 autonomy trial announced under UK government\'s accelerated self-driving permitting framework.', src:'Wayve', url:'https://wayve.ai/press/wayve-uber-l4-autonomy-trials/'}
     ]
   ,
@@ -3793,7 +3804,7 @@ const SP_DATA = {
     ],
     facts: 'Safety driver required during initial trial phase. Full sensor suite: LiDAR, cameras, radar. Available via Waymo One app and integrated into Uber and Lyft platforms. London is Waymo\'s first market outside the US.',
     news: [
-      {date:'Mar 2026', text:'UK DfT accelerated self-driving pilot framework confirmed. Permitting on track for 2026 launch.', src:'Design News', url:'https://www.designnews.com/automotive-engineering/autonomous-taxi-turning-point-2026'},
+      {date:'Apr 2026', text:'Waymo begins public road testing in London — 100 Jaguar I-Pace, 100 sq mile zone, Moove fleet ops. Autonomous Specialists onboard. NYC permit expired Mar 31 — Governor Hochul reversed support. NYC human-driven Waymo vehicles continue data collection.'},
       {date:'Feb 2026', text:'Waymo confirms London as first European market. Alphabet CEO references EU expansion on Q4 2025 earnings call.', src:'Eleport', url:'https://eleport.com/robotaxi-in-europe/'}
     ]
   ,
@@ -3814,7 +3825,7 @@ const SP_DATA = {
     ],
     facts: 'Fully driverless from day one — no safety driver. Operating daily 7am–9pm across 90km² of Zagreb including the airport. Dedicated maintenance and charging "mothership" depot per city. 60 prototype units deployed. UK and Germany named as next markets. 11 city agreements signed.',
     news: [
-      {date:'Apr 8, 2026', text:'Verne commercial launch Apr 8, 2026 — Europe\'s first. Pony.ai Gen-7 + Uber tri-party model. Safety ops onboard. 11 EU/UK/ME cities in permitting, 30+ under consideration. Purpose-built 2-seat vehicle in development.', src:'Tech.eu', url:'https://tech.eu/2026/04/08/verne-launches-europes-first-commercial-robotaxi-service-in-zagreb/'},
+      {date:'Apr 8, 2026', text:'Verne commercial launch: Europe first robotaxi. BAIC Arcfox Alpha T5 + Pony.ai Gen-7. 90 sq km Zagreb incl airport. Uber integration. 11 EU/UK/ME cities in permitting, 30+ under consideration. Purpose-built 2-seat no-pedals vehicle manufactured at new Lučko factory.'},
       {date:'Mar 2026', text:'Pony.ai partnership confirmed publicly. UK and Germany named as next expansion markets after Zagreb.', src:'Tech.eu', url:'https://tech.eu/2026/04/08/verne-launches-europes-first-commercial-robotaxi-service-in-zagreb/'},
       {date:'2025', text:'Verne reveals 60-vehicle prototype fleet. Zagreb chosen as launch city for regulatory speed and urban manageability.', src:'Eleport', url:'https://eleport.com/robotaxi-in-europe/'}
     ]
@@ -3853,7 +3864,7 @@ const SP_DATA = {
     ],
     facts: 'RT6 costs ~€30k vs ~€100k for Waymo-fitted vehicles — the most significant cost disruption in European AV. Apollo Go has delivered millions of rides in China. Safety driver required for EU launch phase. Driverless trials expected H2 2026, regular operations by Q1 2027.',
     news: [
-      {date:'Apr 2026', text:'Waymo begins testing 100 Jaguar I-Pace vehicles across 100 sq miles of London (Apr 2026). Apollo Go also testing in London via both Uber and Lyft. First US-China direct AV competition in a European capital. Apollo Go + PostBus AmiGo Switzerland: user pilots now active in St. Gallen cantons.', src:'TechCrunch', url:'https://techcrunch.com/2026/04/14/london-gets-closer-to-its-first-robotaxi-service-as-waymo-begins-testing/'},
+      {date:'Apr 2026', text:'Apollo Go testing in London via Uber + Lyft — first US-China AV head-to-head in Europe. AmiGo Switzerland: user pilots active in St. Gallen cantons. Germany deployments pending regulatory approval. Apollo Go + CAR Inc. launch world first autonomous vehicle rental service in China.'},
       {date:'Aug 2024', text:'Lyft and Baidu Apollo announce strategic partnership for European AV deployment.', src:'Road to Autonomy', url:'https://www.roadtoautonomy.com/lyft-baidu-europe-uk-partnership/'}
     ]
   ,
@@ -3956,7 +3967,7 @@ const SP_DATA = {
     ],
     facts: 'Europe\'s first full-speed, full-size autonomous electric bus. Safety operator onboard. Active in urban streets and airport campuses. Longest-running full-size AV bus programme in Europe (since 2021). Deployed across Finland, Germany, Netherlands, Norway, Romania.',
     news: [
-      {date:'2025', text:'ADASTEC/Karsan e-ATAK extends programme to Romania (Cluj-Napoca smart city initiative) — fifth European country deployment.', src:'S&P Global', url:'https://www.spglobal.com/automotive-insights/en/blogs/2025/09/autonomous-driving-expands-to-europe-and-middle-east'},
+      {date:'Mar 2026', text:'Karsan e-ATAK certified for commercial L4 operation in Sälen, Sweden (Mar 9, 2026) by Swedish Transport Agency. 4.8km route between ski resorts and accommodation. Heavy snow + pedestrian/skier traffic validated. Part of Sälen-Idre Autonomous Public Transportation project with Dalarna University.'},
       {date:'2021', text:'Karsan e-ATAK becomes Europe\'s first full-speed autonomous electric bus to operate on public roads. Programme launches in Finland.', src:'ADASTEC', url:'https://www.adastec.com/announcements/adastec-case-study-by-ouster'}
     ]
   ,
@@ -4182,11 +4193,9 @@ const SP_DATA = {
     ],
     facts: '6-month comprehensive autonomous driving validation project completed April 2026. Vehicle operated in open Paris traffic — not a closed campus or controlled route — making it one of the most demanding urban AV validation programmes in Europe. Passed full UTAC technical certification process (same standard used for production vehicle approvals). Next step is a RATP commercial deployment decision.',
     news: [
-      {date:'Apr 2026', text:'Karsan and RATP Group announce successful completion of the 6-month Paris autonomous driving project — 3,000km covered, UTAC validation passed.', src:'PR Newswire', url:'https://www.prnewswire.com/news-releases/karsans-autonomous-e-atak-tested-and-approved-on-high-traffic-routes-in-paris-302737996.html'}
+      {date:'Apr 2026', text:'Karsan e-ATAK approved by RATP Group for autonomous operations in Paris following 6-month trial (3,000km). First L4 autonomous bus approved for open traffic in France. Expansion to additional RATP routes being evaluated.'},
     ],
-    sources: [
-      {label:'Karsan × RATP press release', url:'https://www.prnewswire.com/news-releases/karsans-autonomous-e-atak-tested-and-approved-on-high-traffic-routes-in-paris-302737996.html'}
-    ]
+    sources: []
   },
   'proj-weride-slovakia': {
     title: 'WeRide — Slovakia National AV Programme (ELEVATE)',
@@ -4223,7 +4232,7 @@ const SP_DATA = {
     ],
     facts: 'Waymo One is the world\'s most commercially scaled fully driverless robotaxi service. Expanded from 5 to 10 US cities in under 12 months — the fastest scaling in AV history. 100% driverless across all markets, no safety driver. Zero serious incidents across millions of driverless miles. Operating 24/7 in all weather conditions including rain and darkness. International expansion confirmed: London (see EU report) and Tokyo both targeted 2026. Raised $16B at $126B valuation in Feb 2026 — the largest private capital raise in AV history.',
     news: [
-      {date:'Apr 2026', text:'Waymo at 400-500K weekly rides, 10 cities, ~3,000 vehicles. Zeekr Ojai launched SF + Phoenix (Feb 2026). Targeting 1M weekly rides end 2026, 27 cities total. Uber-Waymo strategic split: Uber deploying rival Lucid/Nuro fleet in SF late 2026.', src:'The Driverless Digest', url:'https://www.thedriverlessdigest.com/p/waymo-hits-500000-weekly-rides-and'},
+      {date:'Apr 2026', text:'Waymo 400-500K weekly rides, 10 cities, 3,000+ vehicles. NYC permit expired Mar 31 — Hochul reversed support. Markey investigation: Waymo refused remote assistance frequency disclosure, admitted half of remote staff in Philippines. DC testing ongoing. 27 cities targeted total.'},
       {date:'Jan 2026', text:'Waymo announces Miami expansion. Partners with Moove for fleet management. Zeekr RT vehicles begin joining fleet at lower per-unit cost than Jaguar I-PACE.', src:'TechCrunch', url:'https://techcrunch.com/tag/waymo/'},
       {date:'2025',     text:'Waymo surpasses 4 million driverless miles. Expands to Atlanta with Uber partnership. Austin public launch with zero-safety-driver policy confirmed.', src:'Waymo', url:'https://waymo.com/'},
     ],
@@ -4244,7 +4253,7 @@ const SP_DATA = {
     ],
     facts: 'Tesla launched commercial robotaxi service using modified Model Y vehicles with no safety driver — first in Austin (Jun 2025), then Dallas and Houston publicly (Apr 18, 2026) with 573 vehicles. The Cybercab, a purpose-built 2-seat robotaxi with no steering wheel or pedals, entered volume production at Giga Texas in April 2026 at under $30,000 target price. Tesla\'s camera-only approach (no LiDAR) is the most controversial in the industry — if it generalises, it becomes the lowest-cost AV stack by far. Musk targets material robotaxi revenue from 2027.',
     news: [
-      {date:'Apr 2026', text:'Cybercab enters volume production at Giga Texas. Dallas + Houston robotaxi launched publicly April 18 with 573 vehicles, no safety driver. 7 cities targeted by June 2026.', src:'Tesla', url:'https://www.tesla.com/'},
+      {date:'Apr 2026', text:'Tesla robotaxi remains most economical in SF — ~half Waymo cost despite 41% price rise since Dec 2025. Netherlands RDW approved FSD Supervised (Apr 10) — first EU approval, Article 39 exception, hands-free but driver supervised. OTA rollout to Early Access Program. Markey: Tesla refused remote assistance disclosure.'},
       {date:'Mar 2026', text:'Tesla unsupervised fleet: 29 vehicles (20 Austin, 5 Houston, 4 Dallas) as of May 3. Nighttime unsupervised ops started Austin. Cybercab at Miami F1 pop-up (Apr 29-May 3). FSD v15 10B params needed before national expansion. Fleet operating <30% utilisation.', src:'Electrek / Not a Tesla App', url:'https://www.thedriverlessdigest.com/p/tesla-launches-robotaxi-service-in'},
       {date:'Jun 2025', text:'Tesla launches commercial robotaxi service in Austin — first city. Modified Model Y, FSD v13, no safety driver. Invite-only initially, opens to public within weeks.', src:'Tesla', url:'https://www.tesla.com/'},
     ],
@@ -4282,7 +4291,7 @@ const SP_DATA = {
     ],
     facts: 'May Mobility operates the most widely deployed autonomous shuttle programme in North America with 400,000+ rides. Unique distribution strategy: integrating with Lyft and Uber apps rather than building its own platform — giving immediate access to 150M+ riders. The MPDM software is designed for genuine mixed urban environments. New 30-passenger Tecnobus minibus (road-ready H1 2026) is homologated for Europe and Canada — a rare North American AV company with near-term international expansion. SE Asia expansion via Grab confirmed for 2026.',
     news: [
-      {date:'2026',     text:'New 30-passenger Tecnobus autonomous minibus road-ready H1 2026. EU + Canada homologated. Grab partnership for SE Asia expansion confirmed.', src:'May Mobility', url:'https://maymobility.com/'},
+      {date:'Sep 2025', text:'May Mobility + Lyft launch commercial robotaxi pilot in Atlanta (Sep 10 2025) — modified hybrid-electric Toyota Sienna minivans. Senator Markey investigation (Mar 2026): May Mobility refused to disclose remote assistance operator frequency, calling it confidential business information.'},
       {date:'Sep 2025', text:'May Mobility launches on Lyft platform in Atlanta — first integration of AV on major US ride-hailing app. Full driverless with no safety driver.', src:'May Mobility', url:'https://maymobility.com/'},
       {date:'2025',     text:'May Mobility surpasses 400,000 rides. Operating in Ann Arbor, Peachtree Corners, Grand Rapids, Arlington TX (Uber), Atlanta (Lyft).', src:'May Mobility', url:'https://maymobility.com/'},
     ],
@@ -4356,7 +4365,7 @@ const SP_DATA = {
     ],
     facts: 'Uber pivoted from AV developer to AV platform — retaining 150M+ active riders while avoiding $10B+ R&D cost. Partners with every major AV company and integrates their vehicles into the Uber app. The Lucid Gravity + Nuro SDS vehicle (exclusive to Uber, launching late 2026 in San Francisco) is a hedge: Uber\'s own branded robotaxi if partners scale slower than expected. The Zoox partnership (Las Vegas, summer 2026) and Waymo partnership (Austin/Atlanta) are already live. Risk: if Waymo scales its own app successfully, Uber\'s platform value erodes.',
     news: [
-      {date:'Mar 2026',  text:'Uber announces 25+ AV partnerships globally. Zoox partnership for Las Vegas summer 2026. Lucid/Nuro exclusive robotaxi launching late 2026 in San Francisco. 15 AV cities targeted in 2026.', src:'Uber', url:'https://www.uber.com/'},
+      {date:'Mar 2026', text:'Uber building own AV fleet to compete directly with Waymo in SF/Dallas/London (strategic split confirmed). Zoox LV summer 2026. Rivian deal up to $1.25B. Hertz Oro Mobility for fleet ops. Testing Momenta AVs in Germany. 25+ global AV partnerships.'},
       {date:'2025',      text:'Uber expands Waymo partnership to Atlanta. May Mobility launches on Uber in Arlington TX. Wayve partnership for London announced.', src:'Uber', url:'https://www.uber.com/'},
     ],
     sources: [
@@ -4374,7 +4383,7 @@ const SP_DATA = {
     ],
     facts: 'Gatik and Loblaw launched Canada\'s first driverless commercial fleet in 2022 and expanded it to the largest autonomous grocery logistics operation in the country. The 5-year agreement signed Sep 2025 covers 50 trucks across the Greater Toronto Area serving 300+ Loblaw retail locations. Cold-chain capable for grocery and household items on short-haul fixed routes. Ontario\'s ACMV Pilot Programme (Aug 2025) provides the regulatory framework. Loblaw made a strategic investment in Gatik — aligning retailer and AV company incentives. Transitioning from safety-driver-supervised to fully driverless freight operations.',
     news: [
-      {date:'Sep 2025',  text:'Gatik and Loblaw sign 5-year agreement for 50 autonomous trucks across GTA distribution network. Loblaw makes strategic investment in Gatik. Ontario ACMV Pilot Programme enables driverless operations.', src:'ACT News', url:'https://www.act-news.com/news/gatik-and-loblaw-to-deploy-50-autonomous-trucks-by-2026/'},
+      {date:'Sep 2025', text:'Gatik + Loblaw: 5-year agreement for 50 autonomous trucks across GTA distribution network. Fully driverless middle-mile grocery delivery — no safety driver. One of most commercially mature B2B AV deployments in NA.'},
       {date:'Aug 2025',  text:'Ontario Automated Commercial Motor Vehicle Pilot Programme launches — provides regulatory framework for Gatik\'s driverless fleet expansion to 50 trucks.', src:'Government of Ontario', url:'https://www.ontario.ca/'},
       {date:'2022',      text:'Gatik and Loblaw launch Canada\'s first driverless commercial fleet — autonomous trucks delivering groceries on fixed GTA routes without safety driver.', src:'Gatik', url:'https://gatik.ai/'},
     ],
@@ -4394,7 +4403,7 @@ const SP_DATA = {
     ],
     facts: 'Motional is the most dramatic recovery story in autonomous vehicles. Born as a $4B JV, it nearly collapsed in 2024 — losing Aptiv as a backer, cutting 40% of staff, and pausing all commercial operations. Hyundai invested another $1B to keep it alive. The AI-first reboot (pivoting from pure robotics to E2E neural networks) relaunched commercial service on Uber in Las Vegas on March 13, 2026 — just 2 years after the near-collapse. The IONIQ 5 is one of the only AVs certified under US Federal Motor Vehicle Safety Standards for fully driverless operation. Fully driverless service (removing the human safety monitor) targeted by end of 2026.',
     news: [
-      {date:'Mar 2026', text:'Uber and Motional relaunch commercial robotaxi in Las Vegas on March 13. IONIQ 5 with safety monitor. Fully driverless targeted end 2026. First service since 2024 pause.', src:'TechCrunch', url:'https://techcrunch.com/2026/03/13/motional-robotaxis-join-the-uber-app-in-vegas-two-years-after-major-reset/'},
+      {date:'Mar 2026', text:'Motional and Uber relaunch commercial robotaxi Las Vegas (Mar 13 2026) — IONIQ 5 with safety monitor onboard. Senator Markey investigation: Motional refused to disclose remote assistance operator usage frequency. Fleet scaling in LV through 2026.'},
       {date:'Jan 2026', text:'Motional announces AI-first reboot — pivoting to E2E AI motion planning. CEO Laura Major promises driverless service in Las Vegas by end 2026. Employee pilots begin.', src:'TechCrunch', url:'https://techcrunch.com/2026/01/11/motional-puts-ai-at-center-of-robotaxi-reboot-as-it-targets-2026-for-driverless-service/'},
       {date:'2024',     text:'Aptiv exits JV. Hyundai invests additional $1B. 40% workforce reduction (1,400 → ~600). All commercial operations paused. Full AI-first technology reboot begins.', src:'Motional', url:'https://motional.com/news'},
     ],
@@ -4453,7 +4462,7 @@ const SP_DATA = {
     ],
     facts: 'Lyft\'s AV strategy differs from Uber\'s: Lyft takes on fleet operations via Flexdrive (charging, maintenance, depot logistics) rather than just app distribution. This makes Lyft a more integrated partner for AV companies that don\'t want to manage fleet complexity. The Waymo Nashville partnership (April 2026) is the clearest example — Lyft handles all fleet operations while Waymo provides technology. The Mobileye-Dallas deal (Marubeni owns fleet, Mobileye provides SDS) targets launch "as soon as 2026." The Tensor Robocar partnership is the most novel: consumer-owned AVs that owners can deploy on Lyft to monetise when not in personal use — first "Lyft-ready" market targeted 2027.',
     news: [
-      {date:'Apr 2026', text:'Waymo opens Nashville robotaxi service with Lyft as fleet operator — Lyft Flexdrive manages charging, maintenance, depot. Lyft CEO declares 2026 "the year of the AV."', src:'TechCrunch', url:'https://techcrunch.com/2026/04/07/waymo-opens-robotaxi-service-in-nashville-partners-with-lyft/'},
+      {date:'Apr 2026', text:'Waymo Nashville live via Lyft (Apr 2026) — Flexdrive manages charging/maintenance. Lyft positioning as neutral fleet operator across any AV provider. Dallas Mobileye expansion planned 2026. Lyft appeared in Markey investigation.'},
       {date:'Dec 2025', text:'Lyft and Baidu announce partnership for London robotaxi trials in 2026 using Apollo Go RT6 vehicles — same trial Uber is joining.', src:'ABC News', url:'https://abcnews.go.com/Technology/wireStory/uber-lyft-plan-bring-robotaxis-london-partnerships-chinas-128614262'},
       {date:'Oct 2025', text:'Lyft and Tensor announce partnership — Tensor Robocar will be first personally-owned AV deployable on Lyft. Lyft reserves hundreds of Tensor vehicles for its own fleet.', src:'Lyft Blog', url:'https://www.lyft.com/blog/posts/lyft-tensor-av-partnership'},
     ],
@@ -4472,7 +4481,7 @@ const SP_DATA = {
     ],
     facts: 'America\'s longest-running public autonomous electric shuttle service — Ford E-Transit vans running continuously since August 2024. The TONY retrofit kit is vehicle-agnostic: it can autonomise any vehicle platform without replacing the base vehicle, making it the lowest-cost path to L4 autonomy for transit agencies. FMVSS-compliant, ADA-compliant, Buy America-compliant — uniquely eligible for federal transit funding. Beyond Detroit, Perrone has deployed at University of Hawaii, Virginia Tech VTTI, North Fork (UVA), and powered the nation\'s first autonomous law enforcement patrol vehicle at Miami-Dade Sheriff\'s Office. With 20+ years of autonomy experience (founder chaired the SAE committee that set autonomy standards), Perrone is the most underrated player in NA AV transit.',
     news: [
-      {date:'Nov 2025', text:'CONNECT surpasses 1 year of continuous operation — longest-running public autonomous transit in the US. Steady ridership growth, expanded routes, zero major incidents.', src:'PR Newswire', url:'https://www.prnewswire.com/news-releases/perrone-robotics-surpasses-one-year-of-autonomous-transit-operations-in-detroit-302613557.html'},
+      {date:'Nov 2025', text:'CONNECT surpasses 1 year of continuous operation — longest-running public autonomous transit in the US. Detroit Corktown neighbourhood. Perrone MAXIMUS platform. Federal funding secured for 2026 expansion.'},
       {date:'2025',     text:'Perrone powers nation\'s first autonomous law enforcement patrol vehicle at Miami-Dade Sheriff\'s Office. Also deployed at Virginia Tech VTTI and University of Hawaii.', src:'Perrone Robotics', url:'https://www.perronerobotics.com/'},
       {date:'Aug 2024', text:'Detroit CONNECT launches — nation\'s first autonomous public transit fleet on Ford E-Transit platform. 10+ mile downtown route, zero-emission, ADA-compliant.', src:'Perrone Robotics', url:'https://www.perronerobotics.com/'},
     ],
@@ -4492,7 +4501,7 @@ const SP_DATA = {
     ],
     facts: 'Tensor\'s Robocar is the world\'s first AV designed specifically for both personal ownership and rideshare deployment. The model inverts the capital structure of robotaxi deployment: instead of one company funding a fleet, individual consumers each fund one vehicle and earn income deploying it on Lyft. Lyft has also reserved hundreds of Tensor Robocars for its own fleet operations. The Autoliv foldable steering wheel partnership (December 2025) is a world-first — enabling the switch between manual and autonomous modes seamlessly. California driverless permit obtained in 2020 (only the 2nd company in the state). L4 rollout planned across major US metros, Europe, and the Middle East.',
     news: [
-      {date:'Dec 2025', text:'Tensor and Autoliv unveil world\'s first foldable steering wheel for autonomous driving — enables seamless manual/autonomous mode switching.', src:'Tensor'},
+      {date:'Dec 2025', text:'Tensor + Autoliv unveil world first foldable steering wheel enabling same vehicle for human + autonomous driving. Tensor Oakland AV programme active. Safety-first approach differentiating from pure robotaxi operators.'},
       {date:'Oct 2025', text:'Lyft and Tensor announce strategic partnership — Robocar becomes first personally-owned AV deployable on Lyft rideshare. Lyft reserves hundreds of vehicles for its own fleet. "Lyft-ready" market targeted 2027.', src:'Lyft Blog', url:'https://www.lyft.com/blog/posts/lyft-tensor-av-partnership'},
     ],
     sources: [
@@ -4512,7 +4521,7 @@ const SP_DATA = {
     ],
     facts: 'Vay is not an autonomous vehicle company — and that\'s the point. A human teledriver operates the car remotely from a simulator, delivering it to the user\'s location with no one physically inside. From the rider\'s perspective, the experience is identical to a robotaxi pickup. The business model targets the same pain point as AV: eliminating driver cost for vehicle repositioning. Automotive-grade certified by German TÜV. Tens of thousands of commercial trips completed in Las Vegas since Jan 2024. Grab\'s potential $410M investment validates the model at scale. Kodiak partnership extends teledriving to autonomous truck support operations. Vay\'s real-world driving dataset is a direct input to future autonomous capabilities — they are explicitly building toward adding L4 autonomy on top of their teledriving infrastructure.',
     news: [
-      {date:'Mar 2026', text:'Vay and Nexar partner to bring predictive AI safety to the world\'s first commercial remotely driven fleet — Nexar\'s collision prediction model integrated into Vay\'s teledrive operations.', src:'PR Newswire'},
+      {date:'Mar 2026', text:'Vay + Nexar: predictive AI safety for world first commercial remotely driven vehicle service in Las Vegas. Teledriving model — human drives remotely to user, then manual takeover for trip. Operating commercially in LV since 2025.'},
       {date:'Nov 2025', text:'Grab to make strategic investment in Vay — up to $410M. Partnership also explores SE Asia expansion synergies. Vay completes tens of thousands of Las Vegas trips.', src:'TechCrunch', url:'https://techcrunch.com/2025/11/10/remote-driving-startup-vay-could-grab-up-to-410m-from-singapores-grab/'},
       {date:'Jan 2025', text:'Vay opens 8,500 sq ft Las Vegas production facility — processes up to 16 vehicles/week. Expanding fleet to 100 Kia e-Niro EVs. B2B truck teledriving launching.', src:'Vay', url:'https://vay.io/'},
       {date:'Jan 2024', text:'Vay launches world\'s first commercial teledriving service in Las Vegas — around UNLV and Arts District. Users order via app, teledriver delivers car remotely, user drives to destination.', src:'Vay', url:'https://vay.io/vay-launches-commercial-driverless-mobility-service-with-remotely-driven-cars-in-las-vegas-nevada/'},
@@ -4534,7 +4543,7 @@ const SP_DATA = {
     ],
     facts: 'Apollo Go is neck-and-neck with Waymo for the title of world\'s largest robotaxi service by trip volume — both crossed 20 million cumulative trips around the same time in early 2026. Operating 100% driverless across all commercial operations since February 2025. The 300,000 weekly rides peak in Q4 2025 represents 200%+ YoY growth — the fastest scaling in robotaxi history. The RT6 at $27,500 per unit is the lowest-cost purpose-built robotaxi ever deployed commercially. Baidu\'s global strategy: use Uber and Lyft as distribution channels to enter new markets (Dubai, London, South Korea) without building a local app — the same model as Waymo in the US.',
     news: [
-      {date:'Feb 2026', text:'Apollo Go hits 300,000 weekly rides peak Q4 2025. 20M+ cumulative rides by Feb 2026. 200%+ YoY growth. 26 cities globally. Enters South Korea — first Asian market beyond China/HK. London via Uber + Lyft both testing H1 2026. Switzerland AmiGo with PostBus: user pilots H1 2026, driverless late 2026.', src:'CnEVPost', url:'https://cnevpost.com/2026/02/27/baidu-apollo-go-robotaxi-300000-weekly-rides-expands-to-south-korea/'},
+      {date:'Apr 2026', text:'CRITICAL: 100+ Apollo Go robotaxis stalled across Wuhan Mar 31 — systems fault stranded passengers on highways. China suspended ALL new AV permits nationwide (Apr 29). Baidu Wuhan ops suspended pending investigation. Baidu -2.8%, Pony.ai -5.5%, WeRide -4.7% on news. No timeline for permit freeze to lift.'},
       {date:'Feb 2026', text:'Apollo Go reaches 20M cumulative trips, 300K weekly rides peak (+200% YoY in Q4 2025). Launches in South Korea — first Asian market beyond China + HK.', src:'CnEVPost', url:'https://cnevpost.com/2026/02/27/baidu-apollo-go-robotaxi-300000-weekly-rides-expands-to-south-korea/'},
       {date:'Jan 2026', text:'Apollo Go + AutoGo commence fully autonomous commercial ride-hailing on Yas Island, Abu Dhabi — first public fully driverless robotaxi service in the Middle East.', src:'PR Newswire', url:'https://www.prnewswire.com/news-releases/baidus-apollo-go-and-k2s-autogo-commence-fully-autonomous-ride-hailing-service-on-yas-island-announce-phased-expansion-across-abu-dhabi-302663468.html'},
       {date:'Jul 2025', text:'Baidu and Uber announce multi-year global partnership to deploy thousands of Apollo Go vehicles across Asia and Middle East. Lyft partnership for Germany + UK announced Aug 2025.', src:'Baidu', url:'https://www.apollogo.com/'},
@@ -4655,7 +4664,7 @@ const SP_DATA = {
     ],
     facts: 'ComfortDelGro is Singapore\'s largest land transport operator — buses, taxis, MRT feeder services. A partnership at this level is not a startup experiment; it\'s integration into the backbone of Singapore\'s public transport system. Punggol is being developed into Singapore\'s first residential AV district with both Ai.R (WeRide/Grab) and this Pony.ai/ComfortDelGro route operating simultaneously — the most AV-dense residential area outside China. The ComfortDelGro relationship also extends to Luxembourg, where Pony.ai established its European Centre.',
     news: [
-      {date:'2025–26', text:'Pony.ai and ComfortDelGro planning autonomous Punggol route alongside Ai.R — Singapore\'s first multi-operator AV residential district. Pony.ai also partnering with ComfortDelGro in Luxembourg.', src:'ZAG Daily', url:'https://zagdaily.com/connected/grab-and-weride-launch-autonomous-passenger-trials-in-singapore/'},
+      {date:'Apr 2026', text:'Pony.ai + ComfortDelGro: by-invite autonomous rides cleared in Punggol — 12km route connecting residential hubs to Punggol Coast MRT. 15-min transit time reduction vs public transport. Commercial launch on Uber platform late 2026, fully driverless 2027.'},
     ],
     sources: [    ]
   },
@@ -4693,7 +4702,7 @@ const SP_DATA = {
     ],
     facts: 'Hello (Hellobike) is China\'s largest bike-sharing and two-wheeler platform — its HR1 is the first purpose-built robotaxi from a shared mobility operator rather than a pure AV or OEM company. Commercial operations are live in Zhuzhou and Liyang. The CATL joint venture gives Hello preferential access to the world\'s best battery technology at lowest cost — a structural cost advantage over every other robotaxi company. Mass production (SOP) targeted June 2026 with 10,000-unit initial fleet. ComfortDelGro partnership opens overseas markets. Note: December 2025 pedestrian collision in one city caused temporary local suspension — flagged for transparency.',
     news: [
-      {date:'Dec 2025', text:'CATL/Hello JV targets mass production June 2026. Commercial ops live in Zhuzhou + Liyang. Testing in Shanghai, Guangzhou, Changsha. ComfortDelGro partnership for China + overseas markets.', src:'Automotive World', url:'https://www.automotiveworld.com/news/catl-hello-robotaxi-jv-targets-mass-production-in-june-2026/'},
+      {date:'Dec 2025', text:'CATL/Hello JV mass production targeted June 2026. Commercial ops live in Zhuzhou + Liyang. China AV permit freeze (Apr 29) may delay expansion plans — Hello fleet in cities with existing permits unaffected, new city launches blocked.'},
       {date:'Nov 2025', text:'Hello and ComfortDelGro announce collaboration on robotaxi deployment in China and overseas markets — Hello\'s first international partner agreement.', src:'TNGlobal', url:'https://technode.global/2025/11/26/comfortdelgro-hello-collaborate-on-robotaxi-deployment-in-china-and-overseas-markets/'},
       {date:'Sep 2025', text:'Hello unveils HR1 — first mass-produced purpose-built robotaxi from a shared mobility operator. Pilot ops in Zhuzhou. 10,000-unit target, 10+ cities + overseas pilot. Horizon Robotics chip partnership.', src:'Gasgoo', url:'https://autonews.gasgoo.com/articles/news/hello-unveils-first-purpose-built-robotaxi-hr1-70038993'},
     ],
@@ -4713,7 +4722,7 @@ const SP_DATA = {
     ],
     facts: 'ONTIME (Ruqi Mobility) achieved a global first in 2022: the world\'s first ride-hailing platform to commercially operate a mixed fleet of human drivers and robotaxis simultaneously, dispatched from a single app. The system — not the passenger — decides whether to send a human or autonomous vehicle, based on location, road conditions, and wait times. This is the most commercially pragmatic rollout model because it requires no behavior change from riders. Fully unmanned commercial demo ops in Nansha Guangzhou launched December 2022. Paid charged services in Shenzhen Baoan began January 2024. Backed by both WeRide and Pony.ai as Series A investors — unusual position as a neutral operator above competing AV tech stacks.',
     news: [
-      {date:'Jul 2025', text:'ONTIME launches Robotaxi+ strategy — expanding mixed fleet operations and deepening integration with Pony.ai Gen-7 vehicles.', src:'Gasgoo', url:'https://autonews.gasgoo.com/'},
+      {date:'Jul 2025', text:'ONTIME Robotaxi+ strategy: mixed fleet ops + Guangzhou Nansha expansion. China AV permit freeze (Apr 29) blocks new city launches but existing Nansha operations continue normally.'},
       {date:'Jan 2024', text:'ONTIME launches paid charged robotaxi service in Shenzhen Baoan — multiple zones including Qianhai, Yuehai Nanshan, airport area. First paid AV service in Shenzhen from a ride-hailing platform.', src:'GDToday', url:'https://www.newsgd.com/'},
       {date:'Dec 2022', text:'ONTIME launches world\'s first fully unmanned commercial robotaxi demo in Nansha Guangzhou — first ride-hailing platform to offer fully driverless commercial service in China.', src:'BitAuto', url:'https://www.bitauto.com/'},
     ],
@@ -4752,7 +4761,7 @@ const SP_DATA = {
     ],
     facts: 'Nissan has been building toward commercial autonomous mobility since the EasyRide project in 2018 — the most consistent AV programme from a Japanese OEM. The Yokohama pilot (5 Serena-based vehicles, 300 public participants, dedicated PLOT48 remote monitoring centre) is designed to validate the commercial service model, not just the technology. The Kobe tourism pilot applies AV to Japan\'s most practical immediate use case: replacing scarce rural drivers in tourist areas. The Wayve + Uber Tokyo MOU is the most commercially significant: Wayve\'s embodied AI + Nissan\'s 1M+ ProPILOT vehicle data flywheel + Uber\'s distribution = the most complete robotaxi stack in Japan. FY2027 commercial services target is conservative and credible.',
     news: [
-      {date:'2026', text:'Wayve + Uber + Nissan MOU signed for Tokyo robotaxi pilot by late 2026 — Nissan LEAF powered by Wayve AI Driver, available on Uber. Preparations for pilot deployment underway.', src:'Nissan', url:'https://global.nissannews.com/'},
+      {date:'Mar 2026', text:'Wayve + Uber + Nissan MOU signed (Mar 2026) — Tokyo robotaxi pilot late 2026, Nissan LEAF powered by Wayve AI Driver on Uber app. Wayve + Nissan NVIDIA DRIVE Hyperion prototype shown at GTC 2026. Nissan mass-produced vehicles with Wayve AI Driver from FY2027.'},
       {date:'Jan 2026', text:'Kobe Nada Gogo autonomous mobility pilot launches — LEAF-based, 20-min loop through sake breweries, tourism focus. National demo programme approved Jul 2025. Commercial target FY2030.', src:'Nissan', url:'https://global.nissannews.com/en/releases/251128-01-e'},
       {date:'Nov 2025', text:'Yokohama pilot launches — 5 Serena AVs, PLOT48 remote monitoring, 300 public participants, Minato Mirai/Sakuragi-cho/Chinatown. Goal: validate commercial service model for FY2027 launch.', src:'Nissan', url:'https://global.nissannews.com/en/releases/251003-01-e'},
     ],
@@ -4810,6 +4819,12 @@ let spActiveRow = null;
 function spOpen(rowId, tab) {
   const d = SP_DATA[rowId];
   if (!d) return;
+  // Restore news tab, Details label, and remove cluster country button
+  document.getElementById('spTabNews').style.display = '';
+  document.getElementById('spTabDetails').textContent = 'Details';
+  document.querySelectorAll('.cluster-country-btn').forEach(b => b.remove());
+  const btn = document.getElementById('clusterCountryBtn');
+  if (btn) btn.remove();
 
   if (spActiveRow && spActiveRow !== rowId) {
     const prev = document.getElementById(spActiveRow);
@@ -4879,6 +4894,10 @@ function spOpen(rowId, tab) {
 
 function spClose() {
   document.getElementById('sidePanel').classList.remove('open');
+  document.getElementById('spTabNews').style.display = '';
+  document.querySelectorAll('.cluster-country-btn').forEach(b => b.remove());
+  const btn = document.getElementById('clusterCountryBtn');
+  if (btn) btn.remove();
   if (spActiveRow) {
     const row = document.getElementById(spActiveRow);
     if (row) row.classList.remove('panel-open');
@@ -5579,240 +5598,231 @@ function switchMapRegion(btn, region) {
 }
 
 
+// ── MAP CLUSTER CONSTANTS ─────────────────────────────────────────────────
+const CLUSTER_RADIUS_DEG = 1.8;
+const DOT_R = 6;
+const CLUSTER_ORBIT = { 2:9, 3:10, 4:11 };
+const DEFAULT_ORBIT = 13;
+const MAP_PROJ_CONFIG = {
+  eu:   { center:[13,54],  scale:560 },
+  na:   { center:[-97,39], scale:280 },
+  asia: { center:[95,28],  scale:280 },
+};
+const DOT_STATUS_COLORS = {
+  live:'#059669', pilot:'#2563eb', planned:'#d97706',
+  announced:'#7c3aed', development:'#64748b'
+};
+
+function clusterDots(dots) {
+  const used = new Set();
+  const clusters = [];
+  for (let i = 0; i < dots.length; i++) {
+    if (used.has(i)) continue;
+    const cluster = [dots[i]];
+    used.add(i);
+    for (let j = i + 1; j < dots.length; j++) {
+      if (used.has(j)) continue;
+      if (Math.abs(dots[i].lat - dots[j].lat) < CLUSTER_RADIUS_DEG &&
+          Math.abs(dots[i].lon - dots[j].lon) < CLUSTER_RADIUS_DEG) {
+        cluster.push(dots[j]); used.add(j);
+      }
+    }
+    const clon = cluster.reduce((s,d) => s+d.lon,0)/cluster.length;
+    const clat = cluster.reduce((s,d) => s+d.lat,0)/cluster.length;
+    const cityCount = {};
+    cluster.forEach(d => cityCount[d.city] = (cityCount[d.city]||0)+1);
+    const city = Object.entries(cityCount).sort((a,b)=>b[1]-a[1])[0][0];
+    clusters.push({city, country:cluster[0].country, lon:clon, lat:clat, dots:cluster});
+  }
+  return clusters;
+}
+
 function buildMap() {
   const container = document.getElementById('europeMap');
   if (!container || container.querySelector('svg')) return;
+  container.addEventListener('wheel', e => e.preventDefault(), {passive:false});
 
-  // Prevent page scroll when wheeling over the map — set immediately, not after async load
-  container.addEventListener('wheel', e => e.preventDefault(), { passive: false });
-
-  const DOT_COLORS = {
-    live:'#059669', pilot:'#d97706', planned:'#2563eb',
-    announced:'#7c3aed', development:'#6366f1'
-  };
-
+  // Tooltip
   const tooltip = document.createElement('div');
-  tooltip.className = 'map-tooltip';
-  tooltip.id = 'mapTooltipDiv';
+  tooltip.className = 'map-tooltip'; tooltip.id = 'mapTooltipDiv';
   document.body.appendChild(tooltip);
 
-  if (!document.getElementById('dot-pulse-style')) {
-    const s = document.createElement('style');
-    s.id = 'dot-pulse-style';
-    s.textContent = `@keyframes dotPulse{0%,100%{opacity:0.5}50%{opacity:0.05}}.dot-pulse-ring{animation:dotPulse 2s ease-in-out infinite}`;
-    document.head.appendChild(s);
-  }
+  function renderMap(world) {
+    const W = container.clientWidth || 960;
+    const H = Math.max(container.clientHeight, 480);
+    const svgEl = d3.select('#europeMap').append('svg')
+      .style('width','100%').style('height','100%').style('display','block');
 
-  function loadScript(src, cb) {
-    const s = document.createElement('script');
-    s.src = src; s.onload = cb;
-    s.onerror = () => { container.innerHTML = '<div style="padding:40px;text-align:center;color:#999;font-size:13px">Map requires internet connection.</div>'; };
-    document.head.appendChild(s);
-  }
-
-  function renderMap() {
-    const W = 960, H = 540;
-
-    container.style.position = 'relative';
-    const zc = document.createElement('div');
-    zc.style.cssText = 'position:absolute;bottom:16px;right:16px;display:flex;flex-direction:column;gap:4px;z-index:10';
-    zc.innerHTML = `
-      <button onclick="window._mz(1.4)"  style="width:30px;height:30px;border:1px solid #ccc;border-radius:4px;background:#fff;cursor:pointer;font-size:16px;color:#444">+</button>
-      <button onclick="window._mz(0.71)" style="width:30px;height:30px;border:1px solid #ccc;border-radius:4px;background:#fff;cursor:pointer;font-size:16px;color:#444">−</button>
-      <button onclick="window._mr()"     style="width:30px;height:30px;border:1px solid #ccc;border-radius:4px;background:#fff;cursor:pointer;font-size:11px;color:#444" title="Reset">⊙</button>
-    `;
-    container.appendChild(zc);
-
-    const svg = d3.select('#europeMap').append('svg')
-      .attr('viewBox', `0 0 ${W} ${H}`)
-      .style('width','100%').style('height','auto').style('display','block');
-
-    const cfg = MAP_REGIONS[activeMapRegion] || MAP_REGIONS.eu;
-    const proj = d3.geoMercator()
-      .center(cfg.center).scale(cfg.scale).translate([W*cfg.tx, H*cfg.ty]);
-    const pathGen = d3.geoPath().projection(proj);
-
-    const zoom = d3.zoom().scaleExtent([0.5,12])
-      .on('zoom', e => {
-        mapG.attr('transform', e.transform);
-        const k = e.transform.k;
-        mapG.selectAll('.project-dot').each(function() {
-          const g = d3.select(this);
-          const isHovered = this.classList.contains('hovered');
-          const mainR = isHovered ? 10/k : 6/k;
-          g.select('circle:first-child').attr('r', 14/k);
-          g.select('.dot-pulse-ring').attr('r', 9/k);
-          g.select('.dot-main').attr('r', mainR).style('stroke-width', 1.5/k + 'px');
-        });
-      });
-    svg.call(zoom).on('dblclick.zoom', null);
+    const zoom = d3.zoom().scaleExtent([0.5,16])
+      .on('zoom', e => mapG.attr('transform', e.transform));
+    svgEl.call(zoom).on('dblclick.zoom', null);
     window._mz_zoom = zoom;
-    window._mz = f => svg.transition().duration(300).call(zoom.scaleBy, f);
-    window._mr = () => svg.call(zoom.transform, d3.zoomIdentity);
+    window._mz = f => svgEl.transition().duration(300).call(zoom.scaleBy, f);
+    window._mr = () => svgEl.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
 
-    const mapG = svg.append('g');
+    const mapG = svgEl.append('g');
 
-    function getCountryFill(id) {
-      const numId = +id;
-      const set = REGION_IDS[activeMapRegion] || REGION_IDS.eu;
-      return set.has(numId) ? '#cdd8e4' : '#dde6ee';
-    }
-    function getCountryStroke(id) {
-      const numId = +id;
-      const set = REGION_IDS[activeMapRegion] || REGION_IDS.eu;
-      return set.has(numId) ? '0.7' : '0.3';
-    }
+    function drawRegion(region) {
+      mapG.selectAll('*').remove();
+      clearAllCountries();
+      const rcfg = MAP_PROJ_CONFIG[region]||MAP_PROJ_CONFIG.eu;
+      const proj = d3.geoMercator()
+        .center(rcfg.center).scale(rcfg.scale).translate([W/2, H/2]);
+      const pathGen = d3.geoPath().projection(proj);
 
-    d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(world => {
+      mapG.append('rect').attr('width',W*10).attr('height',H*10)
+        .attr('x',-W*4).attr('y',-H*4).attr('fill','#dde8f0');
+
       const countries = topojson.feature(world, world.objects.countries);
-
-      mapG.append('g').attr('class','country-fills').selectAll('path')
-        .data(countries.features)
-        .enter().append('path').attr('d', pathGen)
-        .attr('data-id', d => d.id)
-        .style('fill', d => getCountryFill(d.id))
-        .style('stroke','#fff')
-        .style('stroke-width', d => getCountryStroke(d.id))
+      mapG.append('g').attr('class','country-fills')
+        .selectAll('path').data(countries.features).join('path')
+        .attr('d', pathGen).attr('data-id', d=>d.id)
+        .style('fill','#e8eff5').style('stroke','#b8cad8').style('stroke-width',0.5)
         .style('cursor','pointer')
-        .on('click', function(event, d) {
-          // Find country name from ISO numeric id
-          const isoNum = +d.id;
-          const name = Object.keys(REGION_IDS).length && window.ISO_TO_NAME ? window.ISO_TO_NAME[isoNum] : null;
+        .on('click', function(event,d) {
+          const name = window.ISO_TO_NAME ? window.ISO_TO_NAME[+d.id] : null;
           if (!name) return;
           toggleCountry(name, this);
-          // Highlight dots belonging to this country
-          highlightCountryDots(name);
         })
-        .on('mouseover', function(event, d) {
-          const isoNum = +d.id;
-          const name = window.ISO_TO_NAME ? window.ISO_TO_NAME[isoNum] : null;
-          if (name) d3.select(this).style('opacity', 0.75);
-        })
-        .on('mouseleave', function() { d3.select(this).style('opacity', 1); });
+        .on('mouseover', function() { d3.select(this).style('opacity',0.75); })
+        .on('mouseleave', function() { d3.select(this).style('opacity',1); });
 
-      // Force-separate overlapping dots
-      // Only separate dots in the active region — avoids cross-region interference
+      mapG.append('path')
+        .datum(topojson.mesh(world, world.objects.countries, (a,b)=>a!==b))
+        .attr('d',pathGen).attr('fill','none').attr('stroke','#c0d0da').attr('stroke-width',0.4);
 
-      const dots = PROJECT_DOTS.map(p => {
-        const [x,y] = proj([p.lon, p.lat]);
-        const dotRegion = getDotRegion(p.id);
-        return {...p, x, y, ox:x, oy:y, dotRegion};
+      // Filter dots for this region
+      const regionDots = PROJECT_DOTS.filter(p => {
+        const r = getDotRegion(p.id);
+        return region === 'eu' ? r==='eu' : region === 'na' ? r==='na' : r==='asia';
       });
 
-      // Force-separate only in-view dots (out-of-view dots project off-screen and absorb separation energy)
-      const viewDots = dots.filter(p => activeMapRegion === 'all' || p.dotRegion === activeMapRegion);
-      const hiddenDots = dots.filter(p => activeMapRegion !== 'all' && p.dotRegion !== activeMapRegion);
+      const clusters = clusterDots(regionDots);
+      const clustersG = mapG.append('g').attr('class','clusters');
 
-      for (let iter=0; iter<120; iter++) {
-        for (let i=0; i<viewDots.length; i++) {
-          for (let j=i+1; j<viewDots.length; j++) {
-            const dx=viewDots[j].x-viewDots[i].x, dy=viewDots[j].y-viewDots[i].y;
-            const dist=Math.sqrt(dx*dx+dy*dy)||0.01;
-            if (dist<26) {
-              const push=(26-dist)/2, nx=dx/dist, ny=dy/dist;
-              viewDots[i].x-=nx*push; viewDots[i].y-=ny*push;
-              viewDots[j].x+=nx*push; viewDots[j].y+=ny*push;
-            }
-          }
-        }
-      }
+      clusters.forEach(cluster => {
+        const [cx,cy] = proj([cluster.lon, cluster.lat]);
+        const n = cluster.dots.length;
+        const cg = clustersG.append('g').attr('class','city-cluster')
+          .attr('transform',`translate(${cx},${cy})`).style('cursor','pointer');
 
-      // For dots at the far west coast only (SF proper), never push further west than original
-      // Use ox threshold based on actual SF projected x (~404) not a percentage
-      viewDots.forEach(p => {
-        if (p.ox < 410 && p.x < p.ox) {
-          p.x = p.ox;
-        }
-      });
-
-      // UAE dots — locked, never push west of origin
-      viewDots.forEach(p => {
-        if ((p.id === 'proj-apollo-uae' || p.id === 'proj-weride-uae') && p.x < p.ox) p.x = p.ox;
-      });
-
-
-
-
-      // Snap China dots back to land - never allow east/south of origin
-      const CHINA_IDS_B = new Set(['proj-apollo-cn','proj-ponyai-cn','proj-weride-cn','proj-xpeng-robotaxi','proj-caocao','proj-didi','proj-hello','proj-ontime','proj-deeproute']);
-      viewDots.forEach(p => {
-        if (CHINA_IDS_B.has(p.id) && p.x > p.ox + 5) p.x = p.ox + 5;
-        if (CHINA_IDS_B.has(p.id) && p.y > p.oy + 5) p.y = p.oy + 5;
-      });
-      // Clamp dots to SVG bounds with padding
-      const pad = 40;
-      viewDots.forEach(p => {
-        p.x = Math.max(pad, Math.min(W - pad, p.x));
-        p.y = Math.max(pad, Math.min(H - pad, p.y));
-      });
-
-      // Connector lines only for EU dots that moved significantly
-      const linesG = mapG.append('g').attr('class','connector-lines');
-      viewDots.filter(p => p.dotRegion === 'eu' && Math.hypot(p.x-p.ox, p.y-p.oy) > 8).forEach(p => {
-        linesG.append('line')
-          .attr('x1',p.ox).attr('y1',p.oy).attr('x2',p.x).attr('y2',p.y)
-          .style('stroke','#94a3b8').style('stroke-width','1.5')
-          .style('stroke-dasharray','4,4').style('pointer-events','none');
-      });
-
-      const allDots = [...viewDots, ...hiddenDots];
-
-      allDots.forEach(dot => {
-        const color = DOT_COLORS[dot.status]||'#94a3b8';
-        const g = mapG.append('g').attr('class','project-dot').attr('data-id',dot.id)
-          .attr('transform',`translate(${dot.x},${dot.y})`).style('cursor','pointer');
-        g.append('circle').attr('r',14).style('fill','transparent');
-        if (dot.status==='live') g.append('circle').attr('class','dot-pulse-ring').attr('r',9).style('fill',color).style('opacity',0.3);
-        g.append('circle').attr('class','dot-main').attr('r',6).style('fill',color).style('stroke','#fff').style('stroke-width','1.5');
-        g.on('mouseover', () => {
-          const lbl={live:'Live',pilot:'Active Pilot',planned:'Planned',announced:'Announced',development:'In Development'}[dot.status]||dot.status;
-          tooltip.innerHTML=`<strong>${dot.name}</strong><br><span style="opacity:0.7;font-size:10px">${dot.city} · ${lbl}</span>`;
-          tooltip.style.display='block';
-          g.node().classList.add('hovered');
-          const k = (d3.zoomTransform(svg.node())||d3.zoomIdentity).k;
-          g.select('.dot-main').attr('r', 10/k);
-          g.raise();
-        })
-        .on('mousemove', e => { tooltip.style.left=(e.clientX-tooltip.offsetWidth/2)+'px'; tooltip.style.top=(e.clientY-54)+'px'; })
-        .on('mouseleave', () => {
-          tooltip.style.display='none';
-          g.node().classList.remove('hovered');
-          const k = (d3.zoomTransform(svg.node())||d3.zoomIdentity).k;
-          g.select('.dot-main').attr('r', 6/k);
-        })
-        .on('click', () => { document.querySelectorAll('.project-dot.selected').forEach(el=>{ if(el) el.classList.remove('selected'); }); g.node().classList.add('selected'); spOpen(dot.id,'details'); selectDotCountry(dot.id); });
-
-        // Set initial visibility based on region
-        if (activeMapRegion !== 'all' && dot.dotRegion !== activeMapRegion) {
-          g.style('opacity','0').style('visibility','hidden').style('pointer-events','none');
+        if (n === 1) {
+          const dot = cluster.dots[0];
+          const color = DOT_STATUS_COLORS[dot.status]||'#888';
+          if (dot.status==='live') cg.append('circle').attr('r',DOT_R+4)
+            .style('fill',color).style('opacity',0.15);
+          cg.append('circle').attr('class','proj-dot-main').attr('r',DOT_R)
+            .style('fill',color).style('stroke','#fff').style('stroke-width',1.5);
+          cg.on('mouseover', function() {
+            d3.select(this).select('.proj-dot-main').attr('r',DOT_R+3);
+            tooltip.innerHTML=`<strong>${dot.name}</strong><br><span style="opacity:0.7;font-size:10px">${dot.city} · ${dot.status}</span>`;
+            tooltip.style.display='block';
+          })
+          .on('mousemove',e=>{tooltip.style.left=(e.clientX-tooltip.offsetWidth/2)+'px';tooltip.style.top=(e.clientY-54)+'px';})
+          .on('mouseleave',function(){d3.select(this).select('.proj-dot-main').attr('r',DOT_R);tooltip.style.display='none';})
+          .on('click',()=>renderClusterPanel({city:cluster.city, country:cluster.country, dots:[dot], allCountries:[dot.country]}));
+        } else {
+          const orbitR = CLUSTER_ORBIT[n]||DEFAULT_ORBIT;
+          const dotR = n<=4 ? 5.5 : 4.5;
+          cg.append('circle').attr('r',orbitR+dotR+3)
+            .style('fill','rgba(255,255,255,0.15)').style('stroke','#94a3b8')
+            .style('stroke-width',1).style('stroke-dasharray','3,2');
+          cluster.dots.forEach((dot,i)=>{
+            const angle = (i/n)*Math.PI*2 - Math.PI/2;
+            const color = DOT_STATUS_COLORS[dot.status]||'#888';
+            cg.append('circle').attr('cx',Math.cos(angle)*orbitR).attr('cy',Math.sin(angle)*orbitR)
+              .attr('r',dotR).style('fill',color).style('stroke','#fff').style('stroke-width',1.2);
+          });
+          cg.append('circle').attr('r',8).style('fill','#0d1b2a').style('opacity',0.85);
+          cg.append('text').attr('y',0.5).style('font-family','DM Mono,monospace')
+            .style('font-size','9px').style('fill','#fff').style('text-anchor','middle')
+            .style('dominant-baseline','central').style('pointer-events','none').text(n);
+          cg.on('mouseover',function(){
+            tooltip.innerHTML=`<strong>${cluster.city}</strong><br><span style="opacity:0.7;font-size:10px">${n} projects · click to view</span>`;
+            tooltip.style.display='block';
+          })
+          .on('mousemove',e=>{tooltip.style.left=(e.clientX-tooltip.offsetWidth/2)+'px';tooltip.style.top=(e.clientY-54)+'px';})
+          .on('mouseleave',function(){tooltip.style.display='none';})
+          .on('click',()=>renderClusterPanel({city:cluster.city, country:cluster.country, dots:cluster.dots, allCountries:[...new Set(cluster.dots.map(d=>d.country))]}));
         }
       });
-    });
+    }
+
+    window._drawRegion = drawRegion;
+    drawRegion(activeMapRegion);
   }
 
-  if (typeof d3!=='undefined' && typeof topojson!=='undefined') {
-    renderMap();
-  } else if (typeof d3!=='undefined') {
-    loadScript('https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js', renderMap);
-  } else {
-    loadScript('https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js', () =>
-      loadScript('https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js', renderMap));
+  function loadScript(src,cb) {
+    const s=document.createElement('script'); s.src=src; s.onload=cb;
+    s.onerror=()=>{container.innerHTML='<div style="padding:40px;text-align:center;color:#999">Map requires internet connection.</div>';};
+    document.head.appendChild(s);
   }
+
+  const init = () => d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(renderMap);
+
+  if (typeof d3!=='undefined' && typeof topojson!=='undefined') init();
+  else if (typeof d3!=='undefined') loadScript('https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js', init);
+  else loadScript('https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js', ()=>
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js', init));
 }
 
+function switchMapRegion(btn, region) {
+  activeMapRegion = region;
+  document.querySelectorAll('.map-region-btn').forEach(b=>b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  if (!mapBuilt) { mapBuilt=true; setTimeout(buildMap,50); return; }
+  window._mr && window._mr();
+  if (window._drawRegion) window._drawRegion(region);
+}
 
+function renderClusterPanel(cluster) {
+  const n = cluster.dots.length;
+  const isSingle = n === 1;
+  const countries = cluster.allCountries || [...new Set(cluster.dots.map(d => d.country))];
 
+  // Rename Details tab based on context
+  document.getElementById('spTabDetails').textContent = isSingle ? 'Project' : 'Projects';
 
+  // Hide news tab
+  document.getElementById('spTabNews').style.display = 'none';
+  document.querySelectorAll('.cluster-country-btn').forEach(b => b.remove());
 
-function getEuropeGeoJSON() {
-  return {
-    type: "FeatureCollection",
-    features: Object.entries(COUNTRY_COORDS).map(([name, coords]) => ({
-      type: "Feature",
-      properties: { name },
-      geometry: { type: "Polygon", coordinates: [coords] }
-    }))
-  };
+  // Header — title + clickable underlined country names in eyebrow
+  document.getElementById('spTitle').textContent = isSingle ? cluster.dots[0].name : cluster.city;
+  const eyebrow = document.querySelector('.sp-eyebrow');
+  const countryLinks = countries.map(c =>
+    `<span onclick="document.getElementById('sidePanel').classList.remove('open');selectedCountries=['${c}'];renderPanel();document.querySelector('.country-panel').classList.add('visible')"
+      style="display:inline-flex;align-items:center;gap:3px;cursor:pointer;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:4px;padding:1px 7px;font-size:10px;font-weight:600;color:rgba(255,255,255,0.75);letter-spacing:0.03em;transition:all 0.1s"
+      onmouseover="this.style.background='rgba(255,255,255,0.22)';this.style.color='#fff'"
+      onmouseout="this.style.background='rgba(255,255,255,0.12)';this.style.color='rgba(255,255,255,0.75)'"
+      title="View ${c} country profile">🗺 ${c}</span>`
+  ).join(' ');
+  eyebrow.innerHTML = (isSingle ? '' : n + ' projects &nbsp;·&nbsp; ') + countryLinks;
+
+  // Build project list
+  const pane = document.getElementById('spPaneDetails');
+  if (pane) {
+    pane.innerHTML = cluster.dots.map(dot => {
+      const color = DOT_STATUS_COLORS[dot.status] || '#888';
+      const statusLabel = {live:'Live',pilot:'Active Pilot',planned:'Planned',announced:'Announced',development:'In Development'}[dot.status] || dot.status;
+      return `<div
+        onclick="spClose();switchTab(document.getElementById('tabProjects'),'projects');setTimeout(()=>{const r=document.getElementById('${dot.id}');if(r){r.scrollIntoView({behavior:'smooth',block:'center'});spOpen('${dot.id}','details');}},150);"
+        style="padding:12px 18px;border-bottom:1px solid var(--border);cursor:pointer;display:flex;gap:10px;align-items:center"
+        onmouseover="this.style.background='var(--surface2)'"
+        onmouseout="this.style.background=''">
+        <div style="width:8px;height:8px;border-radius:50%;background:${color};flex-shrink:0"></div>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:600;color:var(--ink);line-height:1.3">${dot.name}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">${statusLabel} · ${dot.seg}</div>
+        </div>
+        <div style="font-size:13px;color:var(--muted2)">›</div>
+      </div>`;
+    }).join('');
+  }
+
+  document.getElementById('spNewsBadge').textContent = '';
+  spSwitchTab('details');
+  document.getElementById('sidePanel').classList.add('open');
 }
 
 
@@ -5826,13 +5836,11 @@ function toggleCountry(name, el) {
     selectedCountries.splice(idx, 1);
     if (el) el.classList.remove('selected');
   }
-  // Show/hide country panel
   const panel = document.querySelector('.country-panel');
   if (panel) {
     if (selectedCountries.length > 0) panel.classList.add('visible');
     else panel.classList.remove('visible');
   }
-  if (selectedCountries.length > 0) highlightCountryDots(name, idx === -1);
   renderPanel();
 }
 
@@ -5862,11 +5870,6 @@ function dismissCountry(name) {
 function clearAllCountries() {
   selectedCountries = [];
   document.querySelectorAll('#europeMap path.selected').forEach(el => el.classList.remove('selected'));
-  const svg = d3.select('#europeMap svg');
-  if (svg.node()) {
-    const k = (d3.zoomTransform(svg.node())||d3.zoomIdentity).k;
-    svg.selectAll('.project-dot .dot-main').transition().duration(200).attr('r', 6/k);
-  }
   const panel = document.querySelector('.country-panel');
   if (panel) panel.classList.remove('visible');
   renderPanel();
