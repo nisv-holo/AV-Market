@@ -400,7 +400,18 @@
   tbody tr.hidden { display: none; }
 
   /* Company group header */
-  tr.company-header {
+  tr.featured-banner {
+    background: linear-gradient(90deg, #1a3a5c 0%, #1c2128 100%) !important;
+    border-top: 2px solid #c8a96e !important;
+    border-bottom: 2px solid #c8a96e !important;
+  }
+  .featured-banner .company-title {
+    color: #c8a96e !important;
+  }
+  .featured-banner .company-desc {
+    color: #adbac7 !important;
+  }
+  .company-header {
     background: var(--surface2);
     border-bottom: 1px solid var(--border);
     border-top: 2px solid var(--border2);
@@ -1343,6 +1354,14 @@
 <tbody>
 
 
+<!-- ═══ FEATURED PROJECT ═══ -->
+<tr class="company-header featured-banner"><td colspan="9"><div class="company-banner"><span class="company-title">⭐ Featured Project</span><span class="company-desc">Ruter / Holo — Oslo · Featured Project</span></div></td></tr>
+<tr class="data-row" data-region="eu" id="proj-oslo" data-status="pilot" data-segment="shuttle"><td><span class="project-name">Ruter / Holo — Oslo AV Public Transit</span><span class="project-desc">Oslo's public transport authority deploying the ID. Buzz AD as part of regular public transit, following two years of development-vehicle testing with the same Mobileye platform.</span>
+          <button class="facts-trigger" data-row="proj-oslo" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Staged Deployment</span><span class="learn-tag">Public Authority</span><span class="learn-body">One of the clearest examples of a disciplined multi-year transition: 2 yrs dev-vehicle testing → production vehicle rollout. A Nordic public authority leading AV adoption — rather than a private operator — validates a model where risk is de-risked before committing to a commercial platform.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">EU / IL</span> <span class="seg-tag">Autonomous Shuttle</span><span class="seg-tag">Public Transit</span></div><div class="dc-row dc-status"><span class="status status-planned"><span class="dot dot-planned"></span>Launching 2026</span></div><div class="dc-row dc-countries">🇳🇴 Oslo<br><small style="opacity:.6">Groruddalen district</small></div></td><td class="col-div vehicle-cell"><span class="v-model">VW ID. Buzz AD</span><span class="v-detail">Mobileye Drive EyeQ™ 6H (2nd gen). Upgrade from dev vehicles after 2 yrs Oslo testing.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Prior tests</span><span class="tl-value">2023–2025</span></div><div class="tl-row"><span class="tl-label">ID. Buzz on road</span><span class="tl-value pending">Spring 2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Spring 2026</div><div class="news-teaser-text">ID. Buzz AD enters Oslo public transit network in Groruddalen.</div><button class="news-view-more" data-row="proj-oslo" data-tab="news">View more ↗</button></div></div></td></tr>
+
+
+
+
 <!-- ═══ MOIA ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">MOIA · Volkswagen Group</span><span class="company-desc">European AV ridepooling operator — VW ID. Buzz AD platform powered by Mobileye Drive</span><span class="company-count">3 projects</span></div></td></tr>
 
@@ -1351,9 +1370,6 @@
 
 <tr class="data-row" data-region="eu" id="proj-nowel4" data-status="pilot" data-segment="shuttle"><td><span class="project-name">NoWeL4 (Northwest Level 4)</span><span class="project-desc">Berlin's AV shuttle trial covering a 15 km² residential zone — the first multi-district autonomous service in the German capital under federal law.</span>
           <button class="facts-trigger" data-row="proj-nowel4" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Integration</span><span class="learn-tag">Urban Coverage</span><span class="learn-body">Demonstrates how AV shuttles can be layered into an existing urban transit network as a complement rather than a replacement. The 15 km², 80-stop geo-zone is one of the largest urban AV operating areas in Europe — testing whether scale changes the economics.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">EU / IL</span> <span class="seg-tag">Autonomous Shuttle</span></div><div class="dc-row dc-status"><span class="status status-pilot"><span class="dot dot-pilot"></span>Active Pilot</span></div><div class="dc-row dc-countries">🇩🇪 Berlin<br><small style="opacity:.6">Spandau · Charlottenburg · Reinickendorf</small></div></td><td class="col-div vehicle-cell"><span class="v-model">VW ID. Buzz AD</span><span class="v-detail">Same Mobileye Drive platform as ALIKE. 5 vehicles, 80 stops.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Funded</span><span class="tl-value">2025</span></div><div class="tl-row"><span class="tl-label">On road</span><span class="tl-value onroad">Early 2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Early 2026</div><div class="news-teaser-text">Passenger trials with safety operators begin across 80-stop zone.</div><button class="news-view-more" data-row="proj-nowel4" data-tab="news">View more ↗</button></div></div></td></tr>
-
-<tr class="data-row" data-region="eu" id="proj-oslo" data-status="planned" data-segment="shuttle"><td><span class="project-name">Ruter / Holo — Oslo AV Public Transit</span><span class="project-desc">Oslo's public transport authority deploying the ID. Buzz AD as part of regular public transit, following two years of development-vehicle testing with the same Mobileye platform.</span>
-          <button class="facts-trigger" data-row="proj-oslo" data-tab="details">Operational Facts ↗</button></td><td class="col-div-learn learn-cell"><span class="learn-tag">Staged Deployment</span><span class="learn-tag">Public Authority</span><span class="learn-body">One of the clearest examples of a disciplined multi-year transition: 2 yrs dev-vehicle testing → production vehicle rollout. A Nordic public authority leading AV adoption — rather than a private operator — validates a model where risk is de-risked before committing to a commercial platform.</span></td><td class="details-cell"><div class="dc-row"><span class="badge badge-mix">EU / IL</span> <span class="seg-tag">Autonomous Shuttle</span><span class="seg-tag">Public Transit</span></div><div class="dc-row dc-status"><span class="status status-planned"><span class="dot dot-planned"></span>Launching 2026</span></div><div class="dc-row dc-countries">🇳🇴 Oslo<br><small style="opacity:.6">Groruddalen district</small></div></td><td class="col-div vehicle-cell"><span class="v-model">VW ID. Buzz AD</span><span class="v-detail">Mobileye Drive EyeQ™ 6H (2nd gen). Upgrade from dev vehicles after 2 yrs Oslo testing.</span></td><td class="col-div timeline-cell"><div class="tl-row"><span class="tl-label">Prior tests</span><span class="tl-value">2023–2025</span></div><div class="tl-row"><span class="tl-label">ID. Buzz on road</span><span class="tl-value pending">Spring 2026</span></div></td><td class="news-cell"><div class="news-teaser"><div class="news-teaser-dot"></div><div><div class="news-teaser-date">Spring 2026</div><div class="news-teaser-text">ID. Buzz AD enters Oslo public transit network in Groruddalen.</div><button class="news-view-more" data-row="proj-oslo" data-tab="news">View more ↗</button></div></div></td></tr>
 
 <!-- ═══ HOLON (Benteler) ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">HOLON · Benteler Group</span><span class="company-desc">European AV shuttle OEM — purpose-built Holon Urban shuttle (Pininfarina design, Mobileye Drive), targeting public transit and airports</span><span class="company-count">1 project</span></div></td></tr>
