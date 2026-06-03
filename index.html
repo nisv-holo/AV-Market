@@ -3171,7 +3171,7 @@
     </div>
     <div class="nl-masthead-date">
       <div class="nl-masthead-vol">Volume 1 · Issue —</div>
-      <div class="nl-masthead-issue">June 2026</div>
+      <div class="nl-masthead-issue">May 2026</div>
     </div>
   </div>
 
@@ -3366,7 +3366,7 @@
   </div>
 
   <div class="nl-footer">
-    <div class="nl-footer-left">AV Market Intelligence · June 2026 · <em>Internal use only</em></div>
+    <div class="nl-footer-left">AV Market Intelligence · May 2026 · <em>Internal use only</em></div>
     <div class="nl-footer-right">Confidential</div>
   </div>
 
@@ -5424,15 +5424,7 @@ if (document.readyState === 'loading') {
     });
   }
   function syncNewsletterDate() {
-    const monthYear = typeof SCAN_LABEL !== 'undefined' ? SCAN_LABEL.replace(/\s*\(.*\)/, '') : '';
-    if (!monthYear) return;
-    // Page header eyebrow is handled by updateStats() via REPORT_DATE
-    // Newsletter masthead
-    const nl = document.querySelector('.nl-masthead-issue');
-    if (nl) nl.textContent = monthYear;
-    // Newsletter footer
-    const footer = document.querySelector('.nl-footer-left');
-    if (footer) footer.innerHTML = 'AV Market Intelligence · ' + monthYear + ' · <em>Internal use only</em>';
+    // Newsletter date is editorial content — set manually per issue, never auto-updated
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => { syncTeaserDates(); syncNewsletterDate(); });
