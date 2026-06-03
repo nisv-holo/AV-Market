@@ -1247,7 +1247,7 @@
 <!-- ═══ PAGE HEADER ═══ -->
 <div class="page-header">
   <div class="page-header-inner">
-    <div class="header-eyebrow">Market Intelligence Report · April 2026</div>
+    <div class="header-eyebrow" id="headerEyebrow">Market Intelligence Report · June 2026</div>
     <h1 class="header-title" id="pageTitle">Autonomous Vehicles</h1>
     <p class="header-subtitle" id="pageSubtitle">Active deployments, pilots and incoming projects across robotaxis, shuttles, buses &amp; freight — tracked across EU, North America &amp; Asia</p>
     <div class="stat-row">
@@ -3171,7 +3171,7 @@
     </div>
     <div class="nl-masthead-date">
       <div class="nl-masthead-vol">Volume 1 · Issue —</div>
-      <div class="nl-masthead-issue">May 2026</div>
+      <div class="nl-masthead-issue">June 2026</div>
     </div>
   </div>
 
@@ -3366,7 +3366,7 @@
   </div>
 
   <div class="nl-footer">
-    <div class="nl-footer-left">AV Market Intelligence · May 2026 · <em>Internal use only</em></div>
+    <div class="nl-footer-left">AV Market Intelligence · June 2026 · <em>Internal use only</em></div>
     <div class="nl-footer-right">Confidential</div>
   </div>
 
@@ -3685,7 +3685,7 @@ const PROJECT_DOTS = [
 let activeRegion = 'all';
 
 function updateStats() {
-  const REPORT_DATE = 'May 2026'; // ← UPDATE THIS EACH MONTH
+  const REPORT_DATE = SCAN_LABEL.replace(/\s*\(.*\)/, ''); // auto-derived from SCAN_LABEL — never hardcode
   // Counts are derived live from the DOM — never need manual updating when projects are added
 function buildCounts() {
   const rows = document.querySelectorAll('#av-table tr.data-row');
@@ -5421,10 +5421,22 @@ if (document.readyState === 'loading') {
       if (textEl) textEl.textContent = latest.text;
     });
   }
+  function syncNewsletterDate() {
+    const monthYear = typeof SCAN_LABEL !== 'undefined' ? SCAN_LABEL.replace(/\s*\(.*\)/, '') : '';
+    if (!monthYear) return;
+    // Page header eyebrow is handled by updateStats() via REPORT_DATE
+    // Newsletter masthead
+    const nl = document.querySelector('.nl-masthead-issue');
+    if (nl) nl.textContent = monthYear;
+    // Newsletter footer
+    const footer = document.querySelector('.nl-footer-left');
+    if (footer) footer.innerHTML = 'AV Market Intelligence · ' + monthYear + ' · <em>Internal use only</em>';
+  }
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', syncTeaserDates);
+    document.addEventListener('DOMContentLoaded', () => { syncTeaserDates(); syncNewsletterDate(); });
   } else {
     syncTeaserDates();
+    syncNewsletterDate();
   }
 } else {
   bindPanelTriggers();
