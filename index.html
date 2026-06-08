@@ -4140,7 +4140,7 @@ const SP_DATA = {
     ],
     facts: "NVIDIA and Uber announced a partnership to launch a global fleet of entirely NVIDIA software-driven autonomous vehicles, starting in Los Angeles and San Francisco in the first half of 2027 and scaling across 28 cities globally by 2028. The companies are supported by a growing roster of automaker partners. Vehicle platform has not been confirmed.",
     news: [
-      {date:'March 2026', text:'NVIDIA and Uber announce an expansion of their autonomous vehicle partnership. The companies plan to launch a global fleet of entirely NVIDIA software-driven autonomous vehicles, starting in Los Angeles and San Francisco in the first half of 2027 and scaling across 28 cities globally by 2028. Supported by a growing roster of automaker partners.', src:'Business Wire', url:'https://www.businesswire.com/news/home/20260316199483/en/NVIDIA-to-Launch-L4-Software-Driven-Robotaxis-on-Uber-Across-28-Cities-by-2028'},
+      {date:'June 2026', text:'Announced March 16, 2026: NVIDIA and Uber announce an expansion of their autonomous vehicle partnership. The companies plan to launch a global fleet of entirely NVIDIA software-driven autonomous vehicles, starting in Los Angeles and San Francisco in the first half of 2027 and scaling across 28 cities globally by 2028. Supported by a growing roster of automaker partners.', src:'Business Wire', url:'https://www.businesswire.com/news/home/20260316199483/en/NVIDIA-to-Launch-L4-Software-Driven-Robotaxis-on-Uber-Across-28-Cities-by-2028'},
     ],
     sources: [
       {label:'Business Wire — NVIDIA × Uber announcement', url:'https://www.businesswire.com/news/home/20260316199483/en/NVIDIA-to-Launch-L4-Software-Driven-Robotaxis-on-Uber-Across-28-Cities-by-2028'},
@@ -5378,8 +5378,7 @@ function spOpen(rowId, tab) {
   document.getElementById('spNews').innerHTML = (function() {
     const LAST_SCAN = SCAN_LABEL.split(' (')[0];
     const SCAN_DATE = SCAN_LABEL;
-    const firstDate = d.news[0] && d.news[0].date || '';
-    const hasNewItem = firstDate.includes('May 2026') || firstDate.includes('Apr 2026');
+    const hasNewItem = SCAN_UPDATED_IDS.has(rowId);
     const banner = hasNewItem
       ? '<div style="background:#ecfdf5;border-bottom:1px solid #a7f3d0;padding:8px 18px;display:flex;align-items:center;gap:8px;">' +
           '<span style="font-size:10px;font-weight:700;color:#065f46;letter-spacing:0.08em;text-transform:uppercase;">✓ Updated ' + SCAN_DATE + '</span>' +
