@@ -1746,6 +1746,33 @@
   </td>
 </tr>
 
+<!-- WeRide × GreenMobility — Denmark -->
+<tr class="data-row" data-region="eu" id="proj-weride-denmark" data-status="announced" data-segment="robotaxi">
+  <td><span class="project-name">WeRide × GreenMobility — Denmark</span><span class="project-desc">WeRide and GreenMobility announced a strategic partnership to deploy Level 4 autonomous shared mobility services in Denmark — WeRide\'s first entry into the Nordic region. GreenMobility operates the largest free-floating car-sharing network in the Nordic region (~1,500 EVs). Subject to regulatory approvals.</span>
+    <button class="facts-trigger" data-row="proj-weride-denmark" data-tab="details">Operational Facts ↗</button></td>
+  <td class="col-div-learn learn-cell">
+    <span class="learn-tag">Nordic First</span><span class="learn-tag">Shared Mobility</span>
+    <span class="learn-body">WeRide\'s first Nordic market. The partnership model differs from WeRide\'s Uber-based approach in Madrid and Zurich — here the partner is a shared mobility operator, not a ride-hailing platform. Denmark would be WeRide\'s seventh European country after France, Switzerland, Belgium, Slovakia, Spain, and the Zurich market.</span>
+  </td>
+  <td class="details-cell">
+    <span class="badge badge-eu">EU</span>
+    <span class="seg-tag">Robotaxi</span>
+    <span class="status status-announced"><span class="dot dot-announced"></span>Announced</span>
+    <span class="country-tag">🇩🇰 Denmark</span>
+  </td>
+  <td class="col-div vehicle-cell">
+    <span class="v-model">WeRide GXR Robotaxi</span>
+    <span class="v-detail">WeRide L4 autonomous driving technology. GreenMobility fleet operations and shared mobility expertise. Launch timeline TBD.</span>
+  </td>
+  <td class="col-div timeline-cell">
+    <div class="tl-row"><span class="tl-label">Partnership announced</span><span class="tl-value">August 3, 2026</span></div>
+    <div class="tl-row"><span class="tl-label">Launch timeline</span><span class="tl-value pending">TBD — subject to regulatory approvals</span></div>
+  </td>
+  <td class="col-div news-cell">
+    <div class="news-teaser"><div class="news-teaser-dot" style="background:#059669"></div><div><div class="news-teaser-date">August 2026</div><div class="news-teaser-text">August 3: WeRide and GreenMobility announce strategic partnership for L4 autonomous shared mobility in Denmark. WeRide's first Nordic market. Subject to regulatory approvals.</div><button class="news-view-more" data-row="proj-weride-denmark" data-tab="news">View more ↗</button></div></div>
+  </td>
+</tr>
+
 <!-- ═══ Bliq ═══ -->
 <tr class="company-header"><td colspan="9"><div class="company-banner"><span class="company-title">Bliq.ai</span><span class="company-desc">Berlin/Tallinn-based AV startup — first EU member state approval to operate without a driver in the vehicle (Estonia, May 2026)</span></div></td></tr>
 
@@ -3860,6 +3887,7 @@ const PROJECT_DOTS = [
   {id:"proj-weride-slovakia",name:"WeRide Slovakia",        city:"Bratislava", country:"Slovakia",    lon:17.107, lat:48.148, status:"pilot",       seg:"robotaxi"},
   {id:"proj-weride-madrid", name:"WeRide — Madrid",    city:"Madrid",     country:"Spain",     lon:-3.703,  lat:40.416, status:"announced",   seg:"robotaxi"},
   {id:"proj-weride-zurich",       name:"WeRide × Uber — Zurich",       city:"Zurich",        country:"Switzerland",  lon:8.542,   lat:47.377,  status:"announced", seg:"robotaxi"},
+  {id:"proj-weride-denmark",       name:"WeRide × GreenMobility — DK",   city:"Copenhagen",    country:"Denmark",      lon:12.568,  lat:55.676,  status:"announced", seg:"robotaxi"},
   {id:"proj-bliq",           name:"Bliq.ai — Tallinn",  city:"Tallinn",    country:"Estonia",   lon:24.754,  lat:59.437, status:"pilot",       seg:"robotaxi"},
   {id:"proj-aidoptation",          name:"Aidoptation — Belgium Highway",  city:"Limburg",       country:"Belgium",      lon:5.332,   lat:50.931,  status:"pilot",     seg:"robotaxi"},
   {id:"proj-einride",    name:"Einride Freight",         city:"Stockholm",  country:"Sweden",      lon:18.068, lat:59.329, status:"live",        seg:"truck"},
@@ -4011,9 +4039,10 @@ function switchTab(btn, tab) {
 // Only list projects whose FIRST SP_DATA news entry was added in the latest scan.
 // Projects from the PREVIOUS scan should be removed from this list each month.
 const SCAN_UPDATED_IDS = new Set([
-  'proj-momenta','proj-tesla-robotaxi','proj-aurora-us','proj-apollo-cn',
+  'proj-apollo','proj-lyft-av','proj-zoox-us','proj-aurora-us',
+  'proj-waymo-us','proj-apollo-cn','proj-bliq','proj-weride-denmark',
 ]);
-const SCAN_LABEL = 'July 2026 (Scan #7)';
+const SCAN_LABEL = 'August 2026 (Scan #8)';
 // ─────────────────────────────────────────────────────────────────────────────
 
 function filter(btn, type) {
@@ -4513,7 +4542,7 @@ const SP_DATA = {
     ],
     facts: 'RT6 costs ~€30k vs ~€100k for Waymo-fitted vehicles — the most significant cost disruption in European AV. Apollo Go has delivered millions of rides in China. Safety driver required for EU launch phase. Driverless trials expected H2 2026, regular operations by Q1 2027.',
     news: [
-      {date:'June 2026', text:'June 12, 2026: AmiGo, the on-demand autonomous mobility service developed through a partnership between Apollo Go and Swiss Post\'s PostBus, received a special operating permit from Switzerland\'s Federal Roads Office (FEDRO) for Level 4 autonomous operations in Eastern Switzerland. Open-road autonomous driving trials began on June 1, 2026, across approximately 80 km² in the cantons of St. Gallen, Appenzell Ausserrhoden, and Appenzell Innerrhoden. Fully driverless operations expected to launch in early 2027. Apollo Go RT6 vehicles (electric, up to 3 passengers, 30+ sensors). Set to be the largest planned automated public transport operation of its kind in Europe. Apollo Go global: 27 cities, 330M+ autonomous km, 22M+ cumulative public rides as of April 2026. Q1 2026: 3.2M fully driverless rides, weekly rides peaking at 350,000+ in March.', src:'PR Newswire / Baidu IR', url:'https://www.prnewswire.com/news-releases/baidus-apollo-go-expands-european-footprint-as-amigo-in-partnership-with-postbus-receives-level-4-regulatory-approval-in-switzerland-302799022.html'},
+      {date:'August 2026', text:'July 28, 2026: Baidu\'s Apollo Go and Freenow by Lyft officially commenced supervised road testing in London — Apollo Go\'s first deployment on UK roads. Testing begins in the London borough of Brent, covering a mix of urban and suburban driving environments. Vehicles are sixth-generation RT6 robotaxis with safety operators on board. Fleet size: "dozens" of vehicles (exact count undisclosed). Apollo Go provides RT6 vehicles and autonomous driving technology; Freenow by Lyft contributes local operational expertise and the Freenow ride-hailing platform. Public riders targeted for 2027 via the Freenow app, subject to regulatory approvals. Context: builds on Apollo Go\'s Hong Kong right-hand-drive experience (first driverless RHD permit July 23, testing started July 27).', src:'PRNewswire / TechCrunch', url:'https://www.prnewswire.com/news-releases/baidus-apollo-go-and-freenow-by-lyft-begin-road-testing-in-london-302836171.html'},
       {date:'Aug 2024', text:'Lyft and Baidu Apollo announce strategic partnership for European AV deployment.', src:'Road to Autonomy', url:'https://www.roadtoautonomy.com/lyft-baidu-europe-uk-partnership/'}
     ]
   ,
@@ -4971,6 +5000,26 @@ const SP_DATA = {
     ]
   },
 
+  'proj-weride-denmark': {
+    title: "WeRide × GreenMobility — Denmark",
+    org: [
+      {k:'Partners',      v:'WeRide (Nasdaq: WRD, HKEX: 0800) + GreenMobility (Nasdaq Copenhagen: GREENM)'},
+      {k:'Market',         v:'Denmark — WeRide\'s first Nordic market'},
+      {k:'Vehicle',        v:'WeRide GXR Robotaxi'},
+      {k:'GreenMobility',  v:'Denmark\'s leading shared electric mobility provider, largest free-floating car-sharing network in the Nordic region (~1,500 EVs)'},
+      {k:'Status',         v:'Partnership announced August 3, 2026. Subject to regulatory approvals. Launch timeline TBD'},
+      {k:'Regulators',     v:'Danish Road Directorate (Vejdirektoratet) and Danish Road Traffic Authority (Færdselsstyrelsen)'},
+    ],
+    facts: "WeRide and GreenMobility announced a strategic partnership to deploy autonomous shared mobility services in Denmark on August 3, 2026. GlobeNewswire states the partnership \'combines WeRide\'s globally validated Level 4 autonomous driving technology with GreenMobility\'s leading local fleet operations and shared mobility expertise, making the companies the first to pursue commercial autonomous mobility deployment in Denmark, subject to regulatory approvals.\' WeRide\'s autonomous driving products are deployed in more than 40 cities across 12 countries, with permits in 8 countries and a global L4 fleet of more than 3,000 vehicles.",
+    news: [
+      {date:'August 2026', text:'August 3, 2026: WeRide and GreenMobility (Nasdaq Copenhagen: GREENM) announced a strategic partnership to deploy Level 4 autonomous shared mobility services in Denmark — WeRide\'s first entry into the Nordic region. GreenMobility operates the largest free-floating car-sharing network in the Nordic region with more than 1,500 electric vehicles. The companies state they are the first to pursue commercial autonomous mobility deployment in Denmark, subject to regulatory approvals. Project developed in close collaboration with the Danish Road Directorate and Danish Road Traffic Authority. Vehicle: WeRide GXR. Launch timeline to be communicated in coming months.', src:'GlobeNewswire / Investing.com', url:'https://www.manilatimes.net/2026/08/03/tmt-newswire/globenewswire/weride-and-greenmobility-announce-strategic-partnership-to-advance-level-4-autonomous-mobility-in-denmark-marking-werides-entry-into-the-nordic-region/2396696'},
+    ],
+    sources: [
+      {label:'GlobeNewswire — WeRide GreenMobility Denmark', url:'https://www.manilatimes.net/2026/08/03/tmt-newswire/globenewswire/weride-and-greenmobility-announce-strategic-partnership-to-advance-level-4-autonomous-mobility-in-denmark-marking-werides-entry-into-the-nordic-region/2396696'},
+      {label:'Investing.com — WeRide expands to Denmark', url:'https://www.investing.com/news/stock-market-news/weride-expands-to-denmark-in-continued-european-market-push-93CH-4829824'},
+    ]
+  },
+
   'proj-bliq': {
     title: "Bliq.ai — Estonia",
     org: [
@@ -4986,7 +5035,7 @@ const SP_DATA = {
     ],
     facts: "Bliq.ai is the first company to receive authorisation from an EU member state to operate vehicles on public roads without a driver in the vehicle. The system uses AI-based autonomous driving combined with remote human supervision — a human can intervene remotely but does not sit in the car. The Estonia permit (May 20, 2026) is a genuine regulatory first in the EU. Bliq is building driverless cars for private and business use, not a ride-hailing robotaxi service. The retrofit approach — upgrading existing software-defined vehicles rather than building purpose-built AVs — is a cost structure that could scale faster than hardware-first competitors. Germany is next.",
     news: [
-      {date:'July 2026', text:'July 15, 2026: Bliq.ai received approval to operate driverless vehicles on public roads in Finland — the second EU member state after Estonia (May 2026). Initial deployment in Helsinki with 1-2 vehicles, transitioning to fully driverless for early adopters from the Helsinki waiting list. Plans to scale to more than 10 vehicles by November 2026. Vehicle: Hyundai IONIQ 5 with Bliq\'s retrofit sensor/compute stack. Initial speed limit: up to 55 km/h. Finland accepted Estonia\'s existing permit as the basis. CEO Julian Glaab: "Europe should begin introducing autonomous vehicles step-by-step so regulators, companies and the public can learn how the technology works in practice." Next target: Germany.', src:'Zag Daily / The Next Web', url:'https://zagdaily.com/connected/bliq-wins-approval-to-test-driverless-cars-in-finland/'},
+      {date:'August 2026', text:'July 23, 2026: A Bliq remotely-operated taxi was involved in a collision in Tallinn, Estonia — the first reported accident involving a Bliq vehicle. The Hyundai IONIQ 5, being driven remotely by an operator approximately 15 km away, approached an intersection as the traffic light turned red and collided with another vehicle. No injuries. One passenger (a 24-year-old man) was in the vehicle but was not driving. Bliq stated in a written response that the vehicle\'s technology and systems functioned correctly and that the accident was caused by human error by the remote operator. Under Estonian traffic law, the remote operator bears the same responsibility as a physical driver. July 15: Bliq received Finland approval (2nd EU country). Helsinki deployment with Hyundai IONIQ 5, scaling to 10+ vehicles by November.', src:'BNN / Zag Daily', url:'https://bnn-news.com/first-semi-autonomous-taxi-accident-in-estonia-raises-questions-about-liability-282303'},
     ],
     sources: [
       {label:'Bliq.ai official announcement', url:'https://bliq.ai/blog/bliq-receives-europes-first-approval-driverless-road-operations'},
@@ -5050,7 +5099,7 @@ const SP_DATA = {
     ],
     facts: 'Waymo One is the world\'s most commercially scaled fully driverless robotaxi service. Expanded from 5 to 10 US cities in under 12 months — the fastest scaling in AV history. 100% driverless across all markets, no safety driver. Zero serious incidents across millions of driverless miles. Operating 24/7 in all weather conditions including rain and darkness. International expansion confirmed: London (see EU report) and Tokyo both targeted 2026. Raised $16B at $126B valuation in Feb 2026 — the largest private capital raise in AV history.',
     news: [
-      {date:'July 2026', text:'July 8, 2026: Waymo announced four new US markets — San Diego, Las Vegas, Tampa, and Denver. Employee-only rides beginning in coming weeks; public service targeted by end of 2026. Las Vegas confirmed July 9. Waymo Premier $29.99/month subscription continues in SF/LA/Phoenix. Freeway pause from late May/early June still active pending software update. 6th-gen Ojai (Zeekr RT) began carrying public riders May 28. Fleet approximately 4,000 vehicles across 11+ US metros.', src:'Las Vegas Sun / The Charge Port', url:'https://lasvegassun.com/news/2026/jul/09/las-vegas-joins-growing-list-of-cities-with-fully/'},
+      {date:'August 2026', text:'July 29, 2026: Waymo unveiled Gemini in Waymo — Google\'s Gemini AI assistant integrated into the Ojai cabin, allowing riders to get local information, play music, and control ambient features. Redesigned user interface for the Ojai touchscreen. Waymo blog: "As we prepare to welcome more public riders to experience the Ojai soon, we are unveiling new in-car features." San Diego, Las Vegas, Denver, and Tampa still employee-only as of early August. Nashville launched April 7. Fleet approximately 4,000 vehicles. Waymo Premier $29.99/month subscription continues in SF/LA/Phoenix.', src:'Waymo Blog', url:'https://waymo.com/blog/2026/07/gemini-in-waymo/'},
       {date:'Jan 2026', text:'Waymo announces Miami expansion. Partners with Moove for fleet management. Zeekr RT vehicles begin joining fleet at lower per-unit cost than Jaguar I-PACE.', src:'TechCrunch', url:'https://techcrunch.com/2026/05/21/waymo-halts-freeway-rides-after-robotaxis-struggle-in-construction-zones/'},
       {date:'2025',     text:'Waymo surpasses 4 million driverless miles. Expands to Atlanta with Uber partnership. Austin public launch with zero-safety-driver policy confirmed.', src:'Waymo', url:'https://waymo.com/'},
     ],
@@ -5090,7 +5139,7 @@ const SP_DATA = {
     ],
     facts: 'Zoox operates a fully driverless, purpose-built robotaxi with a bidirectional design — no steering wheel, no driver seat, no front or back. Passengers face each other with personal screens and wireless charging at every seat. NHTSA granted a federal exemption to operate this vehicle type, which has no equivalent in any regulatory framework. Currently offering free rides in Las Vegas and San Francisco while awaiting NHTSA approval to charge commercial fares. Amazon backing provides manufacturing scale via 220,000 sq ft Bay Area facility targeting 10,000 vehicles/year.',
     news: [
-      {date:'July 2026', text:'June 24, 2026: Zoox unveiled a redesigned production-intent robotaxi with updated cabin interior, new seating, and updated exterior communication features. Production facility in Hayward, California targeting up to 100 vehicles per week capacity. Zoox still awaiting NHTSA FMVSS exemption to charge fares (petition for up to 2,500 vehicles under review). Las Vegas rides remain free pending commercial approval. Uber Las Vegas partnership still pending regulatory approval.', src:'CNBC / Zag Daily', url:'https://www.cnbc.com/2026/06/24/amazons-zoox-unveils-redesigned-robotaxi-ahead-of-upcoming-expansion.html'},
+      {date:'August 2026', text:'August 2, 2026: NHTSA granted Zoox a temporary exemption from eight Federal Motor Vehicle Safety Standards (FMVSS), removing the last major regulatory hurdle preventing Zoox from charging commercial fares for its purpose-built robotaxi. The exemption covers up to 2,500 vehicles. TechCrunch: "This was one of the last remaining regulatory hurdles Zoox needed to clear before launching a commercial robotaxi service." Zoox\'s robotaxi (no steering wheel, no pedals) required the exemption because existing FMVSS were written for human-driven vehicles. Zoox can now transition from free rides (in place since Las Vegas Strip launch September 2025) to a commercial paid service. Redesigned production-intent robotaxi unveiled June 24; Hayward facility targeting 100 vehicles/week capacity.', src:'TechCrunch', url:'https://techcrunch.com/2026/08/02/techcrunch-mobility-two-roads-diverged-for-robotaxis/'},
       {date:'Nov 2025', text:'Zoox launches in San Francisco — second city. Operating driverless with no fare (free rides). Expands Las Vegas service area significantly.', src:'TechCrunch', url:'https://techcrunch.com/tag/zoox/'},
       {date:'Sep 2025', text:'Zoox launches commercial driverless service in Las Vegas — first public city. Amazon manufacturing facility produces at 220,000 sq ft Bay Area plant.', src:'Zoox', url:'https://zoox.com/'},
     ],
@@ -5128,7 +5177,7 @@ const SP_DATA = {
     ],
     facts: 'Aurora is the first company to operate commercial fully driverless Class 8 trucks on public US highways at commercial speeds. Launched Dallas→Houston in April 2025, expanded to Fort Worth→El Paso (600 miles) in October 2025. 100,000+ driverless miles with zero safety incidents and 100% on-time delivery record. Volvo and PACCAR build Aurora Driver hardware into trucks on the production line. Next-gen hardware kit (mid-2026) cuts hardware cost by 50%+ and doubles LiDAR range to 1,000m — enabling scaling from 5 trucks to hundreds. Bosch partnership for automotive-grade hardware production confirmed Jan 2026.',
     news: [
-      {date:'July 2026', text:'July 22, 2026: Aurora launched second-generation driverless trucks on US public roads. Transport Topics: "The International LT Series trucks feature upgraded sensors, a 1 million-mile design life and about half the build cost of Aurora\'s first generation." Roush Industries upfitting at Aurora\'s production facility, targeting 20 trucks/week delivery rate and annual run-rate of 1,000 trucks by year-end. Aurora targeting 200+ second-gen driverless trucks deployed by end of 2026. Fully unoccupied cabin operation. Aurora Driver has completed nearly 440,000 driverless miles as of end of June 2026 across ten active commercial lanes. Safety Case closed for all ten lanes. Factory-installed AV versions in development with PACCAR and Volvo Autonomous Solutions for 2027. Q2 2026 results scheduled July 29.', src:'Aurora IR / Transport Topics', url:'https://www.ttnews.com/articles/aurora-second-gen-truck'},
+      {date:'August 2026', text:'July 29, 2026: Aurora Innovation published Q2 2026 results. Q2 revenue $2 million (beat analyst estimate of $1.62M). Net loss $(270) million. Full-year 2026 guidance reaffirmed: $14-16 million revenue, targeting approximately $80 million annualized TaaS run-rate by year-end. Aurora is fully allocated to exit 2026 with 200+ driverless trucks deployed. Roush manufacturing expected to reach 1,000 trucks/year annual run-rate in October 2026. Nearly 440,000 driverless miles through end of June with zero Aurora Driver-attributed collisions. New customers: Charger Logistics and Value Truck signed TaaS agreements. Volvo Autonomous Solutions added DSV and AVI-SPL as customers. CEO Chris Urmson: "Aurora Driver 2 officially moves Aurora into the start of our commercial scaling phase." Cash: nearly $1.2 billion.', src:'Aurora IR / Business Wire', url:'https://finance.yahoo.com/markets/stocks/articles/aurora-announces-second-quarter-2026-201500830.html'},
       {date:'Oct 2025',  text:'Aurora surpasses 100,000 driverless miles. Launches Fort Worth→El Paso route (600 miles — longest driverless truck route in the US). 100% on-time, zero safety incidents.', src:'Aurora', url:'https://aurora.tech/'},
       {date:'Apr 2025',  text:'Aurora launches first commercial driverless freight service — Dallas→Houston. Volvo VNL and International LT Series operating without safety driver.', src:'Aurora', url:'https://aurora.tech/'},
     ],
@@ -5301,7 +5350,7 @@ const SP_DATA = {
     ],
     facts: 'Lyft\'s AV strategy differs from Uber\'s: Lyft takes on fleet operations via Flexdrive (charging, maintenance, depot logistics) rather than just app distribution. This makes Lyft a more integrated partner for AV companies that don\'t want to manage fleet complexity. The Waymo Nashville partnership (April 2026) is the clearest example — Lyft handles all fleet operations while Waymo provides technology. The Mobileye-Dallas deal (Marubeni owns fleet, Mobileye provides SDS) targets launch "as soon as 2026." The Tensor Robocar partnership is the most novel: consumer-owned AVs that owners can deploy on Lyft to monetise when not in personal use — first "Lyft-ready" market targeted 2027.',
     news: [
-      {date:'May 2026', text:'Lyft + Baidu Apollo Go UK/Germany + London testing H1 2026 (RT6 vehicles, FREENOW integration). Lyft + Waymo Nashville live (Flexdrive fleet ops). Lyft + Benteler/Holon autonomous shuttles at US cities/airports late 2026. Mobileye-powered shuttles in Nashville + Atlanta. Partnership-tagged rides now ~27% of all Lyft rides. Lyft strategy: neutral AV platform operator vs Uber building own fleet.', src:'CNBC / ABC News', url:'https://abcnews.go.com/Technology/wireStory/uber-lyft-plan-bring-robotaxis-london-partnerships-chinas-128614262'},
+      {date:'August 2026', text:'July 28, 2026: Freenow by Lyft and Baidu\'s Apollo Go officially commenced road testing of sixth-generation autonomous vehicles in London. Testing in the borough of Brent with safety operators. Freenow by Lyft CEO Thomas Zimmermann: "As a platform with deep roots in the taxi industry, our priority is ensuring that autonomous technology supports the professional drivers who keep London moving." Public rides targeting 2027 via Freenow app. Lyft acquired Freenow in July 2025. Partnership for European AV deployment announced August 2025.', src:'Lyft Blog / PRNewswire', url:'https://www.lyft.com/blog/posts/freenow-by-lyft-and-baidu-start-av-testing-in-london'},
       {date:'Dec 2025', text:'Lyft and Baidu announce partnership for London robotaxi trials in 2026 using Apollo Go RT6 vehicles — same trial Uber is joining.', src:'ABC News', url:'https://abcnews.go.com/Technology/wireStory/uber-lyft-plan-bring-robotaxis-london-partnerships-chinas-128614262'},
       {date:'Oct 2025', text:'Lyft and Tensor announce partnership — Tensor Robocar will be first personally-owned AV deployable on Lyft. Lyft reserves hundreds of Tensor vehicles for its own fleet.', src:'Lyft Blog', url:'https://www.lyft.com/blog/posts/lyft-tensor-av-partnership'},
     ],
@@ -5382,7 +5431,7 @@ const SP_DATA = {
     ],
     facts: 'Apollo Go is neck-and-neck with Waymo for the title of world\'s largest robotaxi service by trip volume — both crossed 20 million cumulative trips around the same time in early 2026. Operating 100% driverless across all commercial operations since February 2025. The 300,000 weekly rides peak in Q4 2025 represents 200%+ YoY growth — the fastest scaling in robotaxi history. The RT6 at $27,500 per unit is the lowest-cost purpose-built robotaxi ever deployed commercially. Baidu\'s global strategy: use Uber and Lyft as distribution channels to enter new markets (Dubai, London, South Korea) without building a local app — the same model as Waymo in the US.',
     news: [
-      {date:'July 2026', text:'July 23, 2026: China\'s robotaxi permit freeze has ended. CnEVPost: "China has started issuing robotaxi licenses again after a high-profile incident involving self-driving vehicles prompted authorities to suspend new permits in April. The resumption is occurring gradually in some cities following the completion of an industry-wide review in late June." Apollo Go Wuhan operations gradually resuming — local residents have posted videos from early July showing Apollo Go vehicles back on streets, some with safety drivers inside. Shenzhen revising regulations to explore opening entire city to robotaxi operations. July 16: Apollo Go signed strategic cooperation MoU with Kazakhstan\'s Freedom Holding Corp. at WAIC 2026 — first Chinese robotaxi entry into Central Asia.', src:'CnEVPost / Bloomberg', url:'https://cnevpost.com/2026/07/23/china-resumes-issuing-robotaxi-licenses/'},
+      {date:'August 2026', text:'July 23, 2026: China\'s robotaxi permit freeze ended — industry review completed late June, licences resuming gradually. Wuhan vehicles returning with safety drivers. Same day: Hong Kong Transport Department issued Apollo Go the city\'s first fully driverless (no safety operator) trial permit for right-hand-drive, left-hand-traffic operation — the world\'s first Level 4 fully driverless trial permit in any right-hand-drive market globally. July 27: Apollo Go commenced fully driverless testing on Airport Island, Hong Kong — no safety operator on board. Vehicles navigated roundabouts, yield intersections, and heavy rain on day one. Commissioner for Transport Winnie Tse confirmed first-day performance. This RHD experience directly underpins the London road testing (July 28) and future expansions to UK, Singapore, Japan, and Australia. July 16: Apollo Go signed MoU with Kazakhstan\'s Freedom Holding at WAIC 2026 — first Chinese robotaxi entry into Central Asia. Global stats: 330M km autonomous mileage, 22M+ cumulative rides, 27 cities.', src:'PRNewswire / Electrek / Global Times', url:'https://www.prnewswire.com/news-releases/baidus-apollo-go-and-freenow-by-lyft-begin-road-testing-in-london-302836171.html'},
       {date:'Feb 2026', text:'Apollo Go reaches 20M cumulative trips, 300K weekly rides peak (+200% YoY in Q4 2025). Launches in South Korea — first Asian market beyond China + HK.', src:'CnEVPost', url:'https://cnevpost.com/2026/02/27/baidu-apollo-go-robotaxi-300000-weekly-rides-expands-to-south-korea/'},
       {date:'Jan 2026', text:'Apollo Go + AutoGo commence fully autonomous commercial ride-hailing on Yas Island, Abu Dhabi — first public fully driverless robotaxi service in the Middle East.', src:'PR Newswire', url:'https://www.prnewswire.com/news-releases/baidus-apollo-go-and-k2s-autogo-commence-fully-autonomous-ride-hailing-service-on-yas-island-announce-phased-expansion-across-abu-dhabi-302663468.html'},
       {date:'Jul 2025', text:'Baidu and Uber announce multi-year global partnership to deploy thousands of Apollo Go vehicles across Asia and Middle East. Lyft partnership for Germany + UK announced Aug 2025.', src:'Baidu', url:'https://www.apollogo.com/'},
@@ -5899,7 +5948,7 @@ const CARD_DATA = {
 </div>`,
   'Denmark': `<div class="c-card" data-activity="pilot">
   <div class="c-header"><span class="c-flag">🇩🇰</span><span class="c-name">Denmark</span><span class="c-badge cb-pilot">Active Pilot</span></div>
-  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-oslo')" title="View project →">Holo — Nordic transit ops ↗</span></div>
+  <div class="c-projects"><span class="c-proj-tag c-proj-link" onclick="goToProject('proj-oslo')" title="View project →">Holo — Nordic transit ops ↗</span><span class="c-proj-tag c-proj-link" onclick="goToProject(\'proj-weride-denmark\')" title="View project →">WeRide × GreenMobility — Denmark ↗</span></div>
   <div class="c-reg"><span class="c-reg-label">Regulation</span> Danish Road Directorate permits AV testing. No permanent AV framework law enacted.</div>
   <div class="c-toggle open" onclick="toggleNote(this)"><span class="c-toggle-label accent">Strategic note</span><span class="c-chevron open">▾</span></div>
   <div class="c-note-body expanded"><div class="c-note">Holo (Norwegian AV operator, Semler Group partnership) has been active in Nordic transit deployments and is the operator partner for the Oslo/Ruter MOIA deployment. Denmark's position in the Holo ecosystem suggests near-term expansion from Norway into Danish transit.</div></div>
